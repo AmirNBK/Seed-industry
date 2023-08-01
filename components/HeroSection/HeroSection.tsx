@@ -44,7 +44,7 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
         perspective: 1000,
         easing: 'cubic-bezier(.03,.98,.52,.99)',
         scale: '1',
-        speed: '10500',
+        speed: '5000',
         transition: true,
         axis: null,
         reset: true,
@@ -74,7 +74,9 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
             percentageX,
             percentageY,
         };
+        
     };
+    
 
     const setTransition = () => {
         clearTimeout(updateCall || undefined);
@@ -161,12 +163,14 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
     const mergedStyle: React.CSSProperties = {
         ...style,
         ...styleState,
+        height: '70vh'
     };
 
     return (
         <div
             ref={elementRef}
             style={mergedStyle}
+            className='w-screen'
             onMouseEnter={handleMouseEnterHandler}
             onMouseMove={handleMouseMoveHandler}
             onMouseLeave={handleMouseLeaveHandler}

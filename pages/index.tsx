@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-6 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
     >
       <PrimeReactProvider>
         <AnimatedCursor
@@ -61,7 +61,7 @@ export default function Home() {
             }}
           >
             <HeroSectionImage>
-              <Image src={pic} alt="" />
+              <Image src={pic} alt="" className='mx-auto my-auto' />
             </HeroSectionImage>
           </HeroSectionImage>
         </div>
