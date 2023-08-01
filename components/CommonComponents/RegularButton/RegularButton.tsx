@@ -5,9 +5,9 @@ const RegularButton = (props: {
 }) => {
     const text = props.text
     return (
-        <div className='text-base px-14 py-3' style={{ background: '#FFD074' , borderRadius : '30px' , color : '#000' }}>
+        <button className='text-base px-14 py-3' style={{ background: '#FFD074' , borderRadius : '30px' , color : '#000' }}>
             {text}
-        </div>
+        </button>
     );
 };
 

@@ -40,13 +40,13 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
 
     const defaultSettings = {
         reverse: true,
-        max: 10,
+        max:15,
         perspective: 1000,
         easing: 'cubic-bezier(.03,.98,.52,.99)',
         scale: '1',
         speed: '5000',
         transition: true,
-        axis: null,
+        axis: true,
         reset: true,
     };
 
