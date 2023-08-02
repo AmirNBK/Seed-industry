@@ -6,7 +6,7 @@ import styles from './ArrowComponent.module.css'
 const ArrowComponent = () => {
     return (
         <div className={`ArrowComponent rounded-full w-fit w-64 h-64 relative ${styles.ArrowContainer}`}
-            style={{transform : 'translateY(-180px)' , marginLeft : '-50px'}}>
+            style={{transform : 'translateY(-180px)' , marginLeft : '50px'}}>
             <div className='absolute w-64 h-64 left-1/2	top-1/2'
                 style={{ transform: 'translate(-50%, -50%)' }}
             >
@@ -15,7 +15,7 @@ const ArrowComponent = () => {
 
                 </div>
             </div>
-            <Image unoptimized alt='arrow' src={arrow} className='absolute left-1/2 top-1/2'
+            <Image unoptimized alt='arrow' src={arrow} className='relative left-1/2 top-1/2'
                 style={{ transform: 'translate(-50%, -50%)' }} />
         </div>
     );
