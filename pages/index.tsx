@@ -6,8 +6,8 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import dynamic from 'next/dynamic'
 import pic from '../assets/Images/heroSeed.png'
-import HeroSectionImage from '@/components/HeroSection/HeroSection';
-import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
+import HeroSectionImage from '@/components/HeroSectionImage/HeroSectionImage';
+import ArrowComponent from '@/components/CommonComponents/ArrowComponent/ArrowComponent';
 
 
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -51,8 +51,7 @@ export default function Home() {
           ]}
         />
         <Header />
-        <div className='relative'>
-          <HeroSectionText />
+        <div className='relative mt-20'>
           <HeroSectionImage
             options={{}}
             style={{
@@ -61,9 +60,10 @@ export default function Home() {
             }}
           >
             <HeroSectionImage>
-              <Image src={pic} alt="" className='mx-auto my-auto' />
+              <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
             </HeroSectionImage>
           </HeroSectionImage>
+          <ArrowComponent />
         </div>
       </PrimeReactProvider>
     </main>

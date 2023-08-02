@@ -5,8 +5,9 @@ import RegularButton from '../CommonComponents/RegularButton/RegularButton';
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const HeroSectionText = () => {
     return (
-        <div className={`HeroSectionText left-1/2 top-1/2 w-fit items-end gap-6 w-full whitespace-nowrap text-white absolute flex flex-col ${myFont.className}`}
-        style={{zIndex : '30' , transform : 'translate(-60%, -60%)'}}
+        <div
+            className={`HeroSectionText left-1/2 top-1/2 w-fit items-end gap-6 whitespace-nowrap text-white absolute flex flex-col ${myFont.className}`}
+            style={{ transform: 'translate(-60%, -60%)' }}
         >
             <div className='text-9xl'>
                 مسیرتان را

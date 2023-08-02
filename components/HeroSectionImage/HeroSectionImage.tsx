@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import HeroSectionText from '../HeroSectionText/HeroSectionText';
 
 interface HeroSectionImageProps {
     handleMouseEnter?: (e: React.MouseEvent) => void;
@@ -40,11 +41,11 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
 
     const defaultSettings = {
         reverse: true,
-        max:15,
+        max: 15,
         perspective: 1000,
         easing: 'cubic-bezier(.03,.98,.52,.99)',
         scale: '1',
-        speed: '5000',
+        speed: '9000',
         transition: true,
         axis: true,
         reset: true,
@@ -74,9 +75,9 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
             percentageX,
             percentageY,
         };
-        
+
     };
-    
+
 
     const setTransition = () => {
         clearTimeout(updateCall || undefined);
@@ -163,7 +164,8 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
     const mergedStyle: React.CSSProperties = {
         ...style,
         ...styleState,
-        height: '70vh'
+        height: '70vh',
+        zIndex: '100000000'
     };
 
     return (
@@ -175,6 +177,7 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
             onMouseMove={handleMouseMoveHandler}
             onMouseLeave={handleMouseLeaveHandler}
         >
+            <HeroSectionText />
             {children}
         </div>
     );
