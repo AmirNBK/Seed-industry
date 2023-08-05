@@ -12,7 +12,7 @@ const AboutUs = () => {
                 <p className='text-white text-7xl w-max'> درباره ما </p>
             </div>
             <div className='flex flex-col items-end'>
-                <p className='text-white text-3xl text-right rtl mb-6 leading-10'>
+                <p className='text-white text-3xl text-right rtl mb-6 leading-10' style={{direction : 'rtl'}}>
                     شرکت پیشگامان صنعت و بذر با بیش از ۱۵ سال تجربه در حوزه‌ی کشاورزی و بذر، به عنوان یکی از پیشروان صنعت، به ارائه محصولات با کیفیت و نوآورانه متمرکز است.
                 </p>
                 <RegularButton text='بیشتر بخوانید' />

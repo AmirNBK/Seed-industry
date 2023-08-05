@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header/Header'
@@ -10,6 +11,7 @@ import HeroSectionImage from '@/components/HeroSectionImage/HeroSectionImage';
 import ArrowComponent from '@/components/CommonComponents/ArrowComponent/ArrowComponent';
 import SmoothScroll from '../components/SmoothScroll/SmoothScroll'
 import AboutUs from '@/components/AboutUs/AboutUs';
+import ImageSlider from '@/components/3DSlider/ImageSlider';
 
 
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -72,6 +74,9 @@ export default function Home() {
               <AboutUs />
             </div>
           </PrimeReactProvider>
+          <div className='my-20'>
+            <ImageSlider />
+          </div>
         </main>
       </div>
     </>

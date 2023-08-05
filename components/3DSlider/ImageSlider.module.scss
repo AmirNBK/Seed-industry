@@ -1,0 +1,42 @@
+
+.section {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  --v-offset: 60px;
+  --curve-height: 120px;
+
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    background: transparent;
+    width: calc(100vw + 2 * var(60px));
+    height: var(120px);
+    position: absolute;
+    border-radius: 50%;
+    left: calc(-1 * var(60px));
+    right: calc(-1 * var(60px));
+  }
+
+  &:before {
+    top: calc(-0.6 * var(120px));
+  }
+
+  &:after {
+    bottom: calc(-0.6 * var(120px));
+  }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 300px;
+  grid-auto-flow: column;
+  grid-gap: 24px;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+
+  img {
+    scroll-snap-align: center;
+  }
+}
