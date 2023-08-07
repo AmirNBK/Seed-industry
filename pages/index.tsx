@@ -12,6 +12,7 @@ import ArrowComponent from '@/components/CommonComponents/ArrowComponent/ArrowCo
 import SmoothScroll from '../components/SmoothScroll/SmoothScroll'
 import AboutUs from '@/components/AboutUs/AboutUs';
 import ImageSlider from '@/components/3DSlider/ImageSlider';
+import Footer from '@/components/Footer/Footer';
 
 
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -77,6 +78,8 @@ export default function Home() {
           <div className='my-20'>
             <ImageSlider />
           </div>
+
+          <Footer />
         </main>
       </div>
     </>
