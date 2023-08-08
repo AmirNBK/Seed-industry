@@ -28,6 +28,35 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
+  const productData = [
+    {
+      product: 'محصول شماره یک',
+      description: 'اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر',
+      color: '#fff',
+      index: 1,
+      textColor: '#575C54',
+      bgColor: '#ffffffd9',
+      image: seedPic1,
+    },
+    {
+      product: 'محصول شماره دو',
+      description: 'اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر',
+      color: '#FFD074',
+      index: 2,
+      bgColor: '#ffd074b3',
+      textColor: '#fff',
+      image: seedPic2,
+    },
+    {
+      product: 'محصول شماره سه',
+      description: 'اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر',
+      color: '#E1783C',
+      index: 3,
+      bgColor: '#e1783cb3',
+      textColor: '#fff',
+      image: seedPic3,
+    },
+  ];
 
   return (
 
@@ -84,14 +113,12 @@ export default function Home() {
             <ImageSlider />
           </div>
 
-          <ProductSlider product='محصول شماره یک' description='اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر' color='#fff'
-            index={1} textColor='#575C54' bgColor='#ffffffd9' image={seedPic1} />
-
-          <ProductSlider product='محصول شماره دو' description='اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر' color='#FFD074'
-            index={2} bgColor='#ffd074b3' textColor='#fff' image={seedPic2} />
-
-          <ProductSlider product='محصول شماره سه' description='اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر' color='#E1783C'
-            index={3} textColor='#fff' bgColor='#e1783cb3' image={seedPic3} />
+          {productData.map((productInfo) => (
+            <ProductSlider
+              key={productInfo.index}
+              {...productInfo}
+            />
+          ))}
 
           <Footer />
         </main>
