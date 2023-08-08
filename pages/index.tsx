@@ -13,6 +13,8 @@ import SmoothScroll from '../components/SmoothScroll/SmoothScroll'
 import AboutUs from '@/components/AboutUs/AboutUs';
 import ImageSlider from '@/components/3DSlider/ImageSlider';
 import Footer from '@/components/Footer/Footer';
+import ProductSlider from '@/components/ProductSlider/ProductSlider';
+import seedPic1 from '../assets/Images/seedPic.jpeg'
 
 
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -78,6 +80,9 @@ export default function Home() {
           <div className='my-20'>
             <ImageSlider />
           </div>
+
+          <ProductSlider product='محصول شماره یک' description='اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر' color='#ffffffd9'
+            index={1} image={seedPic1} />
 
           <Footer />
         </main>
