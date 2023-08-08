@@ -14,7 +14,10 @@ import AboutUs from '@/components/AboutUs/AboutUs';
 import ImageSlider from '@/components/3DSlider/ImageSlider';
 import Footer from '@/components/Footer/Footer';
 import ProductSlider from '@/components/ProductSlider/ProductSlider';
-import seedPic1 from '../assets/Images/seedPic.jpeg'
+import seedPic1 from '../assets/Images/seedPic.png'
+import seedPic2 from '../assets/Images/seedPic2.png'
+import seedPic3 from '../assets/Images/seedPic3.png'
+
 
 
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -81,8 +84,14 @@ export default function Home() {
             <ImageSlider />
           </div>
 
-          <ProductSlider product='محصول شماره یک' description='اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر' color='#ffffffd9'
-            index={1} image={seedPic1} />
+          <ProductSlider product='محصول شماره یک' description='اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر' color='#fff'
+            index={1} textColor='#575C54' bgColor='#ffffffd9' image={seedPic1} />
+
+          <ProductSlider product='محصول شماره دو' description='اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر' color='#FFD074'
+            index={2} bgColor='#ffd074b3' textColor='#fff' image={seedPic2} />
+
+          <ProductSlider product='محصول شماره سه' description='اکتشاف عالمی از محصولات کشاورزی برتر مشاوره فنی توسط متخصصان حرفه‌ای تمرکز بر کیفیت بی‌نظیر' color='#E1783C'
+            index={3} textColor='#fff' bgColor='#e1783cb3' image={seedPic3} />
 
           <Footer />
         </main>
