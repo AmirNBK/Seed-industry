@@ -17,6 +17,7 @@ import ProductSlider from '@/components/ProductSlider/ProductSlider';
 import seedPic1 from '../assets/Images/seedPic.png'
 import seedPic2 from '../assets/Images/seedPic2.png'
 import seedPic3 from '../assets/Images/seedPic3.png'
+import Blogs from '@/components/Blogs/Blogs';
 
 
 
@@ -119,6 +120,8 @@ export default function Home() {
               {...productInfo}
             />
           ))}
+
+          <Blogs />
 
           <Footer />
         </main>
