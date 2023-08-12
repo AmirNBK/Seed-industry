@@ -16,9 +16,14 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #173D33;
+  scroll-behavior: smooth;
   /* overflow: hidden; */
 
   .swiper-wrapper {

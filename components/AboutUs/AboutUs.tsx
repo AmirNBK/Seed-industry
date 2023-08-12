@@ -6,6 +6,7 @@ const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AboutUs = () => {
     return (
         <div className={`AboutUs ${myFont.className} mx-auto flex flex-row-reverse w-8/12 gap-16 mb-20`}
+        id='AboutUs'
         style={{marginTop : '-60px'}}
         >
             <div>

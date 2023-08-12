@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
+import { Vazirmatn } from 'next/font/google';
+const vazir = Vazirmatn({ subsets: ['latin'] });
 import logo from '../../assets/Icons/logo.png'
 import 'primeicons/primeicons.css';
 import { InputText } from 'primereact/inputtext';
@@ -9,7 +11,7 @@ import styles from './Header.module.css'
 const Header = () => {
     const items = ['صفحه اصلی', 'درباره ما', 'محصولات', 'ارتباط با ما', 'تصاویر']
     return (
-        <div className='Header flex flex-row-reverse w-full justify-between items-center pb-6'
+        <div className={`Header flex flex-row-reverse w-full justify-between items-center pb-6 ${vazir.className}`}
             style={{ borderBottom: '1px solid #fff' }}
         >
             <div className='Header__logo'>
@@ -19,7 +21,7 @@ const Header = () => {
             >
                 {items.map((item) => {
                     return (
-                        <a className='cursor-pointer font-normal'>
+                        <a className='cursor-pointer text-xl font-medium'>
                             {item}
                         </a>
                     )

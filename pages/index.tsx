@@ -18,6 +18,7 @@ import seedPic2 from '../assets/Images/seedPic2.png'
 import seedPic3 from '../assets/Images/seedPic3.png'
 import Blogs from '@/components/Blogs/Blogs';
 import Values from '@/components/Values/Values';
+import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 
 
 
@@ -114,12 +115,7 @@ export default function Home() {
             <ImageSlider />
           </div>
 
-          {productData.map((productInfo) => (
-            <ProductSlider
-              key={productInfo.index}
-              {...productInfo}
-            />
-          ))}
+          <ProductSliderContainer />
           <Blogs />
           <Values />
           <Footer />

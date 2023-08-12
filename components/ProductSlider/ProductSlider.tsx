@@ -1,12 +1,12 @@
 import Image, { StaticImageData } from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Header/Header';
 import greenSeed from '../../assets/Icons/greenSeed.svg';
 import whiteSeed from '../../assets/Icons/whiteSeed.svg';
 import plus from '../../assets/Icons/plus.svg'
 import ProductInfoContainer from '../ProductInfoContainer/ProductInfoContainer';
 import localFont from 'next/font/local'
-
+import { useRouter } from 'next/navigation'
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const numberFont = localFont({ src: '../../assets/Fonts/OtomanopeeOne-Regular.ttf' })
 
@@ -17,7 +17,7 @@ const ProductSlider = (props: {
     image: StaticImageData;
     index: number;
     textColor: string;
-    bgColor: string
+    bgColor: string;
 }) => {
     const product = props.product;
     const description = props.description;
@@ -26,6 +26,7 @@ const ProductSlider = (props: {
     const index = props.index;
     const textColor = props.textColor
     const bgColor = props.bgColor
+    const router = useRouter()
 
     const getColorOrder = (index: number) => {
         const orders = [
@@ -39,7 +40,7 @@ const ProductSlider = (props: {
     const colorOrder = getColorOrder(index - 1);
 
     return (
-        <div className='ProductSlider w-full my-32'>
+        <div className='ProductSlider w-full my-32' id={`product${index}`}>
             <div className='flex flex-row-reverse mt-6 items-center'>
                 <div className='ProductSlider__rightSide relative mr-12'
                     style={{ flex: '1.7' }}
@@ -48,7 +49,7 @@ const ProductSlider = (props: {
                         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%) lightgray 50% / cover no-repeat`,
                         backgroundBlendMode: 'overlay',
                     }} />
-                    <p style={{ color: color, bottom: '-8px', left: `${index === 1 ? "-18px" : index === 2 ? '-8px' : '-3px' }` }} className={`absolute text-9xl ${numberFont.className}`}> {index} </p>
+                    <p style={{ color: color, bottom: '-8px', left: `${index === 1 ? "-18px" : index === 2 ? '-8px' : '-3px'}` }} className={`absolute text-9xl ${numberFont.className}`}> {index} </p>
                     <ProductInfoContainer title={product} description={description} bgColor={bgColor} textColor={textColor} />
                     <div className='absolute p-3 rounded-full top-2/4'
                         style={{ right: '-25px', transform: 'translateY(-50%)', background: color }}
