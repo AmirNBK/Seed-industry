@@ -1,0 +1,14 @@
+.ValuesContainer {
+  transition: transform 0.7s;
+  transform: translateY(0);
+  background: linear-gradient(40deg, rgba(83, 126, 49, 1) 0%, rgba(50, 66, 37, 1) 30%, rgba(50, 66, 37, 1) 60%, rgba(83, 126, 49, 1) 100%);
+}
+
+.ValuesContainer:hover {
+  transform: translateY(-20px);
+}
+
+.ValuesContainer.clicked {
+  transform: translateY(-250px);
+  background: #B5F081;
+}

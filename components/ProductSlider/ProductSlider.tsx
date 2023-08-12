@@ -40,7 +40,6 @@ const ProductSlider = (props: {
 
     return (
         <div className='ProductSlider w-full my-32'>
-            <Header />
             <div className='flex flex-row-reverse mt-6 items-center'>
                 <div className='ProductSlider__rightSide relative mr-12'
                     style={{ flex: '1.7' }}
