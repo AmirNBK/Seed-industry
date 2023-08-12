@@ -9,7 +9,6 @@ import dynamic from 'next/dynamic'
 import pic from '../assets/Images/heroSeed.png'
 import HeroSectionImage from '@/components/HeroSectionImage/HeroSectionImage';
 import ArrowComponent from '@/components/CommonComponents/ArrowComponent/ArrowComponent';
-import SmoothScroll from '../components/SmoothScroll/SmoothScroll'
 import AboutUs from '@/components/AboutUs/AboutUs';
 import ImageSlider from '@/components/3DSlider/ImageSlider';
 import Footer from '@/components/Footer/Footer';
