@@ -26,7 +26,7 @@ const BlogsContainer = (props: {
                     <p style={{ direction: 'rtl' }}>{props.author}  </p>
                 </div>
                 <div className='BlogsContainer__title flex flex-row-reverse items-center justify-between'>
-                    <h3 className={`${props.isVertical ? 'text-3xl' : 'text-xl'} font-medium text-right`}> {props.title} </h3>
+                    <h3 className={`${props.isVertical ? 'text-2xl' : 'text-xl'} font-medium text-right ${vazir.className}`}> {props.title} </h3>
                     {props.hasArrow && <Image src={arrow} alt='arrow' />}
                 </div>
                 <p className='text-right font-light' style={{ direction: 'rtl' }}> {props.description} </p>
