@@ -6,6 +6,8 @@ const inter = Inter({ subsets: ['latin'] })
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import localFont from 'next/font/local'
+import BlogsContainer from '@/components/BlogsContainer/BlogsContainer';
+import blogPic from '../../assets/Images/blogs-pic.jpeg'
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -50,6 +52,24 @@ export default function Blogs() {
                     بلاگ ها
                 </h1>
 
+                <div className='mt-16 flex flex-row-reverse'>
+                    <div style={{ flex: '1' }}>
+                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
+                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={576} height={499} isVertical
+                            description='بذرهای با کیفیت اساسی‌ترین عامل برای محصولات با عملکرد عالی هستند. در این مقاله به بررسی تأثیر بذرهای برتر گرین‌سید بر رشد و عملکرد محصولات کشاورزی خواهیم پرداخت.' hasArrow />
+                    </div>
+                    <div style={{ flex: '1' }}>
+                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
+                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={false}
+                            description='بذرهای با کیفیت اساسی‌ترین عامل برای محصولات با عملکرد عالی هستند. در این مقاله به بررسی تأثیر بذرهای برتر گرین‌سید بر رشد و عملکرد محصولات کشاورزی خواهیم پرداخت.' hasArrow={false} />
+                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
+                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={false}
+                            description='بذرهای با کیفیت اساسی‌ترین عامل برای محصولات با عملکرد عالی هستند. در این مقاله به بررسی تأثیر بذرهای برتر گرین‌سید بر رشد و عملکرد محصولات کشاورزی خواهیم پرداخت.' hasArrow={false} />
+                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
+                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={false}
+                            description='بذرهای با کیفیت اساسی‌ترین عامل برای محصولات با عملکرد عالی هستند. در این مقاله به بررسی تأثیر بذرهای برتر گرین‌سید بر رشد و عملکرد محصولات کشاورزی خواهیم پرداخت.' hasArrow={false} />
+                    </div>
+                </div>
 
             </PrimeReactProvider>
 
