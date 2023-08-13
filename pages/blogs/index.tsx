@@ -19,6 +19,76 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 });
 
 export default function Blogs() {
+
+    const blogData = [
+        {
+            image: blogpic2,
+            author: 'آرش سعیدی',
+            date: '20 مرداد 1402',
+            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
+            width: 310,
+            height: 229,
+            isVertical: true,
+            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
+            hasArrow: true
+        },
+        {
+            image: blogpic2,
+            author: 'آرش سعیدی',
+            date: '20 مرداد 1402',
+            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
+            width: 310,
+            height: 229,
+            isVertical: true,
+            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
+            hasArrow: true
+        },
+        {
+            image: blogpic2,
+            author: 'آرش سعیدی',
+            date: '20 مرداد 1402',
+            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
+            width: 310,
+            height: 229,
+            isVertical: true,
+            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
+            hasArrow: true
+        },
+        {
+            image: blogpic2,
+            author: 'آرش سعیدی',
+            date: '20 مرداد 1402',
+            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
+            width: 310,
+            height: 229,
+            isVertical: true,
+            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
+            hasArrow: true
+        },
+        {
+            image: blogpic2,
+            author: 'آرش سعیدی',
+            date: '20 مرداد 1402',
+            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
+            width: 310,
+            height: 229,
+            isVertical: true,
+            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
+            hasArrow: true
+        },
+        {
+            image: blogpic2,
+            author: 'آرش سعیدی',
+            date: '20 مرداد 1402',
+            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
+            width: 310,
+            height: 229,
+            isVertical: true,
+            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
+            hasArrow: true
+        },
+    ];
+
     return (
         <main
             className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
@@ -83,24 +153,20 @@ export default function Blogs() {
                 </div>
 
                 <div className='grid grid-cols-3 gap-20 mt-12'>
-                    <BlogsContainer image={blogpic2} author='آرش سعیدی' date='20 مرداد 1402'
-                        title={'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید'} width={310} height={229} isVertical
-                        description='در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...' hasArrow />
-                    <BlogsContainer image={blogpic2} author='آرش سعیدی' date='20 مرداد 1402'
-                        title={'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید'} width={310} height={229} isVertical
-                        description='در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...' hasArrow />
-                    <BlogsContainer image={blogpic2} author='آرش سعیدی' date='20 مرداد 1402'
-                        title={'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید'} width={310} height={229} isVertical
-                        description='در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...' hasArrow />
-                    <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                        title={'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید'} width={310} height={229} isVertical
-                        description='در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...' hasArrow />
-                    <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                        title={'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید'} width={310} height={229} isVertical
-                        description='در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...' hasArrow />
-                    <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                        title={'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید'} width={310} height={229} isVertical
-                        description='در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...' hasArrow />
+                    {blogData.map((blog, index) => (
+                        <BlogsContainer
+                            key={index}
+                            image={blog.image}
+                            author={blog.author}
+                            date={blog.date}
+                            title={blog.title}
+                            width={blog.width}
+                            height={blog.height}
+                            isVertical={blog.isVertical}
+                            description={blog.description}
+                            hasArrow={blog.hasArrow}
+                        />
+                    ))}
                 </div>
 
                 <Footer />
