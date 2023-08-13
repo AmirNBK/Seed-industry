@@ -57,16 +57,15 @@ const ProductSliderContainer = () => {
         <div className='ProductSliderContainer w-full'>
             <div style={{ marginTop: '150px' }} className='card'>
                 <Carousel
-                    showNavigators={true}
-                    orientation="vertical"
+                    showNavigators={false}
                     value={productData}
                     numVisible={1}
                     numScroll={1}
                     className="custom-carousel"
                     circular
-                    autoplayInterval={3000}
+                    autoplayInterval={5000}
                     itemTemplate={productTemplate}
-                    showIndicators={false}
+                    showIndicators={true}
                 />
             </div>
         </div>

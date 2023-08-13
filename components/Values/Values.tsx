@@ -23,8 +23,17 @@ const Values = () => {
             description: 'برنامه‌های تحقیقاتی ما متمرکز بر ارتقاء بهره‌وری بذر، بهینه‌سازی روش‌های تولید بذر، افزایش مقاومت در برابر آفات و بیماری‌ها، و بهبود ویژگی‌های کیفی و مشخصات فیزیولوژیکی بذرها می‌باشند. تیم پژوهشی ما از اساتید و متخصصان مجرب در زمینه علوم کشاورزی و بذر شامل بیولوژیست‌ها، بیوشیمیست‌ها و متخصصان ژنتیک است. این تیم متعهد به اجرای پروژه‌های تحقیقاتی متنوع برای بهبود فرآورده‌های بذری و پیشرفت در علم بذر است.',
             leftPosition: '-60px'
         }
-        // Add more data as needed
     ];
+
+    const [activeIndex, setActiveIndex] = useState(null);
+
+    const handleContainerClick = (index) => {
+        setActiveIndex(index === activeIndex ? null : index);
+    };
+
+    const handleContainerClose = () => {
+        setActiveIndex(null)
+    };
 
     return (
         <div className='Values  w-full mb-32 mt-16'
@@ -43,6 +52,10 @@ const Values = () => {
                         description={value.description}
                         topPosition={value.topPosition}
                         leftPosition={value.leftPosition}
+                        onToggleClick={() => handleContainerClick(index)}
+                        onToggleClose={() => handleContainerClose()}
+                        index={index}
+                        activeIndex={activeIndex}
                     />
                 ))}
             </div>

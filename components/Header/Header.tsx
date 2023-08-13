@@ -21,7 +21,7 @@ const Header = () => {
             >
                 {items.map((item) => {
                     return (
-                        <a className='cursor-pointer text-xl font-medium'>
+                        <a className='cursor-pointer text-lg'>
                             {item}
                         </a>
                     )

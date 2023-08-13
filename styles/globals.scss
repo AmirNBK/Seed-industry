@@ -20,11 +20,33 @@ html {
   scroll-behavior: smooth;
 }
 
+
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #173D33;
   scroll-behavior: smooth;
-  /* overflow: hidden; */
+
+
+  .p-carousel .p-carousel-content .p-carousel-prev,
+  .p-carousel .p-carousel-content .p-carousel-next {
+    background-color: #FFD074;
+    color: #fff;
+  }
+
+  .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+    width: 11px;
+    border-radius: 999px;
+    height: 11px;
+    background-color: #ced4da;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+
+  .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+    background-color: #EBDAB2;
+    border-radius: 999px;
+    width: 73px;
+    height: 11px;
+  }
 
   .swiper-wrapper {
     display: flex;

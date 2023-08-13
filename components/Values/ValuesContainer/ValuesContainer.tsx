@@ -13,6 +13,10 @@ const ValuesContainer = (props: {
     bgColor: string
     topPosition?: string
     leftPosition?: string
+    onToggleClick: any
+    onToggleClose: any
+    index: number
+    activeIndex: number | null
 }) => {
     const title = props.title
     const icon = props.icon
@@ -20,37 +24,44 @@ const ValuesContainer = (props: {
     const bgColor = props.bgColor
     const topPosition = props.topPosition
     const leftPosition = props.leftPosition
+    const index = props.index
+    const activeIndex = props.activeIndex
 
-    const [isClicked, setIsClicked] = useState(false);
-    
+    const handleClick = () => {
+        props.onToggleClick();
+    };
+
+    const handleClose = () => {
+        props.onToggleClose();
+    };
+
     return (
-        <div className={`w-8/12 absolute justify-center pt-6 pb-16 px-10 mx-auto mt-12 rounded-md ${vazir.className} ${styles.ValuesContainer} ${isClicked ? styles.clicked : ''}`}
+        <div className={`w-8/12 absolute justify-center pt-6 pb-16 px-10 mx-auto mt-12 rounded-md ${vazir.className} ${styles.ValuesContainer} ${index === activeIndex ? styles.clicked : ''}`}
             style={{
                 boxShadow: '0px -23px 60px rgba(0, 0, 0, 0.25)',
                 height: '368px',
                 top: topPosition,
                 left: leftPosition,
             }}
-            onClick={() => { setIsClicked(true) }}
+            onClick={handleClick}
         >
             <div className='ValuesContainer__title flex flex-row-reverse items-center gap-2 justify-between'>
                 <div className='flex items-center gap-2 justify-end'>
-                    <p style={{ color: `${isClicked ? 'black' : '#AAFC75'}` }} className='text-2xl'> {title} </p>
-                    {<ResearchIcon color={isClicked ? 'black' : '#aafc75'} />}
+                    <p style={{ color: `${index === activeIndex ? 'black' : '#AAFC75'}` }} className='text-2xl'> {title} </p>
+                    {<ResearchIcon color={index === activeIndex ? 'black' : '#aafc75'} />}
                 </div>
-                {isClicked && (
+                {index === activeIndex && (
                     <div
                         className='bg-white rounded-full p-2'
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setIsClicked(false);
+                        onClick={() => {
+                            handleClose
                         }}
                     >
                         <Image src={cross} alt='cross' />
                     </div>
                 )}
             </div>
-            <div className='text-white text-right text-lg mt-6 leading-7 w-11/12 mx-auto' style={{ direction: 'rtl', color: `${isClicked ? 'black' : '#fff'}` }}>
+            <div className='text-white text-right text-lg mt-6 leading-7 w-11/12 mx-auto' style={{ direction: 'rtl', color: `${index === activeIndex ? 'black' : '#fff'}` }}>
                 {description}
             </div>
         </div>

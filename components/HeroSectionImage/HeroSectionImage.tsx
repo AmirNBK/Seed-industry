@@ -45,7 +45,7 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
         perspective: 1000,
         easing: 'cubic-bezier(.03,.98,.52,.99)',
         scale: '1',
-        speed: '9000',
+        speed: '16000',
         transition: true,
         axis: true,
         reset: true,
@@ -169,16 +169,17 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
     };
 
     return (
-        <div
-            ref={elementRef}
-            style={mergedStyle}
-            className='w-screen'
-            onMouseEnter={handleMouseEnterHandler}
-            onMouseMove={handleMouseMoveHandler}
-            onMouseLeave={handleMouseLeaveHandler}
-        >
-            <HeroSectionText />
-            {children}
+        <div>
+            <div
+                ref={elementRef}
+                style={mergedStyle}
+                className='w-screen'
+                onMouseEnter={handleMouseEnterHandler}
+                onMouseMove={handleMouseMoveHandler}
+                onMouseLeave={handleMouseLeaveHandler}
+            >
+                {children}
+            </div>
         </div>
     );
 };
