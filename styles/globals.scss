@@ -26,6 +26,33 @@ body {
   background-color: #173D33;
   scroll-behavior: smooth;
 
+  .p-tabview .p-tabview-panels {
+    background-color: transparent;
+  }
+
+  .p-tabview .p-tabview-nav {
+    background-color: transparent;
+  }
+
+  .p-tabview .p-tabview-nav { 
+    border: none;
+    justify-content: center;
+  }
+
+  .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background-color: transparent;
+    border-color: #FFD074;
+    color: #FFD074;
+  }
+
+  .p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
+    background-color: transparent;
+  }
+
+  .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    background-color: transparent;
+  }
+
 
   .p-carousel .p-carousel-content .p-carousel-prev,
   .p-carousel .p-carousel-content .p-carousel-next {
