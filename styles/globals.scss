@@ -32,11 +32,26 @@ body {
 
   .p-tabview .p-tabview-nav {
     background-color: transparent;
+    gap: 75px;
   }
 
-  .p-tabview .p-tabview-nav { 
+
+  .p-tabview .p-tabview-nav {
     border: none;
     justify-content: center;
+  }
+
+  .p-tabview-title {
+    font-family: '__Vazirmatn_253970';
+    font-size: 19px;
+  }
+
+  .p-tabview .p-tabview-nav .p-tabview-ink-bar {
+    background-color: #FFD074;
+  }
+
+  .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+    box-shadow: none;
   }
 
   .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
@@ -47,10 +62,13 @@ body {
 
   .p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
     background-color: transparent;
+    color: #fff;
   }
 
   .p-tabview .p-tabview-nav li .p-tabview-nav-link {
     background-color: transparent;
+    border: none;
+    color: #fff;
   }
 
 

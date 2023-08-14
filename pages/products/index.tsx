@@ -15,6 +15,7 @@ import blogpic2 from '../../assets/Images/blog-pic2.jpeg'
 import ProductsComponent from './ProductsComponent/ProductsComponent';
 import productPic from '../../assets/Images/product-1.png'
 import { TabView, TabPanel } from 'primereact/tabview';
+import RegularButton from '@/components/CommonComponents/RegularButton/RegularButton';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -66,24 +67,14 @@ export default function Blogs() {
                             و آخرین محصولات
                         </h1>
                     </div>
-                    <div className='mt-28'>
+                    <div className='mt-28 relative'>
+                        <hr className='absolute '
+                            style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', left: '-25px', width: '37%' }} />
+                        <hr className='absolute '
+                            style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', right: '-25px', width: '37%' }} />
                         <TabView >
-                            <TabPanel header="بذر های چمن">
-                                <div className=' grid grid-cols-3 gap-12 mt-32'>
-                                    {Array.from({ length: 6 }, (_, index) => (
-                                        <ProductsComponent
-                                            key={index}
-                                            image={productPic}
-                                            name='بذر شماره 1'
-                                            description='برای تازه خوری ، فرآیند سازی و صادرات'
-                                            instruction={['۲۰۰ - ۵۰۰ سی‌سی', 'آبیاری متغذی']}
-                                            color='#44A5DB'
-                                        />
-                                    ))}
-                                </div>
-                            </TabPanel>
                             <TabPanel header="بذر های سبز سیف">
-                            <div className=' grid grid-cols-3 gap-12 mt-32'>
+                                <div className=' grid grid-cols-3 gap-12 mt-32'>
                                     {Array.from({ length: 3 }, (_, index) => (
                                         <ProductsComponent
                                             key={index}
@@ -96,7 +87,27 @@ export default function Blogs() {
                                     ))}
                                 </div>
                             </TabPanel>
+                            <TabPanel header="بذر های چمن">
+                                <div className=' grid grid-cols-3 gap-12 mt-32'>
+                                    {Array.from({ length: 6 }, (_, index) => (
+                                        <ProductsComponent
+                                            key={index}
+                                            image={productPic}
+                                            name='بذر شماره 1'
+                                            description='برای تازه خوری ، فرآیند سازی و صادرات'
+                                            instruction={['۲۰۰ - ۵۰۰ سی‌سی', 'آبیاری متغذی']}
+                                            color='#EBDAB2'
+                                        />
+                                    ))}
+                                </div>
+                            </TabPanel>
                         </TabView>
+                        <div className='flex flex-row items-center gap-6 my-32'>
+                            <hr className='flex-1' style={{borderColor : '#EBDAB2'}} />
+                            <RegularButton text='مشاهده بیشتر' />
+                            <hr className='flex-1' style={{borderColor : '#EBDAB2'}} />
+                        </div>
+
                     </div>
                 </div>
 
