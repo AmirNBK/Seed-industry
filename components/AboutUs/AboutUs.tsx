@@ -8,6 +8,7 @@ const vazir = Vazirmatn({ subsets: ['latin'] });
 import pic from '../../assets/Images/aboutPic.jpeg'
 import play from '../../assets/Images/play.svg'
 import AboutUsSection from './AboutUsSection/AboutUsSection';
+import AccordionSection from './AccordionSection/AccordionSection';
 
 const AboutUs = () => {
     return (
@@ -35,6 +36,8 @@ const AboutUs = () => {
             </div>
             
             <AboutUsSection />
+
+            <AccordionSection />
         </div>
     );
 };
