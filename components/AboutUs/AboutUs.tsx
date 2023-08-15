@@ -9,6 +9,9 @@ import pic from '../../assets/Images/aboutPic.jpeg'
 import play from '../../assets/Images/play.svg'
 import AboutUsSection from './AboutUsSection/AboutUsSection';
 import AccordionSection from './AccordionSection/AccordionSection';
+import History from './History/History';
+import Foundation from '../Foundation/Foundation';
+import Footer from '../Footer/Footer';
 
 const AboutUs = () => {
     return (
@@ -34,10 +37,12 @@ const AboutUs = () => {
                     style={{ transform: 'translate(-50%,-50%)' }}
                 />
             </div>
-            
             <AboutUsSection />
-
             <AccordionSection />
+            <History />
+            <Foundation />
+
+            <Footer />
         </div>
     );
 };

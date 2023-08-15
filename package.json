@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@react-spring/web": "^9.7.3",
     "@types/node": "20.4.5",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "classnames": "^2.3.2",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "gsap": "^3.12.2",
@@ -26,10 +29,12 @@
     "react": "18.2.0",
     "react-animated-cursor": "^2.7.0",
     "react-dom": "18.2.0",
+    "react-with-gesture": "^4.0.8",
     "sass": "^1.64.2",
     "swiper": "^10.1.0",
     "tailwindcss": "3.3.3",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.16"
