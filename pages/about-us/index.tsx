@@ -20,7 +20,7 @@ export default function About() {
 
     return (
         <main
-            className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
+            className={`flex min-h-screen flex-col items-center overflow-hidden ${inter.className}`}
         >
             <AnimatedCursor
                 innerSize={17}
@@ -49,7 +49,9 @@ export default function About() {
                 ]}
             />
             <PrimeReactProvider>
-                <Header />
+                <div className='w-full p-6'>
+                    <Header />
+                </div>
                 <AboutUs />
             </PrimeReactProvider>
 
