@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic'
 import pic from '../assets/Images/heroSeed.png'
 import HeroSectionImage from '@/components/HeroSectionImage/HeroSectionImage';
 import ArrowComponent from '@/components/CommonComponents/ArrowComponent/ArrowComponent';
-import AboutUs from '@/components/AboutUs/AboutUs';
+import AboutUs from '@/components/AboutUsSection/AboutUsSection';
 import ImageSlider from '@/components/3DSlider/ImageSlider';
 import Footer from '@/components/Footer/Footer';
 import Blogs from '@/components/Blogs/Blogs';
@@ -90,7 +90,6 @@ export default function Home() {
                   <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
                 </HeroSectionImage>
                 <div className={`${cursorEntered ? 'block' : 'hidden'}`}>
-                  {/* <HeroSectionText /> */}
                 </div>
               </HeroSectionImage>
               <div className={`${cursorEntered && ''} absolute`} style={{ top: '26.5%', left: '50%' }}>
