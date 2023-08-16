@@ -21,7 +21,8 @@ const ProductComponents = () => {
 
     return (
         <div className='ProductComponents flex flex-row-reverse items-start'>
-            <div className='ProductComponents__image flex-1'>
+            <div className='ProductComponents__image flex-1'
+            >
                 <Image src={pic} alt='pic' className='' style={{ borderRadius: '70px' }} />
             </div>
             <div className='ProductComponents__info flex-1'>

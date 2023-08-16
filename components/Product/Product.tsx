@@ -66,10 +66,10 @@ const Product = () => {
                 <p style={{ direction: 'rtl' }} className={`text-white text-lg leading-loose ${vazir.className} w-7/12 text-right font-extralight`}>
                     کدوحلوایی شیرین و ملایم با آنیسو تازه و معطر، ترکیبی جذاب از شیرینی و ملایمی را به همراه عمق طعم فراهم می‌کنند که به‌طور انحصاری می‌تواند سلیقه‌های مختلف را جذب کند.
                 </p>
-                <InfoContainer title='اطلاعات بذر' content={<Infos items={seedInfos} />} />
-                <InfoContainer title='ویژگی های بذر' content={<Infos items={seedFeatures} />} />
-                <InfoContainer title='جدول زمان بندی دوره کاشت' content={<TimeSheetTable />} />
-                <InfoContainer title='اجزا' content={<ProductComponents />} />
+                <InfoContainer title='اطلاعات بذر' content={<Infos items={seedInfos} />} link='info' />
+                <InfoContainer title='ویژگی های بذر' content={<Infos items={seedFeatures} />} link='properties' />
+                <InfoContainer title='جدول زمان بندی دوره کاشت' content={<TimeSheetTable />} link='timesheet' />
+                <InfoContainer title='اجزا' content={<ProductComponents />} link='components' />
             </div>
         </div>
     );

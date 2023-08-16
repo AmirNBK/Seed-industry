@@ -26,6 +26,22 @@ body {
   background-color: #173D33;
   scroll-behavior: smooth;
 
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 20px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 20px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 
   .outer-container {
     margin: auto;
@@ -363,14 +379,14 @@ body {
     color: #A3A7B0;
   }
 
-  .p-datatable .p-datatable-thead > tr > th {
+  .p-datatable .p-datatable-thead>tr>th {
     color: #fff;
     font-family: '__Vazirmatn_253970';
     font-weight: 400;
     background-color: transparent;
   }
 
-  .p-datatable .p-datatable-tbody > tr {
+  .p-datatable .p-datatable-tbody>tr {
     background-color: transparent;
   }
 
@@ -379,7 +395,7 @@ body {
     font-family: '__Vazirmatn_253970';
   }
 
-  .p-datatable .p-datatable-tbody > tr > td {
+  .p-datatable .p-datatable-tbody>tr>td {
     border: none;
   }
 

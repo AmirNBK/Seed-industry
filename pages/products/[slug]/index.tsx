@@ -14,12 +14,20 @@ import productPic from '../../../assets/Images/product-1.png'
 import Image from 'next/image';
 import Product from '@/components/Product/Product';
 import Footer from '@/components/Footer/Footer';
+import Navigation from '@/components/Product/Navigation/Navigation';
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
 export default function About() {
+
+    const navigationItems = [
+        { label: 'اطلاعات بذر', link: '#info' },
+        { label: 'ویژگی های بذر', link: '#properties' },
+        { label: 'جدول زمان بندی', link: '#timesheet' },
+        { label: 'اجزا', link: '#components' },
+    ];
 
     return (
         <main
@@ -55,12 +63,17 @@ export default function About() {
                 <div className='w-full p-6'>
                     <Header />
                 </div>
-
-                <div className='productContainer w-full flex flex-row-reverse mt-20'>
-                    <div className='productContainer__pic' style={{ flex: '1.5' }}>
-                        <Image src={productPic} alt='pic' className='mx-auto' />
+                <div className='fixed' style={{ bottom: '40px' }}>
+                    <Navigation items={navigationItems} />
+                </div>
+                <div className='productContainer w-full flex flex-row-reverse mt-20'
+                >
+                    <div className='productContainer__pic' style={{ flex: '1.5', borderLeft: '1px solid #fff' }}
+                    >
+                        <Image src={productPic} alt='pic' className='mx-auto left-1/2' unoptimized
+                            style={{ transform: 'translateX(100%)', position: 'fixed', width: '300px' }} />
                     </div>
-                    <div style={{ flex: '2' }}>
+                    <div style={{ flex: '2' }} className='mr-16'>
                         <Product />
                     </div>
                 </div>
