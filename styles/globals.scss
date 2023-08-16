@@ -363,9 +363,24 @@ body {
     color: #A3A7B0;
   }
 
+  .p-datatable .p-datatable-thead > tr > th {
+    color: #fff;
+    font-family: '__Vazirmatn_253970';
+    font-weight: 400;
+    background-color: transparent;
+  }
+
+  .p-datatable .p-datatable-tbody > tr {
+    background-color: transparent;
+  }
+
   .p-breadcrumb .p-breadcrumb-list li .p-menuitem-link .p-menuitem-text {
     color: #A3A7B0;
     font-family: '__Vazirmatn_253970';
+  }
+
+  .p-datatable .p-datatable-tbody > tr > td {
+    border: none;
   }
 
   .p-breadcrumb .p-breadcrumb-list li:last-child .p-menuitem-text {

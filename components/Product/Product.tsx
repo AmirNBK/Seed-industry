@@ -8,6 +8,7 @@ import BreadCrumbComponent from '../CommonComponents/BreadCrumbComponent/BreadCr
 import FeaturesContainer from '../CommonComponents/FeaturesContainer/FeaturesContainer';
 import InfoContainer from './InfoContainer/InfoContainer';
 import Infos from './Infos/Infos';
+import TimeSheetTable from './TimeSheetTable/TimeSheetTable';
 
 const Product = () => {
     const items: MenuItem[] = [{ label: 'محصولات' }, { label: 'بذرهای چمن' }, { label: 'کدوحلوایی هیبرید آنیسو ' }];
@@ -32,6 +33,20 @@ const Product = () => {
     }
     ]
 
+    const seedFeatures = [{
+        title: 'مناسب فصل', description: 'مناسب برای تولید فصل گرم و فصل سرد'
+    },
+    {
+        title: 'مناسب کشت', description: 'نیمه بوته ای'
+    },
+    {
+        title: 'طعم', description: 'طعم عالی با رنگ مناسب'
+    },
+    {
+        title: 'پتانسیل', description: 'پتانسیل با عملکرد بالا'
+    },
+    ]
+
     return (
         <div className='Product'>
             <div className='mb-12'>
@@ -50,8 +65,9 @@ const Product = () => {
                 <p style={{ direction: 'rtl' }} className={`text-white text-lg leading-loose ${vazir.className} w-7/12 text-right font-extralight`}>
                     کدوحلوایی شیرین و ملایم با آنیسو تازه و معطر، ترکیبی جذاب از شیرینی و ملایمی را به همراه عمق طعم فراهم می‌کنند که به‌طور انحصاری می‌تواند سلیقه‌های مختلف را جذب کند.
                 </p>
-
                 <InfoContainer title='اطلاعات بذر' content={<Infos items={seedInfos} />} />
+                <InfoContainer title='ویژگی های بذر' content={<Infos items={seedFeatures} />} />
+                <InfoContainer title='جدول زمان بندی دوره کاشت' content={<TimeSheetTable />} />
             </div>
         </div>
     );
