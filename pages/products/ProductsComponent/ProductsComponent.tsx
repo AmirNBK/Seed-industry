@@ -2,9 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import React, { useState } from 'react';
 import localFont from 'next/font/local';
 import { Vazirmatn } from 'next/font/google';
-
 const vazir = Vazirmatn({ subsets: ['latin'] });
-
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' });
 
 const ProductsComponent = (props: {

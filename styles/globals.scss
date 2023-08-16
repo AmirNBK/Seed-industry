@@ -147,14 +147,14 @@ body {
     transition: transform 0.4s ease, opacity 0.4s ease;
   }
 
-  .outer-container .carousel-wrapper { 
+  .outer-container .carousel-wrapper {
     text-align: center;
   }
 
-  .carousel-inner { 
+  .carousel-inner {
     max-height: 350px;
     height: 350px;
-  } 
+  }
 
   .carousel-item.visible {
     opacity: 1;
@@ -349,4 +349,41 @@ body {
 
     }
   }
+
+
+  .p-breadcrumb {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .p-breadcrumb .p-breadcrumb-list li.p-menuitem-separator {
+    margin: 0 0.5rem 0 0.5rem;
+    transform: rotateY(180deg);
+    color: #A3A7B0;
+  }
+
+  .p-breadcrumb .p-breadcrumb-list li .p-menuitem-link .p-menuitem-text {
+    color: #A3A7B0;
+    font-family: '__Vazirmatn_253970';
+  }
+
+  .p-breadcrumb .p-breadcrumb-list li:last-child .p-menuitem-text {
+    color: #31BAAE;
+  }
+
+  .p-breadcrumb ul {
+    flex-direction: row-reverse;
+  }
+
+  .p-breadcrumb .p-menuitem-separator:last-child {
+    display: none;
+  }
+
+  .p-menuitem-separator:first-child {
+    display: none;
+  }
+
+
+
 }

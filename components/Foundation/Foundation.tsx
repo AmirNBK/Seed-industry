@@ -7,8 +7,6 @@ import localFont from 'next/font/local'
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 import logo from '../../assets/Icons/fintech-logo.svg'
 
-
-
 const Foundation = () => {
     return (
         <div className='Foundation w-8/12 mx-auto my-20 relative rounded-md'
