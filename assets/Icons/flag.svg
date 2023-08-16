@@ -1,0 +1,23 @@
+<svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="325973_flag_germany_icon 1" clip-path="url(#clip0_555_271)">
+<g id="Group">
+<path id="Vector" d="M19.5006 0C10.8931 0 3.59403 5.57918 1.00781 13.3171H37.9949C35.4091 5.57918 28.1091 0 19.5006 0Z" fill="#1A1A1A"/>
+<path id="Vector_2" d="M19.5006 38.9997C28.1091 38.9997 35.4087 33.4205 37.9949 25.6816H1.00781C3.59403 33.4205 10.8931 38.9997 19.5006 38.9997Z" fill="url(#paint0_linear_555_271)"/>
+<path id="Vector_3" d="M39 19.4996C39 17.3375 38.6423 15.26 37.9935 13.3164H1.00646C0.357192 15.26 0 17.3375 0 19.4996C0 21.6616 0.357192 23.7387 1.00646 25.6813H37.9935C38.6423 23.7387 39 21.6616 39 19.4996Z" fill="url(#paint1_linear_555_271)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_555_271" x1="19.5014" y1="25.6816" x2="19.5014" y2="38.9994" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FCD447"/>
+<stop offset="0.6235" stop-color="#FCD447"/>
+<stop offset="1" stop-color="#FFDE78"/>
+</linearGradient>
+<linearGradient id="paint1_linear_555_271" x1="0" y1="19.4989" x2="38.9999" y2="19.4989" gradientUnits="userSpaceOnUse">
+<stop stop-color="#ED2224"/>
+<stop offset="1" stop-color="#E61E25"/>
+</linearGradient>
+<clipPath id="clip0_555_271">
+<rect width="39" height="39" fill="white"/>
+</clipPath>
+</defs>
+</svg>

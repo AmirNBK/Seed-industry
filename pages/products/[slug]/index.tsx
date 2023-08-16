@@ -13,6 +13,7 @@ const vazir = Vazirmatn({ subsets: ['latin'] });
 import productPic from '../../../assets/Images/product-1.png'
 import Image from 'next/image';
 import Product from '@/components/Product/Product';
+import Footer from '@/components/Footer/Footer';
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
@@ -56,13 +57,15 @@ export default function About() {
                 </div>
 
                 <div className='productContainer w-full flex flex-row-reverse mt-20'>
-                    <div className='productContainer__pic' style={{flex : '1.5'}}>
+                    <div className='productContainer__pic' style={{ flex: '1.5' }}>
                         <Image src={productPic} alt='pic' className='mx-auto' />
                     </div>
-                    <div style={{flex : '2'}}>
+                    <div style={{ flex: '2' }}>
                         <Product />
                     </div>
                 </div>
+
+                <Footer />
             </PrimeReactProvider>
 
         </main>

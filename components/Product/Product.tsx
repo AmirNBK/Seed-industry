@@ -9,6 +9,7 @@ import FeaturesContainer from '../CommonComponents/FeaturesContainer/FeaturesCon
 import InfoContainer from './InfoContainer/InfoContainer';
 import Infos from './Infos/Infos';
 import TimeSheetTable from './TimeSheetTable/TimeSheetTable';
+import ProductComponents from './ProductComponents/ProductComponents';
 
 const Product = () => {
     const items: MenuItem[] = [{ label: 'محصولات' }, { label: 'بذرهای چمن' }, { label: 'کدوحلوایی هیبرید آنیسو ' }];
@@ -68,6 +69,7 @@ const Product = () => {
                 <InfoContainer title='اطلاعات بذر' content={<Infos items={seedInfos} />} />
                 <InfoContainer title='ویژگی های بذر' content={<Infos items={seedFeatures} />} />
                 <InfoContainer title='جدول زمان بندی دوره کاشت' content={<TimeSheetTable />} />
+                <InfoContainer title='اجزا' content={<ProductComponents />} />
             </div>
         </div>
     );
