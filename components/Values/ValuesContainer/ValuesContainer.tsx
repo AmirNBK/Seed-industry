@@ -34,25 +34,24 @@ const ValuesContainer = (props: {
     const handleClose = () => {
         props.onToggleClose();
     };
-
+    
     return (
-        <div className={`w-8/12 absolute justify-center pt-6 pb-16 px-10 mx-auto mt-12 rounded-md ${vazir.className} ${styles.ValuesContainer} ${index === activeIndex ? styles.clicked : ''}`}
+        <div className={`w-full sm:left-[${leftPosition}] sm:w-8/12 absolute justify-center pt-6 pb-16 overflow-hidden px-10 mx-auto sm:mt-12 sm:rounded-md ${vazir.className} ${styles.ValuesContainer} ${index === activeIndex ? styles.clicked : ''}`}
             style={{
                 boxShadow: '0px -23px 60px rgba(0, 0, 0, 0.25)',
                 height: '368px',
                 top: topPosition,
-                left: leftPosition,
             }}
             onClick={handleClick}
         >
-            <div className='ValuesContainer__title flex flex-row-reverse items-center gap-2 justify-between'>
-                <div className='flex items-center gap-2 justify-end'>
-                    <p style={{ color: `${index === activeIndex ? 'black' : '#AAFC75'}` }} className='text-2xl'> {title} </p>
+            <div className='ValuesContainer__title flex flex-row-reverse items-center gap-2 justify-center sm:justify-between'>
+                <div className='flex sm:flex-row flex-col items-center gap-2 justify-end'>
+                    <p style={{ color: `${index === activeIndex ? 'black' : '#AAFC75'}` }} className='text-2xl text-center'> {title} </p>
                     {<ResearchIcon color={index === activeIndex ? 'black' : '#aafc75'} />}
                 </div>
                 {index === activeIndex && (
                     <div
-                        className='bg-white rounded-full p-2'
+                        className='bg-white rounded-full p-2 sm:block hidden'
                         onClick={() => {
                             handleClose
                         }}
@@ -61,7 +60,7 @@ const ValuesContainer = (props: {
                     </div>
                 )}
             </div>
-            <div className='text-white text-right text-lg mt-6 leading-7 w-11/12 mx-auto' style={{ direction: 'rtl', color: `${index === activeIndex ? 'black' : '#fff'}` }}>
+            <div className='text-white text-right text-sm sm:text-lg mt-6 leading-7 w-11/12 mx-auto' style={{ direction: 'rtl', color: `${index === activeIndex ? 'black' : '#fff'}` }}>
                 {description}
             </div>
         </div>

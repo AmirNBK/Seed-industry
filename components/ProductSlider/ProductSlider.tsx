@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import greenSeed from '../../assets/Icons/greenSeed.svg';
 import whiteSeed from '../../assets/Icons/whiteSeed.svg';
@@ -9,6 +9,7 @@ import localFont from 'next/font/local'
 import { useRouter } from 'next/navigation'
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const numberFont = localFont({ src: '../../assets/Fonts/OtomanopeeOne-Regular.ttf' })
+import { Dialog } from 'primereact/dialog';
 
 const ProductSlider = (props: {
     product: string;
@@ -27,6 +28,8 @@ const ProductSlider = (props: {
     const textColor = props.textColor
     const bgColor = props.bgColor
     const router = useRouter()
+    const [visible, setVisible] = useState<boolean>(false);
+
 
     const getColorOrder = (index: number) => {
         const orders = [
@@ -53,6 +56,7 @@ const ProductSlider = (props: {
                     <ProductInfoContainer title={product} description={description} bgColor={bgColor} textColor={textColor} />
                     <div className='absolute p-1 sm:p-3 rounded-full top-2/4 right-[-15px] sm:right-[-25px]'
                         style={{ transform: 'translateY(-50%)', background: color }}
+                        onClick={() => setVisible(true)}
                     >
                         <Image src={plus} alt='plus' className='w-6 sm:w-8' />
                     </div>
@@ -67,6 +71,12 @@ const ProductSlider = (props: {
                             <Image key={idx} src={seed} alt={`seed${idx}`} unoptimized className={idx === 1 ? 'translate-x-20' : ''}
                             />
                         ))}
+                        <Dialog header={product} visible={visible} modal={false}
+                        style={{ width: '80vw' }} onHide={() => setVisible(false)}>
+                            <p className="m-0">
+                                {description}
+                            </p>
+                        </Dialog>
                     </div>
                 </div>
             </div>

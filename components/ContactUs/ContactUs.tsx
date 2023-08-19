@@ -12,14 +12,14 @@ const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const ContactUs = () => {
     return (
         <div className='ContactUs w-full'>
-            <h1 className={`text-8xl ${myFont.className} text-center text-white mt-20`}>
+            <h1 className={`text-5xl md:text-8xl leading-normal ${myFont.className} text-center text-white mt-20`}>
                 با ما در تماس باشید
             </h1>
-            <p className={`${vazir.className} text-white text-lg mt-12 text-center`} style={{ direction: 'rtl' }}>
+            <p className={`${vazir.className} text-white text-base md:text-lg mt-12 text-center`} style={{ direction: 'rtl' }}>
                 با ما برای بهترین و هوشمندانه ترین مشاوره حساب کنید و با متخصصان ما در ارتباط باشید.
             </p>
 
-            <div className='ContactUs__inputs mt-20 flex flex-row-reverse gap-20 w-8/12 mx-auto'>
+            <div className='ContactUs__inputs mt-20 flex flex-col md:flex-row-reverse gap-20 w-8/12 mx-auto'>
                 <div className='ContactUs__inputs__rightSide flex flex-col gap-20 flex-1'>
                     <ContactUsInput placeholder='نام و نام خانوادگی' />
                     <ContactUsInput placeholder='شماره تماس' />

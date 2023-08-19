@@ -8,7 +8,11 @@ const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const Footer = () => {
     return (
         <div className='Footer w-full'>
-            <div className='flex flex-row-reverse justify-center w-full gap-44 mt-32 justify-center'>
+
+            <div className='Footer_centerSide xl:hidden block'>
+                <Image src={logo} alt='logo' unoptimized className='mx-auto' />
+            </div>
+            <div className='flex flex-wrap flex-row-reverse justify-center w-full gap-12 xl:gap-44 mt-12 xl:mt-32 justify-center'>
                 <div className='Footer__rightSide flex flex-col gap-6'>
                     <div className='text-end flex flex-col gap-4'>
                         <h3 className={`Footer__rightSide__title text-3xl ${myFont.className}`} style={{ color: '#EBDAB2' }}> فهرست صفحات </h3>
@@ -34,13 +38,13 @@ const Footer = () => {
                 </div>
 
 
-                <div className='Footer_centerSide' style={{ transform: 'translatex(-80px)' }}>
+                <div className='Footer_centerSide xl:block hidden translate-x-140' style={{ transform: 'translatex(-80px)' }}>
                     <Image src={logo} alt='logo' unoptimized />
                 </div>
 
                 <div className='Footer_leftSide flex flex-col gap-16 text-right justify-center px-6'>
-                    <h2 className={`text-white text-6xl ${myFont.className}`}> با ما در ارتباط باشید </h2>
-                    <div className='Footer_leftSide__email flex flex-row-reverse items-center justify-between w-10/12 ml-auto gap-6'>
+                    <h2 className={`text-white text-5xl md:text-6xl text-center ${myFont.className}`}> با ما در ارتباط باشید </h2>
+                    <div className='Footer_leftSide__email flex flex-row-reverse items-center justify-between w-10/12 mx-auto md:ml-auto gap-6'>
                         <input placeholder='ایمیل شما' className='outline-none bg-transparent text-white placeholder:text-white pb-1 text- placeholder:text-right w-full'
                             style={{ borderBottom: '1px solid white;', direction: 'ltr' }}
                         />

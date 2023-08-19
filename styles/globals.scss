@@ -41,6 +41,22 @@ body {
     }
   }
 
+  .p-dialog .p-dialog-header {
+    flex-direction: row-reverse;
+    font-family: '__Vazirmatn_253970';
+  }
+
+  .p-dialog .p-dialog-header .p-dialog-title {
+    text-align: right;
+    font-family: '__Vazirmatn_253970';
+  }
+
+  .p-dialog .p-dialog-content {
+    text-align: right;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    font-family: '__Vazirmatn_253970';
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
