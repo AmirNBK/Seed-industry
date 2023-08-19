@@ -98,7 +98,7 @@ export default function Home() {
               </div>
 
               <div className='relative lg:hidden block'>
-                <Image src={pic} alt='pic' className='mx-auto w-72 sm:w-96 lg:w-auto' />
+                <Image src={pic} alt='pic' className='mx-auto w-full lg:w-72 ' />
                 <HeroSectionText />
               </div>
               <ArrowComponent />
