@@ -129,13 +129,13 @@ export default function Blogs() {
                 <div className={`w-full text-white text-right mt-16 ${vazir.className}`}>
                     <h3 className='text-xl '> آخرین بلاگ ها </h3>
                 </div>
-                <div className='mt-6 flex flex-row-reverse gap-4'>
+                <div className='mt-6 flex flex-col xl:flex-row-reverse gap-4'>
                     <div style={{ flex: '1' }}>
                         <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
                             title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={576} height={499} isVertical
                             description='بذرهای با کیفیت اساسی‌ترین عامل برای محصولات با عملکرد عالی هستند. در این مقاله به بررسی تأثیر بذرهای برتر گرین‌سید بر رشد و عملکرد محصولات کشاورزی خواهیم پرداخت.' hasArrow />
                     </div>
-                    <div style={{ flex: '1' }} className='flex flex-col gap-8'>
+                    <div style={{ flex: '1' }} className='flex flex-col gap-8 md:flex hidden'>
                         <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
                             title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={false}
                             description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
@@ -144,6 +144,17 @@ export default function Blogs() {
                             description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
                         <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
                             title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={false}
+                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
+                    </div>
+                    <div style={{ flex: '1' }} className='flex flex-col gap-8 md:hidden flex'>
+                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
+                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={true}
+                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
+                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
+                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={true}
+                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
+                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
+                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={true}
                             description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
                     </div>
                 </div>
@@ -152,7 +163,7 @@ export default function Blogs() {
                     <h3 className='text-xl '> تمام بلاگ ها </h3>
                 </div>
 
-                <div className='grid grid-cols-3 gap-20 mt-12'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 my-16'>
                     {blogData.map((blog, index) => (
                         <BlogsContainer
                             key={index}
