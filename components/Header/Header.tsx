@@ -7,25 +7,30 @@ import 'primeicons/primeicons.css';
 import { InputText } from 'primereact/inputtext';
 import arrow from '../../assets/Icons/arrow.svg'
 import styles from './Header.module.css'
+import Link from 'next/link';
 
 const Header = () => {
-    const items = ['صفحه اصلی', 'درباره ما', 'محصولات', 'ارتباط با ما', 'تصاویر']
+    const items = [
+        { text: 'صفحه اصلی', link: '/' },
+        { text: 'درباره ما', link: '/about-us' },
+        { text: 'محصولات', link: '/products' },
+        { text: 'ارتباط با ما', link: '/contact-us' },
+        { text: 'بلاگ', link: '/blogs' }
+    ];
+
     return (
-        <div className={`Header flex flex-row-reverse w-full justify-between items-center pb-6 ${vazir.className}`}
+        <div className={`Header flex flex-col gap-6 xl:flex-row-reverse w-full justify-between items-center pb-6 ${vazir.className}`}
             style={{ borderBottom: '1px solid #fff' }}
         >
             <div className='Header__logo'>
                 <Image src={logo} alt='logo' />
             </div>
-            <div className='Header__items text-white flex flex-row-reverse gap-16 text-lg'
-            >
-                {items.map((item) => {
-                    return (
-                        <a className='cursor-pointer text-lg'>
-                            {item}
-                        </a>
-                    )
-                })}
+            <div className='Header__items flex-wrap justify-center gap-8 text-white flex flex-row-reverse md:gap-16 md:text-lg sm:text-sm text-xs'>
+                {items.map((item, index) => (
+                    <Link key={index} href={item.link} className='cursor-pointer text-lg'>
+                        {item.text}
+                    </Link>
+                ))}
             </div>
 
             <div className='Header__extraPart flex flex-row-reverse gap-6 items-center'>
@@ -36,7 +41,7 @@ const Header = () => {
 
                 <div className='Header__extraPart__languages text-white flex items-center gap-2 cursor-pointer'>
                     <p> EN </p>
-                    <Image src={arrow} alt='arrow' className={`${styles.arrow}`}/>
+                    <Image src={arrow} alt='arrow' className={`${styles.arrow}`} />
                 </div>
             </div>
         </div>

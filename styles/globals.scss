@@ -20,24 +20,42 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --crsl-bg: transparent;
+  --box-bg: #1e272e;
+  --box-shadow: #0000001c;
+  --box-shadow-border: #0000000f;
+  --box-border: #fff;
+}
+
 
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #173D33;
   scroll-behavior: smooth;
 
+
+  @media screen and (max-width:640px) {
+    .p-carousel-items-content {
+      height: 315px !important;
+    }
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
+
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 20px;
   }
+
   ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 20px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }

@@ -17,14 +17,14 @@ const ArrowComponent = () => {
 
     return (
         <div
-            className={`ArrowComponent rounded-full w-fit w-64 h-64 relative`}
+            className={`ArrowComponent rounded-full w-fit w-64 h-64 relative md:block hidden`}
             style={{ transform: 'translateY(-180px)', marginLeft: '50px' }}
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
         >
             <Link href={'#AboutUs'}>
                 <div
-                    className={`absolute w-64 h-64 left-1/2 top-1/2`}
+                    className={`absolute w-40 h-40 xl:w-64 xl:h-64 left-1/2 top-1/2`}
                     style={{ transform: 'translate(-50%, -50%)' }}
                 >
                     <div

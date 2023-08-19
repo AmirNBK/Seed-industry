@@ -11,12 +11,12 @@ import pic from '../assets/Images/heroSeed.png'
 import HeroSectionImage from '@/components/HeroSectionImage/HeroSectionImage';
 import ArrowComponent from '@/components/CommonComponents/ArrowComponent/ArrowComponent';
 import AboutUs from '@/components/AboutUsSection/AboutUsSection';
-import ImageSlider from '@/components/3DSlider/ImageSlider';
 import Footer from '@/components/Footer/Footer';
 import Blogs from '@/components/Blogs/Blogs';
 import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
+import ImageSlider from '@/components/3DSlider/ImageSlider'
 
 
 
@@ -79,20 +79,26 @@ export default function Home() {
             />
             <Header />
             <div className='relative mt-20'>
-              <HeroSectionImage
-                options={{}}
-                style={{
-                  background: `url(${pic}) no-repeat fixed center`,
-                  backgroundSize: 'fit',
-                }}
-              >
-                <HeroSectionImage>
-                  <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
+              <div className='lg:block hidden'>
+                <HeroSectionImage
+                  style={{
+                    background: `url(${pic}) no-repeat fixed center`,
+                    backgroundSize: 'fit',
+                  }}
+                >
+                  <HeroSectionImage>
+                    <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
+                  </HeroSectionImage>
+                  <div className={`${cursorEntered ? 'block' : 'hidden'}`}>
+                  </div>
                 </HeroSectionImage>
-                <div className={`${cursorEntered ? 'block' : 'hidden'}`}>
+                <div className={`${cursorEntered && ''} absolute`} style={{ top: '26.5%', left: '50%' }}>
+                  <HeroSectionText />
                 </div>
-              </HeroSectionImage>
-              <div className={`${cursorEntered && ''} absolute`} style={{ top: '26.5%', left: '50%' }}>
+              </div>
+
+              <div className='relative lg:hidden block'>
+                <Image src={pic} alt='pic' className='mx-auto w-72 sm:w-96 lg:w-auto' />
                 <HeroSectionText />
               </div>
               <ArrowComponent />

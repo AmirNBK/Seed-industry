@@ -45,7 +45,7 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
         perspective: 1000,
         easing: 'cubic-bezier(.03,.98,.52,.99)',
         scale: '1',
-        speed: '16000',
+        speed: '14000',
         transition: true,
         axis: true,
         reset: true,
