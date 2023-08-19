@@ -15,9 +15,9 @@ const ProductsComponent = (props: {
     const [hoverColor, setHoverColor] = useState('');
 
     return (
-        <div className='ProductsComponent flex flex-col items-end w-fit'>
+        <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'>
             <Image src={props.image} alt='product image' />
-            <div className='flex flex-col items-end gap-4'>
+            <div className='flex flex-col lg:items-end items-center gap-4'>
                 <h2
                     className={`text-white text-5xl ${myFont.className}`}
                     style={{ color: hoverColor }}
