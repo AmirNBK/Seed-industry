@@ -17,6 +17,7 @@ import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
 import ImageSlider from '@/components/3DSlider/ImageSlider'
+import SmoothScroll from '..//components/SmoothScroll/SmoothScroll'
 
 
 
@@ -47,72 +48,76 @@ export default function Home() {
 
     <>
       <div id="smooth-content">
-        <main
-          className={`flex min-h-screen flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
-        >
-          <PrimeReactProvider>
-            <AnimatedCursor
-              innerSize={17}
-              outerSize={250}
-              color='255, 255, 255'
-              outerAlpha={0.2}
-              innerScale={0.7}
-              outerScale={1.3}
-              outerStyle={{
-                backgroundColor: 'rgba(136, 219, 68, 0.90)',
-                filter: 'blur(97.5px)',
-                zIndex: '-1px'
-              }}
-              clickables={[
-                'a',
-                'input[type="text"]',
-                'input[type="email"]',
-                'input[type="number"]',
-                'input[type="submit"]',
-                'input[type="image"]',
-                'label[for]',
-                'select',
-                'textarea',
-                'button',
-                '.link'
-              ]}
-            />
-            <Header />
-            <div className='relative mt-20'>
-              <div className='lg:block hidden'>
-                <HeroSectionImage
-                  style={{
-                    background: `url(${pic}) no-repeat fixed center`,
-                    backgroundSize: 'fit',
-                  }}
-                >
-                  <HeroSectionImage>
-                    <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
+        <AnimatedCursor
+          innerSize={17}
+          outerSize={250}
+          color='255, 255, 255'
+          outerAlpha={0.2}
+          innerScale={0.7}
+          outerScale={1.3}
+          outerStyle={{
+            backgroundColor: 'rgba(136, 219, 68, 0.90)',
+            filter: 'blur(97.5px)',
+            zIndex: '-1px'
+          }}
+          clickables={[
+            'a',
+            'input[type="text"]',
+            'input[type="email"]',
+            'input[type="number"]',
+            'input[type="submit"]',
+            'input[type="image"]',
+            'label[for]',
+            'select',
+            'textarea',
+            'button',
+            '.link'
+          ]}
+        />
+        <SmoothScroll>
+          <main
+            className={`flex min-h-screen flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
+          >
+            <PrimeReactProvider>
+              <Header />
+              <div className='relative mt-20'>
+                <div className='lg:block hidden'>
+                  <HeroSectionImage
+                    style={{
+                      background: `url(${pic}) no-repeat fixed center`,
+                      backgroundSize: 'fit',
+                    }}
+                  >
+                    <HeroSectionImage>
+                      <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
+                    </HeroSectionImage>
+                    <div className={`${cursorEntered ? 'block' : 'hidden'}`}>
+                    </div>
                   </HeroSectionImage>
-                  <div className={`${cursorEntered ? 'block' : 'hidden'}`}>
+                  <div className={`${cursorEntered && ''} absolute`} style={{ top: '26.5%', left: '50%' }}>
+                    <HeroSectionText />
                   </div>
-                </HeroSectionImage>
-                <div className={`${cursorEntered && ''} absolute`} style={{ top: '26.5%', left: '50%' }}>
+                </div>
+
+                <div className='relative lg:hidden block'>
+                  <Image src={pic} alt='pic' className='mx-auto w-full lg:w-72 ' />
                   <HeroSectionText />
                 </div>
+                <ArrowComponent />
+                <AboutUs />
               </div>
-
-              <div className='relative lg:hidden block'>
-                <Image src={pic} alt='pic' className='mx-auto w-full lg:w-72 ' />
-                <HeroSectionText />
-              </div>
-              <ArrowComponent />
-              <AboutUs />
+            </PrimeReactProvider>
+            <div className='my-20'>
+              <ImageSlider />
             </div>
-          </PrimeReactProvider>
-          <div className='my-20'>
-            <ImageSlider />
-          </div>
-          <ProductSliderContainer />
-          <Blogs />
-          <Values />
-          <Footer />
-        </main>
+            <ProductSliderContainer />
+            <div className=''>
+              <Blogs />
+            </div>
+            <Values />
+            <Footer />
+          </main>
+        </SmoothScroll>
       </div>
     </>
   )
