@@ -20,12 +20,12 @@ const ProductComponents = () => {
     ]
 
     return (
-        <div className='ProductComponents flex flex-row-reverse items-start'>
-            <div className='ProductComponents__image flex-1'
+        <div className='ProductComponents flex sm:flex-row-reverse flex-col items-center sm:gap-0 gap-12 sm:items-start'>
+            <div className='ProductComponents__image flex-1 sm:m-0 mt-6'
             >
                 <Image src={pic} alt='pic' className='' style={{ borderRadius: '70px' }} />
             </div>
-            <div className='ProductComponents__info flex-1'>
+            <div className='ProductComponents__info flex-1 sm:w-fit w-full'>
                 <div className='ProductComponents__info__icons flex flex-row-reverse justify-evenly gap-2'>
                     {icons.map((item) => {
                         return (

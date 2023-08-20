@@ -7,7 +7,7 @@ const FeaturesContainer = (props: {
     color: string
 }) => {
     return (
-        <div className={`FeaturesContainer text-sm ${vazir.className} justify-evenly font-light px-4 py-2 w-fit rounded-xl`}
+        <div className={`FeaturesContainer text-xs md:text-sm ${vazir.className} justify-evenly font-light px-4 py-2 w-fit rounded-xl`}
             style={{ backgroundColor: `${props.color}` }}
         >
             {props.item}

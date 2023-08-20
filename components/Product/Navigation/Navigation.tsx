@@ -8,11 +8,11 @@ const Navigation = (props: {
 }) => {
     
     return (
-        <div className={`Navigation flex flex-row-reverse gap-8 rounded-2xl p-6 font-light ${vazir.className}`}
+        <div className={`Navigation w-full sm:m-0 mx-auto flex flex-row-reverse gap-8 rounded-2xl p-6 font-light ${vazir.className}`}
             style={{ backgroundColor: '#EBDAB2' }}>
             {props.items.map((item) => (
                 <Link href={`${item.link}`} key={item.label}>
-                    <p>{item.label}</p>
+                    <p className='sm:text-base text-xs'>{item.label}</p>
                 </Link>
             ))}
         </div>

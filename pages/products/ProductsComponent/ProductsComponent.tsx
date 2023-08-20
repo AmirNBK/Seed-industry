@@ -2,6 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import React, { useState } from 'react';
 import localFont from 'next/font/local';
 import { Vazirmatn } from 'next/font/google';
+import Link from 'next/link';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' });
 
@@ -18,14 +19,16 @@ const ProductsComponent = (props: {
         <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'>
             <Image src={props.image} alt='product image' />
             <div className='flex flex-col lg:items-end items-center gap-4'>
-                <h2
+                <Link
+                    href={'/products/product'}
+                    replace={false}
                     className={`text-white text-5xl ${myFont.className}`}
                     style={{ color: hoverColor }}
                     onMouseEnter={() => setHoverColor(props.color)}
                     onMouseLeave={() => setHoverColor('')}
                 >
                     {props.name}
-                </h2>
+                </Link>
                 <p className={`text-white ${vazir.className} text-2xl w-9/12 text-right`}>
                     {props.description}
                 </p>

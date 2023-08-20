@@ -441,6 +441,11 @@ body {
   }
 
   .p-breadcrumb .p-breadcrumb-list li .p-menuitem-link .p-menuitem-text {
+
+    @media screen and (max-width:640px) {
+      font-size: 14px;
+    }
+
     color: #A3A7B0;
     font-family: '__Vazirmatn_253970';
   }

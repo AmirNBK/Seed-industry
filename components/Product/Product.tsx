@@ -54,16 +54,16 @@ const Product = () => {
                 <BreadCrumbComponent items={items} />
             </div>
             <div className='flex flex-col gap-4 items-end'>
-                <h2 className={`text-7xl text-white text-right ${myFont.className}`}>
+                <h2 className={`text-5xl md:text-7xl md:text-right text-center text-white ${myFont.className}`}>
                     کدوحلوایی هیبرید آنیسو
                 </h2>
-                <div className='my-6 flex flex-row justify-end gap-6 '>
+                <div className='my-6 flex flex-row md:justify-end gap-6 w-full justify-center md:w-fit '>
                     <FeaturesContainer item='آبیاری متغذی' color='#EBDAB2' />
                     <FeaturesContainer item='آبیاری متغذی' color='#EBDAB2' />
                     <FeaturesContainer item='آبیاری متغذی' color='#EBDAB2' />
                 </div>
 
-                <p style={{ direction: 'rtl' }} className={`text-white text-lg leading-loose ${vazir.className} w-7/12 text-right font-extralight`}>
+                <p style={{ direction: 'rtl' }} className={`text-white text-lg leading-loose ${vazir.className} md:w-7/12 text-center md:text-right font-extralight`}>
                     کدوحلوایی شیرین و ملایم با آنیسو تازه و معطر، ترکیبی جذاب از شیرینی و ملایمی را به همراه عمق طعم فراهم می‌کنند که به‌طور انحصاری می‌تواند سلیقه‌های مختلف را جذب کند.
                 </p>
                 <InfoContainer title='اطلاعات بذر' content={<Infos items={seedInfos} />} link='info' />

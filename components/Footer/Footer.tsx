@@ -16,22 +16,22 @@ const Footer = () => {
                 <div className='Footer__rightSide flex flex-col gap-6'>
                     <div className='text-end flex flex-col gap-4'>
                         <h3 className={`Footer__rightSide__title text-3xl ${myFont.className}`} style={{ color: '#EBDAB2' }}> فهرست صفحات </h3>
-                        <p className='Footer__rightSide__subtitle text-white text-xl'>
+                        <p className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
                             صفحه اصلی
                         </p>
-                        <p className='Footer__rightSide__subtitle text-white text-xl'>
+                        <p className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
                             درباره ما
                         </p>
-                        <p className='Footer__rightSide__subtitle text-white text-xl'>
+                        <p className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
                             کاتالوگ
                         </p>
                     </div>
                     <div className='text-end flex flex-col gap-4'>
-                        <h3 className={`Footer__rightSide__title text-3xl ${myFont.className}`} style={{ color: '#EBDAB2' }}> قوانین </h3>
-                        <p className='Footer__rightSide__subtitle text-white text-xl'>
+                        <h3 className={`Footer__rightSide__title sm:text-right text-center text-3xl ${myFont.className}`} style={{ color: '#EBDAB2' }}> قوانین </h3>
+                        <p className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
                             قوانین و مقررات
                         </p>
-                        <p className='Footer__rightSide__subtitle text-white text-xl'>
+                        <p className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
                             شرایط و موارد قانونی
                         </p>
                     </div>

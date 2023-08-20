@@ -10,7 +10,7 @@ const InfoContainer = (props: {
     link: string
 }) => {
     return (
-        <div className='InfoContainer rounded-md w-10/12 px-6 py-10 my-6' id={`#${props.link}`} style={{ backgroundImage: 'linear-gradient(40deg, rgba(83, 126, 49, 1) 0%, rgba(50, 66, 37, 1) 30%, rgba(50, 66, 37, 1) 60%, rgba(83, 126, 49, 1) 100%)' }}>
+        <div className='InfoContainer rounded-md w-full md:w-10/12 px-6 py-10 my-6' id={`#${props.link}`} style={{ backgroundImage: 'linear-gradient(40deg, rgba(83, 126, 49, 1) 0%, rgba(50, 66, 37, 1) 30%, rgba(50, 66, 37, 1) 60%, rgba(83, 126, 49, 1) 100%)' }}>
             <div className={`text-white text-right text-3xl ${myFont.className}`}>
                 {props.title}
             </div>

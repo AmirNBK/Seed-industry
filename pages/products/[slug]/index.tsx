@@ -29,6 +29,7 @@ export default function About() {
         { label: 'اجزا', link: '#components' },
     ];
 
+
     return (
         <main
             className={`flex min-h-screen flex-col items-center overflow-hidden ${inter.className}`}
@@ -63,17 +64,17 @@ export default function About() {
                 <div className='w-full p-6'>
                     <Header />
                 </div>
-                <div className='fixed' style={{ bottom: '40px' }}>
+                <div className='fixed' style={{ bottom: '40px', zIndex: '100000' }}>
                     <Navigation items={navigationItems} />
                 </div>
-                <div className='productContainer w-full flex flex-row-reverse mt-20'
+                <div className='productContainer w-full flex flex-col xl:flex-row-reverse mt-20'
                 >
-                    <div className='productContainer__pic' style={{ flex: '1.5', borderLeft: '1px solid #fff' }}
+                    <div className='productContainer__pic border-b border-solid border-white'
+                        style={{ flex: '1.5', borderLeft: '1px solid #fff' }}
                     >
-                        <Image src={productPic} alt='pic' className='mx-auto left-1/2' unoptimized
-                            style={{ transform: 'translateX(100%)', position: 'fixed', width: '300px' }} />
+                        <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 2xl:translate-x-350 xl:w-80 w-5/12' unoptimized />
                     </div>
-                    <div style={{ flex: '2' }} className='mr-16'>
+                    <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
                         <Product />
                     </div>
                 </div>
