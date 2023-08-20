@@ -8,7 +8,7 @@ import data from "./data.json";
 const History = () => {
     return (
         <div className='History my-20'>
-            <h1 className={`text-8xl ${myFont.className} text-center text-white mt-20`}>
+            <h1 className={`text-6xl sm:text-8xl ${myFont.className} text-center text-white mt-20`}>
                 تاریخچه
             </h1>
             <VerticalCarousel data={data.slides} leadingText={data.leadingText} />

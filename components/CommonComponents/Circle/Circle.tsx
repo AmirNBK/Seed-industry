@@ -6,8 +6,7 @@ const Circle = (props: {
     height: number
 }) => {
     return (
-        <div className='rounded-full' style={{ backgroundColor: props.color, width: `${props.width}px`, height: `${props.height}px` }}>
-         
+        <div className='rounded-full' style={{ backgroundColor: props.color, width: `${props.width}px`, height: `${props.height}px`, transform : 'translateY(3px)' }}>
         </div>
     );
 };

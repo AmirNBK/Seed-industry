@@ -32,6 +32,9 @@ module.exports = {
       width: {
         '37': '37%',
       },
+      height: {
+        '700': '700px',
+      },
       spacing: {
         '-60px': '-60px',
         '-50px': '-50px',
@@ -84,6 +87,7 @@ module.exports = {
         '-3px': '-3px',
         '-2px': '-2px',
         '-1px': '-1px',
+        '60%': '60%',
       },
       margin: {
         '-60px': '-60px',

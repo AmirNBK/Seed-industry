@@ -301,6 +301,11 @@ body {
     color: #AAFB75;
     width: 40px;
     height: 40px;
+
+    @media screen and (max-width:1200px) {
+      width: 25px;
+      height: 25px;
+    }
   }
 
   .p-accordion .p-accordion-header .p-accordion-header-link {
@@ -327,6 +332,11 @@ body {
     font-family: '__Vazirmatn_253970';
     font-size: 17px;
     font-weight: 300;
+
+
+    @media screen and (max-width:640px) {
+      font-size: 14px;
+    }
   }
 
   .p-accordion .p-accordion-tab {
@@ -339,6 +349,12 @@ body {
     font-size: 60px;
     font-weight: 400;
     font-family: '__Vazirmatn_253970';
+  }
+
+  @media screen and (max-width:640px) {
+    .p-accordion-header-text {
+      font-size: 40px;
+    }
   }
 
   .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
