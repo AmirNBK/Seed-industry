@@ -20,7 +20,9 @@ const ProductComponents = () => {
     ]
 
     return (
-        <div className='ProductComponents flex sm:flex-row-reverse flex-col items-center sm:gap-0 gap-12 sm:items-start'>
+        <div className='ProductComponents flex sm:flex-row-reverse flex-col items-center sm:gap-0 gap-12 sm:items-start'
+        id='components'
+        >
             <div className='ProductComponents__image flex-1 sm:m-0 mt-6'
             >
                 <Image src={pic} alt='pic' className='' style={{ borderRadius: '70px' }} />

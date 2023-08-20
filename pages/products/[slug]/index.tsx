@@ -15,6 +15,7 @@ import Image from 'next/image';
 import Product from '@/components/Product/Product';
 import Footer from '@/components/Footer/Footer';
 import Navigation from '@/components/Product/Navigation/Navigation';
+import useWindowSize from '@/Hooks/innerSize';
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
@@ -22,13 +23,14 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 
 export default function About() {
 
+    const size = useWindowSize();
+
     const navigationItems = [
         { label: 'اطلاعات بذر', link: '#info' },
         { label: 'ویژگی های بذر', link: '#properties' },
         { label: 'جدول زمان بندی', link: '#timesheet' },
         { label: 'اجزا', link: '#components' },
     ];
-
 
     return (
         <main
@@ -64,15 +66,22 @@ export default function About() {
                 <div className='w-full p-6'>
                     <Header />
                 </div>
-                <div className='fixed' style={{ bottom: '40px', zIndex: '100000' }}>
+                <div className='fixed' style={{ bottom: '40px', zIndex: '10' }}>
                     <Navigation items={navigationItems} />
                 </div>
                 <div className='productContainer w-full flex flex-col xl:flex-row-reverse mt-20'
                 >
-                    <div className='productContainer__pic border-b border-solid border-white'
-                        style={{ flex: '1.5', borderLeft: '1px solid #fff' }}
+                    <div className='productContainer__pic border-b border-solid border-white xl:hidden block'
+                        style={{ flex: '1.5' }}
                     >
-                        <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 2xl:translate-x-350 xl:w-80 w-5/12' unoptimized />
+                        <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
+
+                    </div>
+                    <div className='productContainer__pic border-l border-solid border-white xl:block hidden'
+                        style={{ flex: '1.5' }}
+                    >
+                        <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
+
                     </div>
                     <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
                         <Product />
