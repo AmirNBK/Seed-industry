@@ -59,7 +59,7 @@ const BlogsItem = (props: {
                     ]}
                 />
             }
-            <div style={{ color: color }} className={`${myFont.className} flex flex-row-reverse md:justify-end justify-center gap-4`}> {category.map((item: string) => {
+            <div style={{ color: color }} className={`${myFont.className} flex flex-row-reverse md:justify-start justify-center gap-4`}> {category.map((item: string) => {
                 return (
                     <p className='text-sm sm:text-lg'> {item} </p>
                 )
@@ -67,7 +67,10 @@ const BlogsItem = (props: {
             <p className={`text-white md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${vazir.className}`} style={{ lineHeight: '53px' }}>
                 {title}
             </p>
-            <p className={`text-white text-sm sm:text-lg w-fit mx-auto md:ml-auto font-extralight ${vazir.className}`} style={{ borderBottom: `2px solid ${color}` }}>
+            <p className={`text-white text-sm sm:text-lg w-fit sm:block hidden sm:ml-auto font-extralight ${vazir.className}`} style={{ borderBottom: `2px solid ${color}` }}>
+                بیشتر بخوانید
+            </p>
+            <p className={`text-white text-sm sm:text-lg w-fit sm:hidden block mx-auto sm:ml-auto font-extralight ${vazir.className}`} style={{ borderBottom: `2px solid ${color}` }}>
                 بیشتر بخوانید
             </p>
         </div>
