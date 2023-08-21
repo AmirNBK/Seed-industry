@@ -1,45 +1,39 @@
 {
-    "slides": [
-      {
-        "introline": "1380",
-        "id": "dogs",
-        "content": {
-          "title": "تاسیس",
-          "copy": "و با اهداف افزایش سطح تنوع محصول در این زمینه به واردات کودهای شرکت Lebosol آلمان در سال 1397 پرداخت. از سال 1397 با هدف ارتقاء سطح تخصصی کشاورزی و آورده های نوین در امر بذور پیوندی فعال بوده است ."
-        }
-      },
-      {
-        "introline": "1395",
-        "id": "elephants",
-        "content": {
-          "title": "تاسیس",
-          "copy": "و با اهداف افزایش سطح تنوع محصول در این زمینه به واردات کودهای شرکت Lebosol آلمان در سال 1397 پرداخت. از سال 1397 با هدف ارتقاء سطح تخصصی کشاورزی و آورده های نوین در امر بذور پیوندی فعال بوده است ."
-        }
-      },
-      {
-        "introline": "1397",
-        "id": "تاسیس",
-        "content": {
-          "image": "https://via.placeholder.com/400x200?text=Bears",
-          "copy": "Bears ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-        }
-      },
-      {
-        "introline": "1400",
-        "id": "lizards",
-        "content": {
-          "image": "https://via.placeholder.com/400x200?text=Lizards",
-          "copy": "Lizards ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-        }
-      },
-      {
-        "introline": "1403",
-        "id": "snakes",
-        "content": {
-          "image": "https://via.placeholder.com/400x200?text=Snakes",
-          "copy": "Snakes ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-        }
+  "slides": [
+    {
+      "introline": "1380",
+      "content": {
+        "title": "تاسیس",
+        "copy": "و با اهداف افزایش سطح تنوع محصول در این زمینه به واردات کودهای شرکت Lebosol آلمان در سال 1397 پرداخت. از سال 1397 با هدف ارتقاء سطح تخصصی کشاورزی و آورده های نوین در امر بذور پیوندی فعال بوده است ."
       }
-    ]
-  }
-  
+    },
+    {
+      "introline": "1395",
+      "content": {
+        "title": "تاسیس",
+        "copy": "و با اهداف افزایش سطح تنوع محصول در این زمینه به واردات کودهای شرکت Lebosol آلمان در سال 1397 پرداخت. از سال 1397 با هدف ارتقاء سطح تخصصی کشاورزی و آورده های نوین در امر بذور پیوندی فعال بوده است ."
+      }
+    },
+    {
+      "introline": "1397",
+      "content": {
+        "title": "تاسیس",
+        "copy": "و با اهداف افزایش سطح تنوع محصول در این زمینه به واردات کودهای شرکت Lebosol آلمان در سال 1397 پرداخت. از سال 1397 با هدف ارتقاء سطح تخصصی کشاورزی و آورده های نوین در امر بذور پیوندی فعال بوده است ."
+      }
+    },
+    {
+      "introline": "1400",
+      "content": {
+        "title": "تاسیس",
+        "copy": "و با اهداف افزایش سطح تنوع محصول در این زمینه به واردات کودهای شرکت Lebosol آلمان در سال 1397 پرداخت. از سال 1397 با هدف ارتقاء سطح تخصصی کشاورزی و آورده های نوین در امر بذور پیوندی فعال بوده است ."
+      }
+    },
+    {
+      "introline": "1403",
+      "content": {
+        "title": "تاسیس",
+        "copy": "و با اهداف افزایش سطح تنوع محصول در این زمینه به واردات کودهای شرکت Lebosol آلمان در سال 1397 پرداخت. از سال 1397 با هدف ارتقاء سطح تخصصی کشاورزی و آورده های نوین در امر بذور پیوندی فعال بوده است ."
+      }
+    }
+  ]
+}

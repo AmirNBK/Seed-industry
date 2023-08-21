@@ -1,7 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
-import "swiper/css/autoplay"; // Import the specific Swiper module
+import "swiper/css/autoplay";
 import pic from '../../assets/Images/sliderPic.png'
 import Image from 'next/image';
 
