@@ -16,12 +16,22 @@ import Product from '@/components/Product/Product';
 import Footer from '@/components/Footer/Footer';
 import Navigation from '@/components/Product/Navigation/Navigation';
 import useWindowSize from '@/Hooks/innerSize';
+import 'animate.css';
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
+import 'animate.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
 export default function About() {
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
 
     const size = useWindowSize();
 
@@ -66,7 +76,7 @@ export default function About() {
                 <div className='w-full p-6'>
                     <Header />
                 </div>
-                <div className='fixed' style={{ bottom: '40px', zIndex: '10' }}>
+                <div className='fixed animate__animated animate__fadeInUp' style={{ bottom: '40px', zIndex: '10' }}>
                     <Navigation items={navigationItems} />
                 </div>
                 <div className='productContainer w-full flex flex-col xl:flex-row-reverse mt-20'

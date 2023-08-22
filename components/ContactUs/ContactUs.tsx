@@ -12,10 +12,14 @@ const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const ContactUs = () => {
     return (
         <div className='ContactUs w-full'>
-            <h1 className={`text-5xl md:text-8xl leading-normal ${myFont.className} text-center text-white mt-20`}>
+            <h1 className={`text-5xl md:text-8xl leading-normal ${myFont.className} text-center text-white mt-20`}
+             data-aos-duration="1500" data-aos-once={true} data-aos="fade-down"
+            >
                 با ما در تماس باشید
             </h1>
-            <p className={`${vazir.className} text-white text-base md:text-lg mt-12 text-center`} style={{ direction: 'rtl' }}>
+            <p 
+            data-aos-duration="1500" data-aos-once={true} data-aos="fade-up"
+            className={`${vazir.className} text-white text-base md:text-lg mt-12 text-center`} style={{ direction: 'rtl' }}>
                 با ما برای بهترین و هوشمندانه ترین مشاوره حساب کنید و با متخصصان ما در ارتباط باشید.
             </p>
 

@@ -189,6 +189,10 @@ body {
     height: 700px;
   }
 
+  .animate__animated.animate__lightSpeedInLeft {
+    --animate-duration: 1.5s;
+  }
+
   .carousel-item {
     position: absolute;
     background: none;

@@ -9,6 +9,9 @@ import localFont from 'next/font/local'
 import { Vazirmatn } from 'next/font/google';
 import ContactUs from '@/components/ContactUs/ContactUs';
 const vazir = Vazirmatn({ subsets: ['latin'] });
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -16,6 +19,10 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 });
 
 export default function Contact() {
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     return (
         <main
