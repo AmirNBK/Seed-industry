@@ -38,17 +38,16 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
         transform: '',
         transition: '',
     });
-
     const defaultSettings = {
         reverse: true,
         max: 15,
         perspective: 1000,
         easing: 'cubic-bezier(.03,.98,.52,.99)',
         scale: '1',
-        speed: '10000',
+        speed: '8000',
         transition: true,
-        axis: true,
-        reset: true,
+        axis: false,
+        reset: false,
     };
 
     const settings = {
@@ -168,17 +167,21 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
         zIndex: '100000000'
     };
 
+
+
     return (
         <div>
-            <div
-                ref={elementRef}
-                style={mergedStyle}
-                className='w-screen'
-                onMouseEnter={handleMouseEnterHandler}
-                onMouseMove={handleMouseMoveHandler}
-                onMouseLeave={handleMouseLeaveHandler}
-            >
-                {children}
+            <div>
+                <div  data-aos="zoom-in" data-aos-duration="1000" data-aos-once={true}
+                    ref={elementRef}
+                    style={mergedStyle}
+                    className='w-screen'
+                    onMouseEnter={handleMouseEnterHandler}
+                    onMouseMove={handleMouseMoveHandler}
+                    onMouseLeave={handleMouseLeaveHandler}
+                >
+                    {children}
+                </div>
             </div>
         </div>
     );

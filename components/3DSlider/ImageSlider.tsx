@@ -9,11 +9,9 @@ const ImageSlider = () => {
     return (
         <div className="w-screen">
             <Swiper
-                style={{ transform: "rotate(5deg)" }}
+                style={{ transform: "rotate(4deg)" }}
                 spaceBetween={50}
                 slidesPerView={3}
-                onSlideChange={() => console.log("slide change")}
-                onSwiper={(swiper) => console.log(swiper)}
             >
                 {Array.from({ length: 20 }).map((res, index) => (
                     <SwiperSlide key={index}>
@@ -21,7 +19,7 @@ const ImageSlider = () => {
                             unoptimized
                             alt=""
                             src={pic}
-                            style={{ width: '650px', height: '370px', borderRadius: '25px' }}
+                            style={{ width: '650px', height: '470px', borderRadius: '25px' }}
                         />
                     </SwiperSlide>
                 ))}

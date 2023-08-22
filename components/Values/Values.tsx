@@ -36,9 +36,11 @@ const Values = () => {
     };
 
     return (
-        <div className='Values  w-full mb-32 mt-16'
+        <div className='Values  w-full mb-32 mt-16 '
+        data-aos-duration="1000" data-aos-once={true} data-aos="fade-down"
         >
-            <h2 className={`${myFont.className} Blogs__title text-white text-5xl sm:text-7xl w-max ml-auto mr-12`}>
+            <h2
+                className={`${myFont.className} Blogs__title text-white text-5xl sm:text-7xl w-max ml-auto mr-12`}>
                 ارزش های ما
             </h2>
             <div className='relative sm:left-1/2 sm:translate-x-120 sm:block flex flex-col'

@@ -41,7 +41,8 @@ const ValuesContainer = (props: {
     };
 
     return (
-        <div className={`w-full sm:w-8/12 absolute justify-center pt-6 pb-16 overflow-hidden px-10 mx-auto sm:mt-12 sm:rounded-md ${vazir.className} ${styles.ValuesContainer} ${index === activeIndex ? styles.clicked : ''}`}
+        <div
+        className={`w-full sm:w-8/12 absolute justify-center pt-6 pb-16 overflow-hidden px-10 mx-auto sm:mt-12 sm:rounded-md ${vazir.className} ${styles.ValuesContainer} ${index === activeIndex ? styles.clicked : ''}`}
             style={{
                 boxShadow: '0px -23px 60px rgba(0, 0, 0, 0.25)',
                 height: '368px',

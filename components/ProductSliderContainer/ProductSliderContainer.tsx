@@ -54,7 +54,11 @@ const ProductSliderContainer = () => {
     };
 
     return (
-        <div className='ProductSliderContainer w-full'>
+        <div className='ProductSliderContainer w-full'
+            data-aos="fade-left"
+            data-aos-easing="ease-out-cubic" data-aos-once={true}
+            data-aos-duration="1500"
+        >
             <div style={{ marginTop: '150px' }} className='card'>
                 <Carousel
                     showNavigators={false}
