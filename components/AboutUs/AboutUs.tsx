@@ -15,7 +15,9 @@ import Footer from '../Footer/Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const AboutUs = () => {
+const AboutUs = (props: {
+    data: any
+}) => {
     useEffect(() => {
         AOS.init();
     }, [])
@@ -25,7 +27,7 @@ const AboutUs = () => {
                 <h2
                     data-aos-duration="1200" data-aos-once={true} data-aos="fade-left"
                     className={`${myFont.className} text-4xl sm:text-7xl xl:text-right text-center w-8/12 leading-snug`}>
-                    هدف ما نوآوری در صنعت بذر است و همتا نداریم
+                    {props.data.intro[0].title}
                 </h2>
                 <div className='flex flex-col items-center gap-6 sm:gap-14 xl:m-0 mt-6 sm:mt-16'
                     data-aos-duration="1200" data-aos-once={true} data-aos="fade-right"
@@ -33,7 +35,7 @@ const AboutUs = () => {
                     <p className={`xl:text-right text-center w-10/12 font-light ${vazir.className} text-sm sm:text-xl`}
                         style={{ direction: 'rtl', lineHeight: '1.8' }}
                     >
-                        برنامه‌های تحقیقاتی ما متمرکز بر ارتقاء بهره‌وری بذر، بهینه‌سازی روش‌های تولید بذر، افزایش مقاومت در برابر آفات و بیماری‌ها، و بهبود ویژگی‌های کیفی و مشخصات فیزیولوژیکی بذرها می‌باشند.
+                        {props.data.intro[0].description}
                     </p>
                     <Image src={logo} alt='logo' className='md:w-fit w-40' />
                 </div>
@@ -46,8 +48,8 @@ const AboutUs = () => {
                     style={{ transform: 'translate(-50%,-50%)' }}
                 />
             </div>
-            <AboutUsSection />
-            <AccordionSection />
+            <AboutUsSection text={props.data.aboutUsSection} />
+            <AccordionSection data={props.data.strongPoints[0].point} />
             <div data-aos="flip-right" data-aos-duration="2500" data-aos-once={true}>
                 <History />
 

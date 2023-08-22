@@ -27,8 +27,8 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 });
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ data, aboutUs, productSlider, blogs, values }: {
-  data: any, aboutUs: any, productSlider: any, blogs: any, values: any
+export default function Home({ header, aboutUs, productSlider, blogs, values }: {
+  header: any, aboutUs: any, productSlider: any, blogs: any, values: any
 }) {
   const [cursorEntered, setCursorEntered] = useState(false);
 
@@ -82,7 +82,7 @@ export default function Home({ data, aboutUs, productSlider, blogs, values }: {
         >
           <PrimeReactProvider>
 
-            <Header data={data.items} />
+            <Header data={header.items} />
             <div className='relative mt-20'>
               <div className='lg:block hidden'>
                 <HeroSectionImage
@@ -128,7 +128,7 @@ export default function Home({ data, aboutUs, productSlider, blogs, values }: {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getQueryHeader();
+  const header = await getQueryHeader();
   const aboutUs = await getQueryAboutUs();
   const productSlider = await getQueryProductsSlider();
   const blogs = await getQueryBlogsHomepage();
@@ -138,7 +138,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      data,
+      header,
       aboutUs,
       productSlider,
       blogs,

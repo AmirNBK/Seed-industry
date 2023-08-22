@@ -5,7 +5,9 @@ const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 import { Vazirmatn } from 'next/font/google';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
-const AboutUsSection = () => {
+const AboutUsSection = (props: {
+    text: string
+}) => {
     return (
         <div className='AboutUsSection flex lg:flex-row-reverse flex-col my-20 md:my-40 w-10/12 mx-auto'>
             <div className='AboutUsSection__title flex-1 lg:m-0 mb-4'>
@@ -21,7 +23,7 @@ const AboutUsSection = () => {
                 style={{ direction: 'rtl', flex: '4', lineHeight: '55px' }}
                 data-aos-duration="1500" data-aos-once={true} data-aos="fade-right"
             >
-                شرکت پیشگامان صنعت و بذر با بیش از ۳۵ سال سابقه، فعالیت خود را با واردات در زمینه بذور هیبرید زراعی ،سبزی و صیفی و علوفه ای آغاز کرده است. سپس برای بهبود عملکرد و تغذیه گیاهی به واردات کود های شیمیایی و آلی ، پودری و مایع با فرمولاسیون نوین اقدام نموده است و امروزه با هدف ارتقاءِ سطح تخصصی کشاورزی و آورده های نوین در امر بذور پیوندی و با بهره گیری از خلاقیت و نو آوری تصمیم بر ایجاد تحولی مثبت در این زمینه را دارد
+                {props.text}
             </div>
         </div>
     );

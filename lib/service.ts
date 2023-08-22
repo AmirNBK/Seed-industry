@@ -124,3 +124,32 @@ export async function getQueryBlogsOurValues() {
 
     return data?.pages?.nodes[0].homepage;
 }
+
+
+export async function getQueryAboutUsPage() {
+    const data = await fetchAPI(
+        `
+        query AboutUsPage {
+            pages {
+              nodes {
+                aboutUs {
+                  aboutUsSection
+                  intro {
+                    title
+                    description
+                  }
+                  strongPoints {
+                    point {
+                      title
+                      description
+                    }
+                  }
+                }
+              }
+            }
+          }
+    `,
+    );
+
+    return data?.pages?.nodes[0].aboutUs;
+}

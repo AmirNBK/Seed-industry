@@ -9,6 +9,8 @@ import localFont from 'next/font/local'
 import { Vazirmatn } from 'next/font/google';
 import ContactUs from '@/components/ContactUs/ContactUs';
 import AboutUs from '@/components/AboutUs/AboutUs';
+import { GetStaticProps } from 'next';
+import { getQueryAboutUsPage, getQueryHeader } from '@/lib/service';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
@@ -16,7 +18,9 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
-export default function About() {
+export default function About({ header, data }: {
+    header: any, data: any
+}) {
 
     return (
         <main
@@ -50,11 +54,26 @@ export default function About() {
             />
             <PrimeReactProvider>
                 <div className='w-full p-6'>
-                    <Header />
+                    <Header data={header.items} />
                 </div>
-                <AboutUs />
+                <AboutUs data={data} />
             </PrimeReactProvider>
 
         </main>
     )
 }
+
+
+export const getStaticProps: GetStaticProps = async () => {
+    const header = await getQueryHeader();
+    const data = await getQueryAboutUsPage();
+
+
+    return {
+        props: {
+            header,
+            data
+        },
+        revalidate: 3600,
+    };
+};
