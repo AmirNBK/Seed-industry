@@ -92,6 +92,9 @@ module.exports = {
       },
       margin: {
         '-60px': '-60px',
+      },
+      animation: {
+        'scale-up': 'transform: scale(1.1);',
       }
     },
   },

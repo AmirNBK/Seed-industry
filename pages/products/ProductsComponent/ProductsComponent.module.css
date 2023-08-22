@@ -1,0 +1,7 @@
+.productImage {
+    transition: all .6s ease-in-out;
+}
+
+.productImage:hover {
+    transform: scale(1.1);
+}

@@ -16,6 +16,9 @@ import ProductsComponent from './ProductsComponent/ProductsComponent';
 import productPic from '../../assets/Images/product-1.png'
 import { TabView, TabPanel } from 'primereact/tabview';
 import RegularButton from '@/components/CommonComponents/RegularButton/RegularButton';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -24,6 +27,9 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 
 export default function Blogs() {
 
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     return (
         <main
@@ -59,11 +65,15 @@ export default function Blogs() {
                 <Header />
                 <div className='flex flex-col justify-center w-full'>
                     <div className='flex flex-col justify-center'>
-                        <h1 className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-20`}>
+                        <h1 className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-20`}
+                            data-aos-duration="1500" data-aos-once={true} data-aos="fade-left"
+                        >
                             مشاهده جدیدترین
                         </h1>
 
-                        <h1 className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-10 lg:mt-20 lg:translate-x-250`}>
+                        <h1
+                            data-aos-duration="1500" data-aos-once={true} data-aos="fade-right"
+                            className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-10 lg:mt-20 lg:translate-x-250`}>
                             و آخرین محصولات
                         </h1>
                     </div>
@@ -71,10 +81,12 @@ export default function Blogs() {
                         <hr className='absolute w-1/4 hidden sm:block xl:w-37'
                             style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', left: '-25px' }} />
                         <hr className='absolute hidden sm:block sm:w-1/4 xl:w-37'
-                            style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', right: '-25px'}} />
+                            style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', right: '-25px' }} />
                         <TabView >
                             <TabPanel header="بذر های سبز سیف">
-                                <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'>
+                                <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
+                                    data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
+                                >
                                     {Array.from({ length: 3 }, (_, index) => (
                                         <ProductsComponent
                                             key={index}
@@ -88,7 +100,9 @@ export default function Blogs() {
                                 </div>
                             </TabPanel>
                             <TabPanel header="بذر های چمن">
-                                <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'>
+                                <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
+                                    data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
+                                >
                                     {Array.from({ length: 6 }, (_, index) => (
                                         <ProductsComponent
                                             key={index}
