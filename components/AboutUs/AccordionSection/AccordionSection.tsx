@@ -8,7 +8,6 @@ const AccordionSection = (props: {
     data: any
 }) => {
 
-    console.log(props.data);
     return (
         <div className="card w-10/12 mx-auto flex lg:flex-row-reverse flex-col my-20 items-baseline">
             <div className='flex flex-row lg:w-auto w-full items-center gap-2 justify-center sm:justify-end flex-1'

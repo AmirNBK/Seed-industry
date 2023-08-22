@@ -6,7 +6,7 @@ import useWindowSize from "@/Hooks/innerSize";
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 
-const VerticalCarousel = ({ data, leadingText }) => {
+const VerticalCarousel = ({ data }) => {
     const size = useWindowSize()
     const [activeIndex, setActiveIndex] = useState(0);
     const halfwayIndex = Math.ceil(data.length / 2);
@@ -81,11 +81,11 @@ const VerticalCarousel = ({ data, leadingText }) => {
                     </div>
                 </div>
                 <div className="content" data-aos="fade-left" data-aos-duration="2500" data-aos-once={true}>
-                    <h2 className={`text-4xl ${vazir.className}`}> {data[activeIndex].content.title} </h2>
+                    <h2 className={`text-4xl ${vazir.className}`}> {data[activeIndex].title} </h2>
                     <hr className="w-1/12 mx-auto my-6" />
                     <p className={`text-lg font-extralight leading-loose ${vazir.className}`}
                         style={{ direction: 'rtl' }}
-                    >{data[activeIndex].content.copy}</p>
+                    >{data[activeIndex].description}</p>
                 </div>
             </section>
         </div>
@@ -94,7 +94,6 @@ const VerticalCarousel = ({ data, leadingText }) => {
 
 VerticalCarousel.propTypes = {
     data: PropTypes.array.isRequired,
-    leadingText: PropTypes.string.isRequired
 };
 
 export default VerticalCarousel;

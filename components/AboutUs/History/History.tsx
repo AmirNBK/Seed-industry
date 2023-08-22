@@ -5,7 +5,12 @@ import VerticalCarousel from "../../VerticalCarouselTest/VerticalCarouselTest";
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' });
 import data from "./data.json";
 
-const History = () => {
+const History = (props: {
+    data: any
+}) => {
+
+    console.log(props.data);
+    
     return (
         <div className='History my-60'>
             <h1 className={`text-6xl sm:text-8xl ${myFont.className} text-center text-white mt-20`}
@@ -14,7 +19,7 @@ const History = () => {
                 تاریخچه
             </h1>
             <div className='my-32'>
-                <VerticalCarousel data={data.slides} leadingText={data.leadingText} />
+                <VerticalCarousel data={props.data} />
             </div>
         </div>
     );

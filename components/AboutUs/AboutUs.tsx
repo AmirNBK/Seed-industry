@@ -51,11 +51,11 @@ const AboutUs = (props: {
             <AboutUsSection text={props.data.aboutUsSection} />
             <AccordionSection data={props.data.strongPoints[0].point} />
             <div data-aos="flip-right" data-aos-duration="2500" data-aos-once={true}>
-                <History />
+                <History data={props.data.history[0].slide} />
 
             </div>
             <div data-aos="flip-right" data-aos-duration="2500" data-aos-once={true}>
-                <Foundation />
+                <Foundation data={props.data.foundation[0]} />
             </div>
 
             <Footer />

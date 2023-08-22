@@ -144,6 +144,20 @@ export async function getQueryAboutUsPage() {
                       description
                     }
                   }
+                  history {
+                    slide {
+                      title
+                      introline
+                      description
+                    }
+                  }
+                  foundation {
+                    description
+                    title
+                    founderPic {
+                      sourceUrl
+                    }
+                  }
                 }
               }
             }
