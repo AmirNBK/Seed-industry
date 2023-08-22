@@ -40,7 +40,8 @@ const VerticalCarousel = ({ data, leadingText }) => {
         <div className="container mx-auto">
             <section className="outer-container xl:flex-row flex-col lg:px-40">
                 <div className="carousel-wrapper sm:m-0 mt-12"
-                style={{marginBottom : `${size.width < 640 && '-60px'}`}}
+                    style={{ marginBottom: `${size.width < 640 && '-60px'}` }}
+                    data-aos="fade-right" data-aos-duration="2500" data-aos-once={true}
                 >
                     <div className="carousel">
                         <div className="slides">
@@ -79,7 +80,7 @@ const VerticalCarousel = ({ data, leadingText }) => {
                         </div>
                     </div>
                 </div>
-                <div className="content">
+                <div className="content" data-aos="fade-left" data-aos-duration="2500" data-aos-once={true}>
                     <h2 className={`text-4xl ${vazir.className}`}> {data[activeIndex].content.title} </h2>
                     <hr className="w-1/12 mx-auto my-6" />
                     <p className={`text-lg font-extralight leading-loose ${vazir.className}`}

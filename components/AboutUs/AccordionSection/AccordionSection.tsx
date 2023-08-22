@@ -7,7 +7,9 @@ const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 const AccordionSection = () => {
     return (
         <div className="card w-10/12 mx-auto flex lg:flex-row-reverse flex-col my-20 items-baseline">
-            <div className='flex flex-row lg:w-auto w-full items-center gap-2 justify-center sm:justify-end flex-1'>
+            <div className='flex flex-row lg:w-auto w-full items-center gap-2 justify-center sm:justify-end flex-1'
+                data-aos-duration="2000" data-aos-once={true} data-aos="fade-left"
+            >
                 <p className={`text-white ${myFont.className} text-2xl sm:text-xl sm:text-right`}> نقاط قوت ما </p>
                 <Circle color='#AAFC75' width={15} height={15} />
             </div>

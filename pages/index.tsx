@@ -17,7 +17,6 @@ import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
 import ImageSlider from '@/components/3DSlider/ImageSlider'
-import SmoothScroll from '../components/SmoothScroll/SmoothScroll'
 
 
 

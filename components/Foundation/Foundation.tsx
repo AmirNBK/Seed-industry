@@ -9,7 +9,7 @@ import logo from '../../assets/Icons/fintech-logo.svg'
 
 const Foundation = () => {
     return (
-        <div className='Foundation md:w-8/12 w-11/12 mx-auto my-20 relative rounded-md'
+        <div className='Foundation md:w-8/12 w-11/12 mx-auto  relative rounded-md'
             style={{ backgroundImage: 'linear-gradient(40deg, rgba(83, 126, 49, 1) 0%, rgba(50, 66, 37, 1) 30%, rgba(50, 66, 37, 1) 60%, rgba(83, 126, 49, 1) 100%)' }}>
             <div className='flex lg:flex-row-reverse flex-col lg:items-start items-center'>
                 <div className='Foundation__info md:text-left text-center md:items-end items-center flex-1 mt-8 text-white items-end flex flex-col px-4 md:pr-12 gap-12 flex-1'>
