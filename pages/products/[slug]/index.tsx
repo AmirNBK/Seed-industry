@@ -21,19 +21,27 @@ const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
 export default function About() {
+    const [imageContainerHeight, setImageContainerHeight] = useState(0);
+    const [imageHeight, setImageHeight] = useState(0);
+    const elementRef = useRef(null);
+    const ImageRef = useRef(null);
+
 
     useEffect(() => {
         AOS.init();
+        if (elementRef.current) {
+            setImageContainerHeight(elementRef.current);
+        }
+        if (ImageRef.current) {
+            setImageHeight(ImageRef.current);
+        }
     }, [])
-
-
-    const size = useWindowSize();
 
     const navigationItems = [
         { label: 'اطلاعات بذر', link: '#info' },
@@ -88,9 +96,11 @@ export default function About() {
 
                     </div>
                     <div className='productContainer__pic border-l border-solid border-white xl:block hidden'
-                        style={{ flex: '1.5' }}
+                        style={{ flex: '1.5' }} ref={elementRef}
                     >
-                        <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
+                        <Image src={productPic} alt='pic'
+                            ref={ImageRef}
+                            className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
 
                     </div>
                     <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
@@ -98,7 +108,7 @@ export default function About() {
                     </div>
                 </div>
 
-                <Footer />
+                {/* <Footer /> */}
             </PrimeReactProvider>
 
         </main>
