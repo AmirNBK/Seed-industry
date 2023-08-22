@@ -9,14 +9,9 @@ import arrow from '../../assets/Icons/arrow.svg'
 import styles from './Header.module.css'
 import Link from 'next/link';
 
-const Header = () => {
-    const items = [
-        { text: 'صفحه اصلی', link: '/' },
-        { text: 'درباره ما', link: '/about-us' },
-        { text: 'محصولات', link: '/products' },
-        { text: 'ارتباط با ما', link: '/contact-us' },
-        { text: 'بلاگ', link: '/blogs' }
-    ];
+const Header = (props: {
+    data: any
+}) => {
 
     return (
         <div className={`Header flex flex-col gap-6 xl:flex-row-reverse w-full justify-between items-center pb-6 ${vazir.className}`}
@@ -26,9 +21,9 @@ const Header = () => {
                 <Image src={logo} alt='logo' />
             </div>
             <div className='Header__items flex-wrap justify-center gap-8 text-white flex flex-row-reverse md:gap-16 md:text-lg sm:text-sm text-xs'>
-                {items.map((item, index) => (
-                    <Link key={index} href={item.link} className='cursor-pointer text-lg'>
-                        {item.text}
+                {props.data.map((item, index) => (
+                    <Link key={index} href={item.label.url} className='cursor-pointer text-lg'>
+                        {item.label.title}
                     </Link>
                 ))}
             </div>

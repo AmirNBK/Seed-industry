@@ -17,6 +17,8 @@ import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
 import ImageSlider from '@/components/3DSlider/ImageSlider'
+import { GetStaticProps } from 'next'
+import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 
 
 
@@ -25,7 +27,9 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 });
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({ data, aboutUs, productSlider, blogs, values }: {
+  data: any, aboutUs: any, productSlider: any, blogs: any, values: any
+}) {
   const [cursorEntered, setCursorEntered] = useState(false);
 
   useEffect(() => {
@@ -78,7 +82,7 @@ export default function Home() {
         >
           <PrimeReactProvider>
 
-            <Header />
+            <Header data={data.items} />
             <div className='relative mt-20'>
               <div className='lg:block hidden'>
                 <HeroSectionImage
@@ -106,18 +110,40 @@ export default function Home() {
                 <HeroSectionText />
               </div>
               <ArrowComponent />
-              <AboutUs />
+              <AboutUs data={aboutUs} />
             </div>
           </PrimeReactProvider>
           <div className='my-20'>
             <ImageSlider />
           </div>
-          <ProductSliderContainer />
-          <Blogs />
-          <Values />
+          <ProductSliderContainer data={productSlider.products[0].product} />
+          <Blogs data={blogs.blogsAndNews} />
+          <Values data={values.ourValues[0].singleValue} />
           <Footer />
         </main>
       </div>
     </>
   )
 }
+
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await getQueryHeader();
+  const aboutUs = await getQueryAboutUs();
+  const productSlider = await getQueryProductsSlider();
+  const blogs = await getQueryBlogsHomepage();
+  const values = await getQueryBlogsOurValues();
+
+
+
+  return {
+    props: {
+      data,
+      aboutUs,
+      productSlider,
+      blogs,
+      values
+    },
+    revalidate: 3600,
+  };
+};

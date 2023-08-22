@@ -4,7 +4,12 @@ import ValuesContainer from './ValuesContainer/ValuesContainer';
 import ResearchIcon from '@/assets/Icons/magnifier';
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 
-const Values = () => {
+const Values = (props: {
+    data: any
+}) => {
+
+    console.log(props.data);
+
 
     const valuesData = [
         {
@@ -37,7 +42,7 @@ const Values = () => {
 
     return (
         <div className='Values  w-full mb-32 mt-16 '
-        data-aos-duration="1000" data-aos-once={true} data-aos="fade-down"
+            data-aos-duration="1000" data-aos-once={true} data-aos="fade-down"
         >
             <h2
                 className={`${myFont.className} Blogs__title text-white text-5xl sm:text-7xl w-max ml-auto mr-12`}>
@@ -45,21 +50,26 @@ const Values = () => {
             </h2>
             <div className='relative sm:left-1/2 sm:translate-x-120 sm:block flex flex-col'
                 style={{ paddingBottom: "600px", top: '200px' }}>
-                {valuesData.map((value, index) => (
-                    <ValuesContainer
-                        key={index}
-                        bgColor='#324225'
-                        icon={<ResearchIcon color={'#aafc75'} />}
-                        title={value.title}
-                        description={value.description}
-                        topPosition={value.topPosition}
-                        leftPosition={value.leftPosition}
-                        onToggleClick={() => handleContainerClick(index)}
-                        onToggleClose={() => handleContainerClose()}
-                        index={index}
-                        activeIndex={activeIndex}
-                    />
-                ))}
+                {props.data.map((value, index) => {
+                    const topPosition = `${-26 + index * 13}%`;
+                    const leftPosition = index > 0 ? `${-30 * index}px` : '';
+
+                    return (
+                        <ValuesContainer
+                            key={index}
+                            bgColor='#324225'
+                            icon={<ResearchIcon color={'#aafc75'} />}
+                            title={value.title}
+                            description={value.description}
+                            topPosition={topPosition}
+                            leftPosition={leftPosition}
+                            onToggleClick={() => handleContainerClick(index)}
+                            onToggleClose={() => handleContainerClose()}
+                            index={index}
+                            activeIndex={activeIndex}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

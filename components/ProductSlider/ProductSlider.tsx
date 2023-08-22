@@ -47,7 +47,7 @@ const ProductSlider = (props: {
             <div className='flex flex-row-reverse mt-6 items-center'>
                 <div className='ProductSlider__rightSide m-0 relative sm:mr-12 md:flex-2 sm:flex-4 flex-3'
                 >
-                    <Image src={image} className='w-full' alt='seedPic' unoptimized style={{
+                    <Image width={150} height={150} src={image} className='w-full' alt='seedPic' unoptimized style={{
                         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%) lightgray 50% / cover no-repeat`,
                         backgroundBlendMode: 'overlay',
                     }} />
