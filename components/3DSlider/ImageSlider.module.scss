@@ -1,43 +1,53 @@
+@import "https://unpkg.com/open-props";
 
-
-.section {
-  width: 100vw;
-  overflow: hidden;
-  position: relative;
-  --v-offset: 60px;
-  --curve-height: 120px;
-
-  &:before,
-  &:after {
-    content: "";
-    display: block;
-    background: transparent;
-    width: calc(100vw + 2 * var(60px));
-    height: var(120px);
-    position: absolute;
-    border-radius: 50%;
-    left: calc(-1 * var(60px));
-    right: calc(-1 * var(60px));
-  }
-
-  &:before {
-    top: calc(-0.6 * var(120px));
-  }
-
-  &:after {
-    bottom: calc(-0.6 * var(120px));
-  }
+.track-wrapper {
+  display: grid;
+	place-items: center;
+	width: 80%;
+  max-inline-size: 150ch;
+	overflow: hidden;
+	-webkit-mask: linear-gradient(90deg,
+								transparent 0,
+								black 15% 85%,
+								transparent
+							) 0 50% / 100% calc(100% - (2 * var(--size-4))) no-repeat,
+							linear-gradient(0deg, black, black) 50% 0 / 100% var(--size-4) no-repeat,
+							linear-gradient(0deg, black, black) 50% 100% / 100% var(--size-4) no-repeat;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-rows: 300px;
-  grid-auto-flow: column;
-  grid-gap: 24px;
-  overflow: auto;
-  scroll-snap-type: x mandatory;
+.track__image {
+	height: 100%;
+	width: 100%;
+}
 
-  img {
-    scroll-snap-align: center;
-  }
+.track {
+	--size: clamp(200px, 90vmin, 50rem);
+	height: var(--size);
+	width: 100%;
+	display: flex;
+	overflow: hidden;
+	gap: 3rem;
+	list-style-type: none;
+  margin: 0;
+	/*background: hsl(0 0% 100% / 0.25);*/
+	padding: var(--size-4) 33%;
+	scroll-snap-type: x mandatory;
+	/* Circular inverted */
+	 -webkit-mask-image: radial-gradient(ellipse at 50% 66%, black 0 30%, transparent 30%);
+	/* No Scrollbar */
+	 -webkit-mask: radial-gradient(#0000 0 30%, #000 30%) 50% 20vmin / 240% 100%;
+	/* Winner */
+	-webkit-mask: radial-gradient(#0000 0 30%, #000 30%) 50% calc(var(--size) * 0.5) / 250% 100%,
+								linear-gradient(0deg, black, black) 50% 0 / 100% var(--size-4) no-repeat,
+								linear-gradient(0deg, black, black) 50% 100% / 100% var(--size-4) no-repeat;
+	-webkit-mask: radial-gradient(#0000 0 30%, #000 30.5%) 50% calc(var(--size) * 0.5) / 300% 100%,
+								linear-gradient(0deg, black, black) 50% 0 / 100% var(--size-4) no-repeat,
+								linear-gradient(0deg, black, black) 50% 100% / 100% var(--size-4) no-repeat;
+
+}
+
+.track__item {
+	height: 100%;
+	aspect-ratio: 1;
+	scroll-snap-align: center;
 }

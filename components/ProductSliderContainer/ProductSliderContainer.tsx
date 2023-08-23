@@ -30,7 +30,7 @@ const ProductSliderContainer = (props: {
             data-aos-easing="ease-out-cubic" data-aos-once={true}
             data-aos-duration="1500"
         >
-            <div style={{ marginTop: '150px' }} className='card'>
+            <div style={{ }} className='card'>
                 <Carousel
                     showNavigators={false}
                     value={props.data}

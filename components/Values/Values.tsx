@@ -53,7 +53,7 @@ const Values = (props: {
                 {props.data.map((value, index) => {
                     const topPosition = `${-26 + index * 13}%`;
                     const leftPosition = index > 0 ? `${-30 * index}px` : '';
-
+                    
                     return (
                         <ValuesContainer
                             key={index}

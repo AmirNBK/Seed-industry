@@ -6,6 +6,7 @@ import styles from './ValuesContainer.module.scss'
 import ResearchIcon from '@/assets/Icons/magnifier';
 import cross from '../../../assets/Icons/cross.svg'
 import useWindowSize from '../../../Hooks/innerSize'
+import light from '../../../assets/Images/card-light.png'
 
 const ValuesContainer = (props: {
     title: string;
@@ -42,12 +43,12 @@ const ValuesContainer = (props: {
 
     return (
         <div
-        className={`w-full sm:w-8/12 absolute justify-center pt-6 pb-16 overflow-hidden px-10 mx-auto sm:mt-12 sm:rounded-md ${vazir.className} ${styles.ValuesContainer} ${index === activeIndex ? styles.clicked : ''}`}
+            className={`w-full sm:w-8/12 absolute justify-center pt-6 pb-16 overflow-hidden px-10 mx-auto sm:mt-12 sm:rounded-md ${vazir.className} ${styles.ValuesContainer} ${index === activeIndex ? styles.clicked : ''}`}
             style={{
                 boxShadow: '0px -23px 60px rgba(0, 0, 0, 0.25)',
                 height: '368px',
                 top: topPosition,
-                left: `${size?.width > 640 && leftPosition}`
+                left: `${size?.width > 640 && leftPosition}`,
             }}
             onClick={handleClick}
         >
@@ -56,6 +57,8 @@ const ValuesContainer = (props: {
                     <p style={{ color: `${index === activeIndex ? 'black' : '#AAFC75'}` }} className='text-2xl text-center'> {title} </p>
                     {<ResearchIcon color={index === activeIndex ? 'black' : '#aafc75'} />}
                 </div>
+                <Image src={light} alt='light' className='absolute' style={{ right: '-10%', top: '-50%', width: '540px' }} />
+                <Image src={light} alt='light' className='absolute' style={{ right: '30%', top: '-40%' }} />
                 {index === activeIndex && (
                     <div
                         className='bg-white rounded-full p-2 sm:block hidden'
