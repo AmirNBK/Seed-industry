@@ -10,7 +10,7 @@ import { Vazirmatn } from 'next/font/google';
 import ContactUs from '@/components/ContactUs/ContactUs';
 import AboutUs from '@/components/AboutUs/AboutUs';
 const vazir = Vazirmatn({ subsets: ['latin'] });
-import productPic from '../../../assets/Images/product-1.png'
+import productPic from '../../../assets/Images/productPic.jpeg'
 import Image from 'next/image';
 import Product from '@/components/Product/Product';
 import Footer from '@/components/Footer/Footer';

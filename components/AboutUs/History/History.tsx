@@ -8,9 +8,6 @@ import data from "./data.json";
 const History = (props: {
     data: any
 }) => {
-
-    console.log(props.data);
-    
     return (
         <div className='History my-60'>
             <h1 className={`text-6xl sm:text-8xl ${myFont.className} text-center text-white mt-20`}

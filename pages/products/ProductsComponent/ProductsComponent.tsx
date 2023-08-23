@@ -12,13 +12,16 @@ const ProductsComponent = (props: {
     name: string;
     color: string;
     description: string;
-    instruction: [string, string];
+    instruction: any;
 }) => {
     const [hoverColor, setHoverColor] = useState('');
 
+    console.log(props.instruction);
+    
+
     return (
         <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'>
-            <Image src={props.image} alt='product image' className={`${styles.productImage}`}  />
+            <Image src={props.image} alt='product image' className={`${styles.productImage}`} width={245} height={368}  />
             <div className='flex flex-col lg:items-end items-center gap-4'>
                 <Link
                     href={'/products/product'}
@@ -36,7 +39,7 @@ const ProductsComponent = (props: {
                 <div className={`flex flex-row gap-2 m-0 ${vazir.className}`}>
                     {props.instruction.map((item, index) => (
                         <p key={index} style={{ color: props.color }} className='m-0'>
-                            {item}
+                            {item.instruction}
                         </p>
                     ))}
                 </div>

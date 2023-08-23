@@ -167,3 +167,47 @@ export async function getQueryAboutUsPage() {
 
     return data?.pages?.nodes[0].aboutUs;
 }
+
+
+export async function getQueryProductsPage() {
+    const data = await fetchAPI(
+        `
+        query ProductsPage {
+            pages {
+              nodes {
+                products {
+                  grassSeed {
+                    product {
+                      color
+                      description
+                      productName
+                      image {
+                        sourceUrl
+                      }
+                      instructions {
+                        instruction
+                      }
+                    }
+                  }
+                  greenSeed {
+                    product {
+                      color
+                      description
+                      productName
+                      image {
+                        sourceUrl
+                      }
+                      instructions {
+                        instruction
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+    `,
+    );
+
+    return data?.pages?.nodes[0].products;
+}

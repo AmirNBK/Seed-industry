@@ -13,23 +13,30 @@ import blogPic from '../../assets/Images/blogs-pic.jpeg'
 import Footer from '@/components/Footer/Footer';
 import blogpic2 from '../../assets/Images/blog-pic2.jpeg'
 import ProductsComponent from './ProductsComponent/ProductsComponent';
-import productPic from '../../assets/Images/product-1.png'
+import productPic from '../../assets/Images/product.png'
 import { TabView, TabPanel } from 'primereact/tabview';
 import RegularButton from '@/components/CommonComponents/RegularButton/RegularButton';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { GetStaticProps } from 'next';
+import { getQueryHeader, getQueryProductsPage } from '@/lib/service';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
-export default function Blogs() {
+export default function Blogs({ header, data }: {
+    header: any, data: any
+}) {
 
     useEffect(() => {
         AOS.init();
     }, [])
+
+    console.log(data);
+
 
     return (
         <main
@@ -62,7 +69,7 @@ export default function Blogs() {
                 ]}
             />
             <PrimeReactProvider>
-                <Header />
+                <Header data={header.items} />
                 <div className='flex flex-col justify-center w-full'>
                     <div className='flex flex-col justify-center'>
                         <h1 className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-20`}
@@ -87,7 +94,7 @@ export default function Blogs() {
                                 <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
                                     data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
                                 >
-                                    {Array.from({ length: 3 }, (_, index) => (
+                                    {/* {Array.from({ length: 3 }, (_, index) => (
                                         <ProductsComponent
                                             key={index}
                                             image={productPic}
@@ -96,23 +103,37 @@ export default function Blogs() {
                                             instruction={['۲۰۰ - ۵۰۰ سی‌سی', 'آبیاری متغذی']}
                                             color='#44A5DB'
                                         />
-                                    ))}
+                                    ))} */}
+                                    {data.greenSeed[0].product.map((item, index) => {
+                                        return (
+                                            <ProductsComponent
+                                                key={index}
+                                                image={productPic}
+                                                name={item.productName}
+                                                description={item.description}
+                                                instruction={item.instructions}
+                                                color={item.color}
+                                            />
+                                        )
+                                    })}
                                 </div>
                             </TabPanel>
                             <TabPanel header="بذر های چمن">
                                 <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
                                     data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
                                 >
-                                    {Array.from({ length: 6 }, (_, index) => (
-                                        <ProductsComponent
-                                            key={index}
-                                            image={productPic}
-                                            name='بذر شماره 1'
-                                            description='برای تازه خوری ، فرآیند سازی و صادرات'
-                                            instruction={['۲۰۰ - ۵۰۰ سی‌سی', 'آبیاری متغذی']}
-                                            color='#EBDAB2'
-                                        />
-                                    ))}
+                                    {data.grassSeed[0].product.map((item, index) => {
+                                        return (
+                                            <ProductsComponent
+                                                key={index}
+                                                image={productPic}
+                                                name={item.productName}
+                                                description={item.description}
+                                                instruction={['۲۰۰ - ۵۰۰ سی‌سی', 'آبیاری متغذی']}
+                                                color={item.color}
+                                            />
+                                        )
+                                    })}
                                 </div>
                             </TabPanel>
                         </TabView>
@@ -132,3 +153,17 @@ export default function Blogs() {
         </main>
     )
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+    const header = await getQueryHeader();
+    const data = await getQueryProductsPage();
+
+
+    return {
+        props: {
+            header,
+            data
+        },
+        revalidate: 3600,
+    };
+};

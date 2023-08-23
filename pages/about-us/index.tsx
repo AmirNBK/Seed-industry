@@ -7,7 +7,6 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import localFont from 'next/font/local'
 import { Vazirmatn } from 'next/font/google';
-import ContactUs from '@/components/ContactUs/ContactUs';
 import AboutUs from '@/components/AboutUs/AboutUs';
 import { GetStaticProps } from 'next';
 import { getQueryAboutUsPage, getQueryHeader } from '@/lib/service';
