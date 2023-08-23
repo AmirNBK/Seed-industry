@@ -237,3 +237,29 @@ export async function getQueryContactUs() {
 
   return data?.pages?.nodes[0].contactUs;
 }
+
+export async function getQueryBlogs() {
+  const data = await fetchAPI(
+    `
+    query Blogs {
+      pages {
+        nodes {
+          blogs {
+            blogPost {
+              title
+              description
+              date
+              author
+              image {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+  );
+
+  return data?.pages?.nodes[0].blogs.blogPost;
+}

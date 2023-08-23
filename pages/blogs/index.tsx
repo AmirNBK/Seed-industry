@@ -12,82 +12,17 @@ const vazir = Vazirmatn({ subsets: ['latin'] });
 import blogPic from '../../assets/Images/blogs-pic.jpeg'
 import Footer from '@/components/Footer/Footer';
 import blogpic2 from '../../assets/Images/blog-pic2.jpeg'
+import { getQueryBlogs, getQueryHeader } from '@/lib/service';
+import { GetStaticProps } from 'next';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
-export default function Blogs() {
+export default function Blogs({ header, data }: { header: any, data: any }) {
 
-    const blogData = [
-        {
-            image: blogpic2,
-            author: 'آرش سعیدی',
-            date: '20 مرداد 1402',
-            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
-            width: 310,
-            height: 229,
-            isVertical: true,
-            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
-            hasArrow: true
-        },
-        {
-            image: blogpic2,
-            author: 'آرش سعیدی',
-            date: '20 مرداد 1402',
-            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
-            width: 310,
-            height: 229,
-            isVertical: true,
-            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
-            hasArrow: true
-        },
-        {
-            image: blogpic2,
-            author: 'آرش سعیدی',
-            date: '20 مرداد 1402',
-            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
-            width: 310,
-            height: 229,
-            isVertical: true,
-            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
-            hasArrow: true
-        },
-        {
-            image: blogpic2,
-            author: 'آرش سعیدی',
-            date: '20 مرداد 1402',
-            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
-            width: 310,
-            height: 229,
-            isVertical: true,
-            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
-            hasArrow: true
-        },
-        {
-            image: blogpic2,
-            author: 'آرش سعیدی',
-            date: '20 مرداد 1402',
-            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
-            width: 310,
-            height: 229,
-            isVertical: true,
-            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
-            hasArrow: true
-        },
-        {
-            image: blogpic2,
-            author: 'آرش سعیدی',
-            date: '20 مرداد 1402',
-            title: 'آشنایی با فناوری‌های جدید در تولید بذرهای گرین‌سید',
-            width: 310,
-            height: 229,
-            isVertical: true,
-            description: 'در این مقاله، به جدیدترین فناوری‌ها و روش‌های کاربردی در تولید بذرهای شرکت گرین‌سید می‌پردازیم. از تکنیک‌های اصلاح ژنتیکی تا ...',
-            hasArrow: true
-        },
-    ];
+    console.log(data);
 
     return (
         <main
@@ -120,7 +55,7 @@ export default function Blogs() {
                 ]}
             />
             <PrimeReactProvider>
-                <Header />
+                <Header data={header.items} />
 
                 <h1 className={`text-7xl ${myFont.className} text-white mt-20`}>
                     بلاگ ها
@@ -131,31 +66,46 @@ export default function Blogs() {
                 </div>
                 <div className='mt-6 flex flex-col xl:flex-row-reverse gap-4'>
                     <div style={{ flex: '1' }}>
-                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={576} height={499} isVertical
-                            description='بذرهای با کیفیت اساسی‌ترین عامل برای محصولات با عملکرد عالی هستند. در این مقاله به بررسی تأثیر بذرهای برتر گرین‌سید بر رشد و عملکرد محصولات کشاورزی خواهیم پرداخت.' hasArrow />
+                        <BlogsContainer image={data[0].image.sourceUrl} author={data[0].author} date={data[0].date}
+                            title={data[0].title} width={576} height={499} isVertical
+                            description={data[0].description} hasArrow />
                     </div>
                     <div style={{ flex: '1' }} className='flex flex-col gap-8 md:flex hidden'>
-                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={false}
-                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
-                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={false}
-                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
-                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={false}
-                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
+                        {data.slice(1, 4).map((blog, index) => {
+                            return (
+                                <BlogsContainer
+                                    key={index}
+                                    image={blog.image.sourceUrl}
+                                    author={blog.author}
+                                    date={blog.date}
+                                    title={blog.title}
+                                    width={310}
+                                    height={207}
+                                    isVertical={false}
+                                    description={blog.description}
+                                    hasArrow={false}
+                                />
+                            )
+                        })}
                     </div>
                     <div style={{ flex: '1' }} className='flex flex-col gap-8 md:hidden flex'>
-                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={true}
-                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
-                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={true}
-                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
-                        <BlogsContainer image={blogPic} author='آرش سعیدی' date='20 مرداد 1402'
-                            title={'نقش بذرهای با کیفیت در محصولات با عملکرد بالا'} width={310} height={207} isVertical={true}
-                            description='ما در گرین‌سید به کشاورزی پایدار تعهد داریم و بذرهای ما به‌طور مسئولانه تولید می‌شوند...' hasArrow={false} />
+
+                        {data.slice(1, 4).map((blog, index) => {
+                            return (
+                                <BlogsContainer
+                                    key={index}
+                                    image={blog.image.sourceUrl}
+                                    author={blog.author}
+                                    date={blog.date}
+                                    title={blog.title}
+                                    width={310}
+                                    height={207}
+                                    isVertical={true}
+                                    description={blog.description}
+                                    hasArrow={false}
+                                />
+                            )
+                        })}
                     </div>
                 </div>
 
@@ -164,18 +114,18 @@ export default function Blogs() {
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 my-16'>
-                    {blogData.map((blog, index) => (
+                    {data.map((blog, index: number) => (
                         <BlogsContainer
                             key={index}
-                            image={blog.image}
+                            image={blog.image.sourceUrl}
                             author={blog.author}
                             date={blog.date}
                             title={blog.title}
-                            width={blog.width}
-                            height={blog.height}
-                            isVertical={blog.isVertical}
+                            width={310}
+                            height={229}
+                            isVertical={true}
                             description={blog.description}
-                            hasArrow={blog.hasArrow}
+                            hasArrow={true}
                         />
                     ))}
                 </div>
@@ -187,3 +137,18 @@ export default function Blogs() {
         </main>
     )
 }
+
+
+
+export const getStaticProps: GetStaticProps = async () => {
+    const header = await getQueryHeader();
+    const data = await getQueryBlogs();
+
+    return {
+        props: {
+            header,
+            data
+        },
+        revalidate: 3600,
+    };
+};

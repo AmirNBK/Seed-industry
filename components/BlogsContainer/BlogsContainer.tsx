@@ -17,8 +17,8 @@ const BlogsContainer = (props: {
 }) => {
     return (
         <div className={`BlogsContainer text-white items-end flex ${props.isVertical ? 'flex-col' : 'flex-row-reverse items-center gap-8'} ${vazir.className}`}>
-            <Image src={props.image} alt='image' className='object-cover w-full' unoptimized
-            style={{ height: `${props.height}px` }} />
+            <Image src={props.image} alt='image' height={props.height} width={props.width} className='object-cover w-full' unoptimized
+                style={{ height: `${props.height}px` }} />
             <div className='flex flex-col gap-6 mt-4'>
                 <div className='BlogsContainer__date text-right flex flex-row items-center gap-1 justify-end text-xs font-light'>
                     <p style={{ direction: 'rtl' }}> {props.date} </p>
