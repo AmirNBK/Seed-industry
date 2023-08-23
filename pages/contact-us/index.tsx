@@ -12,13 +12,13 @@ const vazir = Vazirmatn({ subsets: ['latin'] });
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
-
-const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
+import { GetStaticProps } from 'next';
+import { getQueryContactUs, getQueryHeader } from '@/lib/service';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
-export default function Contact() {
+export default function Contact({ header, data }: { header: any, data: any }) {
 
     useEffect(() => {
         AOS.init();
@@ -55,11 +55,25 @@ export default function Contact() {
                 ]}
             />
             <PrimeReactProvider>
-                <Header />
-                <ContactUs />
+                <Header data={header.items} />
+                <ContactUs data={data} />
 
             </PrimeReactProvider>
 
         </main>
     )
 }
+
+
+export const getStaticProps: GetStaticProps = async () => {
+    const header = await getQueryHeader();
+    const data = await getQueryContactUs();
+
+    return {
+        props: {
+            header,
+            data
+        },
+        revalidate: 3600,
+    };
+};

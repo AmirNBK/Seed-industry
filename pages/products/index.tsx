@@ -34,10 +34,7 @@ export default function Blogs({ header, data }: {
     useEffect(() => {
         AOS.init();
     }, [])
-
-    console.log(data);
-
-
+    
     return (
         <main
             className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}

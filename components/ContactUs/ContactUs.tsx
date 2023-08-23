@@ -9,18 +9,23 @@ const vazir = Vazirmatn({ subsets: ['latin'] });
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 
 
-const ContactUs = () => {
+const ContactUs = (props: {
+    data: any
+}) => {
+
+    console.log(props.data);
+    
     return (
         <div className='ContactUs w-full'>
             <h1 className={`text-5xl md:text-8xl leading-normal ${myFont.className} text-center text-white mt-20`}
-             data-aos-duration="1500" data-aos-once={true} data-aos="fade-down"
+                data-aos-duration="1500" data-aos-once={true} data-aos="fade-down"
             >
-                با ما در تماس باشید
+                {props.data.title}
             </h1>
-            <p 
-            data-aos-duration="1500" data-aos-once={true} data-aos="fade-up"
-            className={`${vazir.className} text-white text-base md:text-lg mt-12 text-center`} style={{ direction: 'rtl' }}>
-                با ما برای بهترین و هوشمندانه ترین مشاوره حساب کنید و با متخصصان ما در ارتباط باشید.
+            <p
+                data-aos-duration="1500" data-aos-once={true} data-aos="fade-up"
+                className={`${vazir.className} text-white text-base md:text-lg mt-12 text-center`} style={{ direction: 'rtl' }}>
+                {props.data.description}
             </p>
 
             <div className='ContactUs__inputs mt-20 flex flex-col md:flex-row-reverse gap-20 w-8/12 mx-auto'>
@@ -34,7 +39,7 @@ const ContactUs = () => {
                 </div>
             </div>
             <div className='my-56'>
-            <Map />
+                <Map data={props.data.contactInfos[0]} />
             </div>
 
             <Footer />

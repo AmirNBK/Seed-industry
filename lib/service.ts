@@ -1,8 +1,8 @@
 import { fetchAPI } from "./base";
 
 export async function getQueryHeader() {
-    const data = await fetchAPI(
-        `
+  const data = await fetchAPI(
+    `
         query Header {
             pages {
               nodes {
@@ -20,14 +20,14 @@ export async function getQueryHeader() {
             }
           }
     `,
-    );
+  );
 
-    return data?.pages?.nodes[0].header.items[0];
+  return data?.pages?.nodes[0].header.items[0];
 }
 
 export async function getQueryAboutUs() {
-    const data = await fetchAPI(
-        `
+  const data = await fetchAPI(
+    `
         query AboutUs {
             pages {
               nodes {
@@ -41,14 +41,14 @@ export async function getQueryAboutUs() {
             }
           }
     `,
-    );
+  );
 
-    return data?.pages?.nodes[0].homepage;
+  return data?.pages?.nodes[0].homepage;
 }
 
 export async function getQueryProductsSlider() {
-    const data = await fetchAPI(
-        `
+  const data = await fetchAPI(
+    `
         query ProductsSlider {
             pages {
               nodes {
@@ -72,15 +72,15 @@ export async function getQueryProductsSlider() {
             }
           }
     `,
-    );
+  );
 
-    return data?.pages?.nodes[0].homepage;
+  return data?.pages?.nodes[0].homepage;
 }
 
 
 export async function getQueryBlogsHomepage() {
-    const data = await fetchAPI(
-        `
+  const data = await fetchAPI(
+    `
         query BlogsHomepage {
             pages {
               nodes {
@@ -97,14 +97,14 @@ export async function getQueryBlogsHomepage() {
             }
           }
     `,
-    );
+  );
 
-    return data?.pages?.nodes[0].homepage;
+  return data?.pages?.nodes[0].homepage;
 }
 
 export async function getQueryBlogsOurValues() {
-    const data = await fetchAPI(
-        `
+  const data = await fetchAPI(
+    `
         query ValuesHomepage {
             pages {
               nodes {
@@ -120,15 +120,15 @@ export async function getQueryBlogsOurValues() {
             }
           }
     `,
-    );
+  );
 
-    return data?.pages?.nodes[0].homepage;
+  return data?.pages?.nodes[0].homepage;
 }
 
 
 export async function getQueryAboutUsPage() {
-    const data = await fetchAPI(
-        `
+  const data = await fetchAPI(
+    `
         query AboutUsPage {
             pages {
               nodes {
@@ -163,15 +163,15 @@ export async function getQueryAboutUsPage() {
             }
           }
     `,
-    );
+  );
 
-    return data?.pages?.nodes[0].aboutUs;
+  return data?.pages?.nodes[0].aboutUs;
 }
 
 
 export async function getQueryProductsPage() {
-    const data = await fetchAPI(
-        `
+  const data = await fetchAPI(
+    `
         query ProductsPage {
             pages {
               nodes {
@@ -207,7 +207,33 @@ export async function getQueryProductsPage() {
             }
           }
     `,
-    );
+  );
 
-    return data?.pages?.nodes[0].products;
+  return data?.pages?.nodes[0].products;
+}
+
+
+export async function getQueryContactUs() {
+  const data = await fetchAPI(
+    `
+    query ContactUs {
+      pages {
+        nodes {
+          contactUs {
+            title
+            description
+            contactInfos {
+              email
+              fieldGroupName
+              location
+              phone
+            }
+          }
+        }
+      }
+    }
+  `,
+  );
+
+  return data?.pages?.nodes[0].contactUs;
 }

@@ -3,14 +3,17 @@ import React from 'react';
 import map from '../../../assets/Images/map.png'
 import InfoContainer from './InfoContainer/InfoContainer';
 
-const Map = () => {
+const Map = (props: {
+    data: any
+}) => {
+
     return (
         <div className='Map relative mt-28 w-full mb-32'>
             <Image src={map} alt='map' className='w-full object-cover' unoptimized
                 style={{ minHeight: '850px' }}
             />
-            <InfoContainer address='سعادت آباد ، علامه جنوبی ، چهارراه مسجد ، چهلم غربی' telephone='021884213 - 02188692319'
-                emailAddress='test@gmail.com'
+            <InfoContainer address={props.data.location} telephone={props.data.phone}
+                emailAddress={props.data.email}
             />
         </div>
     );
