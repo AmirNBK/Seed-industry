@@ -24,7 +24,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getQueryHeader, getQuerySingleProducts } from '@/lib/service';
 import { GetStaticProps } from 'next';
 import Lottie from "lottie-react";
-import animations from "../../../assets/animations/animation_llnnetcj.json";
+import animations from "../../../assets/animations/animation_llnpmcm5.json";
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
