@@ -185,8 +185,10 @@ export async function getQueryProductsPage() {
                   instruction
                 }
                 image {
+                  mediaItemUrl
                   sourceUrl
                 }
+                id
               }
             }
             greenSeed {
@@ -200,6 +202,7 @@ export async function getQueryProductsPage() {
                 instructions {
                   instruction
                 }
+                id
               }
             }
           }
@@ -262,4 +265,32 @@ export async function getQueryBlogs() {
   );
 
   return data?.pages?.nodes[0].blogs.blogPost;
+}
+
+export async function getQuerySingleProducts() {
+  const data = await fetchAPI(
+    `
+    query SingleProducts {
+      pages {
+        nodes {
+          singleProducts {
+            product {
+              productName
+              id
+              description
+              features {
+                singleFeature
+              }
+              productImage {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+  );
+
+  return data?.pages?.nodes[0].singleProducts;
 }

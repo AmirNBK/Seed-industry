@@ -35,9 +35,6 @@ export default function Blogs({ header, data }: {
         AOS.init();
     }, [])
 
-    console.log(data);
-    
-
     return (
         <main
             className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
@@ -103,6 +100,7 @@ export default function Blogs({ header, data }: {
                                                 description={item.description}
                                                 instruction={item.instructions}
                                                 color={item.color}
+                                                link={item.id}
                                             />
                                         )
                                     })}
@@ -121,6 +119,7 @@ export default function Blogs({ header, data }: {
                                                 description={item.description}
                                                 instruction={item.instructions}
                                                 color={item.color}
+                                                link={item.id}
                                             />
                                         )
                                     })}

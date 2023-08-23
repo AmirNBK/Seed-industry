@@ -12,7 +12,9 @@ import TimeSheetTable from './TimeSheetTable/TimeSheetTable';
 import ProductComponents from './ProductComponents/ProductComponents';
 import 'animate.css';
 
-const Product = () => {
+const Product = (props: {
+    data: any
+}) => {
     const items: MenuItem[] = [{ label: 'محصولات' }, { label: 'بذرهای چمن' }, { label: 'کدوحلوایی هیبرید آنیسو ' }];
 
     const seedInfos = [{
@@ -49,6 +51,9 @@ const Product = () => {
     },
     ]
 
+    console.log(props.data);
+
+
     return (
         <div className='Product'>
             <div className='mb-12' data-aos-duration="1500" data-aos-once={true} data-aos="fade-down" data-aos-delay="900">
@@ -58,16 +63,18 @@ const Product = () => {
                 <h2 className={`text-5xl md:text-7xl md:text-right text-center text-white
                 animate__animated animate__lightSpeedInLeft
                 ${myFont.className}`}>
-                    کدوحلوایی هیبرید آنیسو
+                    {props.data?.productName}
                 </h2>
                 <div className='my-6 flex flex-row md:justify-end gap-6 w-full justify-center md:w-fit animate__animated animate__lightSpeedInLeft '>
-                    <FeaturesContainer item='آبیاری متغذی' color='#EBDAB2' />
-                    <FeaturesContainer item='آبیاری متغذی' color='#EBDAB2' />
-                    <FeaturesContainer item='آبیاری متغذی' color='#EBDAB2' />
+                    {props.data?.features.map((item) => {
+                        return (
+                            <FeaturesContainer item={item.singleFeature} color='#EBDAB2' />
+                        )
+                    })}
                 </div>
 
                 <p style={{ direction: 'rtl' }} className={`animate__animated animate__lightSpeedInLeft text-white text-lg leading-loose ${vazir.className} md:w-7/12 text-center md:text-right font-extralight`}>
-                    کدوحلوایی شیرین و ملایم با آنیسو تازه و معطر، ترکیبی جذاب از شیرینی و ملایمی را به همراه عمق طعم فراهم می‌کنند که به‌طور انحصاری می‌تواند سلیقه‌های مختلف را جذب کند.
+                    {props.data?.description}
                 </p>
                 <InfoContainer title='اطلاعات بذر' content={<Infos items={seedInfos} />} link='info' />
                 <InfoContainer title='ویژگی های بذر' content={<Infos items={seedFeatures} />} link='properties' />

@@ -13,14 +13,15 @@ const ProductsComponent = (props: {
     color: string;
     description: string;
     instruction: any;
+    link: string
 }) => {
     const [hoverColor, setHoverColor] = useState('');
     return (
         <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'>
-            <Image src={props.image} alt='product image' className={`${styles.productImage}`} width={245} height={368}  />
+            <Image src={props.image} alt='product image' className={`${styles.productImage}`} width={245} height={368} />
             <div className='flex flex-col lg:items-end items-center gap-4'>
                 <Link
-                    href={'/products/product'}
+                    href={`/products/${props.link}`}
                     replace={false}
                     className={`text-white text-5xl ${myFont.className} ${styles.product}`}
                     style={{ color: hoverColor }}

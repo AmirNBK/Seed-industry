@@ -17,12 +17,14 @@ import useWindowSize from '@/Hooks/innerSize';
 import 'animate.css';
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 import 'animate.css';
+import { useRouter } from 'next/router'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useRef, useState } from 'react';
-import { getQueryHeader } from '@/lib/service';
+import { getQueryHeader, getQuerySingleProducts } from '@/lib/service';
 import { GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
+import Lottie from "lottie-react";
+import animations from "../../../assets/animations/animation_llnnetcj.json";
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
@@ -31,20 +33,29 @@ export default function SingleProduct() {
     const [imageContainerHeight, setImageContainerHeight] = useState(0);
     const [imageHeight, setImageHeight] = useState(0);
     const [header, setHeader] = useState()
+    const [query, setQuery] = useState<string | string[] | undefined>()
+    const [productData, setProductData] = useState(null);
+    const [animationPlayedOnce, setAnimationPlayedOnce] = useState(false);
+    const [loading, setLoading] = useState(true)
     const elementRef = useRef(null);
     const ImageRef = useRef(null);
-
+    const router = useRouter()
     const request = getQueryHeader();
+    const productInfo = getQuerySingleProducts();
 
     useEffect(() => {
         request.then((res) => {
-            setHeader(res.items)
-        })
-    }, [])
+            setHeader(res.items);
+        });
 
-
-    console.log(header);
-
+        productInfo.then((res) => {
+            const productMatch = res.product.find((product) => product.id === router.query.slug);
+            if (productMatch) {
+                setProductData(productMatch);
+                setLoading(false)
+            }
+        });
+    }, [router.query.slug]);
 
     useEffect(() => {
         AOS.init();
@@ -62,6 +73,15 @@ export default function SingleProduct() {
         { label: 'جدول زمان بندی', link: '#timesheet' },
         { label: 'اجزا', link: '#components' },
     ];
+
+    const onAnimationComplete = () => {
+        console.log('here');
+
+        setAnimationPlayedOnce(true);
+    };
+
+    console.log(animationPlayedOnce);
+
 
     return (
         <main
@@ -97,31 +117,40 @@ export default function SingleProduct() {
                 <div className='w-full p-6'>
                     <Header data={header} />
                 </div>
-                <div className='fixed animate__animated animate__fadeInUp' style={{ bottom: '40px', zIndex: '10' }}>
-                    <Navigation items={navigationItems} />
-                </div>
-                <div className='productContainer w-full flex flex-col xl:flex-row-reverse mt-20'
-                >
-                    <div className='productContainer__pic border-b border-solid border-white xl:hidden block'
-                        style={{ flex: '1.5' }}
+                {(animationPlayedOnce && productData) && (
+                    <div className='fixed animate__animated animate__fadeInUp' style={{ bottom: '40px', zIndex: '10' }}>
+                        <Navigation items={navigationItems} />
+                    </div>
+                )}
+
+                {!animationPlayedOnce && (
+                    <Lottie animationData={animations} loop={true} onLoopComplete={() => setAnimationPlayedOnce(true)} />
+                )}
+                {(animationPlayedOnce && productData) && (
+                    <div className='productContainer w-full flex flex-col xl:flex-row-reverse mt-20'
                     >
-                        <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
+                        <div className='productContainer__pic border-b border-solid border-white xl:hidden block'
+                            style={{ flex: '1.5' }}
+                        >
+                            <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
 
-                    </div>
-                    <div className='productContainer__pic border-l border-solid border-white xl:block hidden'
-                        style={{ flex: '1.5' }} ref={elementRef}
-                    >
-                        <Image src={productPic} alt='pic'
-                            ref={ImageRef}
-                            className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
+                        </div>
+                        <div className='productContainer__pic border-l border-solid border-white xl:block hidden'
+                            style={{ flex: '1.5' }} ref={elementRef}
+                        >
+                            <Image src={productPic} alt='pic'
+                                ref={ImageRef}
+                                className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
 
+                        </div>
+                        <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
+                            <Product data={productData} />
+                        </div>
                     </div>
-                    <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
-                        <Product />
-                    </div>
-                </div>
+                )}
 
-                {/* <Footer /> */}
+
+
             </PrimeReactProvider>
 
         </main>
