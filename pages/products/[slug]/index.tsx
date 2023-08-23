@@ -7,10 +7,8 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import localFont from 'next/font/local'
 import { Vazirmatn } from 'next/font/google';
-import ContactUs from '@/components/ContactUs/ContactUs';
-import AboutUs from '@/components/AboutUs/AboutUs';
 const vazir = Vazirmatn({ subsets: ['latin'] });
-import productPic from '../../../assets/Images/productPic.jpeg'
+import productPic from '../../../assets/Images/product.png'
 import Image from 'next/image';
 import Product from '@/components/Product/Product';
 import Footer from '@/components/Footer/Footer';
@@ -22,15 +20,30 @@ import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useRef, useState } from 'react';
+import { getQueryHeader } from '@/lib/service';
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
-export default function About() {
+export default function SingleProduct() {
     const [imageContainerHeight, setImageContainerHeight] = useState(0);
     const [imageHeight, setImageHeight] = useState(0);
+    const [header, setHeader] = useState()
     const elementRef = useRef(null);
     const ImageRef = useRef(null);
+
+    const request = getQueryHeader();
+
+    useEffect(() => {
+        request.then((res) => {
+            setHeader(res.items)
+        })
+    }, [])
+
+
+    console.log(header);
 
 
     useEffect(() => {
@@ -82,7 +95,7 @@ export default function About() {
             />
             <PrimeReactProvider>
                 <div className='w-full p-6'>
-                    <Header />
+                    <Header data={header} />
                 </div>
                 <div className='fixed animate__animated animate__fadeInUp' style={{ bottom: '40px', zIndex: '10' }}>
                     <Navigation items={navigationItems} />
@@ -114,3 +127,4 @@ export default function About() {
         </main>
     )
 }
+

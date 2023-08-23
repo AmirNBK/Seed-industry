@@ -15,10 +15,6 @@ const ProductsComponent = (props: {
     instruction: any;
 }) => {
     const [hoverColor, setHoverColor] = useState('');
-
-    console.log(props.instruction);
-    
-
     return (
         <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'>
             <Image src={props.image} alt='product image' className={`${styles.productImage}`} width={245} height={368}  />

@@ -172,40 +172,40 @@ export async function getQueryAboutUsPage() {
 export async function getQueryProductsPage() {
   const data = await fetchAPI(
     `
-        query ProductsPage {
-            pages {
-              nodes {
-                products {
-                  grassSeed {
-                    product {
-                      color
-                      description
-                      productName
-                      image {
-                        sourceUrl
-                      }
-                      instructions {
-                        instruction
-                      }
-                    }
-                  }
-                  greenSeed {
-                    product {
-                      color
-                      description
-                      productName
-                      image {
-                        sourceUrl
-                      }
-                      instructions {
-                        instruction
-                      }
-                    }
-                  }
+    query ProductsPage {
+      pages {
+        nodes {
+          products {
+            grassSeed {
+              product {
+                color
+                description
+                productName
+                instructions {
+                  instruction
+                }
+                image {
+                  sourceUrl
+                }
+              }
+            }
+            greenSeed {
+              product {
+                color
+                description
+                productName
+                image {
+                  sourceUrl
+                }
+                instructions {
+                  instruction
                 }
               }
             }
           }
+        }
+      }
+    }
     `,
   );
 

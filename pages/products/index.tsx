@@ -34,7 +34,10 @@ export default function Blogs({ header, data }: {
     useEffect(() => {
         AOS.init();
     }, [])
+
+    console.log(data);
     
+
     return (
         <main
             className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
@@ -91,16 +94,6 @@ export default function Blogs({ header, data }: {
                                 <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
                                     data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
                                 >
-                                    {/* {Array.from({ length: 3 }, (_, index) => (
-                                        <ProductsComponent
-                                            key={index}
-                                            image={productPic}
-                                            name='بذر شماره 1'
-                                            description='برای تازه خوری ، فرآیند سازی و صادرات'
-                                            instruction={['۲۰۰ - ۵۰۰ سی‌سی', 'آبیاری متغذی']}
-                                            color='#44A5DB'
-                                        />
-                                    ))} */}
                                     {data.greenSeed[0].product.map((item, index) => {
                                         return (
                                             <ProductsComponent
@@ -126,7 +119,7 @@ export default function Blogs({ header, data }: {
                                                 image={productPic}
                                                 name={item.productName}
                                                 description={item.description}
-                                                instruction={['۲۰۰ - ۵۰۰ سی‌سی', 'آبیاری متغذی']}
+                                                instruction={item.instructions}
                                                 color={item.color}
                                             />
                                         )
