@@ -113,7 +113,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
               <AboutUs data={aboutUs} />
             </div>
           </PrimeReactProvider>
-          <div className='my-20 w-full' style={{transform : 'rotateZ(7deg)'}}>
+          <div className='sm:my-20 w-full' style={{transform : 'rotateZ(7deg)'}}>
             <ImageSlider />
           </div>
           <ProductSliderContainer data={productSlider.products[0].product} />

@@ -30,7 +30,7 @@ const ProductSliderContainer = (props: {
             data-aos-easing="ease-out-cubic" data-aos-once={true}
             data-aos-duration="1500"
         >
-            <div style={{ }} className='card'>
+            <div className='card'>
                 <Carousel
                     showNavigators={false}
                     value={props.data}
@@ -38,7 +38,7 @@ const ProductSliderContainer = (props: {
                     numScroll={1}
                     className="custom-carousel"
                     circular
-                    autoplayInterval={5000}
+                    // autoplayInterval={5000}
                     itemTemplate={productTemplate}
                     showIndicators={true}
                 />

@@ -1,5 +1,6 @@
 import React from 'react';
 import founder from '../../assets/Images/foundation.png'
+import light from '../../assets/Images/card-light.png'
 import Image from 'next/image';
 import { Vazirmatn } from 'next/font/google';
 const vazir = Vazirmatn({ subsets: ['latin'] });
@@ -11,16 +12,15 @@ const Foundation = (props: {
     data: any
 }) => {
 
-    console.log(props.data);
-
     return (
         <div className='Foundation md:w-8/12 w-11/12 mx-auto  relative rounded-md'
-            style={{ backgroundImage: 'linear-gradient(40deg, rgba(83, 126, 49, 1) 0%, rgba(50, 66, 37, 1) 30%, rgba(50, 66, 37, 1) 60%, rgba(83, 126, 49, 1) 100%)' }}>
+            style={{ background: 'rgba(16, 42, 35, 1)' }}>
             <div className='flex lg:flex-row-reverse flex-col lg:items-start items-center'>
                 <div className='Foundation__info md:text-left text-center md:items-end items-center flex-1 mt-8 text-white items-end flex flex-col px-4 md:pr-12 gap-12 flex-1'>
                     <h2 className={`text-3xl ${myFont.className}`}>
                         {props.data.title}
                     </h2>
+                    <Image src={light} alt='light' className='absolute' style={{ right: '-10%', top: '-20%', width: '540px' }} />
                     <p className={`text-lg font-light md:text-right text-center leading-loose ${vazir.className}`} style={{ direction: 'rtl' }}>
                         {props.data.description}
                     </p>

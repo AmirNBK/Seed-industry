@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import Image from 'next/image';
 import logo from '../../assets/Images/logo.png'
 import arrow from '../../assets/Icons/arrow-2.svg'
+import Link from 'next/link';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const Footer = () => {
@@ -16,15 +17,15 @@ const Footer = () => {
                 <div className='Footer__rightSide flex flex-col gap-6'>
                     <div className='text-end flex flex-col gap-4'>
                         <h3 className={`Footer__rightSide__title text-3xl ${myFont.className}`} style={{ color: '#EBDAB2' }}> فهرست صفحات </h3>
-                        <p className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
+                        <Link href={'/'} className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
                             صفحه اصلی
-                        </p>
-                        <p className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
+                        </Link>
+                        <Link href={'about-us'} className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
                             درباره ما
-                        </p>
-                        <p className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
-                            کاتالوگ
-                        </p>
+                        </Link>
+                        <Link href={'/products'} className='Footer__rightSide__subtitle sm:text-right text-center text-white text-xl'>
+                            محصولات
+                        </Link>
                     </div>
                     <div className='text-end flex flex-col gap-4'>
                         <h3 className={`Footer__rightSide__title sm:text-right text-center text-3xl ${myFont.className}`} style={{ color: '#EBDAB2' }}> قوانین </h3>
@@ -38,8 +39,8 @@ const Footer = () => {
                 </div>
 
 
-                <div className='Footer_centerSide xl:block hidden translate-x-140' style={{ transform: 'translatex(-80px)' }}>
-                    <Image src={logo} alt='logo' unoptimized />
+                <div className='Footer_centerSide items-center xl:flex hidden translate-x-140' style={{ transform: 'translatex(-80px)' }}>
+                    <Image src={logo} alt='logo' className='w-40' unoptimized />
                 </div>
 
                 <div className='Footer_leftSide flex flex-col gap-16 text-right justify-center px-6'>

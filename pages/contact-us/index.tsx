@@ -13,12 +13,12 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import { GetStaticProps } from 'next';
-import { getQueryContactUs, getQueryHeader } from '@/lib/service';
+import { getQueryContactUs, getQueryHeader, getQueryProductsPage } from '@/lib/service';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
-export default function Contact({ header, data }: { header: any, data: any }) {
+export default function Contact({ header, data, searchData }: { header: any, data: any, searchData: any }) {
 
     useEffect(() => {
         AOS.init();
@@ -55,7 +55,7 @@ export default function Contact({ header, data }: { header: any, data: any }) {
                 ]}
             />
             <PrimeReactProvider>
-                <Header data={header.items} />
+                <Header data={header.items} searchData={searchData} />
                 <ContactUs data={data} />
 
             </PrimeReactProvider>
@@ -68,11 +68,14 @@ export default function Contact({ header, data }: { header: any, data: any }) {
 export const getStaticProps: GetStaticProps = async () => {
     const header = await getQueryHeader();
     const data = await getQueryContactUs();
+    const searchData = await getQueryProductsPage();
+
 
     return {
         props: {
             header,
-            data
+            data,
+            searchData
         },
         revalidate: 3600,
     };

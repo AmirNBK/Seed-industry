@@ -187,6 +187,15 @@ body {
 
   .p-carousel-container {
     height: 700px;
+
+
+    @media screen and (max-width:1000px) {
+      height: 500px;
+    }
+
+    @media screen and (max-width:640px) {
+      height: 320px;
+    }
   }
 
   .animate__animated.animate__lightSpeedInLeft {

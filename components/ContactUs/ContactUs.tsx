@@ -13,8 +13,6 @@ const ContactUs = (props: {
     data: any
 }) => {
 
-    console.log(props.data);
-    
     return (
         <div className='ContactUs w-full'>
             <h1 className={`text-5xl md:text-8xl leading-normal ${myFont.className} text-center text-white mt-20`}
