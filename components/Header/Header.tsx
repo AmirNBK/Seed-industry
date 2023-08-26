@@ -34,10 +34,6 @@ const Header = (props: {
         setSearchResults(filteredResults);
     };
 
-    console.log(searchResults);
-
-
-
     return (
         <div className={`Header flex flex-col gap-6 xl:flex-row-reverse w-full justify-between items-center pb-6 ${vazir.className}`}
             style={{ borderBottom: '1px solid #fff' }}

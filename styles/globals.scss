@@ -198,6 +198,10 @@ body {
     }
   }
 
+  .p-inputtext::placeholder {
+    transform: translateY(-2px);
+  }
+
   .animate__animated.animate__lightSpeedInLeft {
     --animate-duration: 1.5s;
   }
