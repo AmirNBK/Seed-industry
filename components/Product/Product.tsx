@@ -12,6 +12,10 @@ import TimeSheetTable from './TimeSheetTable/TimeSheetTable';
 import ProductComponents from './ProductComponents/ProductComponents';
 import 'animate.css';
 
+interface FeatureItem {
+    singleFeature: string;
+}
+
 const Product = (props: {
     data: any
 }) => {
@@ -51,9 +55,6 @@ const Product = (props: {
     },
     ]
 
-    console.log(props.data);
-
-
     return (
         <div className='Product'>
             <div className='mb-12' data-aos-duration="1500" data-aos-once={true} data-aos="fade-down" data-aos-delay="900">
@@ -66,10 +67,12 @@ const Product = (props: {
                     {props.data?.productName}
                 </h2>
                 <div className='my-6 flex flex-row md:justify-end gap-6 w-full justify-center md:w-fit animate__animated animate__lightSpeedInLeft '>
-                    {props.data?.features.map((item) => {
+                    {props.data?.features.map((item: FeatureItem, index: number) => {
                         return (
-                            <FeaturesContainer item={item.singleFeature} color='#EBDAB2' />
-                        )
+                            <div key={index}>
+                                <FeaturesContainer item={item.singleFeature} color='#EBDAB2' />
+                            </div>
+                        );
                     })}
                 </div>
 

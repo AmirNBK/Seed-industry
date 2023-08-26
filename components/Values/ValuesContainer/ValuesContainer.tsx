@@ -48,7 +48,7 @@ const ValuesContainer = (props: {
                 boxShadow: '0px -23px 60px rgba(0, 0, 0, 0.25)',
                 height: '368px',
                 top: topPosition,
-                left: `${size?.width > 640 && leftPosition}`,
+                left: `${(size?.width ?? 0) > 640 && leftPosition}`,
             }}
             onClick={handleClick}
         >

@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import ProductSlider from '../ProductSlider/ProductSlider';
-import seedPic1 from '../../assets/Images/seedPic.png';
-import seedPic2 from '../../assets/Images/seedPic2.png';
-import seedPic3 from '../../assets/Images/seedPic3.png';
 import { Carousel } from 'primereact/carousel';
 
 const ProductSliderContainer = (props: {

@@ -27,6 +27,14 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
+type ProductItem = {
+    productName: string;
+    description: string;
+    instructions: any[];
+    color: string;
+    id: string;
+};
+
 export default function Blogs({ header, data }: {
     header: any, data: any
 }) {
@@ -91,7 +99,7 @@ export default function Blogs({ header, data }: {
                                 <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
                                     data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
                                 >
-                                    {data.greenSeed[0].product.map((item, index) => {
+                                    {data.greenSeed[0].product.map((item: ProductItem, index: number) => {
                                         return (
                                             <ProductsComponent
                                                 key={index}
@@ -102,7 +110,7 @@ export default function Blogs({ header, data }: {
                                                 color={item.color}
                                                 link={item.id}
                                             />
-                                        )
+                                        );
                                     })}
                                 </div>
                             </TabPanel>
@@ -110,7 +118,7 @@ export default function Blogs({ header, data }: {
                                 <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
                                     data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
                                 >
-                                    {data.grassSeed[0].product.map((item, index) => {
+                                    {data.grassSeed[0].product.map((item: ProductItem, index: number) => {
                                         return (
                                             <ProductsComponent
                                                 key={index}

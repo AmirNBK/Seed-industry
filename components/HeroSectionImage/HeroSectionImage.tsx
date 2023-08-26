@@ -30,10 +30,10 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
     style,
 }) => {
     const elementRef = useRef<HTMLDivElement>(null);
-    const [width, setWidth] = useState<number | null>(null);
-    const [height, setHeight] = useState<number | null>(null);
-    const [left, setLeft] = useState<number | null>(null);
-    const [top, setTop] = useState<number | null>(null);
+    const [width, setWidth] = useState<number>(0);
+    const [height, setHeight] = useState<number>(0);
+    const [left, setLeft] = useState<number>(0);
+    const [top, setTop] = useState<number>(0);
     const [styleState, setStyleState] = useState<React.CSSProperties>({
         transform: '',
         transition: '',
@@ -56,12 +56,12 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
     };
 
     const reverse = settings.reverse ? -1 : 1;
-    let updateCall: number | null = null;
+    let updateCall: any;
     let event: React.MouseEvent;
 
     const getValues = (e: React.MouseEvent) => {
-        const x = (e.clientX - (left || 0)) / (width || 1);
-        const y = (e.clientY - (top || 0)) / (height || 1);
+        const x = (event.clientX - (left || 0)) / (width || 1);
+        const y = (event.clientY - (top || 0)) / (height || 1);
         const _x = Math.min(Math.max(x, 0), 1);
         const _y = Math.min(Math.max(y, 0), 1);
         const tiltX = (reverse * (settings.max / 2 - _x * settings.max)).toFixed(2);
@@ -158,7 +158,7 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
             clearTimeout(updateCall || undefined);
             window.cancelAnimationFrame(updateCall || undefined);
         };
-    }, []);
+    }, [updateCall]);
 
     const mergedStyle: React.CSSProperties = {
         ...style,
@@ -172,7 +172,7 @@ const HeroSectionImage: React.FC<HeroSectionImageProps> = ({
     return (
         <div>
             <div>
-                <div  data-aos="zoom-in" data-aos-duration="1000" data-aos-once={true}
+                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-once={true}
                     ref={elementRef}
                     style={mergedStyle}
                     className='w-screen'

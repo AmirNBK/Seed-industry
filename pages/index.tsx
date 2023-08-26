@@ -99,10 +99,6 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
 
                   </div>
                 </HeroSectionImage>
-                {/* <div
-                  className={`${cursorEntered ? 'hidden' : 'block'} absolute`} style={{ top: '26.5%', left: '50%' }}>
-                  <HeroSectionText />
-                </div> */}
               </div>
 
               <div className='relative lg:hidden block'>
@@ -113,7 +109,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
               <AboutUs data={aboutUs} />
             </div>
           </PrimeReactProvider>
-          <div className='sm:my-20 w-full' style={{transform : 'rotateZ(7deg)'}}>
+          <div className='sm:my-20 w-full' style={{ transform: 'rotateZ(7deg)' }}>
             <ImageSlider />
           </div>
           <ProductSliderContainer data={productSlider.products[0].product} />

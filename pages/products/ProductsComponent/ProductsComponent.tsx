@@ -7,12 +7,16 @@ const vazir = Vazirmatn({ subsets: ['latin'] });
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' });
 import styles from './ProductsComponent.module.css'
 
+type InstructionItem = {
+    instruction: string;
+};
+
 const ProductsComponent = (props: {
     image: StaticImageData;
     name: string;
     color: string;
     description: string;
-    instruction: any;
+    instruction: InstructionItem[];
     link: string
 }) => {
     const [hoverColor, setHoverColor] = useState('');
@@ -34,7 +38,7 @@ const ProductsComponent = (props: {
                     {props.description}
                 </p>
                 <div className={`flex flex-row gap-2 m-0 ${vazir.className}`}>
-                    {props.instruction.map((item, index) => (
+                    {props.instruction.map((item, index: number) => (
                         <p key={index} style={{ color: props.color }} className='m-0'>
                             {item.instruction}
                         </p>

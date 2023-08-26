@@ -58,7 +58,7 @@ const VerticalCarousel = (props) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  });
 
   const modBySlidesLength = (index) => {
     return mod(index, slides.length);
@@ -107,7 +107,7 @@ const VerticalCarousel = (props) => {
     <>
       <Wrapper>
         {getPresentableSlides().map((slide, presentableIndex) => (
-          <div>hello there </div>
+          <div key={presentableIndex}>hello there </div>
         ))}
       </Wrapper>
       {navigationButtons}

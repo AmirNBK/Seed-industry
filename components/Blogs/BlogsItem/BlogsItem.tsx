@@ -59,9 +59,11 @@ const BlogsItem = (props: {
                     ]}
                 />
             }
-            <div style={{ color: color }} className={`${myFont.className} flex flex-row-reverse md:justify-start justify-center gap-4`}> {category.map((item: string) => {
+            <div style={{ color: color }} className={`${myFont.className} flex flex-row-reverse md:justify-start justify-center gap-4`}> {category.map((item: string, index: number) => {
                 return (
-                    <p className='text-sm sm:text-lg'> {item} </p>
+                    <p key={index} className='text-sm sm:text-lg'>
+                        {item}
+                    </p>
                 )
             })} </div>
             <p className={`text-white md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${vazir.className}`} style={{ lineHeight: '53px' }}>

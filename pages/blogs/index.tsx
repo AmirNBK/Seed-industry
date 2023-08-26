@@ -14,15 +14,25 @@ import Footer from '@/components/Footer/Footer';
 import blogpic2 from '../../assets/Images/blog-pic2.jpeg'
 import { getQueryBlogs, getQueryHeader } from '@/lib/service';
 import { GetStaticProps } from 'next';
+import { StaticImageData } from 'next/image';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
 
+type BlogData = {
+    image: {
+        sourceUrl: string;
+    };
+    author: string;
+    date: string;
+    title: string;
+    description: string;
+};
+
 export default function Blogs({ header, data }: { header: any, data: any }) {
 
-    console.log(data);
 
     return (
         <main
@@ -71,7 +81,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                             description={data[0].description} hasArrow />
                     </div>
                     <div style={{ flex: '1' }} className='flex flex-col gap-8 md:flex hidden'>
-                        {data.slice(1, 4).map((blog, index) => {
+                        {data.slice(1, 4).map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => {
                             return (
                                 <BlogsContainer
                                     key={index}
@@ -90,7 +100,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                     </div>
                     <div style={{ flex: '1' }} className='flex flex-col gap-8 md:hidden flex'>
 
-                        {data.slice(1, 4).map((blog, index) => {
+                        {data.slice(1, 4).map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => {
                             return (
                                 <BlogsContainer
                                     key={index}
@@ -114,7 +124,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 my-16'>
-                    {data.map((blog, index: number) => (
+                    {data.map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => (
                         <BlogsContainer
                             key={index}
                             image={blog.image.sourceUrl}

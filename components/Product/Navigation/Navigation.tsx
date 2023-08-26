@@ -3,10 +3,15 @@ import { Vazirmatn } from 'next/font/google';
 import Link from 'next/link';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
+interface NavigationItem {
+    label: string;
+    link: string;
+}
+
 const Navigation = (props: {
-    items: any
+    items: NavigationItem[];
 }) => {
-    
+
     return (
         <div className={`Navigation w-full sm:m-0 mx-auto flex flex-row-reverse gap-8 rounded-2xl p-6 font-light ${vazir.className}`}
             style={{ backgroundColor: '#EBDAB2' }}>

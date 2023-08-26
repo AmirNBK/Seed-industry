@@ -10,8 +10,9 @@ const Blogs = (props: {
     const convertedData = props.data.map(item => ({
         title: item.title,
         color: item.color,
-        category: item.category.map(cat => cat.categories),
-      }));
+        category: item.category
+    }));
+
 
     return (
         <div className='Blogs w-full mb-32 mt-16'>

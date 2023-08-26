@@ -29,9 +29,9 @@ const ProductComponents = () => {
             </div>
             <div className='ProductComponents__info flex-1 sm:w-fit w-full'>
                 <div className='ProductComponents__info__icons flex flex-row-reverse justify-evenly gap-2'>
-                    {icons.map((item) => {
+                    {icons.map((item , index) => {
                         return (
-                            <div className='rounded-full p-1 flex justify-center items-center text-xs text-white' style={{ backgroundColor: '#575C54', width: '45px' }}>
+                            <div className='rounded-full p-1 flex justify-center items-center text-xs text-white' key={index} style={{ backgroundColor: '#575C54', width: '45px' }}>
                                 {typeof item != 'string' ? <Image src={item} alt='item' /> : item}
                             </div>
                         )

@@ -49,13 +49,14 @@ export default function SingleProduct() {
         });
 
         productInfo.then((res) => {
-            const productMatch = res.product.find((product) => product.id === router.query.slug);
+            const productMatch = res.product.find((product: any) => product.id === router.query.slug);
             if (productMatch) {
                 setProductData(productMatch);
-                setLoading(false)
+                setLoading(false);
             }
         });
-    }, [router.query.slug]);
+    }, [router.query.slug, request, productInfo, setProductData]);
+
 
     useEffect(() => {
         AOS.init();
@@ -79,9 +80,6 @@ export default function SingleProduct() {
 
         setAnimationPlayedOnce(true);
     };
-
-    console.log(animationPlayedOnce);
-
 
     return (
         <main

@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import localFont from 'next/font/local';
 import VerticalCarousel from "../../VerticalCarouselTest/VerticalCarouselTest";
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' });
-import data from "./data.json";
 
 const History = (props: {
     data: any

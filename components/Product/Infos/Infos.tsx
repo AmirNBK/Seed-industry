@@ -2,8 +2,14 @@ import React from 'react';
 import { Vazirmatn } from 'next/font/google';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
+interface InfoItem {
+    title: string;
+    description: string;
+}
+
+
 const Infos = (props: {
-    items: any
+    items: InfoItem[];
 }) => {
 
     return (

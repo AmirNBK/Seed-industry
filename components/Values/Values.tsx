@@ -4,13 +4,19 @@ import ValuesContainer from './ValuesContainer/ValuesContainer';
 import ResearchIcon from '@/assets/Icons/magnifier';
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 
+interface ValueItem {
+    title: string;
+    description: string;
+}
+
+
 const Values = (props: {
     data: any
 }) => {
 
     const [activeIndex, setActiveIndex] = useState(null);
 
-    const handleContainerClick = (index) => {
+    const handleContainerClick = (index : any) => {
         setActiveIndex(index === activeIndex ? null : index);
     };
 
@@ -28,7 +34,7 @@ const Values = (props: {
             </h2>
             <div className='relative sm:left-1/2 sm:translate-x-120 sm:block flex flex-col'
                 style={{ paddingBottom: "600px", top: '200px' }}>
-                {props.data.map((value, index) => {
+                {props.data.map((value: ValueItem, index: number) => {
                     const topPosition = `${-26 + index * 13}%`;
                     const leftPosition = index > 0 ? `${-30 * index}px` : '';
 

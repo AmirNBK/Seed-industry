@@ -46,7 +46,7 @@ const Header = (props: {
                 <Image src={logo} alt='logo' />
             </div>
             <div className='Header__items flex-wrap justify-center gap-8 text-white flex flex-row-reverse md:gap-16 md:text-lg sm:text-sm text-xs'>
-                {props.data?.map((item, index) => (
+                {props.data?.map((item: { label: { url: string; title: string } }, index: number) => (
                     <Link key={index} href={item.label.url} className='cursor-pointer text-lg'>
                         {item.label.title}
                     </Link>
