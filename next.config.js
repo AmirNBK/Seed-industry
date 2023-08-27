@@ -2,15 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        hostname: 'localhost',
-      },
-    ],
+    domains: ["sanat-bazr.000webhostapp.com"]
   },
 }
 
-const withVideos = require('next-videos');
 
-module.exports = withVideos();
+module.exports = nextConfig;
 

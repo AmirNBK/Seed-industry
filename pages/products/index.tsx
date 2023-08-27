@@ -154,11 +154,15 @@ export default function Blogs({ header, data }: {
                                         )
                                     })}
                                 </div>
-                                <div className='flex flex-row items-center gap-6 my-32
-                                animate__animated animate__bounceOutDown
-                                '>
+                                <div className={`flex flex-row items-center gap-6 my-32 ${buttonClicked ? 'animate__animated animate__bounceOutDown' : ''}`}>
                                     <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
-                                    <RegularButton onClick={() => handleShowMoreClick()} text='مشاهده بیشتر' />
+                                    <RegularButton
+                                        onClick={() => {
+                                            handleShowMoreClick();
+                                            setButtonClicked(true);
+                                        }}
+                                        text='مشاهده بیشتر'
+                                    />
                                     <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
                                 </div>
                             </TabPanel>
