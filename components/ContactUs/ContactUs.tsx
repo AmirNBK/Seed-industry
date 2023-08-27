@@ -5,6 +5,7 @@ import ContactUsInput from './ContactUsInput/ContactUsInput';
 import ContactUsTextArea from './ContactUsTextArea/ContactUsTextArea';
 import Map from './Map/Map';
 import Footer from '../Footer/Footer';
+import RegularButton from '../CommonComponents/RegularButton/RegularButton';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 
@@ -35,6 +36,9 @@ const ContactUs = (props: {
                 <div className='ContactUs__inputs__leftSide w-full' style={{ flex: '1.6' }}>
                     <ContactUsTextArea placeholder='پیام شما' />
                 </div>
+            </div>
+            <div className='text-center mt-32'>
+                <RegularButton text='ارسال'/>
             </div>
             <div className='my-56'>
                 <Map data={props.data.contactInfos[0]} />

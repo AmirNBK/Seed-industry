@@ -10,7 +10,6 @@ const Map = (props: {
     return (
         <div className='Map relative mt-28 w-full mb-32'>
             <Image src={map} alt='map' className='w-full object-cover' unoptimized
-                style={{ minHeight: '850px' }}
             />
             <InfoContainer address={props.data.location} telephone={props.data.phone}
                 emailAddress={props.data.email}
