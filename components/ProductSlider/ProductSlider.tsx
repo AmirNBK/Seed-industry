@@ -67,17 +67,6 @@ const ProductSlider = (props: {
 
                 <div className='ProductSlider__leftSide sm:block hidden invisible md:visible flex-1 justify-between h-full flex flex-col'>
                     <div className='flex-grow flex flex-col justify-center gap-28'>
-                        {colorOrder.map((seed, idx) => (
-                            <Image
-                                key={idx}
-                                src={seed}
-                                alt={`seed${idx}`}
-                                unoptimized
-                                className={idx === 1 ? 'translate-x-20' : ''}
-                                style={{ width: idx === index - 1 ? '45px' : '25px' }}
-                            />
-                        ))}
-
                         <Dialog header={product} visible={visible} modal={false}
                             style={{ width: '80vw' }} onHide={() => setVisible(false)}>
                             <p className="m-0">

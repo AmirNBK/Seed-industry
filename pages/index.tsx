@@ -17,7 +17,9 @@ import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
 import ImageSlider from '@/components/3DSlider/ImageSlider'
+import Lottie from "lottie-react";
 import { GetStaticProps } from 'next'
+import animations from "../assets/animations/animation_llnpmcm5.json";
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 
 
@@ -31,6 +33,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
   header: any, aboutUs: any, productSlider: any, blogs: any, values: any
 }) {
   const [cursorEntered, setCursorEntered] = useState(false);
+  const [animationPlayedOnce, setAnimationPlayedOnce] = useState(false);
 
   useEffect(() => {
     const handleMouseEnter = () => {
@@ -81,41 +84,48 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           className={`flex min-h-screen flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
         >
           <PrimeReactProvider>
-
             <Header data={header.items} />
-            <div className='relative mt-20'>
-              <div className='lg:block hidden'>
-                <HeroSectionImage
-                  style={{
-                    background: `url(${pic}) no-repeat fixed center`,
-                    backgroundSize: 'fit',
-                  }}
-                >
-                  <HeroSectionImage>
-                    <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
-                  </HeroSectionImage>
-                  <div className={`${cursorEntered ? 'block' : 'block'}`}>
-                    <HeroSectionText />
+            {!animationPlayedOnce && (
+              <Lottie animationData={animations} loop={true} onLoopComplete={() => setAnimationPlayedOnce(true)} />
+            )}
 
+            {animationPlayedOnce &&
+              <>
+                <div className='relative mt-20'>
+                  <div className='lg:block hidden'>
+                    <HeroSectionImage
+                      style={{
+                        background: `url(${pic}) no-repeat fixed center`,
+                        backgroundSize: 'fit',
+                      }}
+                    >
+                      <HeroSectionImage>
+                        <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
+                      </HeroSectionImage>
+                      <div className={`${cursorEntered ? 'block' : 'block'}`}>
+                        <HeroSectionText />
+
+                      </div>
+                    </HeroSectionImage>
                   </div>
-                </HeroSectionImage>
-              </div>
 
-              <div className='relative lg:hidden block'>
-                <Image src={pic} alt='pic' className='mx-auto w-full lg:w-72 ' />
-                <HeroSectionText />
-              </div>
-              <ArrowComponent />
-              <AboutUs data={aboutUs} />
-            </div>
+                  <div className='relative lg:hidden block'>
+                    <Image src={pic} alt='pic' className='mx-auto w-full lg:w-72 ' />
+                    <HeroSectionText />
+                  </div>
+                  <ArrowComponent />
+                  <AboutUs data={aboutUs} />
+                </div>
+                <div className='sm:my-20 w-full' style={{ transform: 'rotateZ(7deg)' }}>
+                  <ImageSlider />
+                </div>
+                <ProductSliderContainer data={productSlider.products[0].product} />
+                <Blogs data={blogs.blogsAndNews} />
+                <Values data={values.ourValues[0].singleValue} />
+                <Footer />
+              </>
+            }
           </PrimeReactProvider>
-          <div className='sm:my-20 w-full' style={{ transform: 'rotateZ(7deg)' }}>
-            <ImageSlider />
-          </div>
-          <ProductSliderContainer data={productSlider.products[0].product} />
-          <Blogs data={blogs.blogsAndNews} />
-          <Values data={values.ourValues[0].singleValue} />
-          <Footer />
         </main>
       </div>
     </>

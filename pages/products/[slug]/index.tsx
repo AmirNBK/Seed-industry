@@ -75,12 +75,6 @@ export default function SingleProduct() {
         { label: 'اجزا', link: '#components' },
     ];
 
-    const onAnimationComplete = () => {
-        console.log('here');
-
-        setAnimationPlayedOnce(true);
-    };
-
     return (
         <main
             className={`flex min-h-screen flex-col items-center overflow-hidden ${inter.className}`}
