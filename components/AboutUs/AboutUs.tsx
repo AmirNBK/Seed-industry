@@ -22,7 +22,7 @@ const AboutUs = (props: {
         AOS.init();
     }, [])
     return (
-        <div className='AboutUs w-full'>
+        <div className='AboutUs w-full mb-6'>
             <div className='AboutUs__intro flex xl:flex-row-reverse xl:items-baseline items-center flex-col text-white mt-6 sm:mt-20 sm:px-6'>
                 <h2
                     data-aos-duration="1200" data-aos-once={true} data-aos="fade-left"
