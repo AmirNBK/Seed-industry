@@ -21,7 +21,9 @@ const ProductsComponent = (props: {
 }) => {
     const [hoverColor, setHoverColor] = useState('');
     return (
-        <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'>
+        <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'
+        data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
+        >
             <Image src={props.image} alt='product image' className={`${styles.productImage}`} width={245} height={368} />
             <div className='flex flex-col lg:items-end items-center gap-4'>
                 <Link
@@ -38,7 +40,7 @@ const ProductsComponent = (props: {
                     {props.description}
                 </p>
                 <div className={`flex flex-row gap-2 m-0 ${vazir.className}`}>
-                    {props.instruction.map((item, index: number) => (
+                    {props.instruction?.map((item, index: number) => (
                         <p key={index} style={{ color: props.color }} className='m-0'>
                             {item.instruction}
                         </p>

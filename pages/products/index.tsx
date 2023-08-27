@@ -19,6 +19,7 @@ import RegularButton from '@/components/CommonComponents/RegularButton/RegularBu
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
+import 'animate.css';
 import { GetStaticProps } from 'next';
 import { getQueryHeader, getQueryProductsPage } from '@/lib/service';
 
@@ -38,17 +39,16 @@ type ProductItem = {
 export default function Blogs({ header, data }: {
     header: any, data: any
 }) {
-
     const [displayedItems, setDisplayedItems] = useState(3);
+    const [buttonClicked, setButtonClicked] = useState(false);
+
 
     const handleShowMoreClick = () => {
-        console.log("here");
-
-        setDisplayedItems(displayedItems + 3);
+        setTimeout(() => {
+            setDisplayedItems(displayedItems + 3);
+            setButtonClicked(false)
+        }, 700);
     };
-
-    console.log(displayedItems);
-
 
     useEffect(() => {
         AOS.init();
@@ -124,17 +124,23 @@ export default function Blogs({ header, data }: {
                                         );
                                     })}
                                 </div>
-                                <div className='flex flex-row items-center gap-6 my-32'>
+                                <div className={`flex flex-row items-center gap-6 my-32 ${buttonClicked ? 'animate__animated animate__bounceOutDown' : ''}`}>
                                     <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
-                                    <RegularButton onClick={() => handleShowMoreClick()} text='مشاهده بیشتر' />
+                                    <RegularButton
+                                        onClick={() => {
+                                            handleShowMoreClick();
+                                            setButtonClicked(true);
+                                        }}
+                                        text='مشاهده بیشتر'
+                                    />
                                     <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
                                 </div>
+
                             </TabPanel>
                             <TabPanel header="بذر های چمن">
                                 <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
-                                    data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
                                 >
-                                    {data.grassSeed[0].product.map((item: ProductItem, index: number) => {
+                                    {data.grassSeed[0].product.slice(0, displayedItems).map((item: ProductItem, index: number) => {
                                         return (
                                             <ProductsComponent
                                                 key={index}
@@ -148,7 +154,9 @@ export default function Blogs({ header, data }: {
                                         )
                                     })}
                                 </div>
-                                <div className='flex flex-row items-center gap-6 my-32'>
+                                <div className='flex flex-row items-center gap-6 my-32
+                                animate__animated animate__bounceOutDown
+                                '>
                                     <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
                                     <RegularButton onClick={() => handleShowMoreClick()} text='مشاهده بیشتر' />
                                     <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
