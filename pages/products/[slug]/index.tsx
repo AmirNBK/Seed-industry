@@ -54,7 +54,6 @@ export default function SingleProduct() {
     }, []);
 
     useEffect(() => {
-        if (scrollY > 430) setShowtitle(true)
         request.then((res) => {
             setHeader(res.items);
         });
@@ -64,7 +63,12 @@ export default function SingleProduct() {
                 setProductData(productMatch);
             }
         });
-    }, [router.query.slug, request, productInfo, setProductData]);
+    }, [router.query.slug]);
+
+
+    useEffect(() => {
+        if (scrollY > 430) setShowtitle(true)
+    }, [scrollY])
 
 
     useEffect(() => {
