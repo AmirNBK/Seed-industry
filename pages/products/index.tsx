@@ -12,7 +12,7 @@ const vazir = Vazirmatn({ subsets: ['latin'] });
 import blogPic from '../../assets/Images/blogs-pic.jpeg'
 import Footer from '@/components/Footer/Footer';
 import blogpic2 from '../../assets/Images/blog-pic2.jpeg'
-import ProductsComponent from './ProductsComponent/ProductsComponent';
+import ProductsComponent from '../../components/ProductsComponent/ProductsComponent';
 import productPic from '../../assets/Images/product.png'
 import { TabView, TabPanel } from 'primereact/tabview';
 import RegularButton from '@/components/CommonComponents/RegularButton/RegularButton';
