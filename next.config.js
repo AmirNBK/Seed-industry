@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  reactStrictMode: true,
+module.exports = {
   images: {
-    domains: ["sanat-bazr.000webhostapp.com"]
+    remotePatterns: [
+      {
+        hostname: 'images.pexels.com',
+      },
+    ],
   },
 }
 
 
-module.exports = nextConfig;
+const withVideos = require('next-videos');
+
+module.exports = withVideos();
 
