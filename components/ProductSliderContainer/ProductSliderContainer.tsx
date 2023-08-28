@@ -75,14 +75,13 @@ const ProductSliderContainer = (props: {
                     autoplayInterval={5000}
                     itemTemplate={productTemplate}
                     showIndicators={true}
-                    onPageChange={carouselChange}
-                    page={currentPage}
-
+                    // onPageChange={carouselChange}
+                    // page={currentPage}
                 />
                 <div className='flex flex-col gap-28 absolute'
                     style={{ top: '35%' }}
                 >
-                    {renderSeedImages()}
+                    {/* {renderSeedImages()} */}
                 </div>
             </div>
         </div>
