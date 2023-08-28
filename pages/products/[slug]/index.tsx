@@ -20,7 +20,7 @@ import 'animate.css';
 import { useRouter } from 'next/router'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { getQueryHeader, getQuerySingleProducts } from '@/lib/service';
 import { GetStaticProps } from 'next';
 import Lottie from "lottie-react";
@@ -30,29 +30,38 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 });
 
 export default function SingleProduct() {
-    const [imageContainerHeight, setImageContainerHeight] = useState(0);
-    const [imageHeight, setImageHeight] = useState(0);
     const [header, setHeader] = useState()
-    const [query, setQuery] = useState<string | string[] | undefined>()
-    const [productData, setProductData] = useState(null);
+    const [productData, setProductData] = useState<{ productName: string } | null>(null);
     const [animationPlayedOnce, setAnimationPlayedOnce] = useState(false);
-    const [loading, setLoading] = useState(true)
     const elementRef = useRef(null);
     const ImageRef = useRef(null);
     const router = useRouter()
     const request = getQueryHeader();
     const productInfo = getQuerySingleProducts();
+    const [scrollY, setScrollY] = useState(0);
+    const [showTitle, setShowtitle] = useState<boolean>(false)
+
+    const onScroll = useCallback(() => {
+        const { pageYOffset, scrollY } = window;
+        setScrollY(window.pageYOffset);
+    }, []);
 
     useEffect(() => {
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (scrollY > 430) setShowtitle(true)
         request.then((res) => {
             setHeader(res.items);
         });
-
         productInfo.then((res) => {
             const productMatch = res.product.find((product: any) => product.id === router.query.slug);
             if (productMatch) {
                 setProductData(productMatch);
-                setLoading(false);
             }
         });
     }, [router.query.slug, request, productInfo, setProductData]);
@@ -60,12 +69,6 @@ export default function SingleProduct() {
 
     useEffect(() => {
         AOS.init();
-        if (elementRef.current) {
-            setImageContainerHeight(elementRef.current);
-        }
-        if (ImageRef.current) {
-            setImageHeight(ImageRef.current);
-        }
     }, [])
 
     const navigationItems = [
@@ -130,6 +133,20 @@ export default function SingleProduct() {
                         <div className='productContainer__pic border-l border-solid border-white xl:block hidden'
                             style={{ flex: '1.5' }} ref={elementRef}
                         >
+                            {(scrollY < 430 && showTitle) &&
+                                <p className={` ${myFont.className} text-4xl md:text-6xl text-white fixed text-center animate__animated animate__lightSpeedOutRight`}
+                                    style={{ top: '20%', right: '5%' }}
+                                >
+                                    {productData.productName}
+                                </p>
+                            }
+                            {scrollY > 430 &&
+                                <p className={` ${myFont.className} text-4xl md:text-6xl text-white fixed text-center animate__animated animate__lightSpeedInRight`}
+                                    style={{ top: '20%', right: '5%' }}
+                                >
+                                    {productData.productName}
+                                </p>
+                            }
                             <Image src={productPic} alt='pic'
                                 ref={ImageRef}
                                 className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />

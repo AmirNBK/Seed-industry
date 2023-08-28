@@ -188,6 +188,7 @@ export async function getQueryProductsPage() {
                   mediaItemUrl
                   sourceUrl
                 }
+                id
               }
             }
             greenSeed {
@@ -201,6 +202,7 @@ export async function getQueryProductsPage() {
                 instructions {
                   instruction
                 }
+                id
               }
             }
           }
