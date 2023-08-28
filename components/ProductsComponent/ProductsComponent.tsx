@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 import { Vazirmatn } from 'next/font/google';
 import Link from 'next/link';
 const vazir = Vazirmatn({ subsets: ['latin'] });
-const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' });
+const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
 import styles from './ProductsComponent.module.css'
 
 type InstructionItem = {
