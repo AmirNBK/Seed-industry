@@ -100,7 +100,9 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                       }}
                     >
                       <HeroSectionImage>
-                        <Image src={pic} alt="" className='mx-auto my-auto' unoptimized />
+                        <Image src={pic} alt="" className='mx-auto my-auto' unoptimized
+                          style={{ width: '34rem', height: '30rem' }}
+                        />
                       </HeroSectionImage>
                       <div className={`${cursorEntered ? 'block' : 'block'}`}>
                         <HeroSectionText />
