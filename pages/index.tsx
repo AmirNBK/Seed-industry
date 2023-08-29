@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header/Header'
@@ -34,21 +34,42 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
 }) {
   const [cursorEntered, setCursorEntered] = useState(false);
   const [animationPlayedOnce, setAnimationPlayedOnce] = useState(false);
+  const imageRef = useRef()
 
-  useEffect(() => {
-    const handleMouseEnter = () => {
-      if (!cursorEntered) {
-        setCursorEntered(true);
-      }
-    };
+  const cumulativeOffset = (element: any) => {
+    let top = 0;
+    let left = 0;
+    console.log(element);
 
-    document.addEventListener('mouseenter', handleMouseEnter);
+    while (element) {
+      top += element.current.offsetTop || 0;
+      left += element.current.offsetLeft || 0;
+      element = element.offsetParent;
+    }
+    return { top, left };
+  };
 
-    return () => {
-      document.removeEventListener('mouseenter', handleMouseEnter);
-    };
-  }, [cursorEntered]);
+  const moveFunc = (event: any) => {
+    const e = event || window.event;
+    const x = (e.pageX - cumulativeOffset(imageRef).left - (300 / 2)) * -1 / 100;
+    const y = (e.pageY - cumulativeOffset(imageRef).top - (300 / 2)) * -1 / 100;
 
+    const matrix = [
+      [1, 0, 0, -x * 0.00005],
+      [0, 1, 0, -y * 0.00005],
+      [0, 0, 1, 1],
+      [0, 0, 0, 1]
+    ];
+
+
+    imageRef.current.style.transition = 'all 0.4s'; // Add the transition inline
+    imageRef.current.style.transform = `matrix3d(${matrix.toString()})`;
+
+    // Clear the transition after a delay to reset it
+    // setTimeout(() => {
+    //   imageRef.current.style.transition = 'none';
+    // }, 300);
+  }
 
   return (
 
@@ -82,6 +103,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
         />
         <main
           className={`flex min-h-screen flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
+          onMouseMoveCapture={moveFunc}
         >
           <PrimeReactProvider>
             <Header data={header.items} />
@@ -92,7 +114,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             {animationPlayedOnce &&
               <>
                 <div className='relative mt-20'>
-                  <div className='lg:block hidden'>
+                  <div className='lg:hidden hidden'>
                     <HeroSectionImage
                       style={{
                         background: `url(${pic}) no-repeat fixed center`,
@@ -111,8 +133,10 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                     </HeroSectionImage>
                   </div>
 
-                  <div className='relative lg:hidden block'>
-                    <Image src={pic} alt='pic' className='mx-auto w-full lg:w-72 ' />
+                  <div className='relative lg:block block'>
+                    <Image src={pic} alt='pic'
+                      ref={imageRef}
+                      className='mx-auto dynamic-pic' style={{ width: '34rem', height: '30rem' }} />
                     <HeroSectionText />
                   </div>
                   <ArrowComponent />
