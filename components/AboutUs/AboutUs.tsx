@@ -25,12 +25,12 @@ const AboutUs = (props: {
         <div className='AboutUs w-full mb-6'>
             <div className='AboutUs__intro flex xl:flex-row-reverse xl:items-baseline items-center flex-col text-white mt-6 sm:mt-20 sm:px-6'>
                 <h2
-                    data-aos-duration="1200" data-aos-once={true} data-aos="fade-left"
+                    data-aos-duration="3000" data-aos-once={true} data-aos="fade-left"
                     className={`${myFont.className} text-4xl sm:text-7xl xl:text-right text-center w-8/12 leading-snug`}>
                     {props.data.intro[0].title}
                 </h2>
                 <div className='flex flex-col items-center gap-6 sm:gap-14 xl:m-0 mt-6 sm:mt-16'
-                    data-aos-duration="1200" data-aos-once={true} data-aos="fade-right"
+                    data-aos-duration="3000" data-aos-once={true} data-aos="fade-right"
                 >
                     <p className={`xl:text-right text-center w-10/12 font-light ${vazir.className} text-sm sm:text-xl`}
                         style={{ direction: 'rtl', lineHeight: '1.8' }}

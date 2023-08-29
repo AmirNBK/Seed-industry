@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import arrow from '../../../assets/Icons/arrow-down.svg';
 import styles from './ArrowComponent.module.css';
+import 'animate.css';
 import Link from 'next/link';
 
 const ArrowComponent = () => {
@@ -17,7 +18,7 @@ const ArrowComponent = () => {
 
     return (
         <div
-            className={`ArrowComponent rounded-full w-fit w-64 h-64 relative lg:block hidden`}
+            className={`ArrowComponent rounded-full w-fit w-64 h-64 relative lg:block hidden animate__animated  animate__fadeIn animate__slower`}
             style={{ transform: 'translateY(-180px)', marginLeft: '50px' }}
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}

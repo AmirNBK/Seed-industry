@@ -11,7 +11,7 @@ import AboutUs from '@/components/AboutUs/AboutUs';
 import { GetStaticProps } from 'next';
 import { getQueryAboutUsPage, getQueryHeader } from '@/lib/service';
 const vazir = Vazirmatn({ subsets: ['latin'] });
-
+import Scroll from '../../components/SmoothScroll/SmoothScroll'
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
@@ -23,7 +23,7 @@ export default function About({ header, data }: {
 
     return (
         <main
-            className={`flex min-h-screen flex-col items-center overflow-hidden ${inter.className}`}
+            className={`flex flex-col items-center ${inter.className}`}
         >
             <AnimatedCursor
                 innerSize={17}

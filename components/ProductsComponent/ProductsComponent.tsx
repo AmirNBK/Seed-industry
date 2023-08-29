@@ -20,19 +20,35 @@ const ProductsComponent = (props: {
     link: string
 }) => {
     const [hoverColor, setHoverColor] = useState('');
+    const [isHovered, setIsHovered] = useState(false);
+
+    const resetHover = () => {
+        setTimeout(() => {
+            setIsHovered(false);
+        }, 1000);
+    };
+
     return (
         <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'
-        data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
+            data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
         >
             <Image src={props.image} alt='product image' className={`${styles.productImage}`} width={245} height={368} />
             <div className='flex flex-col lg:items-end items-center gap-4'>
                 <Link
                     href={`/products/${props.link}`}
                     replace={false}
-                    className={`text-white text-5xl ${myFont.className} ${styles.product}`}
+                    className={`text-white text-5xl mt-4
+                    ${isHovered ? 'animate__animated animate__bounce' : ''}
+                    ${myFont.className} ${styles.product}`}
                     style={{ color: hoverColor }}
-                    onMouseEnter={() => setHoverColor(props.color)}
-                    onMouseLeave={() => setHoverColor('')}
+                    onMouseEnter={() => {
+                        setIsHovered(true);
+                        setHoverColor(props.color);
+                        resetHover();
+                    }}
+                    onMouseLeave={() => {
+                        setHoverColor('');
+                    }}
                 >
                     {props.name}
                 </Link>

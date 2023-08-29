@@ -8,6 +8,7 @@ import { InputText } from 'primereact/inputtext';
 import arrow from '../../assets/Icons/arrow.svg'
 import styles from './Header.module.css'
 import Link from 'next/link';
+import 'animate.css';
 import productPic from '../../assets/Images/product.png'
 
 const Header = (props: {
@@ -35,7 +36,7 @@ const Header = (props: {
     };
 
     return (
-        <div className={`Header flex flex-col gap-6 xl:flex-row-reverse w-full justify-between items-center pb-6 ${vazir.className}`}
+        <div className={`Header animate__animated animate__slower animate__backInDown flex flex-col gap-6 xl:flex-row-reverse w-full justify-between items-center pb-6 ${vazir.className}`}
             style={{ borderBottom: '1px solid #fff' }}
         >
             <div className='Header__logo'>

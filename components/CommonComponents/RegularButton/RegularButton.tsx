@@ -1,20 +1,40 @@
 import React from 'react';
 import { Vazirmatn } from 'next/font/google';
+import Link from 'next/link';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const RegularButton = (props: {
     text: string
     onClick?: () => void
+    link?: any
 }) => {
     const text = props.text
     const onClick = props.onClick
+    const link = props.link
+
     return (
-        <button
-            onClick={onClick}
-            className={`${vazir.className} text-xs md:text-base px-8 md:px-14 py-3`}
-            style={{ background: '#FFD074', borderRadius: '30px', color: '#000' }}>
-            {text}
-        </button>
+        <div className="row middle-on-small center-on-small h-full">
+            <div className="column small-12 medium-6 large-4">
+                <button onClick={onClick} className={`${vazir.className} c-button c-button--gooey`}
+                    style={{ borderRadius: '30px', background: '#FFD074' }}
+                >
+                    {link ?
+                        <Link href={`${link ? link : '/'}`} className={`${vazir.className} relative text-xs md:text-base`} style={{ zIndex: '100' }}>
+                            {text}
+                        </Link>
+                        :
+                        <p className={`${vazir.className} relative text-xs md:text-base`} style={{ zIndex: '100' }}>
+                            {text}
+                        </p>
+                    }
+                    <div className="c-button__blobs">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </button>
+            </div>
+        </div>
     );
 };
 
