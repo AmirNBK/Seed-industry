@@ -61,14 +61,8 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
       [0, 0, 0, 1]
     ];
 
-
-    imageRef.current.style.transition = 'all 0.4s'; // Add the transition inline
+    imageRef.current.style.transition = 'all 0.35s'; // Add the transition inline
     imageRef.current.style.transform = `matrix3d(${matrix.toString()})`;
-
-    // Clear the transition after a delay to reset it
-    // setTimeout(() => {
-    //   imageRef.current.style.transition = 'none';
-    // }, 300);
   }
 
   return (
@@ -114,29 +108,11 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             {animationPlayedOnce &&
               <>
                 <div className='relative mt-20'>
-                  <div className='lg:hidden hidden'>
-                    <HeroSectionImage
-                      style={{
-                        background: `url(${pic}) no-repeat fixed center`,
-                        backgroundSize: 'fit',
-                      }}
-                    >
-                      <HeroSectionImage>
-                        <Image src={pic} alt="" className='mx-auto my-auto' unoptimized
-                          style={{ width: '34rem', height: '30rem' }}
-                        />
-                      </HeroSectionImage>
-                      <div className={`${cursorEntered ? 'block' : 'block'}`}>
-                        <HeroSectionText />
-
-                      </div>
-                    </HeroSectionImage>
-                  </div>
 
                   <div className='relative lg:block block'>
                     <Image src={pic} alt='pic'
                       ref={imageRef}
-                      className='mx-auto dynamic-pic' style={{ width: '34rem', height: '30rem' }} />
+                      className='mx-auto dynamic-pic  w-full lg:w-544' style={{ height: '30rem', }} />
                     <HeroSectionText />
                   </div>
                   <ArrowComponent />
