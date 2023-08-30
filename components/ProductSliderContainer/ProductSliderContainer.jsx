@@ -15,6 +15,10 @@ const ProductSliderContainer = (props) => {
         setCurrentPage(e.page);
     }
 
+    const handleAnimationClick = (index) => {
+        setCurrentPage(index);
+    }
+
     useEffect(() => {
         animationRefs[currentPage]?.current?.play();
 
@@ -48,7 +52,7 @@ const ProductSliderContainer = (props) => {
 
         for (let i = 0; i < 3; i++) {
             const seedImage = (
-                <div key={i}>
+                <div key={i} onClick={() => handleAnimationClick(i)}>
                     <Lottie
                         animationData={animations}
                         style={{
