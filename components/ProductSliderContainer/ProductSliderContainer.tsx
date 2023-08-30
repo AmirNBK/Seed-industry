@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import ProductSlider from '../ProductSlider/ProductSlider';
 import { Carousel } from 'primereact/carousel';
-import whiteSeed from '../../assets/Icons/whiteSeed.svg';
-import greenSeed from '../../assets/Icons/greenSeed.svg';
-import Image from 'next/image';
+import 'animate.css';
+import Lottie from "lottie-react";
 import BubbleComponent from '../BubbleComponent/BubbleComponent';
+import animations from "../../assets/animations/seedAnimation.json";
 
 const ProductSliderContainer = (props: {
     data: any
 }) => {
 
     const [currentPage, setCurrentPage] = useState(0);
-
+    const animationRefs = [useRef(null), useRef(null), useRef(null)];
 
     const carouselChange = (e: { page: React.SetStateAction<number>; }) => {
         setCurrentPage(e.page);
-
     }
+
+    useEffect(() => {
+        animationRefs[currentPage]?.current?.play();
+
+        // Pause and reset animations for other pages
+        animationRefs.forEach((ref, index) => {
+            if (index !== currentPage && ref.current) {
+                ref.current.pause();
+                ref.current.goToAndStop(0);
+            }
+        });
+    }, [currentPage]);
 
     const productTemplate = (product: any) => {
         return (
@@ -38,19 +49,16 @@ const ProductSliderContainer = (props: {
         const seedImages = [];
 
         for (let i = 0; i < 3; i++) {
-            const isCurrentPage = currentPage === i;
-            const seedImageStyle = {
-                transform: i === 1 ? 'translateX(7rem)' : '',
-                width: isCurrentPage ? '40px' : '30px',
-            };
-
             const seedImage = (
                 <div key={i}>
-                    <Image
-                        src={isCurrentPage ? greenSeed : whiteSeed}
-                        alt={`seed`}
-                        unoptimized
-                        style={seedImageStyle}
+                    <Lottie
+                        animationData={animations}
+                        style={{
+                            height: '150px',
+                            transform: i === 1 ? 'translateX(110px)' : 'none', 
+                        }}
+                        loop={false}
+                        lottieRef={animationRefs[i]}
                     />
                 </div>
             );
@@ -59,6 +67,7 @@ const ProductSliderContainer = (props: {
 
         return seedImages;
     };
+
 
     return (
         <div className='ProductSliderContainer w-full flex flex-row-reverse items-center'
@@ -82,8 +91,7 @@ const ProductSliderContainer = (props: {
                 />
 
             </div>
-            <div className='flex flex-col gap-28'
-            >
+            <div className='flex flex-col gap-6'>
                 {renderSeedImages()}
             </div>
         </div>

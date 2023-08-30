@@ -13,7 +13,6 @@ import ArrowComponent from '@/components/CommonComponents/ArrowComponent/ArrowCo
 import AboutUs from '@/components/AboutUsSection/AboutUsSection';
 import 'animate.css';
 import Footer from '@/components/Footer/Footer';
-import 'animate.css';
 import Blogs from '@/components/Blogs/Blogs';
 import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
