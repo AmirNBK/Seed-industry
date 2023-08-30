@@ -17,14 +17,14 @@ import Blogs from '@/components/Blogs/Blogs';
 import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
-import ImageSlider from '@/components/3DSlider/ImageSlider'
+import Slider from '../components/Slider/Slider'
 import Lottie from "lottie-react";
 import { GetStaticProps } from 'next'
 import animations from "../assets/animations/animation_llnpmcm5.json";
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 import Scroll from '@/components/SmoothScroll/SmoothScroll'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
-
+import pic2 from '../assets/Images/pic1.jpg'
 
 
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -120,6 +120,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           outerAlpha={0.2}
           innerScale={0.7}
           outerScale={1.3}
+          trailingSpeed={35}
           outerStyle={{
             backgroundColor: 'rgba(136, 219, 68, 0.90)',
             filter: 'blur(97.5px)',
@@ -165,9 +166,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                   <ArrowComponent />
                   <AboutUs data={aboutUs} />
                 </div>
-                <div className='sm:my-20 w-full' style={{ transform: 'rotateZ(7deg)' }}>
-                  <ImageSlider />
-                </div>
+                {/* <Slider /> */}
                 <ProductSliderContainer data={productSlider.products[0].product} />
                 <Blogs data={blogs.blogsAndNews} />
                 <Values data={values.ourValues[0].singleValue} />
