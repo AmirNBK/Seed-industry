@@ -2,6 +2,7 @@ import React from 'react';
 import localFont from 'next/font/local';
 import BlogsItem from './BlogsItem/BlogsItem';
 import RegularButton from '../CommonComponents/RegularButton/RegularButton';
+import BubbleComponent from '../BubbleComponent/BubbleComponent';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
 
@@ -16,6 +17,7 @@ const Blogs = (props: {
 
     return (
         <div className='Blogs w-full mb-24 mt-16'>
+            <BubbleComponent />
             <h2
                 className={`${myFont.className} Blogs__title text-white text-5xl sm:text-7xl w-max ml-auto mr-12`}
                 data-aos-duration="1000"
@@ -40,8 +42,8 @@ const Blogs = (props: {
                 ))}
             </div>
             <div className='text-center w-full'>
-                    <RegularButton text='بیشتر بخوانید' link={'/blogs'} />
-                </div>
+                <RegularButton text='بیشتر بخوانید' link={'/blogs'} />
+            </div>
         </div>
     );
 };

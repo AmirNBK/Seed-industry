@@ -57,7 +57,229 @@ html {
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #173D33;
-  
+  overflow-x: hidden;
+
+
+  .bubbles {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    left: -150px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: .50;
+    width: 10px;
+    height: 10px;
+    animation: up 14s infinite;
+  }
+
+  .bubble-2 {
+    left: 350px;
+    animation: up 12s infinite;
+  }
+
+  .bubble-3 {
+    left: 750px;
+    opacity: .30;
+    animation: up 15s infinite;
+  }
+
+  .bubble-4 {
+    left: 1150px;
+    animation: up 16s infinite;
+  }
+
+  .bubble-5 {
+    left: 50px;
+    animation: up 15s infinite;
+  }
+
+  .bubble-6 {
+    left: 300px;
+    opacity: .30;
+    animation: up 13s infinite;
+  }
+
+  .bubble-7 {
+    left: 670px;
+    animation: up 14s infinite;
+  }
+
+  .bubble-8 {
+    left: 1050px;
+    opacity: .30;
+    animation: up 13s infinite;
+  }
+
+  .bubble-9 {
+    left: 540px;
+    animation: up 14s infinite;
+  }
+
+  .bubble-10 {
+    left: 660px;
+    opacity: .30;
+    animation: up 15s infinite;
+  }
+
+  .bubble-11 {
+    left: 540px;
+    animation: up 12s infinite;
+  }
+
+  .bubble-12 {
+    left: 410px;
+    opacity: .30;
+    animation: up 11s infinite;
+  }
+
+  .bubble-13 {
+    left: 842px;
+    animation: up 10s infinite;
+  }
+
+  .bubble-14 {
+    left: 1155px;
+    opacity: .30;
+    animation: up 14s infinite;
+  }
+
+  .bubble-15 {
+    left: 1311px;
+    animation: up 12s infinite;
+  }
+
+  .bubble-16 {
+    left: 1434px;
+    opacity: .30;
+    animation: up 11s infinite;
+  }
+
+  .bubble-17 {
+    left: 536px;
+    animation: up 15s infinite;
+  }
+
+  .bubble-18 {
+    left: 1532px;
+    opacity: .30;
+    animation: up 14s infinite;
+  }
+
+  .bubble-19 {
+    left: 1511px;
+    opacity: .30;
+    animation: up 14s infinite;
+  }
+
+  .bubble-20 {
+    left: 1453px;
+    opacity: .30;
+    animation: up 23s infinite;
+  }
+
+  .bubble-21 {
+    left: 1143px;
+    opacity: .30;
+    animation: up 6s infinite;
+  }
+
+  .bubble-22 {
+    left: 1123px;
+    opacity: .30;
+    animation: up 13s infinite;
+  }
+
+  .bubble-23 {
+    left: 323px;
+    opacity: .3;
+    animation: up 6s infinite;
+  }
+
+  .bubble-24 {
+    left: 653px;
+    opacity: .20;
+    animation: up 8s infinite;
+  }
+
+  .bubble-25 {
+    left: 433px;
+    opacity: .21;
+    animation: up 7s infinite;
+  }
+
+  .bubble-26 {
+    left: 233px;
+    opacity: .34;
+    animation: up 6s infinite;
+  }
+
+  .bubble-27 {
+    left: 444px;
+    opacity: .12;
+    animation: up 7s infinite;
+  }
+
+  .bubble-28 {
+    left: 323px;
+    opacity: .3;
+    animation: up 6s infinite;
+  }
+
+  .bubble-29 {
+    left: 653px;
+    opacity: .20;
+    animation: up 8s infinite;
+  }
+
+  .bubble-30 {
+    left: 433px;
+    opacity: .21;
+    animation: up 7s infinite;
+  }
+
+  .bubble-31 {
+    left: 233px;
+    opacity: .34;
+    animation: up 6s infinite;
+  }
+
+  .bubble-32 {
+    left: 444px;
+    opacity: .12;
+    animation: up 7s infinite;
+  }
+
+  .bubble-33 {
+    left: 1353px;
+    opacity: .20;
+    animation: up 8s infinite;
+  }
+
+  .bubble-34 {
+    left: 1433px;
+    opacity: .21;
+    animation: up 9s infinite;
+  }
+
+  .bubble-35 {
+    left: 1233px;
+    opacity: .34;
+    animation: up 7s infinite;
+  }
+
+  .bubble-36 {
+    left: 1444px;
+    opacity: .12;
+    animation: up 8s infinite;
+  }
+
+  /* Bubbles Animation */
+  @keyframes up {
+    100% {
+      transform: translate(800px, -800px);
+    }
+  }
 
 
   .pen-info {
@@ -104,7 +326,7 @@ body {
         border-radius: 100%;
         position: absolute;
         transform: scale(1.4) translateY(125%) translateZ(0);
-        transition: all 1s ;
+        transition: all 1s;
 
         &:nth-child(1) {
           left: -5%;
@@ -124,6 +346,7 @@ body {
 
     &:hover {
       color: #fff;
+
       .c-button__blobs {
         div {
           transform: scale(1.4) translateY(0) translateZ(0);

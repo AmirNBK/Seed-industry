@@ -25,6 +25,7 @@ import animations from "../assets/animations/animation_llnpmcm5.json";
 import { Scrollbar } from 'smooth-scrollbar-react';
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 import Scroll from '@/components/SmoothScroll/SmoothScroll'
+import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
 
 
 
@@ -145,6 +146,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           onMouseMoveCapture={moveFunc} id='myscrollbar'
         >
           <PrimeReactProvider>
+            <BubbleComponent />
             <Header data={header.items} />
             {!(animationFaded && animationPlayedOnce) &&
               <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}

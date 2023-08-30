@@ -11,7 +11,6 @@ const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const Footer = () => {
     return (
         <div className='Footer w-full'>
-
             <div className='Footer_centerSide xl:hidden block'>
                 <Image src={logo} alt='logo' unoptimized className='mx-auto' />
             </div>

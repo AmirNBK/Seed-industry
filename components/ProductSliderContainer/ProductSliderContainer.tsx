@@ -4,16 +4,18 @@ import { Carousel } from 'primereact/carousel';
 import whiteSeed from '../../assets/Icons/whiteSeed.svg';
 import greenSeed from '../../assets/Icons/greenSeed.svg';
 import Image from 'next/image';
+import BubbleComponent from '../BubbleComponent/BubbleComponent';
 
 const ProductSliderContainer = (props: {
     data: any
 }) => {
 
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(0);
 
 
     const carouselChange = (e: { page: React.SetStateAction<number>; }) => {
         setCurrentPage(e.page);
+
     }
 
     const productTemplate = (product: any) => {
@@ -59,12 +61,13 @@ const ProductSliderContainer = (props: {
     };
 
     return (
-        <div className='ProductSliderContainer w-full'
+        <div className='ProductSliderContainer w-full flex flex-row-reverse items-center'
             data-aos="fade-left"
             data-aos-easing="ease-out-cubic" data-aos-once={true}
             data-aos-duration="1500"
         >
-            <div className='card relative'>
+            <BubbleComponent />
+            <div className='card w-10/12 ml-auto'>
                 <Carousel
                     showNavigators={false}
                     value={props.data}
@@ -72,17 +75,16 @@ const ProductSliderContainer = (props: {
                     numScroll={1}
                     className="custom-carousel"
                     circular={false}
-                    autoplayInterval={5000}
                     itemTemplate={productTemplate}
                     showIndicators={true}
-                    // onPageChange={carouselChange}
-                    // page={currentPage}
+                    onPageChange={carouselChange}
+                    page={currentPage}
                 />
-                <div className='flex flex-col gap-28 absolute'
-                    style={{ top: '35%' }}
-                >
-                    {/* {renderSeedImages()} */}
-                </div>
+
+            </div>
+            <div className='flex flex-col gap-28'
+            >
+                {renderSeedImages()}
             </div>
         </div>
     );

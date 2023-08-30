@@ -3,6 +3,7 @@ import RegularButton from '../CommonComponents/RegularButton/RegularButton';
 import localFont from 'next/font/local'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import BubbleComponent from '../BubbleComponent/BubbleComponent';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AboutUs = (props: {
@@ -16,6 +17,7 @@ const AboutUs = (props: {
         <div className={`AboutUs ${myFont.className} md:items-end items-center mx-auto lg:mt-[-60px] mt-12 w-full md:w-4/5 lg:w-3/5 flex flex-col items-end xl:items-start xl:flex-row-reverse w-8/12 gap-8 md:gap-16 mb-20`}
             id='AboutUs'
         >
+            <BubbleComponent />
             <div>
                 <p data-aos-duration="1000" data-aos-once={true} data-aos="fade-down" className='text-white text-5xl md:text-7xl w-max'>
                     {props.data.aboutUs[0].title}
