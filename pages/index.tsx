@@ -21,7 +21,6 @@ import ImageSlider from '@/components/3DSlider/ImageSlider'
 import Lottie from "lottie-react";
 import { GetStaticProps } from 'next'
 import animations from "../assets/animations/animation_llnpmcm5.json";
-import { Scrollbar } from 'smooth-scrollbar-react';
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 import Scroll from '@/components/SmoothScroll/SmoothScroll'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
@@ -37,7 +36,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
   header: any, aboutUs: any, productSlider: any, blogs: any, values: any
 }) {
   const [animationPlayedOnce, setAnimationPlayedOnce] = useState(false);
-  const imageRef = useRef()
+  const imageRef = useRef<HTMLImageElement | null>(null);
   const [scrollY, setScrollY] = useState(0);
   const [animationFaded, setAnimationFaded] = useState(false);
 

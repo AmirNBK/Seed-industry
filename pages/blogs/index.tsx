@@ -15,6 +15,7 @@ import blogpic2 from '../../assets/Images/blog-pic2.jpeg'
 import { getQueryBlogs, getQueryHeader } from '@/lib/service';
 import { GetStaticProps } from 'next';
 import { StaticImageData } from 'next/image';
+import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -66,6 +67,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
             />
             <PrimeReactProvider>
                 <Header data={header.items} />
+                <BubbleComponent />
 
                 <h1 className={`text-7xl ${myFont.className} text-white mt-20`}>
                     بلاگ ها
@@ -81,6 +83,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                             description={data[0].description} hasArrow />
                     </div>
                     <div style={{ flex: '1' }} className='flex flex-col gap-8 md:flex hidden'>
+                        <BubbleComponent />
                         {data.slice(1, 4).map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => {
                             return (
                                 <BlogsContainer
@@ -99,7 +102,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                         })}
                     </div>
                     <div style={{ flex: '1' }} className='flex flex-col gap-8 md:hidden flex'>
-
+                        <BubbleComponent />
                         {data.slice(1, 4).map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => {
                             return (
                                 <BlogsContainer
@@ -124,6 +127,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 my-16'>
+                    <BubbleComponent />
                     {data.map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => (
                         <BlogsContainer
                             key={index}
@@ -139,6 +143,8 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                         />
                     ))}
                 </div>
+
+                <BubbleComponent />
 
                 <Footer />
 

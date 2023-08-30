@@ -2,18 +2,16 @@ import React, { useRef, useState, useEffect } from 'react';
 import ProductSlider from '../ProductSlider/ProductSlider';
 import { Carousel } from 'primereact/carousel';
 import 'animate.css';
-import Lottie from "lottie-react";
+import Lottie, { LottieRef } from "lottie-react";
 import BubbleComponent from '../BubbleComponent/BubbleComponent';
 import animations from "../../assets/animations/seedAnimation.json";
 
-const ProductSliderContainer = (props: {
-    data: any
-}) => {
+const ProductSliderContainer = (props) => {
 
     const [currentPage, setCurrentPage] = useState(0);
     const animationRefs = [useRef(null), useRef(null), useRef(null)];
 
-    const carouselChange = (e: { page: React.SetStateAction<number>; }) => {
+    const carouselChange = (e) => {
         setCurrentPage(e.page);
     }
 
@@ -29,7 +27,7 @@ const ProductSliderContainer = (props: {
         });
     }, [currentPage]);
 
-    const productTemplate = (product: any) => {
+    const productTemplate = (product) => {
         return (
             <div>
                 <ProductSlider
@@ -55,7 +53,7 @@ const ProductSliderContainer = (props: {
                         animationData={animations}
                         style={{
                             height: '150px',
-                            transform: i === 1 ? 'translateX(110px)' : 'none', 
+                            transform: i === 1 ? 'translateX(110px)' : 'none',
                         }}
                         loop={false}
                         lottieRef={animationRefs[i]}
