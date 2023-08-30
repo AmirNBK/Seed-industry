@@ -11,6 +11,7 @@ import Infos from './Infos/Infos';
 import TimeSheetTable from './TimeSheetTable/TimeSheetTable';
 import ProductComponents from './ProductComponents/ProductComponents';
 import 'animate.css';
+import BubbleComponent from '../BubbleComponent/BubbleComponent';
 
 interface FeatureItem {
     singleFeature: string;
@@ -70,6 +71,7 @@ const Product = (props: {
                     {props.data?.features.map((item: FeatureItem, index: number) => {
                         return (
                             <div key={index}>
+                                <BubbleComponent />
                                 <FeaturesContainer item={item.singleFeature} color='#EBDAB2' />
                             </div>
                         );
@@ -79,6 +81,7 @@ const Product = (props: {
                 <p style={{ direction: 'rtl' }} className={`animate__animated animate__lightSpeedInLeft text-white text-lg leading-loose ${vazir.className} md:w-7/12 text-center md:text-right font-extralight`}>
                     {props.data?.description}
                 </p>
+                <BubbleComponent />
                 <InfoContainer title='اطلاعات بذر' content={<Infos items={seedInfos} />} link='info' />
                 <InfoContainer title='ویژگی های بذر' content={<Infos items={seedFeatures} />} link='properties' />
                 <InfoContainer title='جدول زمان بندی دوره کاشت' content={<TimeSheetTable />} link='timesheet' />

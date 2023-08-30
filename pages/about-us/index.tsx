@@ -12,6 +12,7 @@ import { GetStaticProps } from 'next';
 import { getQueryAboutUsPage, getQueryHeader } from '@/lib/service';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 import Scroll from '../../components/SmoothScroll/SmoothScroll'
+import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
@@ -55,6 +56,7 @@ export default function About({ header, data }: {
                 <div className='w-full p-6'>
                     <Header data={header.items} />
                 </div>
+                <BubbleComponent />
                 <AboutUs data={data} />
             </PrimeReactProvider>
 

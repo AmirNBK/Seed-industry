@@ -25,6 +25,7 @@ import { getQueryHeader, getQuerySingleProducts } from '@/lib/service';
 import { GetStaticProps } from 'next';
 import Lottie from "lottie-react";
 import animations from "../../../assets/animations/animation_llnpmcm5.json";
+import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
@@ -39,7 +40,15 @@ export default function SingleProduct() {
     const request = getQueryHeader();
     const productInfo = getQuerySingleProducts();
     const [scrollY, setScrollY] = useState(0);
+    const [animationFaded, setAnimationFaded] = useState(false);
     const [showTitle, setShowtitle] = useState<boolean>(false)
+
+    useEffect(() => {
+        const delay = setTimeout(() => {
+            setAnimationFaded(true);
+        }, 3500);
+        return () => clearTimeout(delay);
+    }, []);
 
     const onScroll = useCallback(() => {
         const { pageYOffset, scrollY } = window;
@@ -116,16 +125,17 @@ export default function SingleProduct() {
                 <div className='w-full p-6'>
                     <Header data={header} />
                 </div>
-                {(animationPlayedOnce && productData) && (
+                <BubbleComponent />
+                {(animationPlayedOnce && productData && animationFaded) && (
                     <div className='fixed animate__animated animate__fadeInUp' style={{ bottom: '40px', zIndex: '10' }}>
                         <Navigation items={navigationItems} />
                     </div>
                 )}
-
-                {!animationPlayedOnce && (
-                    <Lottie animationData={animations} loop={true} onLoopComplete={() => setAnimationPlayedOnce(true)} />
+                {!(animationFaded && animationPlayedOnce && productData) && (
+                    <Lottie className={`${(animationPlayedOnce) && 'animate__animated animate__bounceOutLeft'}`}
+                        animationData={animations} loop={false} onComplete={() => setAnimationPlayedOnce(true)} />
                 )}
-                {(animationPlayedOnce && productData) && (
+                {(animationPlayedOnce && productData && animationFaded) && (
                     <div className='productContainer w-full flex flex-col xl:flex-row-reverse mt-20'
                     >
                         <div className='productContainer__pic border-b border-solid border-white xl:hidden block'
@@ -138,14 +148,14 @@ export default function SingleProduct() {
                             style={{ flex: '1.5' }} ref={elementRef}
                         >
                             {(scrollY < 430 && showTitle) &&
-                                <p className={` ${myFont.className} text-4xl md:text-6xl text-white fixed text-center animate__animated animate__lightSpeedOutRight`}
+                                <p className={` ${myFont.className} text-3xl md:text-5xl text-white fixed text-center animate__animated animate__lightSpeedOutRight`}
                                     style={{ top: '20%', right: '5%' }}
                                 >
                                     {productData.productName}
                                 </p>
                             }
                             {scrollY > 430 &&
-                                <p className={` ${myFont.className} text-4xl md:text-6xl text-white fixed text-center animate__animated animate__lightSpeedInRight`}
+                                <p className={` ${myFont.className} text-3xl md:text-5xl text-white fixed text-center animate__animated animate__lightSpeedInRight`}
                                     style={{ top: '20%', right: '5%' }}
                                 >
                                     {productData.productName}
@@ -153,7 +163,8 @@ export default function SingleProduct() {
                             }
                             <Image src={productPic} alt='pic'
                                 ref={ImageRef}
-                                className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
+                                className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12 animate__animated animate__fadeIn animate__delay-3s'
+                                unoptimized />
 
                         </div>
                         <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>

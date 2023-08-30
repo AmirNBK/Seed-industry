@@ -22,6 +22,7 @@ import { useEffect, useState } from 'react';
 import 'animate.css';
 import { GetStaticProps } from 'next';
 import { getQueryHeader, getQueryProductsPage } from '@/lib/service';
+import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -86,6 +87,7 @@ export default function Blogs({ header, data }: {
             />
             <PrimeReactProvider>
                 <Header data={header.items} />
+                <BubbleComponent />
                 <div className='flex flex-col justify-center w-full'>
                     <div className='flex flex-col justify-center'>
                         <h1 className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-20`}

@@ -3,6 +3,7 @@ import React from 'react';
 import localFont from 'next/font/local'
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 import { Vazirmatn } from 'next/font/google';
+import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const AboutUsSection = (props: {
@@ -10,6 +11,7 @@ const AboutUsSection = (props: {
 }) => {
     return (
         <div className='AboutUsSection flex lg:flex-row-reverse flex-col my-20 md:my-40 w-10/12 mx-auto'>
+            <BubbleComponent />
             <div className='AboutUsSection__title flex-1 lg:m-0 mb-4'>
                 <div className='flex flex-row items-center gap-2 justify-center sm:justify-end'
                     data-aos-duration="1500" data-aos-once={true} data-aos="fade-left"

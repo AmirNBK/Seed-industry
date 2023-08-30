@@ -14,6 +14,9 @@ import Foundation from '../Foundation/Foundation';
 import Footer from '../Footer/Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import animations from "../../assets/animations/greenAnimation.json";
+import Lottie from "lottie-react";
+
 
 const AboutUs = (props: {
     data: any
@@ -37,6 +40,9 @@ const AboutUs = (props: {
                     >
                         {props.data.intro[0].description}
                     </p>
+                    <div className='absolute' style={{opacity : '0.25'}}>
+                        <Lottie animationData={animations} loop={true} />
+                    </div>
                     <Image src={logo} alt='logo' className='md:w-fit w-40' />
                 </div>
             </div>
