@@ -68,7 +68,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
             />
             <SmoothScroll>
                 <main
-                    className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
+                    className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
                 >
                     <PrimeReactProvider>
                         <Header data={header.items} />

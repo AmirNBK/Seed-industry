@@ -29,16 +29,13 @@ const ProductsComponent = (props: {
     };
 
     return (
-        <div className='ProductsComponent md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'
-            data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
+        <Link href={`/products/${props.link}`} replace={false} className='ProductsComponent animate__animated animate__zoomIn md:m-0 mx-auto items-center lg:items-end flex flex-col w-fit'
+            
         >
             <Image src={props.image} alt='product image' className={`${styles.productImage}`} width={245} height={368} />
             <div className='flex flex-col lg:items-end items-center gap-4'>
-                <Link
-                    href={`/products/${props.link}`}
-                    replace={false}
+                <p
                     className={`text-white text-5xl mt-4
-                    ${isHovered ? 'animate__animated animate__bounce' : ''}
                     ${myFont.className} ${styles.product}`}
                     style={{ color: hoverColor }}
                     onMouseEnter={() => {
@@ -51,7 +48,7 @@ const ProductsComponent = (props: {
                     }}
                 >
                     {props.name}
-                </Link>
+                </p>
                 <p className={`text-white ${vazir.className} text-2xl w-9/12 text-right`}>
                     {props.description}
                 </p>
@@ -63,7 +60,7 @@ const ProductsComponent = (props: {
                     ))}
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
