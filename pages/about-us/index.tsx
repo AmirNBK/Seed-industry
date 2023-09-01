@@ -33,6 +33,7 @@ export default function About({ header, data }: {
                 outerAlpha={0.2}
                 innerScale={0.7}
                 outerScale={1.3}
+                trailingSpeed={35}
                 outerStyle={{
                     backgroundColor: 'rgba(136, 219, 68, 0.90)',
                     filter: 'blur(97.5px)',
@@ -53,11 +54,11 @@ export default function About({ header, data }: {
                 ]}
             />
             <PrimeReactProvider>
-                <div className='w-full p-6'>
-                    <Header data={header.items} />
-                </div>
-                <BubbleComponent />
-                <AboutUs data={data} />
+                    <div className='w-full p-6'>
+                        <Header data={header.items} />
+                    </div>
+                    <BubbleComponent />
+                    <AboutUs data={data} />
             </PrimeReactProvider>
 
         </main>

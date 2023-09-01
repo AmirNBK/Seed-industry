@@ -35,6 +35,7 @@ export default function Contact({ header, data, searchData }: { header: any, dat
                 outerAlpha={0.2}
                 innerScale={0.7}
                 outerScale={1.3}
+                trailingSpeed={35}
                 outerStyle={{
                     backgroundColor: 'rgba(136, 219, 68, 0.90)',
                     filter: 'blur(97.5px)',

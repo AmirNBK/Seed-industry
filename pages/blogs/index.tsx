@@ -16,7 +16,9 @@ import { getQueryBlogs, getQueryHeader } from '@/lib/service';
 import { GetStaticProps } from 'next';
 import { StaticImageData } from 'next/image';
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
-
+const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothScroll"), {
+    ssr: false,
+});
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
@@ -36,9 +38,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
 
 
     return (
-        <main
-            className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
-        >
+        <>
             <AnimatedCursor
                 innerSize={17}
                 outerSize={250}
@@ -46,6 +46,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                 outerAlpha={0.2}
                 innerScale={0.7}
                 outerScale={1.3}
+                trailingSpeed={35}
                 outerStyle={{
                     backgroundColor: 'rgba(136, 219, 68, 0.90)',
                     filter: 'blur(97.5px)',
@@ -65,27 +66,74 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                     '.link'
                 ]}
             />
-            <PrimeReactProvider>
-                <Header data={header.items} />
-                <BubbleComponent />
-
-                <h1 className={`text-7xl ${myFont.className} text-white mt-20`}>
-                    بلاگ ها
-                </h1>
-
-                <div className={`w-full text-white text-right mt-16 ${vazir.className}`}>
-                    <h3 className='text-xl '> آخرین بلاگ ها </h3>
-                </div>
-                <div className='mt-6 flex flex-col xl:flex-row-reverse gap-4'>
-                    <div style={{ flex: '1' }}>
-                        <BlogsContainer image={data[0].image.sourceUrl} author={data[0].author} date={data[0].date}
-                            title={data[0].title} width={576} height={499} isVertical
-                            description={data[0].description} hasArrow />
-                    </div>
-                    <div style={{ flex: '1' }} className='flex flex-col gap-8 md:flex hidden'>
+            <SmoothScroll>
+                <main
+                    className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
+                >
+                    <PrimeReactProvider>
+                        <Header data={header.items} />
                         <BubbleComponent />
-                        {data.slice(1, 4).map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => {
-                            return (
+
+                        <h1 className={`text-7xl ${myFont.className} text-white mt-20`}>
+                            بلاگ ها
+                        </h1>
+
+                        <div className={`w-full text-white text-right mt-16 ${vazir.className}`}>
+                            <h3 className='text-xl '> آخرین بلاگ ها </h3>
+                        </div>
+                        <div className='mt-6 flex flex-col xl:flex-row-reverse gap-4'>
+                            <div style={{ flex: '1' }}>
+                                <BlogsContainer image={data[0].image.sourceUrl} author={data[0].author} date={data[0].date}
+                                    title={data[0].title} width={576} height={499} isVertical
+                                    description={data[0].description} hasArrow />
+                            </div>
+                            <div style={{ flex: '1' }} className='flex flex-col gap-8 md:flex hidden'>
+                                <BubbleComponent />
+                                {data.slice(1, 4).map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => {
+                                    return (
+                                        <BlogsContainer
+                                            key={index}
+                                            image={blog.image.sourceUrl}
+                                            author={blog.author}
+                                            date={blog.date}
+                                            title={blog.title}
+                                            width={310}
+                                            height={207}
+                                            isVertical={false}
+                                            description={blog.description}
+                                            hasArrow={false}
+                                        />
+                                    )
+                                })}
+                            </div>
+                            <div style={{ flex: '1' }} className='flex flex-col gap-8 md:hidden flex'>
+                                <BubbleComponent />
+                                {data.slice(1, 4).map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => {
+                                    return (
+                                        <BlogsContainer
+                                            key={index}
+                                            image={blog.image.sourceUrl}
+                                            author={blog.author}
+                                            date={blog.date}
+                                            title={blog.title}
+                                            width={310}
+                                            height={207}
+                                            isVertical={true}
+                                            description={blog.description}
+                                            hasArrow={false}
+                                        />
+                                    )
+                                })}
+                            </div>
+                        </div>
+
+                        <div className={`w-full text-white text-right mt-16 ${vazir.className}`}>
+                            <h3 className='text-xl '> تمام بلاگ ها </h3>
+                        </div>
+
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 my-16'>
+                            <BubbleComponent />
+                            {data.map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => (
                                 <BlogsContainer
                                     key={index}
                                     image={blog.image.sourceUrl}
@@ -93,64 +141,24 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                                     date={blog.date}
                                     title={blog.title}
                                     width={310}
-                                    height={207}
-                                    isVertical={false}
-                                    description={blog.description}
-                                    hasArrow={false}
-                                />
-                            )
-                        })}
-                    </div>
-                    <div style={{ flex: '1' }} className='flex flex-col gap-8 md:hidden flex'>
-                        <BubbleComponent />
-                        {data.slice(1, 4).map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => {
-                            return (
-                                <BlogsContainer
-                                    key={index}
-                                    image={blog.image.sourceUrl}
-                                    author={blog.author}
-                                    date={blog.date}
-                                    title={blog.title}
-                                    width={310}
-                                    height={207}
+                                    height={229}
                                     isVertical={true}
                                     description={blog.description}
-                                    hasArrow={false}
+                                    hasArrow={true}
                                 />
-                            )
-                        })}
-                    </div>
-                </div>
+                            ))}
+                        </div>
 
-                <div className={`w-full text-white text-right mt-16 ${vazir.className}`}>
-                    <h3 className='text-xl '> تمام بلاگ ها </h3>
-                </div>
+                        <BubbleComponent />
 
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 my-16'>
-                    <BubbleComponent />
-                    {data.map((blog: { image: { sourceUrl: StaticImageData; }; author: string; date: string; title: string; description: string; }, index: number) => (
-                        <BlogsContainer
-                            key={index}
-                            image={blog.image.sourceUrl}
-                            author={blog.author}
-                            date={blog.date}
-                            title={blog.title}
-                            width={310}
-                            height={229}
-                            isVertical={true}
-                            description={blog.description}
-                            hasArrow={true}
-                        />
-                    ))}
-                </div>
+                        <Footer />
 
-                <BubbleComponent />
+                    </PrimeReactProvider>
 
-                <Footer />
+                </main>
+            </SmoothScroll>
 
-            </PrimeReactProvider>
-
-        </main>
+        </>
     )
 }
 
