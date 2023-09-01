@@ -17,6 +17,9 @@ import { getQueryContactUs, getQueryHeader, getQueryProductsPage } from '@/lib/s
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
+const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothScroll"), {
+    ssr: false,
+});
 
 export default function Contact({ header, data, searchData }: { header: any, data: any, searchData: any }) {
 
@@ -25,9 +28,7 @@ export default function Contact({ header, data, searchData }: { header: any, dat
     }, [])
 
     return (
-        <main
-            className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
-        >
+        <>
             <AnimatedCursor
                 innerSize={17}
                 outerSize={250}
@@ -55,13 +56,19 @@ export default function Contact({ header, data, searchData }: { header: any, dat
                     '.link'
                 ]}
             />
-            <PrimeReactProvider>
-                <Header data={header.items} searchData={searchData} />
-                <ContactUs data={data} />
+            <SmoothScroll>
+                <main
+                    className={`flex min-h-screen flex-col items-center p-6 overflow-hidden ${inter.className}`}
+                >
+                    <PrimeReactProvider>
+                        <Header data={header.items} searchData={searchData} />
+                        <ContactUs data={data} />
 
-            </PrimeReactProvider>
+                    </PrimeReactProvider>
 
-        </main>
+                </main>
+            </SmoothScroll>
+        </>
     )
 }
 

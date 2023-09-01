@@ -49,7 +49,7 @@ const Footer = () => {
                     <h2 className={`text-white text-5xl md:text-6xl text-center ${myFont.className}`}> با ما در ارتباط باشید </h2>
                     <div className='Footer_leftSide__email flex flex-row-reverse items-center justify-between w-10/12 mx-auto md:ml-auto gap-6'>
                         <input placeholder='ایمیل شما' className={`${vazir.className} outline-none bg-transparent text-white placeholder:text-white pb-1 text- placeholder:text-right w-full`}
-                            style={{ borderBottom: '1px solid white;', direction: 'ltr' }}
+                            style={{ borderBottom: '1px solid white', direction: 'ltr' }}
                         />
                         <div className='rounded-full bg-white'>
                             <Image src={arrow} alt='arrow' unoptimized className='w-16 p-4' />
