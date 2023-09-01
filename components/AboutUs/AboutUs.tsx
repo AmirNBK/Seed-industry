@@ -57,11 +57,11 @@ const AboutUs = (props: {
             </div>
             <AboutUsSection text={props.data.aboutUsSection} />
             <AccordionSection data={props.data.strongPoints[0].point} />
-            <div data-aos="flip-right" data-aos-duration="2500" data-aos-once={true}>
+            <div>
                 <History data={props.data.history[0].slide} />
 
             </div>
-            <div data-aos="flip-right" data-aos-duration="2500" data-aos-once={true}>
+            <div>
                 <Foundation data={props.data.foundation[0]} />
             </div>
 

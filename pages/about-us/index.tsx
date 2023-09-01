@@ -13,7 +13,10 @@ import { getQueryAboutUsPage, getQueryHeader } from '@/lib/service';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 import Scroll from '../../components/SmoothScroll/SmoothScroll'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
-const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
+const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
+const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothScroll"), {
+    ssr: false,
+});
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
@@ -23,9 +26,7 @@ export default function About({ header, data }: {
 }) {
 
     return (
-        <main
-            className={`flex flex-col items-center ${inter.className}`}
-        >
+        <>
             <AnimatedCursor
                 innerSize={17}
                 outerSize={250}
@@ -53,15 +54,20 @@ export default function About({ header, data }: {
                     '.link'
                 ]}
             />
-            <PrimeReactProvider>
-                    <div className='w-full p-6'>
-                        <Header data={header.items} />
-                    </div>
-                    <BubbleComponent />
-                    <AboutUs data={data} />
-            </PrimeReactProvider>
-
-        </main>
+            <SmoothScroll>
+                <main
+                    className={`flex flex-col items-center ${inter.className}`}
+                >
+                    <PrimeReactProvider>
+                        <div className='w-full p-6'>
+                            <Header data={header.items} />
+                        </div>
+                        <BubbleComponent />
+                        <AboutUs data={data} />
+                    </PrimeReactProvider>
+                </main>
+            </SmoothScroll>
+        </>
     )
 }
 
