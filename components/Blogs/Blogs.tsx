@@ -10,6 +10,7 @@ const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
 const Blogs = (props: {
     data: { title: string; color: string; category: any; }[];
     onHoverChange: (isHovered: boolean) => void;
+    onHoverContainer: (isHovered: boolean) => void;
 }) => {
     const { ref, inView, entry } = useInView({
         triggerOnce: true
@@ -41,6 +42,7 @@ const Blogs = (props: {
                         category={item.categories}
                         color={item.color}
                         onHoverChange={props.onHoverChange}
+                        onHoverContainer={props.onHoverContainer}
                     />
                 ))}
             </div>

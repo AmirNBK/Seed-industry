@@ -17,11 +17,11 @@ const BlogsItem = (props: {
     category: [string, string]
     color: string
     onHoverChange: (isHovered: boolean) => void;
+    onHoverContainer: (isHovered: boolean) => void;
 }) => {
     const title = props.title
     const category = props.category
     const color = props.color
-    const [isHovered, setIsHovered] = useState(false);
 
     const { ref, inView, entry } = useInView({
         triggerOnce: true
@@ -30,23 +30,34 @@ const BlogsItem = (props: {
     return (
         <div className={` ${inView && 'animate__animated animate__fadeInRight animate__slower'} BlogsItem text-right w-fit flex flex-col gap-2`}
             ref={ref}
+            onMouseEnter={() => {
+                props.onHoverContainer(true);
+            }}
+            onMouseLeave={() => {
+                props.onHoverContainer(false);
+            }}
         >
             {inView &&
                 <>
                     <div style={{ color: color }} className={`${myFont.className} flex flex-row-reverse md:justify-start justify-center gap-4`}> {category.map((item: string, index: number) => {
                         return (
-                            <p key={index} className='text-sm sm:text-lg'>
+                            <p key={index} className='text-sm sm:text-lg'
+                                onMouseEnter={() => {
+                                    props.onHoverChange(true);
+                                }}
+                                onMouseLeave={() => {
+                                    props.onHoverChange(false);
+                                }}
+                            >
                                 {item}
                             </p>
                         )
                     })} </div>
                     <p
                         onMouseEnter={() => {
-                            setIsHovered(true);
                             props.onHoverChange(true);
                         }}
                         onMouseLeave={() => {
-                            setIsHovered(false);
                             props.onHoverChange(false);
                         }}
                         className={`text-white md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${vazir.className}`} style={{ lineHeight: '53px' }}>

@@ -39,16 +39,35 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
   const [scrollY, setScrollY] = useState(0);
   const [animationFaded, setAnimationFaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [delay, setDelay] = useState(true)
+  const [showCursor, setShowCursor] = useState(false);
+  const [hoverContainer, setHoverContainer] = useState(false)
 
   const handleHoverChange = (isHoveredValue: boolean) => {
     setIsHovered(isHoveredValue);
+    // Check if isHoveredValue is true and there is a delay (2 seconds)
+    if (isHoveredValue) {
+      // Show the cursor after 2 seconds
+      const cursorDelay = setTimeout(() => {
+        setShowCursor(true);
+      }, 100);
+      return () => clearTimeout(cursorDelay);
+    } else {
+      // Hide the cursor if not hovered or if there's no delay
+      setShowCursor(false);
+    }
   };
+
+
+  const handleHoverContainer = () => {
+    setHoverContainer(true)
+  }
 
 
   useEffect(() => {
     const delay = setTimeout(() => {
       setAnimationFaded(true);
-    }, 3500);
+    }, 100);
     return () => clearTimeout(delay);
   }, []);
 
@@ -64,6 +83,8 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
       window.removeEventListener("scroll", onScroll);
     }
   }, []);
+
+
 
 
   const cumulativeOffset = (element: any) => {
@@ -116,7 +137,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
 
   return (
     <>
-      {isHovered ?
+      {showCursor ?
         <AnimatedCursor
           innerSize={17}
           outerSize={180}
@@ -157,7 +178,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           outerAlpha={0.2}
           innerScale={0.7}
           outerScale={1.3}
-          trailingSpeed={35}
+          trailingSpeed={hoverContainer ? 2 : 35}
           outerStyle={{
             backgroundColor: 'rgba(136, 219, 68, 0.90)',
             filter: 'blur(97.5px)',
@@ -182,7 +203,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
       <SmoothScroll>
         <div>
           <main
-            className={`flex min-h-screen flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
+            className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
             onMouseMoveCapture={moveFunc} id='myscrollbar'
           >
             <PrimeReactProvider>
@@ -209,7 +230,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                   </div>
                   {/* <Slider /> */}
                   <ProductSliderContainer data={productSlider.products[0].product} />
-                  <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} />
+                  <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
                   <Values data={values.ourValues[0].singleValue} />
                   <Footer />
                 </>
