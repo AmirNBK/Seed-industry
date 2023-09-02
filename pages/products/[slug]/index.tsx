@@ -72,7 +72,8 @@ export default function SingleProduct() {
                 setProductData(productMatch);
             }
         });
-    }, [router.query.slug]);
+    }, [productData]);
+    
 
 
     useEffect(() => {

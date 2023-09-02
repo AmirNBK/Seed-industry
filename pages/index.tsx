@@ -67,7 +67,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
   useEffect(() => {
     const delay = setTimeout(() => {
       setAnimationFaded(true);
-    }, 100);
+    }, 3500);
     return () => clearTimeout(delay);
   }, []);
 
@@ -236,7 +236,6 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                 </>
               }
             </PrimeReactProvider>
-
           </main>
         </div>
       </SmoothScroll>
