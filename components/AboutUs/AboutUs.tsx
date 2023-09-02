@@ -16,7 +16,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import animations from "../../assets/animations/greenAnimation.json";
 import Lottie from "lottie-react";
-import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 
 

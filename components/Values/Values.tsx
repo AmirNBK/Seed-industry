@@ -3,7 +3,9 @@ import localFont from 'next/font/local'
 import ValuesContainer from './ValuesContainer/ValuesContainer';
 import ResearchIcon from '@/assets/Icons/magnifier';
 import BubbleComponent from '../BubbleComponent/BubbleComponent';
+import { useInView } from 'react-intersection-observer';
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
+import 'animate.css';
 
 interface ValueItem {
     title: string;
@@ -15,6 +17,9 @@ const Values = (props: {
     data: any
 }) => {
 
+    const { ref, inView, entry } = useInView({
+        triggerOnce: true
+    });
     const [activeIndex, setActiveIndex] = useState(null);
 
     const handleContainerClick = (index: any) => {
@@ -26,8 +31,8 @@ const Values = (props: {
     };
 
     return (
-        <div className='Values  w-full mb-32 mt-16 '
-            data-aos-duration="1000" data-aos-once={true} data-aos="fade-down"
+        <div className={`${inView && 'animate__animated animate__backInRight animate__slower'} Values  w-full mb-32 mt-16`}
+            ref={ref}
         >
             <BubbleComponent />
             <h2

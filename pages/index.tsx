@@ -8,7 +8,6 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import dynamic from 'next/dynamic'
 import pic from '../assets/Images/heroSeed.png'
-import HeroSectionImage from '@/components/HeroSectionImage/HeroSectionImage';
 import ArrowComponent from '@/components/CommonComponents/ArrowComponent/ArrowComponent';
 import AboutUs from '@/components/AboutUsSection/AboutUsSection';
 import 'animate.css';
@@ -17,14 +16,14 @@ import Blogs from '@/components/Blogs/Blogs';
 import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
-import Slider from '../components/Slider/Slider'
 import Lottie from "lottie-react";
 import { GetStaticProps } from 'next'
+const SmoothScroll = dynamic(() => import("../components/SmoothScroll/SmoothScroll"), {
+  ssr: false,
+});
 import animations from "../assets/animations/animation_llnpmcm5.json";
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
-import Scroll from '@/components/SmoothScroll/SmoothScroll'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
-import pic2 from '../assets/Images/pic1.jpg'
 
 
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
@@ -39,6 +38,12 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [scrollY, setScrollY] = useState(0);
   const [animationFaded, setAnimationFaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleHoverChange = (isHoveredValue: boolean) => {
+    setIsHovered(isHoveredValue);
+  };
+
 
   useEffect(() => {
     const delay = setTimeout(() => {
@@ -110,9 +115,41 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
 
 
   return (
-
     <>
-      <div>
+      {isHovered ?
+        <AnimatedCursor
+          innerSize={17}
+          outerSize={180}
+          color='255, 255, 255'
+          outerAlpha={0.5}
+          innerScale={0.7}
+          outerScale={1}
+          trailingSpeed={20}
+          outerStyle={{
+            width: '158px !important',
+            height: '200px !important',
+            backgroundImage: `url(https://images.unsplash.com/photo-1458014854819-1a40aa70211c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)`,
+            borderRadius: '17px',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            transform: 'rotate(9.243deg)',
+            zIndex: '-1',
+          }}
+          clickables={[
+            'a',
+            'input[type="text"]',
+            'input[type="email"]',
+            'input[type="number"]',
+            'input[type="submit"]',
+            'input[type="image"]',
+            'label[for]',
+            'select',
+            'textarea',
+            'button',
+            '.link'
+          ]}
+        />
+        :
         <AnimatedCursor
           innerSize={17}
           outerSize={250}
@@ -140,44 +177,51 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             '.link'
           ]}
         />
-        <main
-          className={`flex min-h-screen flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
-          onMouseMoveCapture={moveFunc} id='myscrollbar'
-        >
-          <PrimeReactProvider>
-            <BubbleComponent />
-            <Header data={header.items} />
-            {!(animationFaded && animationPlayedOnce) &&
-              <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}
-                onComplete={() => setAnimationPlayedOnce(true)} />
-            }
-            {(animationPlayedOnce && animationFaded) &&
-              <>
-                <div className='relative mt-20'>
+      }
 
-                  <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower'>
-                    <Image src={pic} alt='pic'
-                      ref={imageRef}
-                      className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
-                    <div className='animate__lightSpeedInRight animate__animated animate__delay-1s animate__slow'>
-                      <HeroSectionText />
+      <SmoothScroll>
+        <div>
+          <main
+            className={`flex min-h-screen flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
+            onMouseMoveCapture={moveFunc} id='myscrollbar'
+          >
+            <PrimeReactProvider>
+              <BubbleComponent />
+              <Header data={header.items} />
+              {!(animationFaded && animationPlayedOnce) &&
+                <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}
+                  onComplete={() => setAnimationPlayedOnce(true)} />
+              }
+              {(animationPlayedOnce && animationFaded) &&
+                <>
+                  <div className='relative mt-20'>
+
+                    <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower'>
+                      <Image src={pic} alt='pic'
+                        ref={imageRef}
+                        className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
+                      <div className='animate__lightSpeedInRight animate__animated animate__delay-1s animate__slow'>
+                        <HeroSectionText />
+                      </div>
                     </div>
+                    <ArrowComponent />
+                    <AboutUs data={aboutUs} />
                   </div>
-                  <ArrowComponent />
-                  <AboutUs data={aboutUs} />
-                </div>
-                {/* <Slider /> */}
-                <ProductSliderContainer data={productSlider.products[0].product} />
-                <Blogs data={blogs.blogsAndNews} />
-                <Values data={values.ourValues[0].singleValue} />
-                <Footer />
-              </>
-            }
-          </PrimeReactProvider>
+                  {/* <Slider /> */}
+                  <ProductSliderContainer data={productSlider.products[0].product} />
+                  <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} />
+                  <Values data={values.ourValues[0].singleValue} />
+                  <Footer />
+                </>
+              }
+            </PrimeReactProvider>
 
-        </main>
-      </div>
+          </main>
+        </div>
+      </SmoothScroll>
     </>
+
+
   )
 }
 
