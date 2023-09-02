@@ -8,18 +8,22 @@ import localFont from 'next/font/local'
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 import logo from '../../assets/Icons/fintech-logo.svg'
 import BubbleComponent from '../BubbleComponent/BubbleComponent';
-import animations from "../../assets/animations/greenAnimation.json";
-import Lottie from "lottie-react";
+import 'animate.css';
+import { useInView } from 'react-intersection-observer';
 
 const Foundation = (props: {
     data: any
 }) => {
+    const { ref, inView, entry } = useInView({
+        triggerOnce: true
+    });
+
 
     return (
-        <div className='Foundation md:w-8/12 w-11/12 mx-auto  relative rounded-md'
-            style={{ background: 'rgba(16, 42, 35, 1)' }}>
+        <div className={`${inView && 'animate__animated animate__zoomIn animate__slower'} Foundation md:w-8/12 w-11/12 mx-auto  relative rounded-md`}
+            style={{ background: 'rgba(16, 42, 35, 1)' }} ref={ref}>
             <BubbleComponent />
-            <div className='flex lg:flex-row-reverse flex-col lg:items-start items-center'>
+            <div className={`flex lg:flex-row-reverse flex-col lg:items-start items-center`}>
                 <div className='Foundation__info md:text-left text-center md:items-end items-center flex-1 mt-8 text-white items-end flex flex-col px-4 md:pr-12 gap-12 flex-1'>
                     <h2 className={`text-3xl ${myFont.className}`}>
                         {props.data.title}

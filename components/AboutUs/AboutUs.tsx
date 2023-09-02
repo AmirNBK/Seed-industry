@@ -17,6 +17,7 @@ import 'aos/dist/aos.css';
 import animations from "../../assets/animations/greenAnimation.json";
 import Lottie from "lottie-react";
 import dynamic from 'next/dynamic';
+import { useInView } from 'react-intersection-observer';
 
 
 const AboutUs = (props: {
@@ -25,6 +26,11 @@ const AboutUs = (props: {
     useEffect(() => {
         AOS.init();
     }, [])
+
+    const { ref, inView, entry } = useInView({
+        triggerOnce: true
+    });
+
     return (
         <div className='AboutUs w-full mb-6'>
             <div className='AboutUs__intro flex xl:flex-row-reverse xl:items-baseline items-center flex-col text-white mt-6 sm:mt-20 sm:px-6'>
@@ -49,7 +55,7 @@ const AboutUs = (props: {
             </div>
 
 
-            <div className='relative my-16'>
+            <div className='relative my-16' ref={ref} >
                 <Image src={pic} alt='picture' className='w-full object-cover sm:h-700' loading='lazy' />
                 <Image src={play} alt='playIcons' className='sm:w-auto w-2/12 absolute left-1/2 top-1/2'
                     style={{ transform: 'translate(-50%,-50%)' }}

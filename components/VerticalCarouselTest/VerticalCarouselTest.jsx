@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import { Vazirmatn } from 'next/font/google';
 import useWindowSize from "@/Hooks/innerSize";
+import { useInView } from "react-intersection-observer";
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 
@@ -13,6 +14,10 @@ const VerticalCarousel = ({ data }) => {
     const itemHeight = 52;
     const shuffleThreshold = halfwayIndex * itemHeight;
     const visibleStyleThreshold = shuffleThreshold / 2;
+
+    const { ref, inView, entry } = useInView({
+        triggerOnce: true
+    });
 
     const determinePlacement = (itemIndex) => {
         if (activeIndex === itemIndex) return 0;
@@ -36,10 +41,12 @@ const VerticalCarousel = ({ data }) => {
         }
     };
 
+
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto" ref={ref}>
             <section className="outer-container xl:flex-row flex-col lg:px-40">
-                <div className="carousel-wrapper sm:m-0 mt-12"
+                <div className={`${inView && 'animate__animated animate__fadeInLeft animate__slower'}
+                carousel-wrapper sm:m-0 mt-12`}
                     style={{ marginBottom: `${size.width < 640 && '-60px'}` }}
                 >
                     <div className="carousel">
@@ -79,7 +86,7 @@ const VerticalCarousel = ({ data }) => {
                         </div>
                     </div>
                 </div>
-                <div className="content">
+                <div className={`content ${inView && 'animate__animated animate__fadeInRight animate__slower'}`}>
                     <h2 className={`text-4xl ${vazir.className}`}> {data[activeIndex].title} </h2>
                     <hr className="w-1/12 mx-auto my-6" />
                     <p className={`text-lg font-extralight leading-loose ${vazir.className}`}
