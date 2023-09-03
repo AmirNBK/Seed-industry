@@ -63,6 +63,10 @@ body {
     margin: 0;
   }
 
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: #000;
+  }
+
   #__next {
     height: 100vh;
   }

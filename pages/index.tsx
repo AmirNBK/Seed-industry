@@ -21,7 +21,7 @@ import { GetStaticProps } from 'next'
 const SmoothScroll = dynamic(() => import("../components/SmoothScroll/SmoothScroll"), {
   ssr: false,
 });
-import animations from "../assets/animations/animation_llnpmcm5.json";
+import animations from "../assets/animations/seedAnimation2.json";
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
 

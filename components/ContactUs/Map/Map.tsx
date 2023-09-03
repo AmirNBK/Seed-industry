@@ -11,7 +11,7 @@ const Map = (props: {
     data: any
 }) => {
     return (
-        <div className='Map relative mt-28 w-full mb-32' style={{ height: '500px' }}>
+        <div className='Map relative mt-28 w-full mb-32' style={{ height: '550px' }}>
             <MapLeaflet data={props.data} />
         </div>
     );
