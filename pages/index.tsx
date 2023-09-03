@@ -127,7 +127,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           [0, 0, 0, 1]
         ];
 
-        imageRef.current.style.transition = 'all 0.35s'; // Add the transition inline
+        imageRef.current.style.transition = 'all 0.35s';
         imageRef.current.style.transform = `matrix3d(${matrix.toString()})`;
       }
     }
@@ -153,6 +153,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             borderRadius: '17px',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
+            transition : 'opacity 5s',
             transform: 'rotate(9.243deg)',
             zIndex: '-1',
           }}
@@ -228,7 +229,6 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                     <ArrowComponent />
                     <AboutUs data={aboutUs} />
                   </div>
-                  {/* <Slider /> */}
                   <ProductSliderContainer data={productSlider.products[0].product} />
                   <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
                   <Values data={values.ourValues[0].singleValue} />

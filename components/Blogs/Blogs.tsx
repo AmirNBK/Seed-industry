@@ -37,6 +37,7 @@ const Blogs = (props: {
             >
                 {convertedData.map((item, index) => (
                     <BlogsItem
+                        id={index}
                         key={index}
                         title={item.title}
                         category={item.categories}
