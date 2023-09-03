@@ -19,8 +19,8 @@ const InfoContainer = (props: {
     ];
 
     return (
-        <div className={`InfoContainer text-xs sm:text-base absolute top-1/2 left-1/2 rounded-md text-white w-3/5 lg:w-3/12 flex flex-col gap-6 px-6 py-6 ${vazir.className}`}
-            style={{ backgroundColor: '#000', transform: 'translate(-50%,-50%)' }}>
+        <div className={`InfoContainer text-xs h-full sm:text-base top-1/2 left-1/2 rounded-md text-white w-3/5 lg:w-full flex flex-col gap-6 px-6 py-6 ${vazir.className}`}
+            style={{ backgroundColor: '#000'}}>
             {infoItems.map((item, index) => (
                 <div className='InfoContainer__items flex flex-col items-center gap-2' key={index}>
                     <Image src={item.icon} alt='icon' />
@@ -29,10 +29,6 @@ const InfoContainer = (props: {
             ))}
 
             <p className='text-center'>مشاهده برروی نقشه</p>
-
-            <Image src={arrow} alt='arrow' className='absolute left-1/2'
-            style={{bottom : '-35px' , transform : 'translateX(-50%)'}}
-            />
         </div>
     );
 };

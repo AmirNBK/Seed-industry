@@ -59,6 +59,10 @@ body {
   background-color: #173D33;
   overflow-x: hidden;
 
+  .leaflet-popup-content {
+    margin: 0;
+  }
+
   #__next {
     height: 100vh;
   }
