@@ -16,7 +16,7 @@ const RegularButton = (props: {
         <div className="row middle-on-small center-on-small h-full">
             <div className="column small-12 medium-6 large-4">
                 <button onClick={onClick} className={`${vazir.className} c-button c-button--gooey`}
-                    style={{ borderRadius: '30px', background: '#FFD074' }}
+                    style={{ borderRadius: '30px', background: '#D1E8E4' }}
                 >
                     {link ?
                         <Link href={`${link ? link : '/'}`} className={`${vazir.className} relative text-xs md:text-base`} style={{ zIndex: '100' }}>
