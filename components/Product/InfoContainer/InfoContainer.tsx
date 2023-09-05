@@ -5,19 +5,25 @@ const vazir = Vazirmatn({ subsets: ['latin'] });
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' });
 import light from '../../../assets/Images/card-light.png'
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
+import 'animate.css';
 
 const InfoContainer = (props: {
     title: string
     content: any
     link: string
 }) => {
+    const { ref, inView, entry } = useInView({
+        triggerOnce: true
+    });
+
     return (
-        <div className='InfoContainer rounded-md w-full md:w-10/12 px-6 py-10 my-6' data-aos-duration="1500" data-aos-once={true} data-aos="fade-right" id={`${props.link}`} style={{ boxShadow: '0px -23px 60px rgba(0, 0, 0, 0.25)', }}>
-            {/* <Image src={light} alt='light' className='absolute' style={{ right: '-10%', top: '-50%', width: '540px' }} /> */}
-            {/* <Image src={light} alt='light' className='absolute' style={{ right: '30%', top: '-40%' }} /> */}
+        <div ref={ref} className={`${inView && 'animate__animated animate__fadeInLeft'} InfoContainer overflow-hidden relative rounded-md w-full md:w-10/12 px-6 py-10 my-6`}
+            id={`${props.link}`} style={{ boxShadow: '0px -23px 60px rgba(0, 0, 0, 0.25)', }}>
+            <Image src={light} alt='light' className='absolute' style={{ right: '-20%', top: '-50%', width: '540px' }} />
+            <Image src={light} alt='light' className='absolute' style={{ right: '40%', top: '0%' }} />
             <div className={`text-white text-right text-3xl ${myFont.className}`}>
                 {props.title}
-                meow
             </div>
             <div>
                 {props.content}

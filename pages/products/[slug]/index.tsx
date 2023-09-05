@@ -13,7 +13,7 @@ import Image from 'next/image';
 import Product from '@/components/Product/Product';
 import Footer from '@/components/Footer/Footer';
 import Navigation from '@/components/Product/Navigation/Navigation';
-import useWindowSize from '@/Hooks/innerSize';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import 'animate.css';
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 import 'animate.css';
@@ -26,22 +26,30 @@ import { GetStaticProps } from 'next';
 import Lottie from "lottie-react";
 import animations from "../../../assets/animations/seedAnimation2.json";
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
+import { useInView } from 'react-intersection-observer';
+import ProductPic from '@/components/ProductPic/ProductPic';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
+
+const navigationItems = [
+    { label: 'اطلاعات بذر', link: '#info' },
+    { label: 'ویژگی های بذر', link: '#properties' },
+    { label: 'جدول زمان بندی', link: '#timesheet' },
+    { label: 'اجزا', link: '#components' },
+];
 
 export default function SingleProduct() {
     const [header, setHeader] = useState()
     const [productData, setProductData] = useState<{ productName: string } | null>(null);
     const [animationPlayedOnce, setAnimationPlayedOnce] = useState(false);
     const elementRef = useRef(null);
-    const ImageRef = useRef(null);
+    const containerRef = useRef(null);
     const router = useRouter()
     const request = getQueryHeader();
     const productInfo = getQuerySingleProducts();
-    const [scrollY, setScrollY] = useState(0);
+    const scrollYRef = useRef(0); 
     const [animationFaded, setAnimationFaded] = useState(false);
-    const [showTitle, setShowtitle] = useState<boolean>(false)
 
     useEffect(() => {
         const delay = setTimeout(() => {
@@ -50,50 +58,32 @@ export default function SingleProduct() {
         return () => clearTimeout(delay);
     }, []);
 
-    const onScroll = useCallback(() => {
-        const { pageYOffset, scrollY } = window;
-        setScrollY(window.pageYOffset);
-    }, []);
+
 
     useEffect(() => {
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => {
-            window.removeEventListener("scroll", onScroll);
-        }
+        AOS.init();
     }, []);
 
     useEffect(() => {
         request.then((res) => {
             setHeader(res.items);
         });
-        productInfo.then((res) => {
-            const productMatch = res.product.find((product: any) => product.id === router.query.slug);
-            if (productMatch) {
-                setProductData(productMatch);
-            }
-        });
-    }, [productData]);
+    }, []);
+
+    useEffect(() => {
+        if (router.query.slug) {
+            productInfo.then((res) => {
+                const productMatch = res.product.find((product: any) => product.id === router.query.slug);
+                if (productMatch) {
+                    setProductData(productMatch);
+                }
+            });
+        }
+    }, [router.query.slug]);
     
-
-
-    useEffect(() => {
-        if (scrollY > 430) setShowtitle(true)
-    }, [scrollY])
-
-
-    useEffect(() => {
-        AOS.init();
-    }, [])
-
-    const navigationItems = [
-        { label: 'اطلاعات بذر', link: '#info' },
-        { label: 'ویژگی های بذر', link: '#properties' },
-        { label: 'جدول زمان بندی', link: '#timesheet' },
-        { label: 'اجزا', link: '#components' },
-    ];
-
     return (
         <main
+            ref={containerRef}
             className={`flex min-h-screen flex-col items-center overflow-hidden ${inter.className}`}
         >
             <AnimatedCursor
@@ -146,29 +136,7 @@ export default function SingleProduct() {
                             <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
 
                         </div>
-                        <div className='productContainer__pic border-l border-solid border-white xl:block hidden'
-                            style={{ flex: '1.5' }} ref={elementRef}
-                        >
-                            {(scrollY < 430 && showTitle) &&
-                                <p className={` ${myFont.className} text-3xl md:text-5xl text-white fixed text-center animate__animated animate__lightSpeedOutRight`}
-                                    style={{ top: '20%', right: '5%' }}
-                                >
-                                    {productData.productName}
-                                </p>
-                            }
-                            {scrollY > 430 &&
-                                <p className={` ${myFont.className} text-3xl md:text-5xl text-white fixed text-center animate__animated animate__lightSpeedInRight`}
-                                    style={{ top: '20%', right: '5%' }}
-                                >
-                                    {productData.productName}
-                                </p>
-                            }
-                            <Image src={productPic} alt='pic'
-                                ref={ImageRef}
-                                className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12 animate__animated animate__fadeIn animate__delay-3s'
-                                unoptimized />
-
-                        </div>
+                        <ProductPic productName={productData.productName} pic={productPic}/>
                         <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
                             <Product data={productData} />
                         </div>
