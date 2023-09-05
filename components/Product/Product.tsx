@@ -82,10 +82,11 @@ const Product = (props: {
                     {props.data?.description}
                 </p>
                 <BubbleComponent />
-                <InfoContainer title='اطلاعات بذر' content={<Infos items={seedInfos} />} link='info' />
-                <InfoContainer title='ویژگی های بذر' content={<Infos items={seedFeatures} />} link='properties' />
-                <InfoContainer title='جدول زمان بندی دوره کاشت' content={<TimeSheetTable />} link='timesheet' />
-                <InfoContainer title='اجزا' content={<ProductComponents />} link='components' />
+                <InfoContainer key='info' title='اطلاعات بذر' content={<Infos items={seedInfos} />} link='info' />
+                <InfoContainer key='properties' title='ویژگی های بذر' content={<Infos items={seedFeatures} />} link='properties' />
+                <InfoContainer key='timesheet' title='جدول زمان بندی دوره کاشت' content={<TimeSheetTable />} link='timesheet' />
+                <InfoContainer key='components' title='اجزا' content={<ProductComponents />} link='components' />
+
             </div>
         </div>
     );
