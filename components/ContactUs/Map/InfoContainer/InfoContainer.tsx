@@ -34,9 +34,9 @@ const InfoContainer = (props: {
                 </div>
             ))}
             <div className='flex flex-row justify-evenly'>
-                {socialMedia.map((item: any) => {
+                {socialMedia.map((item: any, index: number) => {
                     return (
-                        <Image className='w-8' src={item} alt={item} />
+                        <Image className='w-8' src={item} alt={item} key={index} />
                     )
                 })}
             </div>
