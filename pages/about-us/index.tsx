@@ -11,7 +11,6 @@ import AboutUs from '@/components/AboutUs/AboutUs';
 import { GetStaticProps } from 'next';
 import { getQueryAboutUsPage, getQueryHeader } from '@/lib/service';
 const vazir = Vazirmatn({ subsets: ['latin'] });
-import Scroll from '../../components/SmoothScroll/SmoothScroll'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
 const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothScroll"), {

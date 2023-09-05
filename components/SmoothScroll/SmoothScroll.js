@@ -1,4 +1,5 @@
 import React from "react";
+import gsap from 'gsap';
 import { TweenLite, Power4 } from "gsap";
 
 export default class SmoothScroll extends React.Component {  
