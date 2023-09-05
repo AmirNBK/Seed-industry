@@ -46,12 +46,6 @@ export default function Blogs({ header, data }: {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [height, setHeight] = useState(0)
 
-    // let height = localStorage.getItem('viewportHeight')
-
-    // console.log(height);
-
-
-
     const handleShowMoreClick = () => {
         setTimeout(() => {
             setDisplayedItems(displayedItems + 3);
@@ -60,8 +54,6 @@ export default function Blogs({ header, data }: {
     };
 
     useEffect(() => {
-        let value = localStorage.getItem("viewportHeight") || "";
-        setHeight(value)
         AOS.init();
     }, [])
 
