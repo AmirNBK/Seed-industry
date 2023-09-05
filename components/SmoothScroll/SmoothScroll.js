@@ -2,6 +2,8 @@ import React from "react";
 import gsap from 'gsap';
 import { TweenLite, Power4 } from "gsap";
 
+gsap.registerPlugin()
+
 export default class SmoothScroll extends React.Component {  
   state = {
     height: window.innerHeight
