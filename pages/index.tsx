@@ -17,11 +17,16 @@ import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
 import Lottie from "lottie-react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { GetStaticProps } from 'next'
 import animations from "../assets/animations/seedAnimation2.json";
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
 const CarouselSlider = dynamic(() => import("@/components/CarouselSlider/CarouselSlider"), {
+  ssr: false,
+});
+const SmoothScroll = dynamic(() => import("../components/SmoothScroll/SmoothScroll"), {
   ssr: false,
 });
 
@@ -42,16 +47,12 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
   const [delay, setDelay] = useState(true)
   const [showCursor, setShowCursor] = useState(false);
   const [hoverContainer, setHoverContainer] = useState(false)
+  const [onMainContainer, setOnMainContainer] = useState(false)
 
   const handleHoverChange = (isHoveredValue: boolean) => {
-    setIsHovered(isHoveredValue);
     // Check if isHoveredValue is true and there is a delay (2 seconds)
     if (isHoveredValue) {
-      // Show the cursor after 2 seconds
-      const cursorDelay = setTimeout(() => {
-        setShowCursor(true);
-      }, 100);
-      return () => clearTimeout(cursorDelay);
+      setShowCursor(true)
     } else {
       // Hide the cursor if not hovered or if there's no delay
       setShowCursor(false);
@@ -71,7 +72,6 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
     return () => clearTimeout(delay);
   }, []);
 
-
   const onScroll = useCallback(() => {
     const { pageYOffset, scrollY } = window;
     setScrollY(window.pageYOffset);
@@ -84,8 +84,9 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
     }
   }, []);
 
-
-
+  useEffect(() => {
+    AOS.init();
+  }, [])
 
   const cumulativeOffset = (element: any) => {
     let top = 0;
@@ -200,10 +201,13 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           ]}
         />
       }
-      <div>
+      <SmoothScroll>
         <main
           className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
           onMouseMoveCapture={moveFunc} id='myscrollbar'
+          onMouseEnter={() => {
+            setShowCursor(false)
+          }}
         >
           <PrimeReactProvider>
             <BubbleComponent />
@@ -236,7 +240,8 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             }
           </PrimeReactProvider>
         </main>
-      </div>
+      </SmoothScroll>
+
     </>
 
 

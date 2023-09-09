@@ -73,9 +73,6 @@ const ProductSliderContainer = (props) => {
 
     return (
         <div className='ProductSliderContainer w-full flex flex-row-reverse items-center'
-            data-aos="fade-left"
-            data-aos-easing="ease-out-cubic" data-aos-once={true}
-            data-aos-duration="1500"
         >
             <BubbleComponent />
             <div className='card w-10/12 ml-auto'>

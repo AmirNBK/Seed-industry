@@ -6,10 +6,6 @@ import { useInView } from 'react-intersection-observer';
 const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
-const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
-    ssr: false
-});
-
 const BlogsItem = (props: {
     title: string
     category: [string, string]
@@ -31,24 +27,12 @@ const BlogsItem = (props: {
     return (
         <div className={` ${inView && 'animate__animated animate__fadeInRight animate__slower'} BlogsItem text-right w-fit flex flex-col gap-2`}
             ref={ref}
-            onMouseEnter={() => {
-                setHovered(true)
-            }}
-            onMouseLeave={() => {
-                setHovered(false)
-            }}
         >
             {inView &&
                 <>
                     <div style={{ color: color }} className={`${myFont.className} parent flex flex-row-reverse md:justify-start justify-center gap-4`}> {category.map((item: string, index: number) => {
                         return (
                             <p key={index} className='text-sm sm:text-lg'
-                                onMouseEnter={() => {
-                                    props.onHoverChange(true);
-                                }}
-                                onMouseLeave={() => {
-                                    props.onHoverChange(false);
-                                }}
                             >
                                 {item}
                             </p>
@@ -57,9 +41,11 @@ const BlogsItem = (props: {
                     <p
                         onMouseEnter={() => {
                             props.onHoverChange(true);
+                            setHovered(true)
                         }}
                         onMouseLeave={() => {
                             props.onHoverChange(false);
+                            setHovered(false)
                         }}
                         className={`text-white md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${vazir.className}`} style={{ lineHeight: '53px' }}>
                         {title}

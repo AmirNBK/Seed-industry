@@ -4,10 +4,16 @@ import pic from '../../assets/Images/sliderPic.jpeg'
 import pic2 from '../../assets/Images/sliderPic2.jpeg'
 import pic3 from '../../assets/Images/sliderPic3.jpeg'
 import Image from 'next/image';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import $ from 'jquery'
 
 
 const CarouselSlider = () => {
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     const jqueryCode = () => {
         var w, container, carousel, item, radius, itemLength, rY, ticker, wrapper;
@@ -152,7 +158,10 @@ const CarouselSlider = () => {
 
 
     return (
-        <div className="wrapper">
+        <div className="wrapper"
+            data-aos-duration="3000" data-aos-once={true} data-aos="fade-left"
+            style={{transform : 'rotate(4deg)' , width : '105vw'}}
+        >
             <div id="contentContainer" className="trans3d">
                 <section id="carouselContainer" className="trans3d">
                     <figure id="item1" className="carouselItem trans3d">
@@ -266,8 +275,7 @@ const CarouselSlider = () => {
             <style>
 
                 {
-                    `
-                    
+                    `                 
 .wrapper {
   background-repeat: no-repeat;
   background-position: top center;
@@ -282,14 +290,6 @@ const CarouselSlider = () => {
   overflow: hidden;
 }
 
-a {
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-}
-
-a:hover {
-  color: rgba(255, 255, 255, 1);
-}
 
 /* hardware accelatator className */
 .trans3d {
