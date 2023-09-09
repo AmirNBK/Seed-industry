@@ -44,7 +44,7 @@ const ProductSlider = (props: {
 
     return (
         <div className='ProductSlider sm:p-0 px-6 w-full my-32' id={`product${index}`}>
-            <div className='flex flex-row-reverse mt-6 items-center'>
+            <div className='flex flex-row-reverse mt-6 items-center container'>
                 <div className='ProductSlider__rightSide m-0 relative sm:mr-12 md:flex-2 sm:flex-4 flex-3'
                 >
                     <Image width={150} height={150} src={image} className='w-full' alt='seedPic' unoptimized style={{
@@ -76,6 +76,25 @@ const ProductSlider = (props: {
                     </div>
                 </div>
             </div>
+
+
+            <style>
+                {
+                    `
+                    .container {
+                        @media screen and (max-width:2300px) {
+                            height : 384px;
+                          }
+                          @media screen and (max-width:1500px) {
+                            height : 584px;
+                          }
+                          @media screen and (max-width:1000px) {
+                            height : 284px;
+                          }
+                    }
+                    `
+                }
+            </style>
         </div >
     );
 };

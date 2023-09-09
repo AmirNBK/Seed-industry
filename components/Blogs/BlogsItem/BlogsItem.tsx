@@ -62,7 +62,6 @@ const BlogsItem = (props: {
                         .more${id} {
                             position: relative;
                             text-decoration: none;
-                            display: inline-block;
                             padding: 3px 1px;
                             transition: color ease 1s;
                             

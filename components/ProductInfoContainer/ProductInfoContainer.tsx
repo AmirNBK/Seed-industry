@@ -16,7 +16,7 @@ const ProductInfoContainer = (props: {
     const textColor = props.textColor
 
     return (
-        <div className='ProductInfoContainer sm:block hidden flex flex-col text-right px-5 py-6 gap-2 lg:translate-x-200 translate-x-100 rounded-md w-56 lg:w-80 absolute top-4 lg:top-16'
+        <div className='ProductInfoContainer sm:block hidden flex flex-col text-right px-5 py-6 gap-2 lg:translate-x-200 translate-x-100 rounded-md w-56 lg:w-80 absolute top-4 xl:top-16'
             style={{ background: bgColor }}>
             <h2 className={`text-xl lg:text-3xl ${myFont.className}`} style={{ color: `${textColor}` }}> {title} </h2>
             <p className='text-xs md:text-sm lg:text-lg' style={{ color: `${textColor}` }}> {description} </p>

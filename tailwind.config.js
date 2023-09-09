@@ -36,7 +36,8 @@ module.exports = {
       },
       height: {
         '700': '700px',
-        '500': '30rem'
+        '500': '30rem',
+        '550': '550px'
       },
       spacing: {
         '-60px': '-60px',

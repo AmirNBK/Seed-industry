@@ -219,16 +219,17 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             {(animationPlayedOnce && animationFaded) &&
               <>
                 <div className='relative mt-20'>
-
-                  <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower'>
-                    <Image src={pic} alt='pic'
-                      ref={imageRef}
-                      className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
-                    <div className='animate__lightSpeedInRight animate__animated animate__delay-1s animate__slow'>
-                      <HeroSectionText />
+                  <div className='relative h-screen'>
+                    <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower'>
+                      <Image src={pic} alt='pic'
+                        ref={imageRef}
+                        className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
+                      <div className='animate__lightSpeedInRight animate__animated animate__delay-1s animate__slow'>
+                        <HeroSectionText />
+                      </div>
                     </div>
+                    <ArrowComponent />
                   </div>
-                  <ArrowComponent />
                   <AboutUs data={aboutUs} />
                   <CarouselSlider />
                 </div>

@@ -18,7 +18,8 @@ const ArrowComponent = () => {
 
     return (
         <div
-            className={`ArrowComponent rounded-full w-fit w-64 h-64 relative lg:block hidden animate__animated  animate__fadeIn animate__slower`}
+            className={`ArrowComponent rounded-full w-fit w-64 h-64 absolute bottom-0 lg:block hidden
+            animate__animated  animate__fadeIn animate__slower`}
             style={{ transform: 'translateY(-180px)', marginLeft: '50px' }}
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
