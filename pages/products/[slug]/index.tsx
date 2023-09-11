@@ -48,8 +48,12 @@ export default function SingleProduct() {
     const router = useRouter()
     const request = getQueryHeader();
     const productInfo = getQuerySingleProducts();
-    const scrollYRef = useRef(0); 
+    const scrollYRef = useRef(0);
     const [animationFaded, setAnimationFaded] = useState(false);
+
+    const { ref, inView, entry } = useInView({
+        triggerOnce: false
+    });
 
     useEffect(() => {
         const delay = setTimeout(() => {
@@ -80,7 +84,7 @@ export default function SingleProduct() {
             });
         }
     }, [router.query.slug]);
-    
+
     return (
         <main
             ref={containerRef}
@@ -119,7 +123,8 @@ export default function SingleProduct() {
                 </div>
                 <BubbleComponent />
                 {(animationPlayedOnce && productData && animationFaded) && (
-                    <div className='fixed animate__animated animate__fadeInUp' style={{ bottom: '40px', zIndex: '10' }}>
+                    <div className={`fixed animate__animated animate__fadeInUp ${inView && ' animate__animated animate__fadeOutDown'}`}
+                        style={{ bottom: '40px', zIndex: '10' }}>
                         <Navigation items={navigationItems} />
                     </div>
                 )}
@@ -133,18 +138,19 @@ export default function SingleProduct() {
                         <div className='productContainer__pic border-b border-solid border-white xl:hidden block'
                             style={{ flex: '1.5' }}
                         >
-                            <Image src={productPic} alt='pic' className='mx-auto xl:fixed left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12' unoptimized />
+                            <Image src={productPic} alt='pic'
+                            className={`mx-auto left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12`} unoptimized />
 
                         </div>
-                        <ProductPic productName={productData.productName} pic={productPic}/>
+                        <ProductPic inView={inView} productName={productData.productName} pic={productPic} />
                         <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
                             <Product data={productData} />
                         </div>
                     </div>
                 )}
-
-
-
+                <div ref={ref} >
+                    <Footer />
+                </div>
             </PrimeReactProvider>
 
         </main>
