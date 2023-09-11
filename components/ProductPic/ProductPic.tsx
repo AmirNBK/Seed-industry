@@ -16,27 +16,6 @@ const ProductPic = (props: {
     const ImageRef = useRef(null);
     const [imagePosition, setImagePosition] = useState({ top: 0, right: 0, bottom: 0, left: 0 });
 
-    // Function to get the position coordinates of the ImageRef
-    const getImagePosition = () => {
-        if (ImageRef.current) {
-            const imageRect = ImageRef.current.getBoundingClientRect();
-            setImagePosition({
-                top: imageRect.top + window.scrollY,
-                right: imageRect.right + window.scrollX,
-                bottom: imageRect.bottom + window.scrollY,
-                left: imageRect.left + window.scrollX,
-            });
-        }
-    };
-
-    console.log(scrollY);
-    
-
-    // Call getImagePosition whenever scrollY changes
-    useEffect(() => {
-        getImagePosition();
-    }, [scrollY]);
-
     useScrollPosition(({ prevPos, currPos }) => {
         setScrollY(currPos.y);
     });

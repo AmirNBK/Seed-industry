@@ -50,9 +50,6 @@ export default function SingleProduct() {
     const productInfo = getQuerySingleProducts();
     const scrollYRef = useRef(0);
     const [animationFaded, setAnimationFaded] = useState(false);
-    const productInfoRef = useRef()
-
-    // console.log(productInfoRef.current.offsetHeight);
     
 
     const { ref, inView, entry } = useInView({
@@ -147,7 +144,7 @@ export default function SingleProduct() {
 
                         </div>
                         <ProductPic inView={inView} productName={productData.productName} pic={productPic} />
-                        <div style={{ flex: '2' }} ref={productInfoRef} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
+                        <div style={{ flex: '2' }} className='mr-16 xl:p-0 pt-8 md:w-fit w-full md:p-0 px-4'>
                             <Product data={productData} />
                         </div>
                     </div>

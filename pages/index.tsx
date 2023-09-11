@@ -204,7 +204,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
         />
       }
       {
-        size.width < 768 ?
+        size.width && size.width < 768 ?
           <main
             className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
             onMouseMoveCapture={moveFunc} id='myscrollbar'
