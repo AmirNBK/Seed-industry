@@ -66,7 +66,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                     '.link'
                 ]}
             />
-            <SmoothScroll>
+            <SmoothScroll maxYTranslation={-800.355}>
                 <main
                     className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
                 >

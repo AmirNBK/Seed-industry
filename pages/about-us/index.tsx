@@ -53,7 +53,7 @@ export default function About({ header, data }: {
                     '.link'
                 ]}
             />
-            <SmoothScroll>
+            <SmoothScroll maxYTranslation={-1950}>
                 <main
                     className={`flex flex-col items-center ${inter.className}`}
                 >

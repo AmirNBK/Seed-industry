@@ -69,8 +69,9 @@ const AboutUs = (props: {
             <div>
                 <Foundation data={props.data.foundation[0]} />
             </div>
-
-            <Footer />
+            <div className='mt-40'>
+                <Footer />
+            </div>
         </div>
     );
 };

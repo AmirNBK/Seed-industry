@@ -56,7 +56,7 @@ export default function Contact({ header, data, searchData }: { header: any, dat
                     '.link'
                 ]}
             />
-            <SmoothScroll>
+            <SmoothScroll maxYTranslation={-450.355}>
                 <main
                     className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
                 >

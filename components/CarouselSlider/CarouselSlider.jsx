@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { TweenMax, Expo, Quint } from 'gsap';
-import pic from '../../assets/Images/sliderPic.jpeg'
-import pic2 from '../../assets/Images/sliderPic2.jpeg'
-import pic3 from '../../assets/Images/sliderPic3.jpeg'
 import Image from 'next/image';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -123,7 +120,7 @@ const CarouselSlider = () => {
             if (dragged) {
                 currentMouseX = event.clientX;
                 if (currentMouseX - prevMouseX < 50 && currentMouseX - prevMouseX > -50) {
-                    let Intensity = (currentMouseX - prevMouseX) * 0.2;
+                    let Intensity = (currentMouseX - prevMouseX) * 0.8;
                     mouseX =
                         currentMouseX - prevMouseX > 0
                             ? mouseX - Intensity
@@ -343,8 +340,8 @@ const CarouselSlider = () => {
 }
 
 .carouselItemInner {
-  width: 260px;
-  height: 200px;
+  width: 280px;
+  height: 250px;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.75);
   color: aqua;

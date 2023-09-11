@@ -201,7 +201,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           ]}
         />
       }
-      <SmoothScroll>
+      <SmoothScroll maxYTranslation={-2200}>
         <main
           className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
           onMouseMoveCapture={moveFunc} id='myscrollbar'
@@ -220,7 +220,11 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
               <>
                 <div className='relative mt-20'>
                   <div className='relative h-screen'>
-                    <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower'>
+                    <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower
+                    absolute left-1/2 top-1/3 
+                    '
+                      style={{ transform: 'translate(-50%,-50%)' }}
+                    >
                       <Image src={pic} alt='pic'
                         ref={imageRef}
                         className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
