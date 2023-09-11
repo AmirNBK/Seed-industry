@@ -23,6 +23,7 @@ import { GetStaticProps } from 'next'
 import animations from "../assets/animations/seedAnimation2.json";
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
+import useWindowSize from '@/Hooks/innerSize'
 const CarouselSlider = dynamic(() => import("@/components/CarouselSlider/CarouselSlider"), {
   ssr: false,
 });
@@ -48,6 +49,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
   const [showCursor, setShowCursor] = useState(false);
   const [hoverContainer, setHoverContainer] = useState(false)
   const [onMainContainer, setOnMainContainer] = useState(false)
+  const size = useWindowSize()
 
   const handleHoverChange = (isHoveredValue: boolean) => {
     // Check if isHoveredValue is true and there is a delay (2 seconds)
@@ -201,51 +203,100 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           ]}
         />
       }
-      <SmoothScroll maxYTranslation={-2200}>
-        <main
-          className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
-          onMouseMoveCapture={moveFunc} id='myscrollbar'
-          onMouseEnter={() => {
-            setShowCursor(false)
-          }}
-        >
-          <PrimeReactProvider>
-            <BubbleComponent />
-            <Header data={header.items} />
-            {!(animationFaded && animationPlayedOnce) &&
-              <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}
-                onComplete={() => setAnimationPlayedOnce(true)} />
-            }
-            {(animationPlayedOnce && animationFaded) &&
-              <>
-                <div className='relative mt-20'>
-                  <div className='relative h-screen'>
-                    <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower
+      {
+        size.width < 768 ?
+          <main
+            className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
+            onMouseMoveCapture={moveFunc} id='myscrollbar'
+            onMouseEnter={() => {
+              setShowCursor(false)
+            }}
+          >
+            <PrimeReactProvider>
+              <BubbleComponent />
+              <Header data={header.items} />
+              {!(animationFaded && animationPlayedOnce) &&
+                <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}
+                  onComplete={() => setAnimationPlayedOnce(true)} />
+              }
+              {(animationPlayedOnce && animationFaded) &&
+                <>
+                  <div className='relative mt-20'>
+                    <div className='relative h-screen'>
+                      <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower
                     absolute left-1/2 top-1/3 
                     '
-                      style={{ transform: 'translate(-50%,-50%)' }}
-                    >
-                      <Image src={pic} alt='pic'
-                        ref={imageRef}
-                        className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
-                      <div className='animate__lightSpeedInRight animate__animated animate__delay-1s animate__slow'>
-                        <HeroSectionText />
+                        style={{ transform: 'translate(-50%,-50%)' }}
+                      >
+                        <Image src={pic} alt='pic'
+                          ref={imageRef}
+                          className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
+                        <div className='animate__lightSpeedInRight animate__animated animate__delay-1s animate__slow'>
+                          <HeroSectionText />
+                        </div>
                       </div>
+                      <ArrowComponent />
                     </div>
-                    <ArrowComponent />
+                    <AboutUs data={aboutUs} />
+                    <CarouselSlider />
                   </div>
-                  <AboutUs data={aboutUs} />
-                  <CarouselSlider />
-                </div>
-                <ProductSliderContainer data={productSlider.products[0].product} />
-                <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
-                <Values data={values.ourValues[0].singleValue} />
-                <Footer />
-              </>
-            }
-          </PrimeReactProvider>
-        </main>
-      </SmoothScroll>
+                  <ProductSliderContainer data={productSlider.products[0].product} />
+                  <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
+                  <Values data={values.ourValues[0].singleValue} />
+                  <Footer />
+                </>
+              }
+            </PrimeReactProvider>
+          </main>
+
+          :
+
+          <SmoothScroll maxYTranslation={-2200}>
+            <main
+              className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
+              onMouseMoveCapture={moveFunc} id='myscrollbar'
+              onMouseEnter={() => {
+                setShowCursor(false)
+              }}
+            >
+              <PrimeReactProvider>
+                <BubbleComponent />
+                <Header data={header.items} />
+                {!(animationFaded && animationPlayedOnce) &&
+                  <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}
+                    onComplete={() => setAnimationPlayedOnce(true)} />
+                }
+                {(animationPlayedOnce && animationFaded) &&
+                  <>
+                    <div className='relative mt-20'>
+                      <div className='relative h-screen'>
+                        <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower
+                      absolute left-1/2 top-1/3 
+                      '
+                          style={{ transform: 'translate(-50%,-50%)' }}
+                        >
+                          <Image src={pic} alt='pic'
+                            ref={imageRef}
+                            className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
+                          <div className='animate__lightSpeedInRight animate__animated animate__delay-1s animate__slow'>
+                            <HeroSectionText />
+                          </div>
+                        </div>
+                        <ArrowComponent />
+                      </div>
+                      <AboutUs data={aboutUs} />
+                      <CarouselSlider />
+                    </div>
+                    <ProductSliderContainer data={productSlider.products[0].product} />
+                    <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
+                    <Values data={values.ourValues[0].singleValue} />
+                    <Footer />
+                  </>
+                }
+              </PrimeReactProvider>
+            </main>
+          </SmoothScroll>
+      }
 
     </>
 

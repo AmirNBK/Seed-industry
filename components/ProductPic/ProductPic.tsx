@@ -1,52 +1,77 @@
 import Image, { StaticImageData } from 'next/image';
-import React, { useEffect, useState } from 'react';
-import localFont from 'next/font/local'
+import React, { useEffect, useRef, useState } from 'react';
+import localFont from 'next/font/local';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import useWindowSize from '@/Hooks/innerSize';
-const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
-
+const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
 
 const ProductPic = (props: {
-    productName: string
-    pic: StaticImageData
-    inView: any
+    productName: string;
+    pic: StaticImageData;
+    inView: any;
 }) => {
-    const [scrollY, setScrollY] = useState(0)
-    const [showTitle, setShowtitle] = useState<boolean>(false)
-    const size = useWindowSize()
+    const [scrollY, setScrollY] = useState(0);
+    const [showTitle, setShowtitle] = useState<boolean>(false);
+    const size = useWindowSize();
+    const ImageRef = useRef(null);
+    const [imagePosition, setImagePosition] = useState({ top: 0, right: 0, bottom: 0, left: 0 });
+
+    // Function to get the position coordinates of the ImageRef
+    const getImagePosition = () => {
+        if (ImageRef.current) {
+            const imageRect = ImageRef.current.getBoundingClientRect();
+            setImagePosition({
+                top: imageRect.top + window.scrollY,
+                right: imageRect.right + window.scrollX,
+                bottom: imageRect.bottom + window.scrollY,
+                left: imageRect.left + window.scrollX,
+            });
+        }
+    };
+
+    console.log(scrollY);
     
 
-
+    // Call getImagePosition whenever scrollY changes
+    useEffect(() => {
+        getImagePosition();
+    }, [scrollY]);
 
     useScrollPosition(({ prevPos, currPos }) => {
-        setScrollY(currPos.y)
-    })
+        setScrollY(currPos.y);
+    });
 
     useEffect(() => {
-        if (scrollY < -430) setShowtitle(true)
-    }, [scrollY])
+        if (scrollY < -430) setShowtitle(true);
+    }, [scrollY]);
 
+    
     return (
         <div className='productContainer__pic relative border-l border-solid border-white xl:block hidden'
             style={{ flex: '1.5' }}
         >
-            {((scrollY > -430 && showTitle) || props.inView) &&
+            {
+            ((scrollY > -430 && showTitle) || props.inView) && (
                 <p className={` ${myFont.className} text-3xl md:text-5xl text-white fixed text-center animate__animated animate__lightSpeedOutRight`}
                     style={{ top: '20%', right: '5%' }}
                 >
                     {props.productName}
                 </p>
-            }
-            {(scrollY < -430 && !props.inView) &&
+            )}
+            {scrollY < -430 && !props.inView && (
                 <p className={` ${myFont.className} text-3xl md:text-5xl text-white fixed text-center animate__animated animate__lightSpeedInRight`}
                     style={{ top: '20%', right: '5%' }}
                 >
                     {props.productName}
                 </p>
-            }
-            <Image src={props.pic} alt='pic'
-                className={`${props.inView ? ' -translate-x-1/2	 absolute bottom-0' : 'xl:fixed xl:translate-x-full'} duration-1000 ease-in-out	 mx-auto left-1/2  xl:p-0 pb-8 xl:w-80 w-5/12 animate__animated animate__fadeIn animate__delay-3s`}
-                unoptimized />
+            )}
+            <Image
+                src={props.pic}
+                alt='pic'
+                ref={ImageRef}
+                className={`${scrollY < -1400 ? 'absolute bottom-0 -translate-x-1/2' : 'xl:fixed xl:translate-x-full'} mx-auto left-1/2 xl:p-0 pb-8 xl:w-80 w-5/12 animate__animated animate__fadeIn animate__delay-3s`}
+                unoptimized
+            />
 
         </div>
     );

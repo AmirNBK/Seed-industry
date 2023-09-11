@@ -10,8 +10,10 @@ import { useInView } from 'react-intersection-observer';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
-const Footer = () => {
-    const { ref, inView, entry } = useInView({
+const Footer = (props: {
+    isProduct?: boolean
+}) => {
+    const { ref, inView } = useInView({
         triggerOnce: true
     });
 
@@ -22,7 +24,7 @@ const Footer = () => {
                 <Image src={logo} alt='logo' unoptimized className='mx-auto' />
             </div>
             <div className='flex flex-wrap flex-row-reverse justify-center w-full gap-12 xl:gap-44 mt-12 xl:mt-32 justify-center'>
-                {inView &&
+                {(inView || props.isProduct) &&
                     <div className={`${inView && 'animate__animated animate__fadeInRight animate__slower'} Footer__rightSide flex flex-col gap-6`}
                     >
                         <div className='text-end flex flex-col gap-4'>

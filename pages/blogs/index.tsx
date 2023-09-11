@@ -16,6 +16,7 @@ import { getQueryBlogs, getQueryHeader } from '@/lib/service';
 import { GetStaticProps } from 'next';
 import { StaticImageData } from 'next/image';
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
+import useWindowSize from '@/Hooks/innerSize';
 const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothScroll"), {
     ssr: false,
 });
@@ -36,9 +37,13 @@ type BlogData = {
 
 export default function Blogs({ header, data }: { header: any, data: any }) {
 
+    const size = useWindowSize()
 
     return (
         <>
+        {
+            
+        }
             <AnimatedCursor
                 innerSize={17}
                 outerSize={250}
