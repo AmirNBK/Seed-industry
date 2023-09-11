@@ -14,6 +14,7 @@ import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import { getQueryContactUs, getQueryHeader, getQueryProductsPage } from '@/lib/service';
+import useWindowSize from '@/Hooks/innerSize';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
@@ -22,6 +23,8 @@ const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothS
 });
 
 export default function Contact({ header, data, searchData }: { header: any, data: any, searchData: any }) {
+
+    const size = useWindowSize()
 
     useEffect(() => {
         AOS.init();
@@ -56,18 +59,34 @@ export default function Contact({ header, data, searchData }: { header: any, dat
                     '.link'
                 ]}
             />
-            <SmoothScroll maxYTranslation={-450.355}>
-                <main
-                    className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
-                >
-                    <PrimeReactProvider>
-                        <Header data={header.items} searchData={searchData} />
-                        <ContactUs data={data} />
+            <>
+                {
+                    size.width && size.width < 768 ?
 
-                    </PrimeReactProvider>
+                        <main
+                            className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
+                        >
+                            <PrimeReactProvider>
+                                <Header data={header.items} searchData={searchData} />
+                                <ContactUs data={data} />
+                            </PrimeReactProvider>
 
-                </main>
-            </SmoothScroll>
+                        </main>
+                        :
+
+                        <SmoothScroll maxYTranslation={-450.355}>
+                            <main
+                                className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
+                            >
+                                <PrimeReactProvider>
+                                    <Header data={header.items} searchData={searchData} />
+                                    <ContactUs data={data} />
+                                </PrimeReactProvider>
+
+                            </main>
+                        </SmoothScroll>
+                }
+            </>
         </>
     )
 }

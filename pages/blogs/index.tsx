@@ -76,8 +76,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                         <PrimeReactProvider>
                             <Header data={header.items} />
                             <BubbleComponent />
-
-                            <h1 className={`text-7xl ${myFont.className} text-white mt-20`}>
+                            <h1 className={`text-7xl ${myFont.className} text-white mt-10 md:mt-20`}>
                                 بلاگ ها
                             </h1>
 

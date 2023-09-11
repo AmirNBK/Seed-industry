@@ -91,6 +91,9 @@ const ProductSlider = (props: {
                           @media screen and (max-width:1000px) {
                             height : 284px;
                           }
+                          @media screen and (max-width:684px) {
+                            height : 100px;
+                          }
                     }
                     `
                 }

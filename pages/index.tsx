@@ -221,9 +221,9 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
               }
               {(animationPlayedOnce && animationFaded) &&
                 <>
-                  <div className='relative mt-20'>
+                  <div className='relative mt-6 md:mt-20'>
                     <div className='relative h-screen'>
-                      <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower
+                      <div className='relative lg:block md:p-0 px-12 block animate__animated  animate__zoomIn animate__slower
                     absolute left-1/2 top-1/3 
                     '
                         style={{ transform: 'translate(-50%,-50%)' }}

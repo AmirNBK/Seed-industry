@@ -18,7 +18,7 @@ const ContactUs = (props: {
     return (
         <div className='ContactUs w-full'>
             <BubbleComponent />
-            <h1 className={`text-5xl md:text-8xl leading-normal ${myFont.className} text-center text-white mt-20`}
+            <h1 className={`text-5xl md:text-8xl leading-normal ${myFont.className} text-center text-white mt-10 md:mt-20`}
                 data-aos-duration="1500" data-aos-once={true} data-aos="fade-down"
             >
                 {props.data.title}

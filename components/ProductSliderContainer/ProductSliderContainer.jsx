@@ -75,7 +75,7 @@ const ProductSliderContainer = (props) => {
         <div className='ProductSliderContainer w-full flex flex-row-reverse items-center'
         >
             <BubbleComponent />
-            <div className='card w-10/12 ml-auto'>
+            <div className='card w-full md:w-10/12 ml-auto'>
                 <Carousel
                     showNavigators={false}
                     value={props.data}
@@ -90,7 +90,7 @@ const ProductSliderContainer = (props) => {
                 />
 
             </div>
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-6 md:block hidden'>
                 {renderSeedImages()}
             </div>
         </div>

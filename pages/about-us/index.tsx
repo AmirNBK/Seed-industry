@@ -12,6 +12,7 @@ import { GetStaticProps } from 'next';
 import { getQueryAboutUsPage, getQueryHeader } from '@/lib/service';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
+import useWindowSize from '@/Hooks/innerSize';
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
 const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothScroll"), {
     ssr: false,
@@ -23,6 +24,8 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 export default function About({ header, data }: {
     header: any, data: any
 }) {
+
+    const size = useWindowSize()
 
     return (
         <>
@@ -53,19 +56,36 @@ export default function About({ header, data }: {
                     '.link'
                 ]}
             />
-            <SmoothScroll maxYTranslation={-1950}>
-                <main
-                    className={`flex flex-col items-center ${inter.className}`}
-                >
-                    <PrimeReactProvider>
-                        <div className='w-full p-6'>
-                            <Header data={header.items} />
-                        </div>
-                        <BubbleComponent />
-                        <AboutUs data={data} />
-                    </PrimeReactProvider>
-                </main>
-            </SmoothScroll>
+            <>
+                {
+                    size.width && size.width < 768 ?
+                        <main
+                            className={`flex flex-col items-center ${inter.className}`}
+                        >
+                            <PrimeReactProvider>
+                                <div className='w-full p-6'>
+                                    <Header data={header.items} />
+                                </div>
+                                <BubbleComponent />
+                                <AboutUs data={data} />
+                            </PrimeReactProvider>
+                        </main>
+                        :
+                        <SmoothScroll maxYTranslation={-1950}>
+                            <main
+                                className={`flex flex-col items-center ${inter.className}`}
+                            >
+                                <PrimeReactProvider>
+                                    <div className='w-full p-6'>
+                                        <Header data={header.items} />
+                                    </div>
+                                    <BubbleComponent />
+                                    <AboutUs data={data} />
+                                </PrimeReactProvider>
+                            </main>
+                        </SmoothScroll>
+                }
+            </>
         </>
     )
 }

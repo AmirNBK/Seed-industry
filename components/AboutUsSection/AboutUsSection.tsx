@@ -14,7 +14,7 @@ const AboutUs = (props: {
     }, [])
 
     return (
-        <div className={`AboutUs ${myFont.className} md:items-end items-center mx-auto lg:mt-[-60px] mt-12 w-full md:w-4/5 lg:w-3/5 flex flex-col items-end xl:items-start xl:flex-row-reverse w-8/12 gap-8 md:gap-16 mb-20`}
+        <div className={`AboutUs md:p-0 px-4 ${myFont.className} md:items-end items-center mx-auto lg:mt-[-60px] mt-12 w-full md:w-4/5 lg:w-3/5 flex flex-col items-end xl:items-start xl:flex-row-reverse w-8/12 gap-8 md:gap-16 mb-20`}
             id='AboutUs'
         >
             <BubbleComponent />

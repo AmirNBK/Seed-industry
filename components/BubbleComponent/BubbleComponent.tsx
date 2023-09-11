@@ -9,7 +9,7 @@ const BubbleComponent = () => {
     }
 
     return (
-        <div className='absolute w-full h-screen' style={{zIndex : '-100'}}>
+        <div className='xl:block hidden absolute w-full h-screen' style={{zIndex : '-100'}}>
             {bubbles}
         </div>
     );

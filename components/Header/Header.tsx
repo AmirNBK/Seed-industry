@@ -41,8 +41,9 @@ const Header = (props: {
 
     return (
         <>
-            <div className='md:hidden block'>
-                <Button icon="pi pi-align-justify" style={{ background: '#A4D0A4', borderRadius: '9000px', width: '70px', height: '70px' }}
+            <div className='md:hidden block text-center'>
+                <Button icon="pi pi-align-justify" style={{ background: '#A4D0A4', borderRadius: '9000px',
+                width: '70px', height: '70px' }}
                     onClick={() => setVisibleRight(true)} />
                 <Sidebar visible={visibleRight} position="right"
                     onHide={() => setVisibleRight(false)}
