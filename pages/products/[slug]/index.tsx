@@ -152,7 +152,7 @@ export default function SingleProduct() {
                         </div>
                     </div>
                 )}
-                <div ref={ref} className='w-fit' >
+                <div ref={ref} className='w-full p-6' >
                     <Footer isProduct={true} />
                 </div>
             </PrimeReactProvider>
