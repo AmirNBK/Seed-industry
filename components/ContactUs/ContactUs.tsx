@@ -40,10 +40,10 @@ const ContactUs = (props: {
                     <ContactUsTextArea placeholder='پیام شما' />
                 </div>
             </div>
-            <div className='text-center mt-32'>
+            <div className='text-center mt-14 md:mt-32'>
                 <RegularButton text='ارسال' />
             </div>
-            <div className='my-56'>
+            <div className='my-2 md:my-56'>
                 <Map data={props.data.contactInfos[0]} />
             </div>
 

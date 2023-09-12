@@ -56,6 +56,37 @@ const Header = (props: {
                 >
                     <div className='flex flex-col justify-between h-full'>
                         <div className='Header__items justify-between flex-col text-center justify-center gap-8 text-black flex flex-row-reverse'>
+                        <div>
+                        <span className="p-input-icon-right">
+                            <i className="pi pi-search" />
+                            <InputText
+                                placeholder="جستجو"
+                                style={{ borderRadius: '9999px', textAlign: 'right', direction: 'rtl' }}
+                                value={searchTerm}
+                                onChange={handleSearch}
+                            />
+                        </span>
+                        {searchTerm &&
+                            <div className='bg-white text-right rounded-lg px-4 py-3 absolute flex flex-col gap-6'
+                                style={{
+                                    boxShadow: "0px 1px 10px rgb(0 0 0 / 35%)", transform: "translateY(10px)",
+                                    maxHeight: "300px",
+                                    width: '234px'
+                                }}
+                            >
+                                {searchResults?.map((result: any, index: number) => (
+                                    <Link href={`/products/${result.id}`}
+                                        key={index} className='flex flex-row-reverse items-center justify-between border-b border-slate-300
+                           last:border-none
+                           '>
+                                        <p>{result.productName}</p>
+                                        <Image src={productPic} alt='image' width={50} height={50} />
+                                    </Link>
+                                ))}
+                            </div>
+                        }
+
+                    </div>
                             {props.data?.map((item: { label: { url: string; title: string } }, index: number) => (
                                 <Link key={index} href={item.label.url} className='cursor-pointer  text-2xl'>
                                     {item.label.title}

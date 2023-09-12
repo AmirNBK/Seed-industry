@@ -20,7 +20,11 @@ interface FeatureItem {
 const Product = (props: {
     data: any
 }) => {
-    const items: MenuItem[] = [{ label: 'محصولات' }, { label: 'بذرهای چمن' }, { label: 'کدوحلوایی هیبرید آنیسو ' }];
+    const items: MenuItem[] = [
+        { label: 'محصولات', url: '/products' },
+        { label: 'بذرهای چمن', url: '/products' },
+        { label: 'کدوحلوایی هیبرید آنیسو', url: '/' }
+    ];
 
     const seedInfos = [{
         title: 'دوره رشد بذر', description: '90 - 100 روز'
