@@ -28,6 +28,7 @@ import animations from "../../../assets/animations/seedAnimation2.json";
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 import { useInView } from 'react-intersection-observer';
 import ProductPic from '@/components/ProductPic/ProductPic';
+import ScrollButton from '@/components/ScrollButton/ScrollButton';
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
     ssr: false
 });
@@ -50,7 +51,7 @@ export default function SingleProduct() {
     const productInfo = getQuerySingleProducts();
     const scrollYRef = useRef(0);
     const [animationFaded, setAnimationFaded] = useState(false);
-    
+
 
     const { ref, inView, entry } = useInView({
         triggerOnce: false
@@ -119,6 +120,7 @@ export default function SingleProduct() {
                 ]}
             />
             <PrimeReactProvider>
+                <ScrollButton />
                 <div className='w-full p-6'>
                     <Header data={header} />
                 </div>
@@ -140,7 +142,7 @@ export default function SingleProduct() {
                             style={{ flex: '1.5' }}
                         >
                             <Image src={productPic} alt='pic'
-                            className={`mx-auto left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12`} unoptimized />
+                                className={`mx-auto left-1/2 xl:translate-x-full xl:p-0 pb-8 xl:w-80 w-5/12`} unoptimized />
 
                         </div>
                         <ProductPic inView={inView} productName={productData.productName} pic={productPic} />

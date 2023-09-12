@@ -15,6 +15,7 @@ import { getQueryHeader } from '@/lib/service';
 import Image from 'next/image';
 import pic from '../../../assets/Images/blogs-pic.jpeg'
 import Footer from '@/components/Footer/Footer';
+import ScrollButton from '@/components/ScrollButton/ScrollButton';
 const SmoothScroll = dynamic(() => import("../../../components/SmoothScroll/SmoothScroll"), {
     ssr: false,
 });
@@ -65,6 +66,7 @@ export default function SingleBlog({ header }: { header: any }) {
                         <Header data={header.items} />
                     </div>
                     <BubbleComponent />
+                    <ScrollButton />
                     <div className='singleBlogContainer mt-4'>
                         <Image src={pic} alt='pic' className='w-2/3	mx-auto' />
                         <h2 className={`${myFont.className} text-3xl text-white text-center mt-10`}>

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Vazirmatn } from 'next/font/google';
 import 'animate.css';
 import { useInView } from 'react-intersection-observer';
+import useWindowSize from '@/Hooks/innerSize';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
@@ -18,6 +19,9 @@ const Footer = (props: {
         triggerOnce: true
     });
 
+    const size = useWindowSize()
+
+
     return (
         <div className='Footer w-full' ref={ref}
         >
@@ -25,7 +29,7 @@ const Footer = (props: {
                 <Image src={logo} alt='logo' unoptimized className='mx-auto' />
             </div>
             <div className='flex flex-wrap flex-row-reverse justify-center w-full gap-12 xl:gap-56 mt-12 xl:mt-32 justify-center'
-            style={{transform : 'translateX(-35px)'}}
+                style={{ transform: `translateX(${size.width && size.width > 768 ? '-35px' : '0px'})` }}
             >
                 {(inView || props.isProduct) &&
                     <div className={`${(inView && props.animation) && 'animate__animated animate__fadeInRight animate__slower'} Footer__rightSide flex flex-col gap-6`}

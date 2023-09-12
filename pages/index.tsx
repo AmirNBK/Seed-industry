@@ -26,6 +26,7 @@ import animations from "../assets/animations/seedAnimation2.json";
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
 import useWindowSize from '@/Hooks/innerSize'
+import ScrollButton from '@/components/ScrollButton/ScrollButton'
 const CarouselSlider = dynamic(() => import("@/components/CarouselSlider/CarouselSlider"), {
   ssr: false,
 });
@@ -215,6 +216,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             }}
           >
             <PrimeReactProvider>
+            <ScrollButton/>
               <BubbleComponent />
               <Header data={header.items} />
               {!(animationFaded && animationPlayedOnce) &&

@@ -13,6 +13,7 @@ import { getQueryAboutUsPage, getQueryHeader } from '@/lib/service';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 import useWindowSize from '@/Hooks/innerSize';
+import ScrollButton from '@/components/ScrollButton/ScrollButton';
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
 const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothScroll"), {
     ssr: false,
@@ -63,6 +64,8 @@ export default function About({ header, data }: {
                             className={`flex flex-col items-center ml-4 ${inter.className}`}
                         >
                             <PrimeReactProvider>
+                                <ScrollButton />
+
                                 <div className='w-full p-6'>
                                     <Header data={header.items} />
                                 </div>

@@ -17,6 +17,7 @@ import { GetStaticProps } from 'next';
 import { StaticImageData } from 'next/image';
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent';
 import useWindowSize from '@/Hooks/innerSize';
+import ScrollButton from '@/components/ScrollButton/ScrollButton';
 const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothScroll"), {
     ssr: false,
 });
@@ -73,6 +74,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                     <main
                         className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
                     >
+                        <ScrollButton />
                         <PrimeReactProvider>
                             <Header data={header.items} />
                             <BubbleComponent />
