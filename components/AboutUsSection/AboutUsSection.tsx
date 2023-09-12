@@ -33,7 +33,7 @@ const AboutUs = (props: {
                     {props.data.aboutUs[0].description}
                 </p>
                 <div className='md:block flex justify-center md:w-fit w-full'>
-                    <RegularButton text='بیشتر بخوانید' />
+                    <RegularButton text='بیشتر بخوانید' link={'/about-us'} />
                 </div>
             </div>
         </div>

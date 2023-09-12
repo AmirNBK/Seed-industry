@@ -50,7 +50,14 @@ const BlogsItem = (props: {
                         className={`text-white md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${vazir.className}`} style={{ lineHeight: '53px' }}>
                         {title}
                     </p>
-                    <p className={`more${id} text-white text-sm sm:text-lg w-fit sm:block hidden sm:ml-auto font-extralight ${vazir.className}`}>
+                    <p
+                        onMouseEnter={() => {
+                            setHovered(true)
+                        }}
+                        onMouseLeave={() => {
+                            setHovered(false)
+                        }}
+                        className={`more${id} text-white text-sm sm:text-lg w-fit sm:block hidden sm:ml-auto font-extralight ${vazir.className}`}>
                         بیشتر بخوانید
                     </p>
                     <p className={`text-white text-sm sm:text-lg w-fit sm:hidden block mx-auto sm:ml-auto font-extralight ${vazir.className}`} style={{ borderBottom: `2px solid ${color}` }}>
