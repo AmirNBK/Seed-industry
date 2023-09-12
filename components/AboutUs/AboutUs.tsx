@@ -70,7 +70,7 @@ const AboutUs = (props: {
                 <Foundation data={props.data.foundation[0]} />
             </div>
             <div className='mt-40'>
-                <Footer />
+                <Footer animation={false}/>
             </div>
         </div>
     );

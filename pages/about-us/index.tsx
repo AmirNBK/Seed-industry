@@ -60,7 +60,7 @@ export default function About({ header, data }: {
                 {
                     size.width && size.width < 768 ?
                         <main
-                            className={`flex flex-col items-center ${inter.className}`}
+                            className={`flex flex-col items-center ml-4 ${inter.className}`}
                         >
                             <PrimeReactProvider>
                                 <div className='w-full p-6'>

@@ -10,9 +10,9 @@ const AccordionSection = (props: {
 }) => {
 
     return (
-        <div className="card w-10/12 mx-auto flex lg:flex-row-reverse flex-col my-20 items-baseline">
+        <div className="card w-10/12 mx-auto flex lg:flex-row-reverse flex-col mt-20 mb-6 md:my-20 items-baseline">
             <BubbleComponent />
-            <div className='flex flex-row lg:w-auto w-full items-center gap-2 justify-center sm:justify-end flex-1'
+            <div className='flex flex-row lg:w-auto w-full items-center gap-2 md:m-0 mb-6 justify-center sm:justify-end flex-1'
             >
                 <p className={`text-white ${myFont.className} text-2xl sm:text-xl sm:text-right`}> نقاط قوت ما </p>
                 <Circle color='#AAFC75' width={15} height={15} />

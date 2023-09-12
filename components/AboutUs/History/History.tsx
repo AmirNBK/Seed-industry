@@ -15,13 +15,13 @@ const History = (props: {
     });
 
     return (
-        <div className={`History my-60`} ref={ref}>
+        <div className={`History my-30 md:my-60`} ref={ref}>
             <BubbleComponent />
             <h1 className={`text-6xl sm:text-8xl ${myFont.className} ${inView && 'animate__animated animate__fadeInUp animate__slower'} text-center text-white mt-20`}
             >
                 تاریخچه
             </h1>
-            <div className={`my-32`}>
+            <div className={`my-16 md:my-32`}>
                 <VerticalCarousel data={props.data} />
             </div>
         </div >
