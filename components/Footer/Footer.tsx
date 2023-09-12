@@ -24,7 +24,9 @@ const Footer = (props: {
             <div className='Footer_centerSide xl:hidden block'>
                 <Image src={logo} alt='logo' unoptimized className='mx-auto' />
             </div>
-            <div className='flex flex-wrap flex-row-reverse justify-center w-full gap-12 xl:gap-44 mt-12 xl:mt-32 justify-center'>
+            <div className='flex flex-wrap flex-row-reverse justify-center w-full gap-12 xl:gap-56 mt-12 xl:mt-32 justify-center'
+            style={{transform : 'translateX(-35px)'}}
+            >
                 {(inView || props.isProduct) &&
                     <div className={`${(inView && props.animation) && 'animate__animated animate__fadeInRight animate__slower'} Footer__rightSide flex flex-col gap-6`}
                     >
