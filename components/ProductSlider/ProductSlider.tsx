@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const numberFont = localFont({ src: '../../assets/Fonts/OtomanopeeOne-Regular.ttf' })
 import { Dialog } from 'primereact/dialog';
+import Link from 'next/link';
 
 const ProductSlider = (props: {
     product: string;
@@ -72,6 +73,13 @@ const ProductSlider = (props: {
                             <p className="m-0">
                                 {description}
                             </p>
+                            <div className='text-center mt-6 border w-fit mx-auto border-x-transparent border-t-transparent border-solid'
+                            style={{borderBottomColor : 'rgb(68, 165, 219)'}}
+                            >
+                                <Link href={'/products/grass-2'}>
+                                    مشاهده بیشتر
+                                </Link>
+                            </div>
                         </Dialog>
                     </div>
                 </div>

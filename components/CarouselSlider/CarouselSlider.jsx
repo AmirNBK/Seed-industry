@@ -5,9 +5,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import $ from 'jquery'
 import 'animate.css';
+import useWindowSize from '@/Hooks/innerSize';
 
 
 const CarouselSlider = () => {
+
+    const size = useWindowSize()
+
 
     useEffect(() => {
         AOS.init();
@@ -159,7 +163,7 @@ const CarouselSlider = () => {
     return (
         <div className="wrapper"
             data-aos-duration="3000" data-aos-once={true} data-aos="fade-left"
-            style={{ transform: 'rotate(4deg)', width: '105vw' }}
+            style={{ transform: 'rotate(4deg)', width: '105vw' , marginTop : `${size.width && size.width < 768 && '-250px'}` }}
         >
             <div id="contentContainer" className="trans3d">
                 <section id="carouselContainer" className="trans3d">

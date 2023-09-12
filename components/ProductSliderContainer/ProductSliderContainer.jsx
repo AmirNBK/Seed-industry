@@ -2,14 +2,20 @@ import React, { useRef, useState, useEffect } from 'react';
 import ProductSlider from '../ProductSlider/ProductSlider';
 import { Carousel } from 'primereact/carousel';
 import 'animate.css';
+import localFont from 'next/font/local'
 import Lottie, { LottieRef } from "lottie-react";
 import BubbleComponent from '../BubbleComponent/BubbleComponent';
 import animations from "../../assets/animations/seedAnimation.json";
+import useWindowSize from '@/Hooks/innerSize';
+const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
+
 
 const ProductSliderContainer = (props) => {
 
     const [currentPage, setCurrentPage] = useState(0);
     const animationRefs = [useRef(null), useRef(null), useRef(null)];
+    const size = useWindowSize()
+
 
     const carouselChange = (e) => {
         setCurrentPage(e.page);
@@ -72,9 +78,15 @@ const ProductSliderContainer = (props) => {
 
 
     return (
-        <div className='ProductSliderContainer w-full flex flex-row-reverse items-center'
+        <div className='ProductSliderContainer w-full flex flex-col md:flex-row-reverse items-center'
+            style={{ marginTop: `${size.width && size.width < 768 && '-200px'}` }}
         >
             <BubbleComponent />
+            <h2
+                    className={`${myFont.className} md:hidden block text-white text-5xl sm:text-7xl w-max mx-auto`}
+                  >
+                    محصولات
+                  </h2>
             <div className='card w-full md:w-10/12 ml-auto'>
                 <Carousel
                     showNavigators={false}

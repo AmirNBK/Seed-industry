@@ -4,11 +4,14 @@ import localFont from 'next/font/local'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import BubbleComponent from '../BubbleComponent/BubbleComponent';
+import useWindowSize from '@/Hooks/innerSize';
 
 const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const AboutUs = (props: {
     data: any
 }) => {
+    const size = useWindowSize()
+
     useEffect(() => {
         AOS.init();
     }, [])
@@ -16,6 +19,7 @@ const AboutUs = (props: {
     return (
         <div className={`AboutUs md:p-0 px-4 ${myFont.className} md:items-end items-center mx-auto lg:mt-[-60px] mt-12 w-full md:w-4/5 lg:w-3/5 flex flex-col items-end xl:items-start xl:flex-row-reverse w-8/12 gap-8 md:gap-16 mb-20`}
             id='AboutUs'
+            style={{ marginTop: `${size.width && size.width < 768 ? '-370px' : ''}` }}
         >
             <BubbleComponent />
             <div>

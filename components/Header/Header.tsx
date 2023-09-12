@@ -41,10 +41,15 @@ const Header = (props: {
 
     return (
         <>
-            <div className='md:hidden block text-center'>
-                <Button icon="pi pi-align-justify" style={{ background: '#A4D0A4', borderRadius: '9000px',
-                width: '70px', height: '70px' }}
+            <div className='md:hidden block text-center w-full'>
+                <div className='flex flex-row-reverse items-center justify-between w-full'>
+                <Button icon="pi pi-align-justify" style={{
+                    background: '#A4D0A4', borderRadius: '9000px',
+                    width: '70px', height: '70px'
+                }}
                     onClick={() => setVisibleRight(true)} />
+                <Image src={logo} alt='logo' className='mr-auto' />
+                </div>
                 <Sidebar visible={visibleRight} position="right"
                     onHide={() => setVisibleRight(false)}
                     style={{ background: '#EDEDED', fontFamily: '__Vazirmatn_253970' }}

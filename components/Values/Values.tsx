@@ -31,7 +31,7 @@ const Values = (props: {
     };
 
     return (
-        <div className={`${inView && 'animate__animated animate__backInRight animate__slower'} Values  w-full mb-32 mt-16`}
+        <div className={`${inView && 'animate__animated animate__backInRight animate__slower'} Values  w-full mb-32 mt-2 md:mt-16`}
             ref={ref}
         >
             <BubbleComponent />

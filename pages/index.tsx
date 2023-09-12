@@ -20,6 +20,8 @@ import Lottie from "lottie-react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { GetStaticProps } from 'next'
+import localFont from 'next/font/local';
+const myFont = localFont({ src: '../assets/Fonts/mj.ttf' });
 import animations from "../assets/animations/seedAnimation2.json";
 import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQueryHeader, getQueryProductsSlider } from '@/lib/service'
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
@@ -226,7 +228,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                       <div className='relative lg:block md:p-0 px-12 block animate__animated  animate__zoomIn animate__slower
                     absolute left-1/2 top-1/3 
                     '
-                        style={{ transform: 'translate(-50%,-50%)' }}
+                        style={{ transform: `${size.width < 768 ? 'translate(-50%,-70%)' : 'translate(-50%,-50%)'}` }}
                       >
                         <Image src={pic} alt='pic'
                           ref={imageRef}
