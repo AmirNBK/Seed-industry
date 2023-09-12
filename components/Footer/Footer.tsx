@@ -54,7 +54,7 @@ const Footer = (props: {
                 }
 
                 {inView &&
-                    <div className={`${inView && 'animate__animated animate__slower animate__fadeInUp'} Footer_centerSide items-center xl:flex hidden translate-x-140`}
+                    <div className={`${(inView && props.animation) && 'animate__animated animate__slower animate__fadeInUp'} Footer_centerSide items-center xl:flex hidden translate-x-140`}
                         style={{ transform: 'translatex(-80px)' }}>
                         <Image src={logo} alt='logo' className='w-40' unoptimized />
                     </div>

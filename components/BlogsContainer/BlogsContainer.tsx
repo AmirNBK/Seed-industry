@@ -2,6 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import React from 'react';
 import arrow from '../../assets/Icons/arrow-3.svg'
 import { Vazirmatn } from 'next/font/google';
+import Link from 'next/link';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const BlogsContainer = (props: {
@@ -16,7 +17,7 @@ const BlogsContainer = (props: {
     author: string
 }) => {
     return (
-        <div className={`BlogsContainer text-white items-end flex ${props.isVertical ? 'flex-col' : 'flex-row-reverse items-center gap-8'} ${vazir.className}`}>
+        <Link href={'/blogs/2'} className={`BlogsContainer text-white items-end flex ${props.isVertical ? 'flex-col' : 'flex-row-reverse items-center gap-8'} ${vazir.className}`}>
             <Image src={props.image} alt='image' height={props.height} width={props.width} className='object-cover w-full' unoptimized
                 style={{ height: `${props.height}px` }} />
             <div className='flex flex-col gap-6 mt-4'>
@@ -31,7 +32,7 @@ const BlogsContainer = (props: {
                 </div>
                 <p className='text-right font-light' style={{ direction: 'rtl' }}> {props.description} </p>
             </div>
-        </div>
+        </Link>
     );
 };
 

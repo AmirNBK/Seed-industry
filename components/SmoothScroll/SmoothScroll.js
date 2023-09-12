@@ -26,7 +26,6 @@ export default class SmoothScroll extends React.Component {
   componentDidMount() {
     window.addEventListener("scroll", this.onScroll);
     this.ro.observe(this.viewport);
-
   }
 
   onScroll = () => {
@@ -35,12 +34,8 @@ export default class SmoothScroll extends React.Component {
     // Limit the translation to the maximum value
     const limitedTranslationY = Math.min(0, Math.max(this.maxYTranslation, -scrollY));
 
-    // Apply the limited translation using GSAP
-    TweenLite.to(this.viewport, 1, {
-      y: limitedTranslationY || window.pageYOffset,
-      ease: Power4.easeOut
-    });
-  };
+    gsap.to(this.viewport, { duration: 2, y: limitedTranslationY || window.pageYOffset, ease: Power4.easeOut });
+  }
 
   render() {
     return (
@@ -48,9 +43,7 @@ export default class SmoothScroll extends React.Component {
         <div className="" ref={ref => (this.viewport = ref)}>
           {this.props.children}
         </div>
-        <div
-          ref={ref => (this.fake = ref)}
-        />
+        <div ref={ref => (this.fake = ref)} />
       </>
     );
   }
