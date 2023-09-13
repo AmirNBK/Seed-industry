@@ -62,8 +62,16 @@ const CarouselSlider = () => {
                     dragged = true;
                 });
 
+                wrapper.on("touchstart", (event) => {
+                    dragged = true;
+                });
+
                 wrapper.on("mouseup", (event) => {
                     event.preventDefault();
+                    dragged = false;
+                });
+
+                wrapper.on("touchend", (event) => {
                     dragged = false;
                 });
 
@@ -78,7 +86,7 @@ const CarouselSlider = () => {
 
             // set mouse x and y props and looper ticker
             onMouseMove();
-
+            window.addEventListener("touchmove", onTouchMove, false);
             window.addEventListener("mousemove", onMouseMove, false);
             ticker = setInterval(looper, 1000 / 60);
         }
@@ -117,6 +125,29 @@ const CarouselSlider = () => {
                 autoAlpha: 1,
                 ease: Expo.easeInOut,
             });
+        }
+
+        function onTouchMove(event) {
+            if (dragged) {
+                if (event.touches && event.touches[0]) {
+                    currentMouseX = event.touches[0].clientX;
+                } else if (event.originalEvent && event.originalEvent.changedTouches[0]) {
+                    currentMouseX = event.originalEvent.changedTouches[0].clientX;
+                } else if (event.clientX && event.clientY) {
+                    currentMouseX = event.clientX;
+                }
+                if (currentMouseX - prevMouseX < 50 && currentMouseX - prevMouseX > -50) {
+                    let Intensity = (currentMouseX - prevMouseX) * 0.2;
+                    mouseX =
+                        currentMouseX - prevMouseX > 0
+                            ? mouseX - Intensity
+                            : mouseX - Intensity;
+                }
+
+                prevMouseX = currentMouseX;
+            }
+
+            mouseZ = -radius - (Math.abs(-(window.innerHeight * 0.5)) - 200);
         }
 
         function onMouseMove(event) {
@@ -163,7 +194,7 @@ const CarouselSlider = () => {
     return (
         <div className="wrapper"
             data-aos-duration="3000" data-aos-once={true} data-aos="fade-left"
-            style={{ transform: 'rotate(4deg)', width: '105vw' , marginTop : `${size.width && size.width < 768 && '-250px'}` }}
+            style={{ transform: 'rotate(4deg)', width: '105vw', marginTop: `${size.width && size.width < 768 && '-250px'}` }}
         >
             <div id="contentContainer" className="trans3d">
                 <section id="carouselContainer" className="trans3d">

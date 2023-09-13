@@ -16,6 +16,13 @@ const ArrowComponent = () => {
         setIsHovered(false);
     };
 
+    const scrollToAboutUs = () => {
+        window.scrollTo({
+            top: 350,
+            behavior: 'smooth',
+        });
+    };
+
     return (
         <div
             className={`ArrowComponent rounded-full w-fit w-64 h-64 absolute bottom-0 lg:block hidden
@@ -24,7 +31,7 @@ const ArrowComponent = () => {
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
         >
-            <Link href={'#AboutUs'}>
+            <span onClick={scrollToAboutUs}>
                 <div
                     className={`absolute w-40 h-40 xl:w-64 xl:h-64 left-1/2 top-1/2`}
                     style={{ transform: 'translate(-50%, -50%)' }}
@@ -43,7 +50,7 @@ const ArrowComponent = () => {
                     className='relative left-1/2 top-1/2'
                     style={{ transform: 'translate(-50%, -50%)' }}
                 />
-            </Link>
+            </span>
         </div>
     );
 };

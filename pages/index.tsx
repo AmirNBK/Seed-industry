@@ -272,12 +272,12 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                 }
                 {(animationPlayedOnce && animationFaded) &&
                   <>
-                    <div className='relative mt-20'>
+                    <div className='relative'>
                       <div className='relative h-screen'>
-                        <div className='relative lg:block block animate__animated  animate__zoomIn animate__slower
+                        <div className='relative mt-20 lg:block block animate__animated  animate__zoomIn animate__slower
                       absolute left-1/2 top-1/3 
                       '
-                          style={{ transform: 'translate(-50%,-50%)' }}
+                          style={{ transform: 'translate(-50%,-54%)' }}
                         >
                           <Image src={pic} alt='pic'
                             ref={imageRef}
