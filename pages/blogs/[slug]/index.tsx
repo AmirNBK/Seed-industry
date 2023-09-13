@@ -63,7 +63,7 @@ export default function SingleBlog({ header }: { header: any }) {
             >
                 <PrimeReactProvider>
                     <div className='w-full p-6'>
-                        <Header data={header.items} />
+                        <Header data={header?.items} />
                     </div>
                     <BubbleComponent />
                     <ScrollButton />

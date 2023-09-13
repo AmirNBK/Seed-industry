@@ -2,7 +2,7 @@ import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { FaArrowCircleUp } from 'react-icons/fa';
-import scroll from '../../assets/icons/scrollup.svg';
+import scroll from '../../assets/Icons/scrollup.svg';
 // import './ScrollButton.less';
 // import { Button } from './Styles';
 
