@@ -97,6 +97,7 @@ module.exports = {
         '-60px': '-60px',
       },
       animation: {
+        'pulse-fast': ' pulse 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;',
         'scale-up': 'transform: scale(1.1);',
       }
     },

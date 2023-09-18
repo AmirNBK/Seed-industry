@@ -296,16 +296,6 @@ const CarouselSlider = () => {
                     </figure>
                 </section>
             </div>
-            {/* <script
-                type="text/javascript"
-                src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-            ></script>
-
-            <script type="text/javascript" src="TweenMax.min.js"></script>
-            <script
-                type="text/javascript"
-                src="https://raw.githubusercontent.com/JohnBlazek/codepen-resources/master/3d-carousel/js/libs.min.js"
-            ></script> */}
             <style>
 
                 {

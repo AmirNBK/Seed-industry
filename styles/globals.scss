@@ -27,7 +27,6 @@ html {
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    display: none;
   }
 
   ::-webkit-scrollbar-track {
@@ -36,7 +35,7 @@ html {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #A4D0A4;
     border-radius: 20px;
   }
 
@@ -388,22 +387,15 @@ body {
     text-transform: uppercase;
   }
 
-  .c-button {
-    color: #000;
-    font-weight: 700;
-    padding: .7em 1.8em;
-    cursor: pointer;
-    display: inline-block;
-  }
 
 
   .c-button--gooey {
     text-transform: uppercase;
     border-radius: 0;
-    padding: 1.2em 3.4em;
+    padding: 20px 35px;
     position: relative;
     transition: all 700ms ease;
-    color: #000;
+    color: white;
 
 
     .c-button__blobs {
@@ -446,8 +438,6 @@ body {
     }
 
     &:hover {
-      color: #fff;
-
       .c-button__blobs {
         div {
           transform: scale(1.4) translateY(0) translateZ(0);

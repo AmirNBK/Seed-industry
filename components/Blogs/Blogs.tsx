@@ -47,8 +47,8 @@ const Blogs = (props: {
                     />
                 ))}
             </div>
-            <div className='text-center w-full'>
-                <RegularButton text='بیشتر بخوانید' link={'/blogs'} />
+            <div className=' w-full'>
+                <RegularButton text='بیشتر بخوانید' link={'/blogs'} position='center' />
             </div>
         </div>
     );

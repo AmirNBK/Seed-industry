@@ -147,9 +147,10 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
         <AnimatedCursor
           innerSize={17}
           outerSize={180}
-          color='255, 255, 255'
+          color='transparent'
           outerAlpha={0.5}
           innerScale={0.7}
+          showSystemCursor={true}
           outerScale={1}
           trailingSpeed={20}
           outerStyle={{
@@ -180,8 +181,9 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
         :
         <AnimatedCursor
           innerSize={17}
+          showSystemCursor={true}
           outerSize={250}
-          color='255, 255, 255'
+          color='transparent'
           outerAlpha={0.2}
           innerScale={0.7}
           outerScale={1.3}
@@ -216,7 +218,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             }}
           >
             <PrimeReactProvider>
-            <ScrollButton/>
+              <ScrollButton />
               <BubbleComponent />
               <Header data={header.items} />
               {!(animationFaded && animationPlayedOnce) &&
@@ -282,9 +284,6 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                           <Image src={pic} alt='pic'
                             ref={imageRef}
                             className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
-                          <div className='animate__lightSpeedInRight animate__animated animate__delay-1s animate__slow'>
-                            <HeroSectionText />
-                          </div>
                         </div>
                         <ArrowComponent />
                       </div>
