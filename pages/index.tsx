@@ -27,6 +27,7 @@ import { getQueryAboutUs, getQueryBlogsHomepage, getQueryBlogsOurValues, getQuer
 import BubbleComponent from '@/components/BubbleComponent/BubbleComponent'
 import useWindowSize from '@/Hooks/innerSize'
 import ScrollButton from '@/components/ScrollButton/ScrollButton'
+import RegularButton from '@/components/CommonComponents/RegularButton/RegularButton'
 const CarouselSlider = dynamic(() => import("@/components/CarouselSlider/CarouselSlider"), {
   ssr: false,
 });
@@ -284,6 +285,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                           <Image src={pic} alt='pic'
                             ref={imageRef}
                             className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
+                          <HeroSectionText />
                         </div>
                         <ArrowComponent />
                       </div>

@@ -2,7 +2,9 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { Vazirmatn } from 'next/font/google';
 const vazir = Vazirmatn({ subsets: ['latin'] });
-import logo from '../../assets/Icons/logo.png'
+import logo from '../../assets/Icons/logo-psb.png'
+import logoTextFa from '../../assets/Icons/logoTextFa.png'
+import logoTextEn from '../../assets/Icons/logotext.png'
 import 'primeicons/primeicons.css';
 import { InputText } from 'primereact/inputtext';
 import arrow from '../../assets/Icons/arrow.svg'
@@ -50,7 +52,7 @@ const Header = (props: {
                         width: '70px', height: '70px'
                     }}
                         onClick={() => setVisibleRight(true)} />
-                    <Image src={logo} alt='logo' className='mr-auto' />
+                    <Image src={logo} alt='logo' className='mr-auto' unoptimized />
                 </div>
                 <Sidebar visible={visibleRight} position="right"
                     onHide={() => setVisibleRight(false)}
@@ -96,15 +98,19 @@ const Header = (props: {
                             ))}
                         </div>
                         <div className='Header__logo'>
-                            <Image src={logo} alt='logo' className='mx-auto' />
+                            <Image src={logo} alt='logo' className='mx-auto' unoptimized />
                         </div>
                     </div>
                 </Sidebar>
             </div>
             <div className={`md:flex hidden Header animate__animated animate__slower animate__backInDown flex-col gap-6 xl:flex-row w-full justify-between items-center pb-6 ${vazir.className}`}
             >
-                <div className='Header__logo'>
-                    <Image src={logo} alt='logo' />
+                <div className='Header__logo flex flex-row items-center gap-4'>
+                    <Image src={logo} alt='logo' unoptimized />
+                    <div className='flex flex-col gap-2 translate-y-3'>
+                        <Image src={logoTextFa} alt='' unoptimized />
+                        <Image src={logoTextEn} alt='' unoptimized />
+                    </div>
                 </div>
 
                 <div className='Header__extraPart flex flex-row gap-6 items-center'>
@@ -112,8 +118,7 @@ const Header = (props: {
                         <span className="p-input-icon-right">
                             <i className="pi pi-search" />
                             <InputText
-                                placeholder="جستجو"
-                                style={{ borderRadius: '9999px', textAlign: 'right', direction: 'rtl' , background : 'transparent' }}
+                                style={{ borderRadius: '9999px', textAlign: 'right', direction: 'rtl', background: 'transparent' }}
                                 value={searchTerm}
                                 onChange={handleSearch}
                             />

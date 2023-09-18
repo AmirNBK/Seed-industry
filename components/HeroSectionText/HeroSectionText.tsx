@@ -19,20 +19,13 @@ const HeroSectionText = () => {
             items-center w-fit gap-6 whitespace-nowrap text-white absolute flex flex-col ${myFont.className}`}
             style={{ top: '50%', left: '50%', transform: 'translate(-50%,-110%)' }}
         >
-            <div className='text-5xl md:text-8xl lg:text-9xl'>
-                مسیرتان را
-            </div>
             <div className='flex flex-row-reverse items-end gap-56'>
-                <p className='text-5xl md:text-8xl lg:text-9xl'> با ما </p>
-                <div onClick={scrollToAboutUs} className='lg:block hidden'>
-                    <RegularButton text='از اینجا شروع کنید' />
+                <div onClick={scrollToAboutUs} className='lg:block hidden w-96 absolute top-12'>
+                    <RegularButton text=' دامنه فعالیت های شرکت' width={300} />
                 </div>
             </div>
-            <div className='text-5xl md:text-8xl lg:text-9xl'>
-                ما شکوفا کنید
-            </div>
             <div onClick={scrollToAboutUs} className='lg:hidden block'>
-                <RegularButton text='از اینجا شروع کنید' />
+                <RegularButton text='دامنه فعالیت های شرکت' width={300} />
             </div>
         </div>
     );

@@ -27,14 +27,14 @@ const ArrowComponent = () => {
         <div
             className={`ArrowComponent rounded-full w-fit w-64 h-64 absolute bottom-0 lg:block hidden
             animate__animated  animate__fadeIn animate__slower`}
-            style={{ transform: 'translateY(-180px)', marginLeft: '50px' }}
+            style={{ transform: 'translateY(-180px)', marginLeft: '100px' }}
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
         >
             <span onClick={scrollToAboutUs}>
                 <div
-                    className={`absolute w-40 h-40 xl:w-64 xl:h-64 left-1/2 top-1/2`}
-                    style={{ transform: 'translate(-50%, -50%)' }}
+                    className={`absolute w-40 h-40 xl:w-64 xl:h-64 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                    `}
                 >
                     <div
                         className={`rounded-full absolute bg-transparent w-full h-full ${isHovered ? styles.ArrowContainer : styles.ArrowContainer__notHover}`}
@@ -47,8 +47,13 @@ const ArrowComponent = () => {
                     unoptimized
                     alt='arrow'
                     src={arrow}
-                    className='relative left-1/2 top-1/2'
-                    style={{ transform: 'translate(-50%, -50%)' }}
+                    className={`relative duration-300 left-1/2 top-1/2 -translate-x-1/2 opacity-0 ${isHovered ? '-translate-y-1/2 opacity-100' : '-translate-y-full'}`}
+                />
+                <Image
+                    unoptimized
+                    alt='arrow'
+                    src={arrow}
+                    className={`relative duration-300 left-1/2 top-1/2 -translate-x-1/2 ${isHovered ? 'translate-y-1/2 opacity-0' : '-translate-y-full'}`}
                 />
             </span>
         </div>

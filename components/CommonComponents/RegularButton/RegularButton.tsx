@@ -7,67 +7,71 @@ import Image from 'next/image';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const RegularButton = (props: {
-    text: string
-    onClick?: () => void
-    link?: any
-    position?: string
+  text: string
+  onClick?: () => void
+  link?: any
+  position?: string
+  width?: number
 }) => {
-    const text = props.text
-    const onClick = props.onClick
-    const link = props.link
-    const position = props.position
+  const text = props.text
+  const onClick = props.onClick
+  const link = props.link
+  const position = props.position
+  const width = props.width
 
-    return (
-        <>
-            <Link
-                className={`${position === 'right' ? 'ml-auto' : position === 'center' ? 'mx-auto' : ''} btn-epic bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-20`} href="" target="_blank">
-                <div className='div'><span>{text}
-                    <div className='relative'
-                        style={{ transform: ' translate(10px,-20px)' }}
-                    >
-                        <Image src={arrowBlack} alt='arrow'
-                            style={{ transform: 'rotate(90deg)', width: '15px' }}
-                        />
-                        <div className='rounded-full bg-white absolute'
-                            style={{ width: '20px', height: '20px', left: '-3px', top: '-3px', opacity: '0.4' }}
-                        >
+  return (
+    <>
+      <Link
+        className={`${position === 'right' ? 'ml-auto' : position === 'center' ? 'mx-auto' : ''}
+         btn-epic bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-20`} href="" target="_blank"
+        style={{ maxWidth: `${width}px` }}
+      >
+        <div className='div'><span>{text}
+          <div className='relative'
+            style={{ transform: ' translate(10px,-20px)' }}
+          >
+            <Image src={arrowBlack} alt='arrow'
+              style={{ transform: 'rotate(90deg)', width: '15px' }}
+            />
+            <div className='rounded-full bg-white absolute'
+              style={{ width: '20px', height: '20px', left: '-3px', top: '-3px', opacity: '0.4' }}
+            >
 
-                        </div>
-                        <div className='rounded-full bg-white absolute animate-pulse-fast scale-up'
-                            style={{ width: '35px', height: '35px', left: '-10.5px', top: '-10.5px', opacity: '0.5' }}
-                        >
+            </div>
+            <div className='rounded-full bg-white absolute animate-pulse-fast scale-up'
+              style={{ width: '35px', height: '35px', left: '-10.5px', top: '-10.5px', opacity: '0.5' }}
+            >
 
-                        </div>
-                    </div>
-                </span><span>{text}
-                        <div className='relative'
-                            style={{ transform: ' translate(10px,-20px)' }}
-                        >
-                            <Image src={arrow} alt='arrow'
-                                style={{ transform: 'rotate(90deg)', width: '15px' }}
-                            />
-                            <div className='rounded-full bg-white absolute'
-                                style={{ width: '20px', height: '20px', left: '-3px', top: '-3px', opacity: '0.15' }}
-                            >
+            </div>
+          </div>
+        </span><span>{text}
+            <div className='relative'
+              style={{ transform: ' translate(10px,-20px)' }}
+            >
+              <Image src={arrow} alt='arrow'
+                style={{ transform: 'rotate(90deg)', width: '15px' }}
+              />
+              <div className='rounded-full bg-white absolute'
+                style={{ width: '20px', height: '20px', left: '-3px', top: '-3px', opacity: '0.15' }}
+              >
 
-                            </div>
-                            <div className='rounded-full bg-white absolute'
-                                style={{ width: '35px', height: '35px', left: '-10.5px', top: '-10.5px', opacity: '0.1' }}
-                            >
+              </div>
+              <div className='rounded-full bg-white absolute'
+                style={{ width: '35px', height: '35px', left: '-10.5px', top: '-10.5px', opacity: '0.1' }}
+              >
 
-                            </div>
-                        </div>
-                    </span></div></Link>
+              </div>
+            </div>
+          </span></div></Link>
 
 
-            <style>
-                {
-                    `
+      <style>
+        {
+          `
                     .btn-epic {
   position: relative;
   display : grid;
   width: 100%;
-  max-width: 220px;
   border-radius : 999px;
   height: 65px;
   transform: translate3d(0px, 0%, 0px);
@@ -148,10 +152,10 @@ const RegularButton = (props: {
 }
 
                     `
-                }
-            </style>
-        </>
-    );
+        }
+      </style>
+    </>
+  );
 };
 
 export default RegularButton;
