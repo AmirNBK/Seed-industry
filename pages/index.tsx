@@ -276,7 +276,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                   {(animationPlayedOnce && animationFaded) &&
                     <>
                       <div className='relative'>
-                        <div className='relative h-screen'>
+                        <div className='relative h-screen translate-y-[110px]'>
                           <div className='relative mt-20 lg:block block animate__animated  animate__zoomIn animate__slower
                       absolute left-1/2 top-1/3 
                       '
