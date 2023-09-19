@@ -3,7 +3,9 @@ import arrow from '../../../assets/Icons/arrow.svg'
 import arrowBlack from '../../../assets/Icons/arrow-black.svg'
 import { Vazirmatn } from 'next/font/google';
 import Link from 'next/link';
+import localFont from 'next/font/local'
 import Image from 'next/image';
+const myFontBold = localFont({ src: '../../../assets/Fonts/BYekan+ Bold.ttf' })
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const RegularButton = (props: {
@@ -23,7 +25,7 @@ const RegularButton = (props: {
     <>
       <Link
         className={`${position === 'right' ? 'ml-auto' : position === 'center' ? 'mx-auto' : ''}
-         btn-epic bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-20`} href="" target="_blank"
+         btn-epic bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-20 ${myFontBold.className} text-xl`} href="" target="_blank"
         style={{ maxWidth: `${width}px` }}
       >
         <div className='div'><span>{text}
@@ -76,8 +78,6 @@ const RegularButton = (props: {
   height: 65px;
   transform: translate3d(0px, 0%, 0px);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 18px;
   letter-spacing: 0.05em;
   transition-delay: 0.6s;
   overflow: hidden;

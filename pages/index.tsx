@@ -183,14 +183,14 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
         <AnimatedCursor
           innerSize={17}
           showSystemCursor={true}
-          outerSize={250}
+          outerSize={400}
           color='transparent'
           outerAlpha={0.2}
           innerScale={0.7}
           outerScale={1.3}
           trailingSpeed={hoverContainer ? 2 : 35}
           outerStyle={{
-            backgroundColor: 'rgba(136, 219, 68, 0.90)',
+            backgroundColor: '#a6e27d',
             filter: 'blur(97.5px)',
             zIndex: '-1px'
           }}
@@ -257,50 +257,51 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           </main>
 
           :
-
-          <SmoothScroll maxYTranslation={-2200}>
-            <main
-              className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
-              onMouseMoveCapture={moveFunc} id='myscrollbar'
-              onMouseEnter={() => {
-                setShowCursor(false)
-              }}
-            >
-              <PrimeReactProvider>
-                <BubbleComponent />
-                <Header data={header.items} />
-                {!(animationFaded && animationPlayedOnce) &&
-                  <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}
-                    onComplete={() => setAnimationPlayedOnce(true)} />
-                }
-                {(animationPlayedOnce && animationFaded) &&
-                  <>
-                    <div className='relative'>
-                      <div className='relative h-screen'>
-                        <div className='relative mt-20 lg:block block animate__animated  animate__zoomIn animate__slower
+          <>
+            <Header data={header.items} />
+            <SmoothScroll maxYTranslation={-2200}>
+              <main
+                className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
+                onMouseMoveCapture={moveFunc} id='myscrollbar'
+                onMouseEnter={() => {
+                  setShowCursor(false)
+                }}
+              >
+                <PrimeReactProvider>
+                  <BubbleComponent />
+                  {!(animationFaded && animationPlayedOnce) &&
+                    <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}
+                      onComplete={() => setAnimationPlayedOnce(true)} />
+                  }
+                  {(animationPlayedOnce && animationFaded) &&
+                    <>
+                      <div className='relative'>
+                        <div className='relative h-screen'>
+                          <div className='relative mt-20 lg:block block animate__animated  animate__zoomIn animate__slower
                       absolute left-1/2 top-1/3 
                       '
-                          style={{ transform: 'translate(-50%,-54%)' }}
-                        >
-                          <Image src={pic} alt='pic'
-                            ref={imageRef}
-                            className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
-                          <HeroSectionText />
+                            style={{ transform: 'translate(-50%,-54%)' }}
+                          >
+                            <Image src={pic} alt='pic'
+                              ref={imageRef}
+                              className='mx-auto dynamic-pic  w-full lg:w-544 lg:h-500 h-full' />
+                            <HeroSectionText />
+                          </div>
+                          <ArrowComponent />
                         </div>
-                        <ArrowComponent />
+                        <AboutUs data={aboutUs} />
+                        <CarouselSlider />
                       </div>
-                      <AboutUs data={aboutUs} />
-                      <CarouselSlider />
-                    </div>
-                    <ProductSliderContainer data={productSlider.products[0].product} />
-                    <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
-                    <Values data={values.ourValues[0].singleValue} />
-                    <Footer />
-                  </>
-                }
-              </PrimeReactProvider>
-            </main>
-          </SmoothScroll>
+                      <ProductSliderContainer data={productSlider.products[0].product} />
+                      <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
+                      <Values data={values.ourValues[0].singleValue} />
+                      <Footer />
+                    </>
+                  }
+                </PrimeReactProvider>
+              </main>
+            </SmoothScroll>
+          </>
       }
 
     </>

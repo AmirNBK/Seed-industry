@@ -15,6 +15,8 @@ import Link from 'next/link';
 import { slide as Menu } from 'react-burger-menu'
 import 'animate.css';
 import productPic from '../../assets/Images/product.png'
+import useScrollDirection from '@/Hooks/scrollDirection';
+
 
 const Header = (props: {
     data: any
@@ -24,8 +26,7 @@ const Header = (props: {
     const [searchResults, setSearchResults] = useState([]);
     const [visibleRight, setVisibleRight] = useState<boolean>(false);
     const [isArrowActive, setIsArrowActive] = useState(false);
-
-
+    const scrollDirection = useScrollDirection();
 
     useEffect(() => {
         if (props.searchData) {
@@ -103,7 +104,9 @@ const Header = (props: {
                     </div>
                 </Sidebar>
             </div>
-            <div className={`md:flex hidden Header animate__animated animate__slower animate__backInDown flex-col gap-6 xl:flex-row w-full justify-between items-center pb-6 ${vazir.className}`}
+            <div 
+            style={{zIndex : '1000'}}
+            className={`md:flex fixed transition-all duration-1000 ${ scrollDirection === "down" ? "-top-72" : "top-0"} hidden Header p-6 animate__animated animate__slower animate__backInDown flex-col gap-6 xl:flex-row w-full justify-between items-center pb-6 ${vazir.className}`}
             >
                 <div className='Header__logo flex flex-row items-center gap-4'>
                     <Image src={logo} alt='logo' unoptimized />

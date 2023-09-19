@@ -53,7 +53,7 @@ const ArrowComponent = () => {
                     unoptimized
                     alt='arrow'
                     src={arrow}
-                    className={`relative duration-300 left-1/2 top-1/2 -translate-x-1/2 ${isHovered ? 'translate-y-1/2 opacity-0' : '-translate-y-full'}`}
+                    className={`relative duration-300 left-1/2 top-[46%] -translate-x-1/2 ${isHovered ? 'translate-y-1/2 opacity-0' : '-translate-y-full'}`}
                 />
             </span>
         </div>

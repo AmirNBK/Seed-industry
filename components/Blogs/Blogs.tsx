@@ -48,7 +48,7 @@ const Blogs = (props: {
                 ))}
             </div>
             <div className=' w-full'>
-                <RegularButton text='بیشتر بخوانید' link={'/blogs'} position='center' />
+                <RegularButton text='بیشتر بخوانید' link={'/blogs'} position='center' width={250} />
             </div>
         </div>
     );
