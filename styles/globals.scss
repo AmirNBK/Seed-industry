@@ -729,10 +729,14 @@ body {
   }
 
   .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
-    background-color: #EBDAB2;
+    background-color: #d3ffa9;
     border-radius: 999px;
     width: 73px;
     height: 11px;
+  }
+
+  .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button:focus {
+    box-shadow: none;
   }
 
   // .swiper-wrapper {

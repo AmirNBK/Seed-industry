@@ -1,9 +1,8 @@
 import Image, { StaticImageData } from 'next/image';
 import React, { useEffect, useState } from 'react';
-import Header from '../Header/Header';
 import greenSeed from '../../assets/Icons/greenSeed.svg';
 import whiteSeed from '../../assets/Icons/whiteSeed.svg';
-import plus from '../../assets/Icons/plus.svg'
+import arrow from '../../assets/Icons/arrow-slider.svg'
 import ProductInfoContainer from '../ProductInfoContainer/ProductInfoContainer';
 import localFont from 'next/font/local'
 import { useRouter } from 'next/navigation'
@@ -54,16 +53,13 @@ const ProductSlider = (props: {
                     }} />
                     <p style={{ color: color, }}
                         className={`absolute bottom-[-5px] sm:bottom-[-8px] text-5xl md:text-7xl lg:text-9xl ${index === 1 ? 'left-[-7px] sm:left-[-18px]' : index === 2 ? 'bottom-[-8px]' : index === 3 ? 'bottom-[-3px]' : ''} ${numberFont.className}`}> {index} </p>
-                    <ProductInfoContainer title={product} description={description} bgColor={bgColor} textColor={textColor} />
+                    <ProductInfoContainer title={product} description={description} bgColor='#fff' textColor={textColor} />
                     <div className='absolute p-1 sm:p-3 rounded-full top-2/4 right-[-15px] sm:right-[-25px]'
-                        style={{ transform: 'translateY(-50%)', background: color }}
+                        style={{ transform: 'translateY(-50%)', background: '#d3ffa9' }}
                         onClick={() => setVisible(true)}
                     >
-                        <Image src={plus} alt='plus' className='w-6 sm:w-8' />
+                        <Image src={arrow} alt='arrow' className='w-6 sm:w-7 -translate-x-[2px]' />
                     </div>
-                    <p className='absolute top-2/4 text-sm sm:block hidden md:text-lg'
-                        style={{ right: '40px', transform: 'translateY(-50%)', color: color }}
-                    > برای اطلاعات بیشتر کلیک کنید </p>
                 </div>
 
                 <div className='ProductSlider__leftSide sm:block hidden invisible md:visible flex-1 justify-between h-full flex flex-col'>
