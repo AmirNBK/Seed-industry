@@ -29,6 +29,8 @@ const ValuesContainer = (props: {
     const index = props.index
     const activeIndex = props.activeIndex
 
+    const [crossHover, setCrossHover] = useState<boolean>(false)
+
 
     const size = useWindowSize();
 
@@ -62,11 +64,14 @@ const ValuesContainer = (props: {
                 {index === activeIndex && (
                     <div
                         className='bg-white rounded-full p-2 sm:block hidden'
+                        onMouseEnter={() => setCrossHover(true)} onMouseLeave={() => setCrossHover(false)}
                         onClick={() => {
                             handleClose
                         }}
                     >
-                        <Image src={cross} alt='cross' />
+                        <Image src={cross} alt='cross'
+                            className={`${crossHover ? 'rotate-90' : 'rotate-0'} duration-500`}
+                        />
                     </div>
                 )}
             </div>

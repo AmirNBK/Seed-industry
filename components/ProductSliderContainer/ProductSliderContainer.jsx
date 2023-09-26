@@ -15,7 +15,6 @@ const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' });
 
 const ProductSliderContainer = (props) => {
     const [currentPage, setCurrentPage] = useState(0);
-    const animationRefs = [useRef(null), useRef(null), useRef(null)];
     const size = useWindowSize();
 
     const seedImages = [
@@ -44,6 +43,7 @@ const ProductSliderContainer = (props) => {
                     bgColor={product.boxColor}
                     textColor={product.textColor}
                     image={product.image.sourceUrl}
+                    index={currentPage}
                 />
             </div>
         );

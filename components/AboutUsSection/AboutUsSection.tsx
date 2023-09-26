@@ -14,7 +14,7 @@ const AboutUs = (props: {
     data: any
 }) => {
     const size = useWindowSize()
-    const [svgWidth, setSvgWidth] = useState(0); // Initialize width to 0
+    const [svgWidth, setSvgWidth] = useState(0);
 
     useEffect(() => {
         AOS.init();
@@ -24,10 +24,9 @@ const AboutUs = (props: {
         triggerOnce: true
     });
 
-    // Update the SVG width when inView becomes true
     useEffect(() => {
         if (inView) {
-            setSvgWidth(213); // Set the width to 213 when inView is true
+            setSvgWidth(213);
         }
     }, [inView]);
 
@@ -71,7 +70,6 @@ const AboutUs = (props: {
                 </div>
             </div>
 
-            <style></style>
         </div>
     );
 };

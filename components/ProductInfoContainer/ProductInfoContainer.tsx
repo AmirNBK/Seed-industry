@@ -10,10 +10,12 @@ const ProductInfoContainer = (props: {
     description: string
     bgColor: string
     textColor: string
+    index: number
 }) => {
     const title = props.title
     const description = props.description
     const bgColor = props.bgColor
+    const index = props.index
     const textColor = props.textColor
 
     return (
@@ -23,7 +25,7 @@ const ProductInfoContainer = (props: {
                 <div className='relative translate-y-[3px]'
                 >
                     <div className='bg-[#8dda50] w-2 h-2 rounded-full'
-                        style={{ transform: 'translate(3px, 4px)' }}
+                        style={{ transform: 'translate(3px, 3px)' }}
                     >
 
                     </div>
@@ -55,7 +57,8 @@ const ProductInfoContainer = (props: {
                     bottom: 0px;
                     left: 0px;
                     border-radius : 6px;
-                    background-color: rgba(255, 255, 255, 0.2);
+                    background: ${index === 1 ? 'linear-gradient(90deg, rgba(83,126,49,0.7) 0%, rgba(211,255,169,0.7) 100%)'
+                        : 'rgba(255, 255, 255, 0.2)'} ;
                   }
                 `}
             </style>

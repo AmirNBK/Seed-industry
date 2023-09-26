@@ -14,19 +14,21 @@ const RegularButton = (props: {
   link?: any
   position?: string
   width?: number
+  height?: number
 }) => {
   const text = props.text
   const onClick = props.onClick
   const link = props.link
   const position = props.position
   const width = props.width
+  const height = props.height
 
   return (
     <>
       <Link
         className={`${position === 'right' ? 'ml-auto' : position === 'center' ? 'mx-auto' : ''}
          btn-epic bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-20 ${myFontBold.className} text-xl`} href="" target="_blank"
-        style={{ maxWidth: `${width}px` }}
+        style={{ maxWidth: `${width}px`, maxHeight: `${height}px` }}
       >
         <div className='div'><span>{text}
           <div className='relative'

@@ -4,7 +4,9 @@ import { Vazirmatn } from 'next/font/google';
 import dynamic from 'next/dynamic'
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
-const myFont = localFont({ src: '../../../assets/Fonts/mj.ttf' })
+import RegularButton from '@/components/CommonComponents/RegularButton/RegularButton';
+const myFont = localFont({ src: '../../../assets/Fonts/BYekan+.ttf' })
+const myFontBold = localFont({ src: '../../../assets/Fonts/BYekan+ Bold.ttf' })
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
 const BlogsItem = (props: {
@@ -31,14 +33,23 @@ const BlogsItem = (props: {
         >
             {inView &&
                 <>
-                    <div style={{ color: color }} className={`${myFont.className} parent flex flex-row-reverse md:justify-start justify-center gap-4`}> {category.map((item: string, index: number) => {
-                        return (
-                            <Link href={'/blogs'} key={index} className='text-sm sm:text-lg'
-                            >
-                                {item}
-                            </Link>
-                        )
-                    })} </div>
+                    <div style={{ color: color }}
+                        onMouseEnter={() => {
+                            props.onHoverChange(true);
+                            setHovered(true)
+                        }}
+                        onMouseLeave={() => {
+                            props.onHoverChange(false);
+                            setHovered(false)
+                        }}
+                        className={`${myFont.className} more${id} w-fit ml-auto parent flex flex-row-reverse md:justify-start justify-center gap-4`}> {category.map((item: string, index: number) => {
+                            return (
+                                <Link href={'/blogs'} key={index} className='text-sm sm:text-lg'
+                                >
+                                    {item}
+                                </Link>
+                            )
+                        })} </div>
                     <p
                         onMouseEnter={() => {
                             props.onHoverChange(true);
@@ -48,20 +59,9 @@ const BlogsItem = (props: {
                             props.onHoverChange(false);
                             setHovered(false)
                         }}
-                        className={`text-white md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${vazir.className}`} style={{ lineHeight: '53px' }}>
+                        className={`text-white md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${myFont.className}`} style={{ lineHeight: '53px' }}>
                         {title}
                     </p>
-                    <Link
-                    href={'/blogs/2'}
-                        onMouseEnter={() => {
-                            setHovered(true)
-                        }}
-                        onMouseLeave={() => {
-                            setHovered(false)
-                        }}
-                        className={`more${id} text-white text-sm sm:text-lg w-fit sm:block hidden sm:ml-auto font-extralight ${vazir.className}`}>
-                        بیشتر بخوانید
-                    </Link>
                     <p className={`text-white text-sm sm:text-lg w-fit sm:hidden block mx-auto sm:ml-auto font-extralight ${vazir.className}`} style={{ borderBottom: `2px solid ${color}` }}>
                         بیشتر بخوانید
                     </p>
@@ -71,7 +71,7 @@ const BlogsItem = (props: {
                         .more${id} {
                             position: relative;
                             text-decoration: none;
-                            padding: 3px 1px;
+                            padding: 5px 1px;
                             transition: color ease 1s;
                             
                             &::before, &::after {
@@ -79,7 +79,7 @@ const BlogsItem = (props: {
                               position: absolute;
                               background-color: ${color};
                               z-index: -1;
-                              height: 7%;
+                              height: 5%;
                             }
                             
                             &::before {
@@ -112,6 +112,7 @@ const BlogsItem = (props: {
                           }
                         `}
                     </style>
+
                 </>
             }
         </div>

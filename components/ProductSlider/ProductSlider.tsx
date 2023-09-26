@@ -11,6 +11,7 @@ const myFont = localFont({ src: '../../assets/Fonts/BYekan+.ttf' })
 const myFontBold = localFont({ src: '../../assets/Fonts/BYekan+ Bold.ttf' })
 import { Dialog } from 'primereact/dialog';
 import Link from 'next/link';
+import { useInView } from 'react-intersection-observer';
 
 const ProductSlider = (props: {
     product: string;
@@ -29,6 +30,18 @@ const ProductSlider = (props: {
     const textColor = props.textColor
     const bgColor = props.bgColor
     const [isInfoVisible, setIsInfoVisible] = useState<boolean>(false)
+    const [svgWidth, setSvgWidth] = useState(0);
+
+    const { ref, inView, entry } = useInView({
+        triggerOnce: false
+    });
+
+    useEffect(() => {
+        if (isInfoVisible) {
+            setSvgWidth(130); 
+        }
+        else setSvgWidth(0)
+    }, [isInfoVisible]);
 
 
     return (
@@ -40,9 +53,7 @@ const ProductSlider = (props: {
                         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%) lightgray 50% / cover no-repeat`,
                         backgroundBlendMode: 'overlay',
                     }} />
-                    <p style={{ color: color, }}
-                        className={`absolute bottom-[-5px] sm:bottom-[-8px] text-5xl md:text-7xl lg:text-9xl ${index === 1 ? 'left-[-7px] sm:left-[-18px]' : index === 2 ? 'bottom-[-8px]' : index === 3 ? 'bottom-[-3px]' : ''} ${numberFont.className}`}> {index} </p>
-                    <ProductInfoContainer title={product} description={description} bgColor='#fff' textColor={textColor} />
+                    <ProductInfoContainer index={index} title={product} description={description} bgColor='#fff' textColor={textColor} />
                     <div className='absolute p-1 sm:p-3 rounded-full top-2/4 right-[-15px] sm:right-[-25px]'
                         style={{ transform: 'translateY(-50%)', background: isInfoVisible ? '#fff' : '#d3ffa9 ' }}
                         onClick={() => setIsInfoVisible(!isInfoVisible)}
@@ -52,11 +63,21 @@ const ProductSlider = (props: {
                         />
                     </div>
 
-                    <div className={`${isInfoVisible ? 'opacity-1' : 'opacity-0'} duration-500 absolute top-[60%] right-[-15px] w-6/12 rounded-lg pb-20 px-4 pt-4 sm:right-[-25px] text-right bg-white`}>
-                        <p className={`${myFontBold.className} text-4xl`}>
-                            {props.product}
-                        </p>
-                        <p className={`${myFont.className} mt-8`}>
+                    <div className={`${isInfoVisible ? 'opacity-1' : 'opacity-0'} infoContainer text-white duration-500 absolute top-[60%] right-[-15px] w-[35%] rounded-lg pb-20 px-4 pt-4 sm:right-[-25px] text-right bg-white`}>
+                        <div className={`${myFontBold.className} text-4xl flex flex-col items-end gap-2`}>
+                            <p>
+                                {props.product}
+                            </p>
+                            <svg ref={ref}
+                                className="bottom-[-1.7rem] left-0 js-s-svg-fade" width={svgWidth} height="21" viewBox="0 0 213 21" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                style={{
+                                    transition: 'width 1s ease-in-out', transitionDelay: '1s'
+                                }}
+                            >
+                                <path d="M0.986657 20.3029C47.0444 5.53886 138.047 -1.45319 212.564 2.5385" stroke="#AAFC75" style={{ strokeDashoffset: "0", strokeDasharray: 'none', animation: "fade 4s linear forwards" }}></path>
+                            </svg>
+                        </div>
+                        <p className={`${myFont.className} mt-4`}>
                             {props.description}
                         </p>
 
@@ -73,6 +94,14 @@ const ProductSlider = (props: {
             <style>
                 {
                     `
+                    .infoContainer {
+background: rgba(255, 255, 255, 0.2);
+border-radius: 45px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(100px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+                    }
                     .container {
                         @media screen and (max-width:2300px) {
                             height : 384px;
