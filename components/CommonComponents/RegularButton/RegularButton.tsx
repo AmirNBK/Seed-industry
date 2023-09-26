@@ -32,9 +32,12 @@ const RegularButton = (props: {
           <div className='relative'
             style={{ transform: ' translate(10px,-20px)' }}
           >
-            <Image src={arrowBlack} alt='arrow'
-              style={{ transform: 'rotate(90deg)', width: '15px' }}
-            />
+            <div className='bg-[#8dda50] w-2 h-2 rounded-full'
+              style={{ transform: 'translate(3px, 4px)' }}
+
+            >
+
+            </div>
             <div className='rounded-full bg-white absolute'
               style={{ width: '20px', height: '20px', left: '-3px', top: '-3px', opacity: '0.4' }}
             >
@@ -50,9 +53,11 @@ const RegularButton = (props: {
             <div className='relative'
               style={{ transform: ' translate(10px,-20px)' }}
             >
-              <Image src={arrow} alt='arrow'
-                style={{ transform: 'rotate(90deg)', width: '15px' }}
-              />
+              <div className='bg-[#8dda50] w-2 h-2 rounded-full'
+                style={{ transform: 'translate(3px, 4px)' }}
+              >
+
+              </div>
               <div className='rounded-full bg-white absolute'
                 style={{ width: '20px', height: '20px', left: '-3px', top: '-3px', opacity: '0.15' }}
               >

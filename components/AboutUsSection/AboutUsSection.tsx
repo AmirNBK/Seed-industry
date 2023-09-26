@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import RegularButton from '../CommonComponents/RegularButton/RegularButton';
 import localFont from 'next/font/local'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import BubbleComponent from '../BubbleComponent/BubbleComponent';
 import useWindowSize from '@/Hooks/innerSize';
+import { useInView } from 'react-intersection-observer';
+
 const myFont = localFont({ src: '../../assets/Fonts/BYekan+.ttf' })
 const myFontBold = localFont({ src: '../../assets/Fonts/BYekan+ Bold.ttf' })
 
@@ -12,10 +14,22 @@ const AboutUs = (props: {
     data: any
 }) => {
     const size = useWindowSize()
+    const [svgWidth, setSvgWidth] = useState(0); // Initialize width to 0
 
     useEffect(() => {
         AOS.init();
     }, [])
+
+    const { ref, inView, entry } = useInView({
+        triggerOnce: true
+    });
+
+    // Update the SVG width when inView becomes true
+    useEffect(() => {
+        if (inView) {
+            setSvgWidth(213); // Set the width to 213 when inView is true
+        }
+    }, [inView]);
 
     return (
         <div
@@ -30,7 +44,12 @@ const AboutUs = (props: {
                         <span key={index} className={index === 0 ? 'text-[#78b944]' : ''}>{word}{index < props.data.aboutUs[0].title.split(' ').length - 1 ? ' ' : ''}</span>
                     ))}
                 </p>
-                <svg className="bottom-[-1.7rem] left-0 js-s-svg-fade" width="213" height="21" viewBox="0 0 213 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg ref={ref}
+                    className="bottom-[-1.7rem] left-0 js-s-svg-fade" width={svgWidth} height="21" viewBox="0 0 213 21" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    style={{
+                        transition: 'width 1s ease-in-out' , transitionDelay : '1s'
+                    }}
+                >
                     <path d="M0.986657 20.3029C47.0444 5.53886 138.047 -1.45319 212.564 2.5385" stroke="#AAFC75" style={{ strokeDashoffset: "0", strokeDasharray: 'none', animation: "fade 4s linear forwards" }}></path>
                 </svg>
 
@@ -52,8 +71,7 @@ const AboutUs = (props: {
                 </div>
             </div>
 
-
-<style></style>
+            <style></style>
         </div>
     );
 };

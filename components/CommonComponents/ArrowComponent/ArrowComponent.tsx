@@ -39,7 +39,7 @@ const ArrowComponent = () => {
                     <div
                         className={`rounded-full absolute bg-transparent w-full h-full ${isHovered ? styles.ArrowContainer : styles.ArrowContainer__notHover}`}
                         style={{
-                            border: '1px solid #fff',
+                            border: '1px solid #78b944',
                         }}
                     ></div>
                 </div>

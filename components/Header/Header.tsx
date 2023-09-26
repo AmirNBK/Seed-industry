@@ -49,7 +49,7 @@ const Header = (props: {
             <div className='md:hidden block text-center w-full'>
                 <div className='flex flex-row-reverse items-center justify-between w-full'>
                     <Button icon="pi pi-align-justify" style={{
-                        background: '#A4D0A4', borderRadius: '9000px',
+                        background: '#78b944', borderRadius: '9000px',
                         width: '70px', height: '70px'
                     }}
                         onClick={() => setVisibleRight(true)} />
@@ -148,7 +148,7 @@ const Header = (props: {
 
                     </div>
                     <Button icon="pi pi-align-justify" style={{
-                        background: '#A4D0A4', borderRadius: '9000px',
+                        background: '#78b944', borderRadius: '9000px',
                         width: '70px', height: '70px'
                     }} />
 
