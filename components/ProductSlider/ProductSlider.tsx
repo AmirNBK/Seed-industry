@@ -6,8 +6,9 @@ import arrow from '../../assets/Icons/arrow-slider.svg'
 import ProductInfoContainer from '../ProductInfoContainer/ProductInfoContainer';
 import localFont from 'next/font/local'
 import { useRouter } from 'next/navigation'
-const myFont = localFont({ src: '../../assets/Fonts/mj.ttf' })
 const numberFont = localFont({ src: '../../assets/Fonts/OtomanopeeOne-Regular.ttf' })
+const myFont = localFont({ src: '../../assets/Fonts/BYekan+.ttf' })
+const myFontBold = localFont({ src: '../../assets/Fonts/BYekan+ Bold.ttf' })
 import { Dialog } from 'primereact/dialog';
 import Link from 'next/link';
 
@@ -27,20 +28,8 @@ const ProductSlider = (props: {
     const index = props.index;
     const textColor = props.textColor
     const bgColor = props.bgColor
-    const router = useRouter()
-    const [visible, setVisible] = useState<boolean>(false);
+    const [isInfoVisible, setIsInfoVisible] = useState<boolean>(false)
 
-
-    const getColorOrder = (index: number) => {
-        const orders = [
-            [greenSeed, whiteSeed, whiteSeed],
-            [whiteSeed, greenSeed, whiteSeed],
-            [whiteSeed, whiteSeed, greenSeed],
-        ];
-        return orders[index % orders.length];
-    };
-
-    const colorOrder = getColorOrder(index - 1);
 
     return (
         <div className='ProductSlider sm:p-0 px-6 w-full my-32' id={`product${index}`}>
@@ -55,28 +44,27 @@ const ProductSlider = (props: {
                         className={`absolute bottom-[-5px] sm:bottom-[-8px] text-5xl md:text-7xl lg:text-9xl ${index === 1 ? 'left-[-7px] sm:left-[-18px]' : index === 2 ? 'bottom-[-8px]' : index === 3 ? 'bottom-[-3px]' : ''} ${numberFont.className}`}> {index} </p>
                     <ProductInfoContainer title={product} description={description} bgColor='#fff' textColor={textColor} />
                     <div className='absolute p-1 sm:p-3 rounded-full top-2/4 right-[-15px] sm:right-[-25px]'
-                        style={{ transform: 'translateY(-50%)', background: '#d3ffa9' }}
-                        onClick={() => setVisible(true)}
+                        style={{ transform: 'translateY(-50%)', background: isInfoVisible ? '#fff' : '#d3ffa9 ' }}
+                        onClick={() => setIsInfoVisible(!isInfoVisible)}
                     >
-                        <Image src={arrow} alt='arrow' className='w-6 sm:w-7 -translate-x-[2px]' />
+                        <Image src={arrow} alt='arrow' className='w-6 sm:w-7 -translate-x-[2px]'
+                            style={{ transform: isInfoVisible ? 'rotate(-90deg) translateX(-2px)' : 'rotate(0deg)', transition: 'all 0.4s' }}
+                        />
+                    </div>
+
+                    <div className={`${isInfoVisible ? 'opacity-1' : 'opacity-0'} duration-500 absolute top-[60%] right-[-15px] w-6/12 rounded-lg pb-20 px-4 pt-4 sm:right-[-25px] text-right bg-white`}>
+                        <p className={`${myFontBold.className} text-4xl`}>
+                            {props.product}
+                        </p>
+                        <p className={`${myFont.className} mt-8`}>
+                            {props.description}
+                        </p>
+
                     </div>
                 </div>
 
                 <div className='ProductSlider__leftSide sm:block hidden invisible md:visible flex-1 justify-between h-full flex flex-col'>
                     <div className='flex-grow flex flex-col justify-center gap-28'>
-                        <Dialog header={product} visible={visible} modal={false}
-                            style={{ width: '80vw' }} onHide={() => setVisible(false)}>
-                            <p className="m-0">
-                                {description}
-                            </p>
-                            <div className='text-center mt-6 border w-fit mx-auto border-x-transparent border-t-transparent border-solid'
-                            style={{borderBottomColor : 'rgb(68, 165, 219)'}}
-                            >
-                                <Link href={'/products/grass-2'}>
-                                    مشاهده بیشتر
-                                </Link>
-                            </div>
-                        </Dialog>
                     </div>
                 </div>
             </div>
