@@ -18,7 +18,6 @@ const Blogs = (props: {
     });
     const [svgWidth, setSvgWidth] = useState(0);
 
-
     const convertedData = props.data.map((item) => ({
         title: item.title,
         color: item.color,

@@ -298,11 +298,11 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                       <ProductSliderContainer data={productSlider.products[0].product} />
                       <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
                       <Values data={values.ourValues[0].singleValue} />
-                      <Footer />
                     </>
                   }
                 </PrimeReactProvider>
               </main>
+              <Footer />
             </SmoothScroll>
           </>
       }
