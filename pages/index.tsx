@@ -13,6 +13,7 @@ import AboutUs from '@/components/AboutUsSection/AboutUsSection';
 import 'animate.css';
 import Footer from '@/components/Footer/Footer';
 import Blogs from '@/components/Blogs/Blogs';
+import cursorBg from '../assets/Images/cursorLight.png'
 import Values from '@/components/Values/Values';
 import ProductSliderContainer from '@/components/ProductSliderContainer/ProductSliderContainer';
 import HeroSectionText from '@/components/HeroSectionText/HeroSectionText';
@@ -183,16 +184,17 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
         <AnimatedCursor
           innerSize={17}
           showSystemCursor={true}
-          outerSize={400}
+          outerSize={900}
           color='transparent'
           outerAlpha={0.2}
           innerScale={0.7}
           outerScale={1.3}
           trailingSpeed={hoverContainer ? 2 : 35}
           outerStyle={{
-            backgroundColor: '#a6e27d',
-            filter: 'blur(97.5px)',
-            zIndex: '-1px'
+            backgroundImage: `url(https://i.imgur.com/PzokfXC.png)`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            zIndex: '-1'
           }}
           clickables={[
             'a',
@@ -208,6 +210,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             '.link'
           ]}
         />
+
       }
       {
         size.width && size.width < 768 ?

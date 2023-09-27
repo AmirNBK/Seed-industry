@@ -7,6 +7,8 @@ import ResearchIcon from '@/assets/Icons/magnifier';
 import cross from '../../../assets/Icons/cross.svg'
 import useWindowSize from '../../../Hooks/innerSize'
 import light from '../../../assets/Images/card-light.png'
+import whiteLight from '../../../assets/Images/whiteLight.png'
+
 
 const ValuesContainer = (props: {
     title: string;
@@ -59,8 +61,18 @@ const ValuesContainer = (props: {
                     <p style={{ color: `${index === activeIndex ? 'black' : '#AAFC75'}` }} className='text-2xl text-center'> {title} </p>
                     {<ResearchIcon color={index === activeIndex ? 'black' : '#aafc75'} />}
                 </div>
-                <Image src={light} alt='light' className='absolute' style={{ right: '-10%', top: '-50%', width: '540px' }} />
-                <Image src={light} alt='light' className='absolute' style={{ right: '30%', top: '-40%' }} />
+                {index === activeIndex ?
+                    <>
+                        <Image src={whiteLight} alt='light' className='absolute w-full z-[-1]' />
+                        <Image src={whiteLight} alt='light' className='absolute w-1/2 top-0 left-1/2 rotate-90 z-[-1]' />
+                    </>
+
+                    :
+                    <>
+                        <Image src={light} alt='light' className='absolute' style={{ right: '-10%', top: '-50%', width: '540px' }} />
+                        <Image src={light} alt='light' className='absolute' style={{ right: '30%', top: '-40%' }} />
+                    </>
+                }
                 {index === activeIndex && (
                     <div
                         className='bg-white rounded-full p-2 sm:block hidden'
