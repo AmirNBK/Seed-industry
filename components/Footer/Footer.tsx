@@ -9,6 +9,10 @@ import arrow from '../../assets/Icons/arrow.svg'
 import Link from 'next/link';
 import footerInfo from '../../assets/Images/footerInfo.png'
 import 'animate.css';
+import instagram from '../../assets/Icons/instagramFooter.svg'
+import linkedin from '../../assets/Icons/linkedinFooter.svg'
+import telegram from '../../assets/Icons/telegramFooter.svg'
+import aparat from '../../assets/Icons/aparat.svg'
 import { useInView } from 'react-intersection-observer';
 import useWindowSize from '@/Hooks/innerSize';
 const Footer = (props: {
@@ -24,27 +28,39 @@ const Footer = (props: {
 
     const footerItems = [
         'سایت های مرتبط', 'موسسه تحقیقات ثبت وگواهی بذرونهال ', 'سازمان هواشناسی', 'دانشکده کشاورزی دانشگاه تهران',
+    ]
+
+    const footerItems2 = [
         'سازمان حفظ نباتات', 'موسسه تحقیقات ثبت و گواهی بذرونهال', 'دانشکده کشاورزی دانشگاه تهران'
     ]
 
+    const socialMedia = [instagram, linkedin, telegram, aparat]
+
     const [svgWidth, setSvgWidth] = useState(0);
-    const size = useWindowSize()
+
+    const [secondSvgWidth, setSecondSvgWidth] = useState(0);
+
+    const [footerRadius, setFooterRadius] = useState(0);
+
     useEffect(() => {
         if (inView) {
             setSvgWidth(213);
+            setSecondSvgWidth(70);
+            setFooterRadius(150)
         }
     }, [inView]);
 
-
     return (
-        <div className={`${myFont.className} Footer w-full bg-[#BAF98F]`} ref={ref}
+        <div className={`${myFont.className} rounded-t-[${footerRadius}px] Footer w-full bg-[#BAF98F]`} ref={ref}
+            style={{
+                transition: 'border-radius 3s ease-in-out',
+            }}
         >
-
-            <div className='Footer__contactUsSection flex flex-row-reverse items-center justify-between px-4 pt-8'>
+            <div className='Footer__contactUsSection flex flex-row-reverse items-center justify-between px-4 pt-16'>
                 <div className='Footer__contactUsSection__right text-7xl flex flex-row-reverse items-center gap-4'>
                     <h2
                         ref={ref}
-                        className={`${myFont.className} ${inView && 'animate__animated animate__fadeInDown animate__slower'} flex flex-row-reverse Blogs__title text-black text-5xl sm:text-8xl w-max ml-auto mr-12`}
+                        className={`${myFont.className} flex flex-row-reverse Blogs__title text-black text-5xl sm:text-8xl w-max ml-auto mr-12`}
                     >
                         با ما در <span className='text-[#78b944]'>
                             ارتباط
@@ -75,24 +91,37 @@ const Footer = (props: {
             </div>
 
 
-            <div className='footer__downside flex flex-row-reverse items-baseline justify-between my-12 pb-8'>
-                <div className='footer__pages px-4 grid grid-cols-2'>
+            <div className='footer__downside flex flex-row-reverse items-baseline justify-between mt-12 px-4'>
+                <div className='footer__pages px-4 flex flex-col'>
                     {footerItems.map((item, index) => {
                         return (
-                            <div className='footer__pages__items flex flex-row-reverse gap-4 items-center'>
-                                <div className='bg-black w-2 h-2 rounded-full hover:opacity-100 opacity-50'>  </div>
-                                <p className={`${index === 0 ? 'opacity-100 font-bold' : 'opacity-50'} cursor-pointer hover:opacity-100 text-2xl 
+                            <div className='footer__pages__items'>
+                                <p className={`${index === 0 ? 'opacity-100 font-bold' : 'opacity-50'} cursor-pointer flex flex-row-reverse gap-4  items-center hover:opacity-100 text-2xl 
                             duration-500 text-[#183e33]`}
-                                > {item} </p>
+                                >
+                                    <div className='bg-black w-2 h-2 rounded-full'>  </div>
+                                    {item} </p>
                             </div>
                         )
                     })}
                 </div>
 
-                <div>
+                <div className='footer__pages px-4 flex flex-col'>
+                    {footerItems2.map((item, index) => {
+                        return (
+                            <div className='footer__pages__items'>
+                                <p className={`opacity-50 cursor-pointer flex flex-row-reverse gap-4  items-center hover:opacity-100 text-2xl 
+                            duration-500 text-[#183e33]`}
+                                >
+                                    <div className='bg-black w-2 h-2 rounded-full'>  </div>
+                                    {item} </p>
+                            </div>
+                        )
+                    })}
+                </div>
 
-
-                    <div className='Header__extraPart__languages bg-white w-fit p-2 rounded-lg relative text-white flex items-center gap-2 cursor-pointer'
+                <div className='flex flex-row gap-8'>
+                    <div className='footer__extraPart__languages bg-white w-fit p-2 rounded-lg relative text-white flex items-center gap-2 cursor-pointer'
                         onClick={() => setIsArrowActive(prevState => !prevState)}>
                         <p className='translate-y-px text-opacity-50 text-black'> EN </p>
                         <Image src={arrow} alt='arrow' className={`${isArrowActive ? 'arrow-active' : 'arrow'}`} />
@@ -106,8 +135,30 @@ const Footer = (props: {
                             </p>
                         </div>
                     </div>
+
+                    <div className='footer__socialMedia flex flex-row items-center gap-6'>
+                        {socialMedia.map((item) => {
+                            return (
+                                <Image src={item} alt={item} className='w-5' />
+                            )
+                        })}
+                    </div>
                 </div>
+
             </div>
+
+
+            <p className='px-4 -translate-y-[20px]'>
+                زفره مدیا
+                <svg ref={ref}
+                    className="-bottom-[50px] js-s-svg-fade mt-1 rotate-270" width={secondSvgWidth} height="10" viewBox="0 0 213 21" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    style={{
+                        transition: 'width 1s ease-in-out', transitionDelay: '1s'
+                    }}
+                >
+                    <path d="M0.986657 20.3029C47.0444 5.53886 138.047 -1.45319 212.564 2.5385" stroke="#78b944" style={{ strokeDashoffset: "0", strokeDasharray: 'none', animation: "fade 4s linear forwards" }}></path>
+                </svg>
+            </p>
 
 
             <style>

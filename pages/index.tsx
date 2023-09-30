@@ -264,7 +264,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             <Header data={header.items} />
             <SmoothScroll maxYTranslation={-2200}>
               <main
-                className={`flex flex-col items-center justify-between p-6 overflow-hidden ${inter.className}`}
+                className={`flex flex-col items-center justify-between overflow-hidden ${inter.className}`}
                 onMouseMoveCapture={moveFunc} id='myscrollbar'
                 onMouseEnter={() => {
                   setShowCursor(false)
@@ -298,11 +298,11 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
                       <ProductSliderContainer data={productSlider.products[0].product} />
                       <Blogs data={blogs.blogsAndNews} onHoverChange={handleHoverChange} onHoverContainer={handleHoverContainer} />
                       <Values data={values.ourValues[0].singleValue} />
+                      <Footer />
                     </>
                   }
                 </PrimeReactProvider>
               </main>
-              <Footer />
             </SmoothScroll>
           </>
       }
