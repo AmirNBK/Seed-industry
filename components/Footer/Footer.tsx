@@ -42,6 +42,10 @@ const Footer = (props: {
 
     const [footerRadius, setFooterRadius] = useState(0);
 
+    const [contactUs, setContactUs] = useState(false);
+
+
+
     useEffect(() => {
         if (inView) {
             setSvgWidth(213);
@@ -77,7 +81,16 @@ const Footer = (props: {
                             باشید
                         </span>
                     </h2>
-                    <ColoredArrow color={'#78b944'} width={'w-20'} />
+                    <ColoredArrow
+                        onClick={() => {
+                            setContactUs(!contactUs);
+                        }}
+                        color={contactUs ? 'black' : '#78b944'}
+                        width={'w-20'}
+                        rotate={contactUs ? '-rotate-90' : ''}
+                        alternativeClassnames={contactUs ? '-translate-x-[40px]' : ''}
+                    />
+
                 </div>
                 <div className='Footer__contactUsSection__left flex flex-col items-center'>
                     <Image src={logo} alt='logo' className='w-28' />
@@ -86,7 +99,14 @@ const Footer = (props: {
                 </div>
             </div>
 
-            <div className='mt-16'>
+                <div className={`${contactUs ? 'animate__animated animate__fadeInRight' : 'animate__animated animate__fadeOutRight'}
+                rounded-full w-fit pr-8 pl-80 ml-auto mr-20 py-5 text-xl`}
+                    style={{ background: 'rgba(255,255,255,0.5)' }}
+                >
+                    roya.vali@pishgamanbazr.com
+                </div>
+
+            <div className={`${contactUs && 'mt-16'}`}>
                 <Image src={footerInfo} alt='info' unoptimized />
             </div>
 
@@ -127,8 +147,8 @@ const Footer = (props: {
                         <Image src={arrow} alt='arrow' className={`${isArrowActive ? 'arrow-active' : 'arrow'}`} />
                         <div className={`${isArrowActive ? 'opacity-100 h-20' : 'opacity-0	h-2'} transition-all duration-500 absolute`}
                             style={{
-                                background: 'rgba(255, 255, 255, 0.7)', width: '4.5rem',
-                                top: '0px', left: '-8px', borderRadius: '5px'
+                                background: 'rgba(255, 255, 255, 0.7)', width: '4rem',
+                                top: '0px', left: '0px', borderRadius: '5px'
                             }}>
                             <p className={`${isArrowActive ? 'opacity-100 duration-1000' : 'opacity-0'} opacity-50 absolute bottom-1 left-2.5 text-black`}>
                                 FA

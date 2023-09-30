@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ColoredSVG = ({ color, width }) => {
+const ColoredSVG = ({ color, width, onClick, rotate, alternativeClassnames }) => {
     return (
-        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className={`${width}`}>
+        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" onClick={onClick} className={`${width} ${rotate} duration-500 ${alternativeClassnames} cursor-pointer`}>
             <title />
             <g data-name="1" id="_1">
                 <path
