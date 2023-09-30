@@ -13,6 +13,10 @@ const myFont = localFont({ src: '../../assets/Fonts/BYekan+.ttf' })
 const myFontBold = localFont({ src: '../../assets/Fonts/BYekan+ Bold.ttf' })
 import styles from './Header.module.css'
 import { Sidebar } from 'primereact/sidebar';
+import instagram from '../../assets/Icons/instagramFooter.svg'
+import linkedin from '../../assets/Icons/linkedinFooter.svg'
+import telegram from '../../assets/Icons/telegramFooter.svg'
+import aparat from '../../assets/Icons/aparat.svg'
 import { Button } from 'primereact/button';
 import Link from 'next/link';
 import Hamburger from 'hamburger-react'
@@ -24,14 +28,39 @@ import useScrollDirection from '@/Hooks/scrollDirection';
 const Header = (props: {
     data: any
     searchData?: any
+    burgerMenuClick: () => void
 }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [visibleRight, setVisibleRight] = useState<boolean>(false);
     const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
+    const [burgerMenuZIndex, setBurgerMenuZIndex] = useState<boolean>(false);
     const [isArrowActive, setIsArrowActive] = useState(false);
+    const [burgerMenuHover, setBurgerMenuHover] = useState(false);
+    const socialMedia = [instagram, linkedin, telegram, aparat]
+    const [svgWidth, setSvgWidth] = useState(0);
     const scrollDirection = useScrollDirection();
-    const burgerMenuItems = ['درباره ما', 'محصولات', 'کاتالوگ', 'وبلاگ', 'ارتباط با ما']
+
+    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+    useEffect(() => {
+        if (hoveredItem != null) {
+            setSvgWidth(150);
+        }
+        else setSvgWidth(0)
+    }, [hoveredItem]);
+
+    const burgerMenuClick = () => {
+        props.burgerMenuClick();
+        if (burgerMenuZIndex) {
+            setTimeout(() => {
+                setBurgerMenuZIndex(false);
+            }, 2000);
+        }
+        else setBurgerMenuZIndex(true)
+    };
+
+
+
 
     useEffect(() => {
         if (props.searchData) {
@@ -157,9 +186,15 @@ const Header = (props: {
 
                     </div>
 
-                    <Hamburger toggled={burgerMenu} toggle={setBurgerMenu} color={burgerMenu ? 'black' : 'white'}
-                        rounded size={26}
+                    <Hamburger
+                        onToggle={() => burgerMenuClick()}
+                        toggled={burgerMenu}
+                        toggle={setBurgerMenu}
+                        color={burgerMenu ? 'black' : 'white'}
+                        rounded
+                        size={26}
                     />
+
                     <div className={`${burgerMenu && 'opacity-0'} Header__extraPart__languages relative text-white flex items-center gap-2 cursor-pointer`}
                         onClick={() => setIsArrowActive(prevState => !prevState)}>
                         <p className='translate-y-px text-opacity-50 text-white'> EN </p>
@@ -177,31 +212,209 @@ const Header = (props: {
                 </div>
             </div>
 
-            <div className={`${burgerMenu ? 'animate__animated animate__fadeIn animated-slow z-[2000]' : 'animate__animated animate__fadeOut animated-slow'}
-            burgerMenu bg-white w-screen h-screen fixed rounded-b-[100px]`}>
-                <div className='flex flex-col items-center text-5xl gap-10 left-1/2 top-1/2 absolute -translate-x-1/2 -translate-y-1/2'>
-                    {burgerMenuItems.map((item) => {
+            <div
+                className={`${burgerMenuZIndex ? 'z-[2000]' : 'z-[-2000]'}  burgerMenu
+                        bg-white w-screen h-screen fixed rounded-b-[100px] ${burgerMenu ? 'animate__animated animate__fadeIn animated-slow' : 'animate__animated animate__fadeOut animated-slow animate__delay-2s'}`}>
+                <div className='flex flex-col items-center text-5xl gap-2 left-1/2 top-1/2 absolute -translate-x-1/2 -translate-y-1/2'>
+                    <p
+                        onMouseEnter={() => {
+                            setHoveredItem('درباره ما');
+                        }}
+                        onMouseLeave={() => {
+                            setHoveredItem(null);
+                        }}
+                        className={`${myFont.className} cursor-pointer opacity-50 hover:opacity-100 duration-500
+                                ${burgerMenu ? 'animate__animated animate__zoomIn animate__slow' : 'animate__animated animate__zoomOut animate__slow'}
+                                `}
+                    >
+                        درباره ما
+                        <svg
+                            className="mt-2 bottom-[-1.7rem] left-0 js-s-svg-fade"
+                            width={hoveredItem === 'درباره ما' ? '150' : '0'}
+                            height="21"
+                            viewBox="0 0 213 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            style={{
+                                transition: "width 1s",
+                            }}
+                        >
+                            <path
+                                d="M0.986657 20.3029C47.0444 5.53886 138.047 -1.45319 212.564 2.5385"
+                                stroke="#78b944"
+                                strokeWidth="3"
+                                style={{
+                                    strokeDashoffset: '0',
+                                    strokeDasharray: 'none',
+                                    animation: 'fade 2s linear forwards',
+                                }}
+                            ></path>
+                        </svg>
+                    </p>
+                    <p
+                        onMouseEnter={() => {
+                            setHoveredItem('محصولات');
+                        }}
+                        onMouseLeave={() => {
+                            setHoveredItem(null);
+                        }}
+                        className={`${myFont.className} cursor-pointer opacity-50 hover:opacity-100 duration-500
+                                ${burgerMenu ? 'animate__animated animate__zoomIn animate__slow animate-delay-05' : 'animate-delay-05 animate__animated animate__zoomOut animate__slow'}
+                                `}
+                    >
+                        محصولات
+                        <svg
+                            className="mt-2 bottom-[-1.7rem] left-0 js-s-svg-fade"
+                            width={hoveredItem === 'محصولات' ? '150' : '0'}
+                            height="21"
+                            viewBox="0 0 213 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            style={{
+                                transition: "width 1s",
+                            }}
+                        >
+                            <path
+                                d="M0.986657 20.3029C47.0444 5.53886 138.047 -1.45319 212.564 2.5385"
+                                stroke="#78b944"
+                                strokeWidth="3"
+                                style={{
+                                    strokeDashoffset: '0',
+                                    strokeDasharray: 'none',
+                                    animation: 'fade 2s linear forwards',
+                                }}
+                            ></path>
+                        </svg>
+                    </p>
+                    <p
+                        onMouseEnter={() => {
+                            setHoveredItem('کاتالوگ');
+                        }}
+                        onMouseLeave={() => {
+                            setHoveredItem(null);
+                        }}
+                        className={`${myFont.className} cursor-pointer opacity-50 hover:opacity-100 duration-500
+                                ${burgerMenu ? 'animate__animated animate__zoomIn animate__slow animate-delay-105' : 'animate__animated animate__zoomOut animate__delay-105  animate__slow'}
+                                `}
+                    >
+                        کاتالوگ
+                        <svg
+                            className="mt-2 bottom-[-1.7rem] left-0 js-s-svg-fade"
+                            width={hoveredItem === 'کاتالوگ' ? '130' : '0'}
+                            height="21"
+                            viewBox="0 0 213 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            style={{
+                                transition: "width 1s",
+                            }}
+                        >
+                            <path
+                                d="M0.986657 20.3029C47.0444 5.53886 138.047 -1.45319 212.564 2.5385"
+                                stroke="#78b944"
+                                strokeWidth="3"
+                                style={{
+                                    strokeDashoffset: '0',
+                                    strokeDasharray: 'none',
+                                    animation: 'fade 2s linear forwards',
+                                }}
+                            ></path>
+                        </svg>
+                    </p>
+                    <p
+                        onMouseEnter={() => {
+                            setHoveredItem('وبلاگ');
+                        }}
+                        onMouseLeave={() => {
+                            setHoveredItem(null);
+                        }}
+                        className={`${myFont.className} cursor-pointer opacity-50 hover:opacity-100 duration-500
+                                ${burgerMenu ? 'animate__animated animate__zoomIn animate__slow animate-delay-205' : 'animate-delay-205 animate__animated animate__zoomOut animate__slow'}
+                                `}
+
+                    >
+                        وبلاگ
+                        <svg
+                            className="mt-2 bottom-[-1.7rem] left-0 js-s-svg-fade"
+                            width={hoveredItem === 'وبلاگ' ? '100' : '0'}
+                            height="21"
+                            viewBox="0 0 213 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            style={{
+                                transition: hoveredItem === 'وبلاگ' ? 'width 1s' : '',
+                            }}
+                        >
+                            <path
+                                d="M0.986657 20.3029C47.0444 5.53886 138.047 -1.45319 212.564 2.5385"
+                                stroke="#78b944"
+                                strokeWidth="3"
+                                style={{
+                                    strokeDashoffset: '0',
+                                    strokeDasharray: 'none',
+                                    animation: 'fade 2s linear forwards',
+                                }}
+                            ></path>
+                        </svg>
+                    </p>
+                    <p
+                        onMouseEnter={() => {
+                            setHoveredItem('ارتباط با ما');
+                        }}
+                        onMouseLeave={() => {
+                            setHoveredItem(null);
+                        }}
+                        className={`${myFont.className} cursor-pointer opacity-50 hover:opacity-100 duration-500
+                                ${burgerMenu ? 'animate__animated animate__zoomIn animate__slow animate__delay-1s' : 'animate__animated animate__zoomOut animate__slow animate__delay-1s'}
+                                `}
+                    >
+                        ارتباط با ما
+                        <svg
+                            className="mt-2 bottom-[-1.7rem] left-0 js-s-svg-fade"
+                            width={hoveredItem === 'ارتباط با ما' ? '150' : '0'}
+                            height="21"
+                            viewBox="0 0 213 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            style={{
+                                transition: hoveredItem === 'ارتباط با ما' ? 'width 1s' : '',
+                            }}
+                        >
+                            <path
+                                d="M0.986657 20.3029C47.0444 5.53886 138.047 -1.45319 212.564 2.5385"
+                                stroke="#78b944"
+                                strokeWidth="3"
+                                style={{
+                                    strokeDashoffset: '0',
+                                    strokeDasharray: 'none',
+                                }}
+                            ></path>
+                        </svg>
+                    </p>
+                </div>
+
+                <div className='header__socialMedia flex flex-row items-center gap-6 left-1/2 bottom-[5%] absolute -translate-x-1/2 -translate-y-1/2'>
+                    {socialMedia.map((item) => {
                         return (
-                            <p className={`${myFont.className} cursor-pointer opacity-50 hover:opacity-100 duration-500`}>
-                                {item}
-                            </p>
-                    )
+                            <Image src={item} alt={item} className='w-5' />
+                        )
                     })}
                 </div>
             </div>
 
 
+
             <style>
                 {`
-                .hamburger-react {
-                    background: #78b944;
-                    border-radius : 9999px;
-                    z-index : 200000;
-                    width : 70px !important;
-                    height : 70px !important;
+            .hamburger-react {
+                background: #78b944;
+            border-radius : 9999px;
+            z-index : 200000;
+            width : 70px !important;
+            height : 70px !important;
                 }
-                .hamburger-react div {
-                    ${!burgerMenu &&
+            .hamburger-react div {
+                ${!burgerMenu &&
                     `
                 left : 20px !important;
                 transform : translateY(12px) !important;
@@ -210,7 +423,7 @@ const Header = (props: {
                 }
                 
                 `}
-            </style>
+            </style >
         </>
     );
 };

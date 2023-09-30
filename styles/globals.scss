@@ -55,9 +55,23 @@ html {
 
 
 body {
+
   color: rgb(var(--foreground-rgb));
   background-color: #173D33;
   overflow-x: hidden;
+
+
+  .animate-delay-05 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-delay-105 {
+    animation-delay: 0.4s;
+  }
+
+  .animate-delay-205 {
+    animation-delay: 0.6s;
+  }
 
   .leaflet-popup-content {
     margin: 0;

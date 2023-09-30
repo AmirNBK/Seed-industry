@@ -54,6 +54,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
   const [showCursor, setShowCursor] = useState(false);
   const [hoverContainer, setHoverContainer] = useState(false)
   const [onMainContainer, setOnMainContainer] = useState(false)
+  const [burgerMenu, setBurgerMenu] = useState<boolean>(false)
   const size = useWindowSize()
 
   const handleHoverChange = (isHoveredValue: boolean) => {
@@ -184,7 +185,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
         <AnimatedCursor
           innerSize={17}
           showSystemCursor={true}
-          outerSize={900}
+          outerSize={burgerMenu ? 500 : 900}
           color='transparent'
           outerAlpha={0.2}
           innerScale={0.7}
@@ -194,7 +195,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             backgroundImage: `url(https://i.imgur.com/PzokfXC.png)`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            zIndex: '-1'
+            zIndex: burgerMenu ? '9000' : '-1'
           }}
           clickables={[
             'a',
@@ -224,7 +225,8 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             <PrimeReactProvider>
               <ScrollButton />
               <BubbleComponent />
-              <Header data={header.items} />
+              <Header data={header.items} burgerMenuClick={() => {console.log('here');
+              }} />
               {!(animationFaded && animationPlayedOnce) &&
                 <Lottie animationData={animations} loop={false} className={`${animationPlayedOnce && 'animate__animated animate__bounceOutLeft'}`}
                   onComplete={() => setAnimationPlayedOnce(true)} />
@@ -261,7 +263,9 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
 
           :
           <>
-            <Header data={header.items} />
+            <Header data={header.items} burgerMenuClick={() => {
+              setBurgerMenu(!burgerMenu)
+              }} />
             <SmoothScroll maxYTranslation={-2200}>
               <main
                 className={`flex flex-col items-center justify-between overflow-hidden ${inter.className}`}
