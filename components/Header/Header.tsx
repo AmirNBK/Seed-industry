@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import localFont from 'next/font/local'
 import React, { useEffect, useState } from 'react';
 import { Vazirmatn } from 'next/font/google';
 const vazir = Vazirmatn({ subsets: ['latin'] });
@@ -8,11 +9,13 @@ import logoTextEn from '../../assets/Icons/logotext.png'
 import 'primeicons/primeicons.css';
 import { InputText } from 'primereact/inputtext';
 import arrow from '../../assets/Icons/arrow.svg'
+const myFont = localFont({ src: '../../assets/Fonts/BYekan+.ttf' })
+const myFontBold = localFont({ src: '../../assets/Fonts/BYekan+ Bold.ttf' })
 import styles from './Header.module.css'
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import Link from 'next/link';
-import { slide as Menu } from 'react-burger-menu'
+import Hamburger from 'hamburger-react'
 import 'animate.css';
 import productPic from '../../assets/Images/product.png'
 import useScrollDirection from '@/Hooks/scrollDirection';
@@ -28,6 +31,7 @@ const Header = (props: {
     const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
     const [isArrowActive, setIsArrowActive] = useState(false);
     const scrollDirection = useScrollDirection();
+    const burgerMenuItems = ['درباره ما', 'محصولات', 'کاتالوگ', 'وبلاگ', 'ارتباط با ما']
 
     useEffect(() => {
         if (props.searchData) {
@@ -106,19 +110,23 @@ const Header = (props: {
                 </Sidebar>
             </div>
             <div
-                style={{ zIndex: '1000' }}
+                style={{ zIndex: '10000' }}
                 className={`md:flex fixed transition-all duration-1000 ${scrollDirection === "down" ? "-top-72" : "top-0"} hidden Header p-6 animate__animated animate__slower animate__backInDown flex-col gap-6 xl:flex-row w-full justify-between items-center pb-6 ${vazir.className}`}
             >
                 <div className='Header__logo flex flex-row items-center gap-4'>
                     <Image src={logo} alt='logo' unoptimized />
-                    <div className='flex flex-col gap-2 translate-y-3'>
-                        <Image src={logoTextFa} alt='' unoptimized />
-                        <Image src={logoTextEn} alt='' unoptimized />
+                    <div className={`${burgerMenu ? 'hidden' : 'flex'} text-white flex-col gap-2 translate-y-3 items-center font-extrabold text-xl ${myFontBold.className}`}>
+                        <p> پیشگامان صنعت و بذر </p>
+                        <p> Pishgaman Sanat Va bazr Co. </p>
+                    </div>
+                    <div className={`${burgerMenu ? 'flex' : 'hidden'}  flex-col gap-2 translate-y-3 items-center font-extrabold text-xl ${myFontBold.className}`}>
+                        <p> پیشگامان صنعت و بذر </p>
+                        <p> Pishgaman Sanat Va bazr Co. </p>
                     </div>
                 </div>
 
                 <div className='Header__extraPart flex flex-row gap-6 items-center'>
-                    <div>
+                    <div className={`${burgerMenu && 'hidden'}`}>
                         <span className="p-input-icon-right">
                             <i className="pi pi-search" />
                             <InputText
@@ -148,12 +156,11 @@ const Header = (props: {
                         }
 
                     </div>
-                    <Button icon="pi pi-align-justify" style={{
-                        background: '#78b944', borderRadius: '9000px',
-                        width: '70px', height: '70px'
-                    }} onClick={() => { setBurgerMenu(!burgerMenu) }} />
 
-                    <div className='Header__extraPart__languages relative text-white flex items-center gap-2 cursor-pointer'
+                    <Hamburger toggled={burgerMenu} toggle={setBurgerMenu} color={burgerMenu ? 'black' : 'white'}
+                        rounded size={26}
+                    />
+                    <div className={`${burgerMenu && 'opacity-0'} Header__extraPart__languages relative text-white flex items-center gap-2 cursor-pointer`}
                         onClick={() => setIsArrowActive(prevState => !prevState)}>
                         <p className='translate-y-px text-opacity-50 text-white'> EN </p>
                         <Image src={arrow} alt='arrow' className={`${isArrowActive ? styles['arrow-active'] : styles.arrow}`} />
@@ -170,10 +177,40 @@ const Header = (props: {
                 </div>
             </div>
 
-            <div className={`${burgerMenu ? 'animate__animated animate__fadeIn animated-slow' : 'animate__animated animate__fadeOut animated-slow'}
-            burgerMenu bg-white w-screen h-screen absolute z-[200] rounded-b-[100px]`}>
-
+            <div className={`${burgerMenu ? 'animate__animated animate__fadeIn animated-slow z-[2000]' : 'animate__animated animate__fadeOut animated-slow'}
+            burgerMenu bg-white w-screen h-screen fixed rounded-b-[100px]`}>
+                <div className='flex flex-col items-center text-5xl gap-10 left-1/2 top-1/2 absolute -translate-x-1/2 -translate-y-1/2'>
+                    {burgerMenuItems.map((item) => {
+                        return (
+                            <p className={`${myFont.className} cursor-pointer opacity-50 hover:opacity-100 duration-500`}>
+                                {item}
+                            </p>
+                    )
+                    })}
+                </div>
             </div>
+
+
+            <style>
+                {`
+                .hamburger-react {
+                    background: #78b944;
+                    border-radius : 9999px;
+                    z-index : 200000;
+                    width : 70px !important;
+                    height : 70px !important;
+                }
+                .hamburger-react div {
+                    ${!burgerMenu &&
+                    `
+                left : 20px !important;
+                transform : translateY(12px) !important;
+                `
+                    }
+                }
+                
+                `}
+            </style>
         </>
     );
 };
