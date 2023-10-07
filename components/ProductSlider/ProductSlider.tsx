@@ -12,6 +12,7 @@ const myFontBold = localFont({ src: '../../assets/Fonts/BYekan+ Bold.ttf' })
 import { Dialog } from 'primereact/dialog';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
+import useWindowSize from '@/Hooks/innerSize';
 
 const ProductSlider = (props: {
     product: string;
@@ -31,14 +32,18 @@ const ProductSlider = (props: {
     const bgColor = props.bgColor
     const [isInfoVisible, setIsInfoVisible] = useState<boolean>(false)
     const [svgWidth, setSvgWidth] = useState(0);
+    const [visible, setVisible] = useState(false);
+
 
     const { ref, inView, entry } = useInView({
         triggerOnce: false
     });
 
+    const size = useWindowSize();
+
     useEffect(() => {
         if (isInfoVisible) {
-            setSvgWidth(130); 
+            setSvgWidth(130);
         }
         else setSvgWidth(0)
     }, [isInfoVisible]);
@@ -56,12 +61,27 @@ const ProductSlider = (props: {
                     <ProductInfoContainer index={index} title={product} description={description} bgColor='#fff' textColor={textColor} />
                     <div className='absolute p-1 sm:p-3 rounded-full top-2/4 right-[-15px] sm:right-[-25px]'
                         style={{ transform: 'translateY(-50%)', background: isInfoVisible ? '#fff' : '#d3ffa9 ' }}
-                        onClick={() => setIsInfoVisible(!isInfoVisible)}
+                        onClick={() => {
+                            if (size.width && size.width < 640) {
+                                setVisible(!visible)
+                            }
+                            else setIsInfoVisible(!isInfoVisible)
+                        }}
+
                     >
                         <Image src={arrow} alt='arrow' className='w-6 sm:w-7 -translate-x-[2px]'
                             style={{ transform: isInfoVisible ? 'rotate(-90deg) translateX(-2px)' : 'rotate(0deg)', transition: 'all 0.4s' }}
                         />
                     </div>
+
+
+                    <Dialog header={product} visible={visible} modal={false}
+                        style={{ width: '80vw'  }} onHide={() => setVisible(false)}>
+                        <p className="m-0">
+                            {description}
+                        </p>
+                    </Dialog>
+
 
                     <div className={`${isInfoVisible ? 'opacity-1' : 'opacity-0'} infoContainer text-white duration-500 absolute top-[60%] right-[-15px] w-[35%] rounded-lg pb-20 px-4 pt-4 sm:right-[-25px] text-right bg-white`}>
                         <div className={`${myFontBold.className} text-4xl flex flex-col items-end gap-2`}>

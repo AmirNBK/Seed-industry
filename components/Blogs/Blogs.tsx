@@ -5,6 +5,7 @@ import RegularButton from '../CommonComponents/RegularButton/RegularButton';
 import BubbleComponent from '../BubbleComponent/BubbleComponent';
 import { useInView } from 'react-intersection-observer';
 import 'animate.css';
+import useWindowSize from '@/Hooks/innerSize';
 const myFont = localFont({ src: '../../assets/Fonts/BYekan+.ttf' })
 const myFontBold = localFont({ src: '../../assets/Fonts/BYekan+ Bold.ttf' })
 
@@ -16,6 +17,7 @@ const Blogs = (props: {
     const { ref, inView, entry } = useInView({
         triggerOnce: true
     });
+    const size = useWindowSize()
     const [svgWidth, setSvgWidth] = useState(0);
 
     const convertedData = props.data.map((item) => ({
@@ -26,7 +28,12 @@ const Blogs = (props: {
 
     useEffect(() => {
         if (inView) {
-            setSvgWidth(180);
+            if (size.width) {
+                if (size.width < 640) {
+                    setSvgWidth(250);
+                }
+                else setSvgWidth(180);
+            }
         }
     }, [inView]);
 
@@ -41,7 +48,8 @@ const Blogs = (props: {
                 اخبار و <span className='text-[#78b944]'>
                     مقالات
                     <svg ref={ref}
-                        className="bottom-[-1.7rem] left-0 js-s-svg-fade" width={svgWidth} height="21" viewBox="0 0 213 21" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        className="bottom-[-1.7rem] left-0 js-s-svg-fade" width={svgWidth}
+                        height={`${size.width && size.width < 640 ? 50 : 21} `} viewBox="0 0 213 21" fill="none" xmlns="http://www.w3.org/2000/svg"
                         style={{
                             transition: 'width 1s ease-in-out', transitionDelay: '1s'
                         }}
@@ -65,8 +73,12 @@ const Blogs = (props: {
                             onHoverChange={props.onHoverChange}
                             onHoverContainer={props.onHoverContainer}
                         />
-                        <div className={`${inView && 'animate__animated animate__fadeInRight animate__slower'}`}>
-                            <RegularButton width={200} text='ادامه مطلب' position='right' />
+                        <div className={`${inView && 'animate__animated animate__fadeInRight animate__slower'} ${size.width && size.width < 640 && 'mt-12'}`}>
+                            {size.width && size.width < 640 ?
+                                <RegularButton width={200} text='ادامه مطلب' position='center' />
+                                :
+                                <RegularButton width={200} text='ادامه مطلب' position='right' />
+                            }
                         </div>
                     </div>
                 ))}
