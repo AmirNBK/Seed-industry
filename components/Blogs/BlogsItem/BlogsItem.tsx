@@ -33,7 +33,7 @@ const BlogsItem = (props: {
         >
             {inView &&
                 <>
-                    <div style={{ color: color }}
+                    <div style={{ color: color , zIndex : '1000000' }}
                         onMouseEnter={() => {
                             props.onHoverChange(true);
                             setHovered(true)
@@ -42,7 +42,10 @@ const BlogsItem = (props: {
                             props.onHoverChange(false);
                             setHovered(false)
                         }}
-                        className={`${myFont.className} more${id} w-fit ml-auto parent flex flex-row-reverse md:justify-start justify-center gap-4`}> {category.map((item: string, index: number) => {
+                        className={`${myFont.className}
+                         more${id} w-fit ml-auto parent flex flex-row-reverse md:justify-start justify-center gap-4`}
+            
+                         > {category.map((item: string, index: number) => {
                             return (
                                 <Link href={'/blogs'} key={index} className='text-sm sm:text-lg'
                                 >
@@ -59,7 +62,7 @@ const BlogsItem = (props: {
                             props.onHoverChange(false);
                             setHovered(false)
                         }}
-                        className={`text-white md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${myFont.className}`} style={{ lineHeight: '53px' }}>
+                        className={`text-white cursor-pointer md:text-right text-center text-2xl sm:text-4xl font-extralight mb-4 ${myFont.className}`} style={{ lineHeight: '53px' }}>
                         {title}
                     </p>
                     <p className={`text-white text-sm sm:text-lg w-fit sm:hidden block mx-auto sm:ml-auto font-extralight ${vazir.className}`} style={{ borderBottom: `2px solid ${color}` }}>

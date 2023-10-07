@@ -84,7 +84,7 @@ const Blogs = (props: {
                 ))}
             </div>
             <div className=' w-full text-center'>
-                <div className={`${myFont.className} container text-xl cursor-pointer`}>
+                <div className={`${myFont.className} text-xl cursor-pointer`}>
                     <div className="MoreButton px-6">
                         <span className="label-up">بیشتر بخوانید</span>
                         <span className="label-up">بیشتر بخوانید</span>

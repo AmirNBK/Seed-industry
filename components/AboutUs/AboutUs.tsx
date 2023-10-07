@@ -32,7 +32,7 @@ const AboutUs = (props: {
 
     return (
         <div className='AboutUs w-full mb-6'>
-            <div className='AboutUs__intro flex xl:flex-row-reverse xl:items-baseline items-center flex-col text-white mt-6 sm:mt-20 sm:px-6'>
+            <div className='AboutUs__intro lg:mr-20 flex xl:flex-row-reverse xl:items-baseline items-center flex-col text-white mt-6 sm:mt-32 sm:px-6'>
                 <h2
                     data-aos-duration="3000" data-aos-once={true} data-aos="fade-left"
                     className={`${myFont.className} text-4xl sm:text-7xl xl:text-right text-center w-8/12 leading-snug`}>
@@ -70,7 +70,7 @@ const AboutUs = (props: {
                 <Foundation data={props.data.foundation[0]} />
             </div>
             <div className='mt-40'>
-                <Footer animation={false}/>
+                <Footer animation={false} />
             </div>
         </div>
     );

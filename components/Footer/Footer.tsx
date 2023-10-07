@@ -46,9 +46,10 @@ const Footer = (props: {
     const size = useWindowSize()
 
 
-
-
     useEffect(() => {
+        if (size.width && size.width < 640) {
+            setContactUs(true)
+        }
         if (inView) {
             setSvgWidth(213);
             setSecondSvgWidth(70);
@@ -93,16 +94,18 @@ const Footer = (props: {
                             باشید
                         </span>
                     </h2>
-                    <ColoredArrow
-                        onClick={() => {
-                            setContactUs(!contactUs);
-                        }}
-                        color={contactUs ? 'black' : '#78b944'}
-                        width={'w-10 md:w-20'}
-                        rotate={contactUs ? '-rotate-90' : ''}
-                        alternativeClassnames={contactUs ? `${size.width && size.width > 640 && '-translate-x-[40px]'}` : ''}
-                    />
-
+                    {(size.width && size.width > 640)
+                        &&
+                        <ColoredArrow
+                            onClick={() => {
+                                setContactUs(!contactUs);
+                            }}
+                            color={contactUs ? 'black' : '#78b944'}
+                            width={'w-10 md:w-20'}
+                            rotate={contactUs ? '-rotate-90' : ''}
+                            alternativeClassnames={(contactUs && size.width && size.width > 640) ? `${'-translate-x-[40px]'}` : ''}
+                        />
+                    }
                 </div>
                 <div className='Footer__contactUsSection__left flex flex-col items-center'>
                     <Image src={logo} alt='logo' className='w-28' />
@@ -111,12 +114,22 @@ const Footer = (props: {
                 </div>
             </div>
 
-            <div className={`${contactUs ? 'animate__animated animate__fadeInRight' : 'animate__animated animate__fadeOutRight'}
-                rounded-full w-fit pr-8 pl-16 sm:pl-80 lg:mt-0 mt-10 ml-auto mr-20 py-5 text-xl`}
+            <div className={`${(contactUs) ?
+                'animate__animated animate__fadeInRight' : 'animate__animated animate__fadeOutRight'}
+                rounded-full w-fit pr-8 pl-16 sm:pl-80 lg:mt-0 mt-10 ml-auto mr-20 py-5 text-xl sm:block hidden`}
                 style={{ background: 'rgba(255,255,255,0.5)' }}
             >
                 roya.vali@pishgamanbazr.com
             </div>
+
+            {(size.width && size.width < 640) &&
+                <div className={`
+                rounded-full w-fit pr-8 pl-16 sm:pl-80 lg:mt-0 mt-10 ml-auto mr-20 py-5 text-xl sm:hidden block`}
+                    style={{ background: 'rgba(255,255,255,0.5)' }}
+                >
+                    roya.vali@pishgamanbazr.com
+                </div>
+            }
 
             <div className={`${contactUs && 'mt-16'}`}>
                 <Image src={footerInfo} alt='info' unoptimized />
@@ -180,7 +193,6 @@ const Footer = (props: {
 
                                         </div>
                                     </div>
-                                    {/* <span className='bg-black w-2 h-2 rounded-full'>  </span> */}
                                     {item} </p>
                             </div>
                         )

@@ -78,7 +78,7 @@ const Header = (props: {
 
     return (
         <>
-            <div className='md:hidden block text-center w-full'>
+            <div className='md:hidden block text-center w-full p-6'>
                 <div className='flex flex-row-reverse items-center justify-between w-full'>
                     <Button icon="pi pi-align-justify" style={{
                         background: '#78b944', borderRadius: '9000px',
@@ -138,7 +138,7 @@ const Header = (props: {
             </div>
             <div
                 style={{ zIndex: '10000' }}
-                className={`md:flex fixed transition-all duration-1000 ${scrollDirection === "down" ? "-top-72" : "top-0"} hidden Header p-6 animate__animated animate__slower animate__backInDown flex-col gap-6 xl:flex-row w-full justify-between items-center pb-6 ${vazir.className}`}
+                className={`md:flex p-6 fixed transition-all duration-1000 ${scrollDirection === "down" ? "-top-72" : "top-0"} hidden Header p-6 animate__animated animate__slower animate__backInDown flex-col gap-6 xl:flex-row w-full justify-between items-center pb-6 ${vazir.className}`}
             >
                 <div className='Header__logo flex flex-row items-center gap-4'>
                     <Image src={logo} alt='logo' unoptimized />

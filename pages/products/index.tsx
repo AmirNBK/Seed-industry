@@ -47,6 +47,8 @@ export default function Blogs({ header, data }: {
     const [displayedItems, setDisplayedItems] = useState(3);
     const [buttonClicked, setButtonClicked] = useState(false);
     const size = useWindowSize()
+    const [burgerMenu, setBurgerMenu] = useState<boolean>(false)
+    const [hoverContainer, setHoverContainer] = useState(false)
 
 
     const handleShowMoreClick = () => {
@@ -64,16 +66,18 @@ export default function Blogs({ header, data }: {
         <>
             <AnimatedCursor
                 innerSize={17}
-                outerSize={250}
-                color='255, 255, 255'
+                showSystemCursor={true}
+                outerSize={burgerMenu ? 500 : 900}
+                color='transparent'
                 outerAlpha={0.2}
                 innerScale={0.7}
                 outerScale={1.3}
-                trailingSpeed={35}
+                trailingSpeed={hoverContainer ? 2 : 35}
                 outerStyle={{
-                    backgroundColor: 'rgba(136, 219, 68, 0.90)',
-                    filter: 'blur(97.5px)',
-                    zIndex: '-1px'
+                    backgroundImage: `url(https://i.imgur.com/PzokfXC.png)`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: burgerMenu ? '9000' : '-1'
                 }}
                 clickables={[
                     'a',
@@ -94,7 +98,7 @@ export default function Blogs({ header, data }: {
                 {
                     size.width && size.width < 768 ?
                         <main
-                            className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
+                            className={`flex flex-col items-center overflow-hidden ${inter.className}`}
                         >
                             <ScrollButton />
                             <PrimeReactProvider>
@@ -146,6 +150,7 @@ export default function Blogs({ header, data }: {
                                                             setButtonClicked(true);
                                                         }}
                                                         text='مشاهده بیشتر'
+                                                        position='center'
                                                     />
                                                     <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
                                                 </div>
@@ -176,6 +181,7 @@ export default function Blogs({ header, data }: {
                                                             setButtonClicked(true);
                                                         }}
                                                         text='مشاهده بیشتر'
+                                                        position='center'
                                                     />
                                                     <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
                                                 </div>
@@ -193,12 +199,14 @@ export default function Blogs({ header, data }: {
 
                         <SmoothScroll maxYTranslation={-380}>
                             <main
-                                className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
+                                className={`flex flex-col items-center overflow-hidden ${inter.className}`}
                             >
                                 <PrimeReactProvider>
-                                    <Header data={header.items} />
+                                    <Header data={header.items} burgerMenuClick={() => {
+                                        setBurgerMenu(!burgerMenu)
+                                    }} />
                                     <BubbleComponent />
-                                    <div className='flex flex-col justify-center w-full'>
+                                    <div className='flex flex-col justify-center w-full p-6'>
                                         <div className='flex flex-col justify-center'>
                                             <h1 className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-20`}
                                                 data-aos-duration="1500" data-aos-once={true} data-aos="fade-left"
@@ -244,6 +252,8 @@ export default function Blogs({ header, data }: {
                                                                 setButtonClicked(true);
                                                             }}
                                                             text='مشاهده بیشتر'
+                                                            position='center'
+                                                            width={250}
                                                         />
                                                         <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
                                                     </div>
@@ -274,6 +284,9 @@ export default function Blogs({ header, data }: {
                                                                 setButtonClicked(true);
                                                             }}
                                                             text='مشاهده بیشتر'
+                                                            position='center'
+                                                            width={250}
+
                                                         />
                                                         <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
                                                     </div>

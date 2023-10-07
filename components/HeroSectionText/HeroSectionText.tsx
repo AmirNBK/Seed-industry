@@ -21,7 +21,7 @@ const HeroSectionText = () => {
         >
             <div className='flex flex-row-reverse items-end gap-56'>
                 <div onClick={scrollToAboutUs} className='lg:block hidden w-96 absolute top-12'>
-                    <RegularButton text=' دامنه فعالیت های شرکت' width={300} />
+                    <RegularButton text=' دامنه فعالیت های شرکت' width={300} onClick={scrollToAboutUs} />
                 </div>
             </div>
             <div onClick={scrollToAboutUs} className='lg:hidden block'>

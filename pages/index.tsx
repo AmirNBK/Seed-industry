@@ -146,42 +146,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
 
   return (
     <>
-      {showCursor ?
-        <AnimatedCursor
-          innerSize={17}
-          outerSize={180}
-          color='transparent'
-          outerAlpha={0.5}
-          innerScale={0.7}
-          showSystemCursor={true}
-          outerScale={1}
-          trailingSpeed={20}
-          outerStyle={{
-            width: '158px !important',
-            height: '200px !important',
-            backgroundImage: `url(https://images.unsplash.com/photo-1458014854819-1a40aa70211c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)`,
-            borderRadius: '17px',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            transition: 'opacity 5s',
-            transform: 'rotate(9.243deg)',
-            zIndex: '-1',
-          }}
-          clickables={[
-            'a',
-            'input[type="text"]',
-            'input[type="email"]',
-            'input[type="number"]',
-            'input[type="submit"]',
-            'input[type="image"]',
-            'label[for]',
-            'select',
-            'textarea',
-            'button',
-            '.link'
-          ]}
-        />
-        :
+        
         <AnimatedCursor
           innerSize={17}
           showSystemCursor={true}
@@ -212,7 +177,6 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
           ]}
         />
 
-      }
       {
         size.width && size.width < 768 ?
           <main
