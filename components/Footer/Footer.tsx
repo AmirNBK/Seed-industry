@@ -20,7 +20,7 @@ const Footer = (props: {
     animation?: boolean
 }) => {
     const { ref, inView } = useInView({
-        triggerOnce: true
+        triggerOnce: false
     });
 
     const [isArrowActive, setIsArrowActive] = useState(false);
@@ -50,14 +50,17 @@ const Footer = (props: {
         if (inView) {
             setSvgWidth(213);
             setSecondSvgWidth(70);
-            setFooterRadius(150)
+            setFooterRadius(150);
         }
+        else setFooterRadius(0)
     }, [inView]);
 
     return (
-        <div className={`${myFont.className} rounded-t-[${footerRadius}px] Footer w-full bg-[#BAF98F]`} ref={ref}
+        <div className={`${myFont.className} Footer w-full bg-[#BAF98F]`} ref={ref}
             style={{
-                transition: 'border-radius 3s ease-in-out',
+                borderTopRightRadius: `${footerRadius}px`,
+                borderTopLeftRadius: `${footerRadius}px`,
+                transition: 'border-radius 1s ease-in-out',
             }}
         >
             <div className='Footer__contactUsSection flex flex-row-reverse items-center justify-between px-4 pt-16'>
@@ -99,12 +102,12 @@ const Footer = (props: {
                 </div>
             </div>
 
-                <div className={`${contactUs ? 'animate__animated animate__fadeInRight' : 'animate__animated animate__fadeOutRight'}
+            <div className={`${contactUs ? 'animate__animated animate__fadeInRight' : 'animate__animated animate__fadeOutRight'}
                 rounded-full w-fit pr-8 pl-80 ml-auto mr-20 py-5 text-xl`}
-                    style={{ background: 'rgba(255,255,255,0.5)' }}
-                >
-                    roya.vali@pishgamanbazr.com
-                </div>
+                style={{ background: 'rgba(255,255,255,0.5)' }}
+            >
+                roya.vali@pishgamanbazr.com
+            </div>
 
             <div className={`${contactUs && 'mt-16'}`}>
                 <Image src={footerInfo} alt='info' unoptimized />
@@ -119,7 +122,24 @@ const Footer = (props: {
                                 <p className={`${index === 0 ? 'opacity-100 font-bold' : 'opacity-50'} cursor-pointer flex flex-row-reverse gap-4  items-center hover:opacity-100 text-2xl 
                             duration-500 text-[#183e33]`}
                                 >
-                                    <div className='bg-black w-2 h-2 rounded-full'>  </div>
+                                    <div className='relative'
+                                    >
+                                        <div className='bg-[#8dda50] w-2 h-2 rounded-full'
+                                            style={{ transform: 'translate(3px, 4px)' }}
+                                        >
+
+                                        </div>
+                                        <div className='rounded-full bg-black absolute animate-pulse-fast scale-up'
+                                            style={{ width: '15px', height: '15px', left: '-1px', top: '0px', opacity: '0.15' }}
+                                        >
+
+                                        </div>
+                                        <div className='rounded-full bg-black absolute animate-pulse-fast scale-up'
+                                            style={{ width: '25px', height: '25px', left: '-5.5px', top: '-4.5px', opacity: '0.1' }}
+                                        >
+
+                                        </div>
+                                    </div>
                                     {item} </p>
                             </div>
                         )
@@ -133,7 +153,25 @@ const Footer = (props: {
                                 <p className={`opacity-50 cursor-pointer flex flex-row-reverse gap-4  items-center hover:opacity-100 text-2xl 
                             duration-500 text-[#183e33]`}
                                 >
-                                    <div className='bg-black w-2 h-2 rounded-full'>  </div>
+                                                                        <div className='relative'
+                                    >
+                                        <div className='bg-[#8dda50] w-2 h-2 rounded-full'
+                                            style={{ transform: 'translate(3px, 4px)' }}
+                                        >
+
+                                        </div>
+                                        <div className='rounded-full bg-black absolute animate-pulse-fast scale-up'
+                                            style={{ width: '15px', height: '15px', left: '-1px', top: '0px', opacity: '0.15' }}
+                                        >
+
+                                        </div>
+                                        <div className='rounded-full bg-black absolute animate-pulse-fast scale-up'
+                                            style={{ width: '25px', height: '25px', left: '-5.5px', top: '-4.5px', opacity: '0.1' }}
+                                        >
+
+                                        </div>
+                                    </div>
+                                    {/* <span className='bg-black w-2 h-2 rounded-full'>  </span> */}
                                     {item} </p>
                             </div>
                         )

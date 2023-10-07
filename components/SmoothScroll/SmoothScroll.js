@@ -31,10 +31,11 @@ export default class SmoothScroll extends React.Component {
   onScroll = () => {
     const scrollY = window.pageYOffset;
 
-    // Limit the translation to the maximum value
     const limitedTranslationY = Math.min(0, Math.max(this.maxYTranslation, -scrollY));
 
-    gsap.to(this.viewport, { duration: 2, y: limitedTranslationY || window.pageYOffset, ease: Power4.easeOut });
+    gsap.to(this.viewport, { duration: 2.5, y: limitedTranslationY || window.pageYOffset ,
+      ease: "slow(0.1, 0.1, false)",
+      lazy: false });
   }
 
   render() {

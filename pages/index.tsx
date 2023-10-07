@@ -266,7 +266,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             <Header data={header.items} burgerMenuClick={() => {
               setBurgerMenu(!burgerMenu)
               }} />
-            <SmoothScroll maxYTranslation={-2200}>
+            <SmoothScroll maxYTranslation={-2000}>
               <main
                 className={`flex flex-col items-center justify-between overflow-hidden ${inter.className}`}
                 onMouseMoveCapture={moveFunc} id='myscrollbar'

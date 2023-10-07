@@ -82,7 +82,7 @@ const ProductSliderContainer = (props) => {
                     page={currentPage}
                 />
             </div>
-            <div className='flex flex-col gap-40'>{renderSeedImages()}</div>
+            <div className='flex flex-col gap-40 ml-16'>{renderSeedImages()}</div>
         </div>
     );
 };

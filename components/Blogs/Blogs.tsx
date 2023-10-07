@@ -71,9 +71,47 @@ const Blogs = (props: {
                     </div>
                 ))}
             </div>
-            <div className=' w-full'>
-                <RegularButton text='بیشتر بخوانید' link={'/blogs'} position='center' width={250} />
+            <div className=' w-full text-center'>
+                <div className={`${myFont.className} container text-xl cursor-pointer`}>
+                    <div className="MoreButton px-6">
+                        <span className="label-up">بیشتر بخوانید</span>
+                        <span className="label-up">بیشتر بخوانید</span>
+                    </div>
+                </div>
             </div>
+
+
+            <style>
+                {
+                    `
+                    .MoreButton {
+                        display:inline-block;
+                        height:65px;
+                        line-height:60px;
+                        overflow:hidden;
+                        position:relative;
+                        text-align:center;
+                        border : 1px solid #AAFC75;
+                        color:white;
+                        border-radius:999px;
+                        transition:1s;
+                      }
+                      
+                      .label-up {
+                        display:block;
+                        margin:0px 30px;
+                        height:100%;
+                        position:relative;
+                        top:0%;
+                        transition:0.4s;
+                      }
+                      
+                      .MoreButton:hover .label-up {
+                        top:-100%;
+                      }
+                    `
+                }
+            </style>
         </div>
     );
 };

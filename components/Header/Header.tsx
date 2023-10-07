@@ -28,7 +28,7 @@ import useScrollDirection from '@/Hooks/scrollDirection';
 const Header = (props: {
     data: any
     searchData?: any
-    burgerMenuClick: () => void
+    burgerMenuClick?: () => void
 }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -45,8 +45,10 @@ const Header = (props: {
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
     const burgerMenuClick = () => {
-        setFirstTimeRender(false)
-        props.burgerMenuClick();
+        setFirstTimeRender(false);
+        if (props.burgerMenuClick) {
+            props.burgerMenuClick();
+        }
         if (burgerMenuZIndex) {
             setTimeout(() => {
                 setBurgerMenuZIndex(false);
@@ -437,6 +439,7 @@ const Header = (props: {
                 .hamburger-react div {
                     left : 20px !important;
                     transform : translateY(12px) !important;  
+                }
                 `
                     }  
                 `}

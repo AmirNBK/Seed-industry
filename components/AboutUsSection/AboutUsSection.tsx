@@ -55,7 +55,7 @@ const AboutUs = (props: {
             </div>
             <div className='flex flex-col items-end' data-aos="fade-right" data-aos-duration="1000" data-aos-once={true}>
                 <p
-                    className={`${myFontBold.className} text-white text-xl md:text-5xl md:text-right text-center rtl mb-6 leading-loose`}
+                    className={`${myFontBold.className} text-white text-xl md:text-4xl md:text-right text-center rtl mb-6 leading-loose`}
                     style={{ direction: 'rtl' }}
                     dangerouslySetInnerHTML={{
                         __html: props.data.aboutUs[0].description.replace(

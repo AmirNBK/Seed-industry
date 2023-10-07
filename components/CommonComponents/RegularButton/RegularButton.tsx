@@ -1,6 +1,4 @@
 import React from 'react';
-import arrow from '../../../assets/Icons/arrow.svg'
-import arrowBlack from '../../../assets/Icons/arrow-black.svg'
 import { Vazirmatn } from 'next/font/google';
 import Link from 'next/link';
 import localFont from 'next/font/local'
@@ -60,12 +58,12 @@ const RegularButton = (props: {
               >
 
               </div>
-              <div className='rounded-full bg-white absolute'
+              <div className='rounded-full bg-white absolute animate-pulse-fast scale-up'
                 style={{ width: '20px', height: '20px', left: '-3px', top: '-3px', opacity: '0.15' }}
               >
 
               </div>
-              <div className='rounded-full bg-white absolute'
+              <div className='rounded-full bg-white absolute animate-pulse-fast scale-up'
                 style={{ width: '35px', height: '35px', left: '-10.5px', top: '-10.5px', opacity: '0.1' }}
               >
 
