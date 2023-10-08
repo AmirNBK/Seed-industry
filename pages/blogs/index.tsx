@@ -79,7 +79,7 @@ export default function Blogs({ header, data }: { header: any, data: any }) {
                     <main
                         className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
                     >
-                        <ScrollButton />
+                        
                         <PrimeReactProvider>
                             <Header data={header.items} />
                             <BubbleComponent />

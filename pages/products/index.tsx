@@ -100,7 +100,7 @@ export default function Blogs({ header, data }: {
                         <main
                             className={`flex flex-col items-center overflow-hidden ${inter.className}`}
                         >
-                            <ScrollButton />
+                            
                             <PrimeReactProvider>
                                 <Header data={header.items} />
                                 <BubbleComponent />

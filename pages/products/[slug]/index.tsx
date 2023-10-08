@@ -124,7 +124,7 @@ export default function SingleProduct() {
                 ]}
             />
             <PrimeReactProvider>
-                <ScrollButton />
+                
                 <div className='w-full '>
                     <Header data={header} burgerMenuClick={() => {
                         setBurgerMenu(!burgerMenu)

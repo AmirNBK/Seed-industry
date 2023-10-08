@@ -71,7 +71,7 @@ export default function Contact({ header, data, searchData }: { header: any, dat
                         <main
                             className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
                         >
-                            <ScrollButton />
+                            
                             <PrimeReactProvider>
                                 <Header data={header.items} searchData={searchData} />
                                 <ContactUs data={data} />

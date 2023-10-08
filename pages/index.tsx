@@ -187,7 +187,7 @@ export default function Home({ header, aboutUs, productSlider, blogs, values }: 
             }}
           >
             <PrimeReactProvider>
-              <ScrollButton />
+              
               <BubbleComponent />
               <Header data={header.items} burgerMenuClick={() => {console.log('here');
               }} />

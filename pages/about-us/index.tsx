@@ -69,7 +69,7 @@ export default function About({ header, data }: {
                             className={`flex flex-col items-center ml-4 ${inter.className}`}
                         >
                             <PrimeReactProvider>
-                                <ScrollButton />
+                                
                                 <div className='w-full p-6'>
                                     <Header data={header.items} />
                                 </div>
