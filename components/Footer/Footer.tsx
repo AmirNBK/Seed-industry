@@ -140,7 +140,7 @@ const Footer = (props: {
                 <div className='footer__pages px-4 flex flex-col'>
                     {footerItems.map((item, index) => {
                         return (
-                            <div className='footer__pages__items'>
+                            <div className='footer__pages__items' key={index}>
                                 <p className={`${index === 0 ? 'opacity-100 font-bold' : 'opacity-50'} cursor-pointer flex flex-row-reverse gap-4  items-center hover:opacity-100 text-xl sm:text-2xl 
                             duration-500 text-[#183e33]`}
                                 >
@@ -171,7 +171,7 @@ const Footer = (props: {
                 <div className='footer__pages px-4 flex flex-col'>
                     {footerItems2.map((item, index) => {
                         return (
-                            <div className='footer__pages__items'>
+                            <div className='footer__pages__items' key={index}>
                                 <p className={`opacity-50 cursor-pointer flex flex-row-reverse gap-4  items-center hover:opacity-100 text-xl sm:text-2xl
                             duration-500 text-[#183e33]`}
                                 >
@@ -216,9 +216,9 @@ const Footer = (props: {
                     </div>
 
                     <div className='footer__socialMedia flex flex-row items-center gap-6'>
-                        {socialMedia.map((item) => {
+                        {socialMedia.map((item, index) => {
                             return (
-                                <Image src={item} alt={item} className='w-5' />
+                                <Image src={item} alt={item} className='w-5' key={index} />
                             )
                         })}
                     </div>
