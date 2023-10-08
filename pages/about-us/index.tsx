@@ -31,8 +31,6 @@ export default function About({ header, data }: {
     const [burgerMenu, setBurgerMenu] = useState<boolean>(false)
     const [hoverContainer, setHoverContainer] = useState(false)
 
-
-
     return (
         <>
             <AnimatedCursor
@@ -80,21 +78,23 @@ export default function About({ header, data }: {
                             </PrimeReactProvider>
                         </main>
                         :
+                        <>
+                        <div className='w-full'>
+                        <Header data={header.items} burgerMenuClick={() => {
+                            setBurgerMenu(!burgerMenu)
+                        }} />
+                    </div>
                         <SmoothScroll maxYTranslation={-1950}>
                             <main
                                 className={`flex flex-col items-center ${inter.className}`}
                             >
                                 <PrimeReactProvider>
-                                    <div className='w-full p-6'>
-                                        <Header data={header.items} burgerMenuClick={() => {
-                                            setBurgerMenu(!burgerMenu)
-                                        }} />
-                                    </div>
                                     <BubbleComponent />
                                     <AboutUs data={data} />
                                 </PrimeReactProvider>
                             </main>
                         </SmoothScroll>
+                        </>
                 }
             </>
         </>

@@ -16,7 +16,8 @@ const ContactUs = (props: {
 }) => {
 
     return (
-        <div className='ContactUs w-full'>
+        <>
+        <div className='ContactUs w-full p-6'>
             <BubbleComponent />
             <h1 className={`text-5xl md:text-8xl leading-normal ${myFont.className} text-center text-white mt-10 md:mt-20`}
                 data-aos-duration="1500" data-aos-once={true} data-aos="fade-down"
@@ -41,14 +42,16 @@ const ContactUs = (props: {
                 </div>
             </div>
             <div className=' mt-14 md:mt-32'>
-                <RegularButton text='ارسال' position='center' />
+                <RegularButton text='ارسال' position='center' width={180} />
             </div>
             <div className='my-2 md:my-56'>
                 <Map data={props.data.contactInfos[0]} />
             </div>
 
-            <Footer />
         </div>
+        <Footer />
+
+        </>
     );
 };
 

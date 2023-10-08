@@ -197,110 +197,113 @@ export default function Blogs({ header, data }: {
                         </main>
                         :
 
-                        <SmoothScroll maxYTranslation={-380}>
-                            <main
-                                className={`flex flex-col items-center overflow-hidden ${inter.className}`}
-                            >
-                                <PrimeReactProvider>
-                                    <Header data={header.items} burgerMenuClick={() => {
-                                        setBurgerMenu(!burgerMenu)
-                                    }} />
-                                    <BubbleComponent />
-                                    <div className='flex flex-col justify-center w-full p-6'>
-                                        <div className='flex flex-col justify-center'>
-                                            <h1 className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-20`}
-                                                data-aos-duration="1500" data-aos-once={true} data-aos="fade-left"
-                                            >
-                                                مشاهده جدیدترین
-                                            </h1>
+                        <>
+                            <Header data={header.items} burgerMenuClick={() => {
+                                setBurgerMenu(!burgerMenu)
+                            }} />
+                            <SmoothScroll maxYTranslation={-380}>
+                                <main
+                                    className={`flex flex-col items-center overflow-hidden ${inter.className}`}
+                                >
+                                    <PrimeReactProvider>
+                                        <BubbleComponent />
+                                        <div className='flex flex-col justify-center w-full p-6'>
+                                            <div className='flex flex-col justify-center'>
+                                                <h1 className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-20`}
+                                                    data-aos-duration="1500" data-aos-once={true} data-aos="fade-left"
+                                                >
+                                                    مشاهده جدیدترین
+                                                </h1>
 
-                                            <h1
-                                                data-aos-duration="1500" data-aos-once={true} data-aos="fade-right"
-                                                className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-10 lg:mt-20 lg:translate-x-250`}>
-                                                و آخرین محصولات
-                                            </h1>
+                                                <h1
+                                                    data-aos-duration="1500" data-aos-once={true} data-aos="fade-right"
+                                                    className={`text-4xl md:text-5xl lg:text-7xl ${myFont.className} text-center text-white mt-10 lg:mt-20 lg:translate-x-250`}>
+                                                    و آخرین محصولات
+                                                </h1>
+                                            </div>
+                                            <div className='mt-12 lg:mt-28 relative'>
+                                                <hr className='absolute w-1/4 hidden sm:block xl:w-37'
+                                                    style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', left: '-25px' }} />
+                                                <hr className='absolute hidden sm:block sm:w-1/4 xl:w-37'
+                                                    style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', right: '-25px' }} />
+                                                <TabView >
+                                                    <TabPanel header="بذر های سبز سیف">
+                                                        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
+                                                            data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
+                                                        >
+                                                            {data.greenSeed[0].product.slice(0, displayedItems).map((item: ProductItem, index: number) => {
+                                                                return (
+                                                                    <ProductsComponent
+                                                                        key={index}
+                                                                        image={productPic}
+                                                                        name={item.productName}
+                                                                        description={item.description}
+                                                                        instruction={item.instructions}
+                                                                        color={item.color}
+                                                                        link={item.id}
+                                                                    />
+                                                                );
+                                                            })}
+                                                        </div>
+                                                        <div className={`flex flex-row items-center gap-6 my-32 ${buttonClicked ? 'animate__animated animate__bounceOutDown' : ''}`}>
+                                                            <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
+                                                            <RegularButton
+                                                                onClick={() => {
+                                                                    handleShowMoreClick();
+                                                                    setButtonClicked(true);
+                                                                }}
+                                                                text='مشاهده بیشتر'
+                                                                position='center'
+                                                                width={250}
+                                                            />
+                                                            <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
+                                                        </div>
+
+                                                    </TabPanel>
+                                                    <TabPanel header="بذر های چمن">
+                                                        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
+                                                        >
+                                                            {data.grassSeed[0].product.slice(0, displayedItems).map((item: ProductItem, index: number) => {
+                                                                return (
+                                                                    <ProductsComponent
+                                                                        key={index}
+                                                                        image={productPic}
+                                                                        name={item.productName}
+                                                                        description={item.description}
+                                                                        instruction={item.instructions}
+                                                                        color={item.color}
+                                                                        link={item.id}
+                                                                    />
+                                                                )
+                                                            })}
+                                                        </div>
+                                                        <div className={`flex flex-row items-center gap-6 my-32 ${buttonClicked ? 'animate__animated animate__bounceOutDown' : ''}`}>
+                                                            <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
+                                                            <RegularButton
+                                                                onClick={() => {
+                                                                    handleShowMoreClick();
+                                                                    setButtonClicked(true);
+                                                                }}
+                                                                text='مشاهده بیشتر'
+                                                                position='center'
+                                                                width={250}
+
+                                                            />
+                                                            <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
+                                                        </div>
+                                                    </TabPanel>
+                                                </TabView>
+                                            </div>
                                         </div>
-                                        <div className='mt-12 lg:mt-28 relative'>
-                                            <hr className='absolute w-1/4 hidden sm:block xl:w-37'
-                                                style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', left: '-25px' }} />
-                                            <hr className='absolute hidden sm:block sm:w-1/4 xl:w-37'
-                                                style={{ color: '#EBDAB2', backgroundColor: '#EBDAB2', borderColor: '#EBDAB2', top: '25px', right: '-25px' }} />
-                                            <TabView >
-                                                <TabPanel header="بذر های سبز سیف">
-                                                    <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
-                                                        data-aos-duration="1500" data-aos-once={true} data-aos="zoom-in-up"
-                                                    >
-                                                        {data.greenSeed[0].product.slice(0, displayedItems).map((item: ProductItem, index: number) => {
-                                                            return (
-                                                                <ProductsComponent
-                                                                    key={index}
-                                                                    image={productPic}
-                                                                    name={item.productName}
-                                                                    description={item.description}
-                                                                    instruction={item.instructions}
-                                                                    color={item.color}
-                                                                    link={item.id}
-                                                                />
-                                                            );
-                                                        })}
-                                                    </div>
-                                                    <div className={`flex flex-row items-center gap-6 my-32 ${buttonClicked ? 'animate__animated animate__bounceOutDown' : ''}`}>
-                                                        <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
-                                                        <RegularButton
-                                                            onClick={() => {
-                                                                handleShowMoreClick();
-                                                                setButtonClicked(true);
-                                                            }}
-                                                            text='مشاهده بیشتر'
-                                                            position='center'
-                                                            width={250}
-                                                        />
-                                                        <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
-                                                    </div>
 
-                                                </TabPanel>
-                                                <TabPanel header="بذر های چمن">
-                                                    <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-32'
-                                                    >
-                                                        {data.grassSeed[0].product.slice(0, displayedItems).map((item: ProductItem, index: number) => {
-                                                            return (
-                                                                <ProductsComponent
-                                                                    key={index}
-                                                                    image={productPic}
-                                                                    name={item.productName}
-                                                                    description={item.description}
-                                                                    instruction={item.instructions}
-                                                                    color={item.color}
-                                                                    link={item.id}
-                                                                />
-                                                            )
-                                                        })}
-                                                    </div>
-                                                    <div className={`flex flex-row items-center gap-6 my-32 ${buttonClicked ? 'animate__animated animate__bounceOutDown' : ''}`}>
-                                                        <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
-                                                        <RegularButton
-                                                            onClick={() => {
-                                                                handleShowMoreClick();
-                                                                setButtonClicked(true);
-                                                            }}
-                                                            text='مشاهده بیشتر'
-                                                            position='center'
-                                                            width={250}
+                                        <Footer />
 
-                                                        />
-                                                        <hr className='flex-1' style={{ borderColor: '#EBDAB2' }} />
-                                                    </div>
-                                                </TabPanel>
-                                            </TabView>
-                                        </div>
-                                    </div>
+                                    </PrimeReactProvider>
 
-                                    <Footer />
+                                </main>
+                            </SmoothScroll>
 
-                                </PrimeReactProvider>
-
-                            </main>
-                        </SmoothScroll>
+                        </>
                 }
 
             </>

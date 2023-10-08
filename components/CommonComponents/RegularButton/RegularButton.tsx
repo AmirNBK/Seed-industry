@@ -26,6 +26,7 @@ const RegularButton = (props: {
       <Link
         className={`${position === 'right' ? 'ml-auto' : position === 'center' ? 'mx-auto' : ''}
          btn-epic bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-20 ${myFontBold.className} text-xl`} href={link || ''}
+         onClick={onClick}
         style={{ maxWidth: `${width}px`, maxHeight: `${height}px` }}
       >
         <div className='div'><span>{text}

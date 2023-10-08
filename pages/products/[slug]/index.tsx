@@ -51,6 +51,8 @@ export default function SingleProduct() {
     const productInfo = getQuerySingleProducts();
     const scrollYRef = useRef(0);
     const [animationFaded, setAnimationFaded] = useState(false);
+    const [burgerMenu, setBurgerMenu] = useState<boolean>(false)
+    const [hoverContainer, setHoverContainer] = useState(false)
 
 
     const { ref, inView, entry } = useInView({
@@ -94,16 +96,18 @@ export default function SingleProduct() {
         >
             <AnimatedCursor
                 innerSize={17}
-                outerSize={250}
-                color='255, 255, 255'
+                showSystemCursor={true}
+                outerSize={burgerMenu ? 500 : 900}
+                color='transparent'
                 outerAlpha={0.2}
                 innerScale={0.7}
                 outerScale={1.3}
-                trailingSpeed={35}
+                trailingSpeed={hoverContainer ? 2 : 35}
                 outerStyle={{
-                    backgroundColor: 'rgba(136, 219, 68, 0.90)',
-                    filter: 'blur(97.5px)',
-                    zIndex: '-1px'
+                    backgroundImage: `url(https://i.imgur.com/PzokfXC.png)`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: burgerMenu ? '9000' : '-1'
                 }}
                 clickables={[
                     'a',
@@ -121,8 +125,10 @@ export default function SingleProduct() {
             />
             <PrimeReactProvider>
                 <ScrollButton />
-                <div className='w-full p-6'>
-                    <Header data={header} />
+                <div className='w-full '>
+                    <Header data={header} burgerMenuClick={() => {
+                        setBurgerMenu(!burgerMenu)
+                    }} />
                 </div>
                 <BubbleComponent />
                 {(animationPlayedOnce && productData && animationFaded) && (
@@ -136,7 +142,7 @@ export default function SingleProduct() {
                         animationData={animations} loop={false} onComplete={() => setAnimationPlayedOnce(true)} />
                 )}
                 {(animationPlayedOnce && productData && animationFaded) && (
-                    <div className='productContainer w-full flex flex-col xl:flex-row-reverse mt-20'
+                    <div className='productContainer w-full flex flex-col xl:flex-row-reverse mt-36'
                     >
                         <div className='productContainer__pic border-b border-solid border-white xl:hidden block'
                             style={{ flex: '1.5' }}
@@ -151,7 +157,7 @@ export default function SingleProduct() {
                         </div>
                     </div>
                 )}
-                <div ref={ref} className='w-full p-6' >
+                <div ref={ref} className='w-full mt-16' >
                     <Footer isProduct={true} />
                 </div>
             </PrimeReactProvider>

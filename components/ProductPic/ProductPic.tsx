@@ -32,14 +32,14 @@ const ProductPic = (props: {
             {
             ((scrollY > -430 && showTitle) || props.inView) && (
                 <p className={` ${myFont.className} ${scrollY < -1500 && 'hidden'} duration-1000 text-3xl md:text-5xl text-white fixed text-center animate__animated animate__lightSpeedOutRight`}
-                    style={{ top: '20%', right: '5%' }}
+                    style={{ top: '10%', right: '5%' }}
                 >
                     {props.productName}
                 </p>
             )}
             {scrollY < -430 && !props.inView && (
                 <p className={` ${myFont.className} ${scrollY < -1500 && 'hidden duration-500'} duration-1000 text-3xl md:text-5xl text-white fixed text-center animate__animated animate__lightSpeedInRight`}
-                    style={{ top: '20%', right: '5%' }}
+                    style={{ top: '10%', right: '5%' }}
                 >
                     {props.productName}
                 </p>

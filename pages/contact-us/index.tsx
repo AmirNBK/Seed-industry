@@ -11,7 +11,7 @@ import ContactUs from '@/components/ContactUs/ContactUs';
 const vazir = Vazirmatn({ subsets: ['latin'] });
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 import { getQueryContactUs, getQueryHeader, getQueryProductsPage } from '@/lib/service';
 import useWindowSize from '@/Hooks/innerSize';
@@ -26,6 +26,8 @@ const SmoothScroll = dynamic(() => import("../../components/SmoothScroll/SmoothS
 export default function Contact({ header, data, searchData }: { header: any, data: any, searchData: any }) {
 
     const size = useWindowSize()
+    const [burgerMenu, setBurgerMenu] = useState<boolean>(false)
+    const [hoverContainer, setHoverContainer] = useState(false)
 
     useEffect(() => {
         AOS.init();
@@ -35,16 +37,18 @@ export default function Contact({ header, data, searchData }: { header: any, dat
         <>
             <AnimatedCursor
                 innerSize={17}
-                outerSize={250}
-                color='255, 255, 255'
+                showSystemCursor={true}
+                outerSize={burgerMenu ? 500 : 900}
+                color='transparent'
                 outerAlpha={0.2}
                 innerScale={0.7}
                 outerScale={1.3}
-                trailingSpeed={35}
+                trailingSpeed={hoverContainer ? 2 : 35}
                 outerStyle={{
-                    backgroundColor: 'rgba(136, 219, 68, 0.90)',
-                    filter: 'blur(97.5px)',
-                    zIndex: '-1px'
+                    backgroundImage: `url(https://i.imgur.com/PzokfXC.png)`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: burgerMenu ? '9000' : '-1'
                 }}
                 clickables={[
                     'a',
@@ -78,10 +82,14 @@ export default function Contact({ header, data, searchData }: { header: any, dat
 
                         <SmoothScroll maxYTranslation={-450.355}>
                             <main
-                                className={`flex flex-col items-center p-6 overflow-hidden ${inter.className}`}
+                                className={`flex flex-col items-center overflow-hidden ${inter.className}`}
                             >
                                 <PrimeReactProvider>
-                                    <Header data={header.items} searchData={searchData} />
+                                    <Header data={header.items} searchData={searchData}
+                                        burgerMenuClick={() => {
+                                            setBurgerMenu(!burgerMenu)
+                                        }}
+                                    />
                                     <ContactUs data={data} />
                                 </PrimeReactProvider>
 
