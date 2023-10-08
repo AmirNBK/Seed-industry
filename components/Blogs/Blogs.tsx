@@ -63,7 +63,7 @@ const Blogs = (props: {
                 md:mr-12 gap-20 sm:mb-28 mb-16`}
             >
                 {convertedData.map((item, index) => (
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col' key={index}>
                         <BlogsItem
                             id={index}
                             key={index}
