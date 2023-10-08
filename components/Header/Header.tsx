@@ -406,9 +406,9 @@ const Header = (props: {
                     </div>
 
                     <div className='header__socialMedia flex flex-row items-center gap-6 left-1/2 bottom-[5%] absolute -translate-x-1/2 -translate-y-1/2'>
-                        {socialMedia.map((item) => {
+                        {socialMedia.map((item, index) => {
                             return (
-                                <Image src={item} alt={item} className='w-5' />
+                                <Image src={item} alt={item} className='w-5' key={index} />
                             )
                         })}
                     </div>
