@@ -137,8 +137,10 @@ const Header = (props: {
                 </Sidebar>
             </div>
             <div
-                style={{ zIndex: '10000' }}
-                className={`md:flex p-6 fixed transition-all duration-1000 ${scrollDirection === "down" ? "-top-72" : "top-0"} hidden Header p-6 animate__animated animate__slower animate__backInDown flex-col gap-6 xl:flex-row w-full justify-between items-center pb-6 ${vazir.className}`}
+                style={{ zIndex: '10000', backdropFilter: 'blur(3px)' }}
+                className={`md:flex p-6 fixed transition-all duration-1000 ${scrollDirection === "down" ? "-top-72" : "top-0"}
+                hidden Header p-6 animate__animated animate__slower animate__backInDown flex-col
+                gap-6 xl:flex-row w-full justify-between items-center pb-6 ${vazir.className}`}
             >
                 <div className='Header__logo flex flex-row items-center gap-4'>
                     <Image src={logo} alt='logo' unoptimized />
@@ -204,7 +206,7 @@ const Header = (props: {
                     <div className={`${burgerMenu && 'opacity-0'}
                     Header__extraPart__languages relative text-white flex items-center gap-2 cursor-pointer`}
                         onClick={() => setIsArrowActive(prevState => !prevState)}>
-                        <p className='translate-y-px text-opacity-50 text-white'> EN </p>
+                        <p className='translate-y-px text-opacity-50 text-white'> FA </p>
                         <Image src={arrow} alt='arrow' className={`${isArrowActive ? styles['arrow-active'] : styles.arrow}`} />
                         <div className={`${isArrowActive ? 'opacity-100 h-16' : 'opacity-0	h-2'} transition-all duration-500 absolute`}
                             style={{
@@ -212,7 +214,7 @@ const Header = (props: {
                                 top: '-8px', left: '-8px', borderRadius: '5px'
                             }}>
                             <p className={`${isArrowActive ? 'opacity-100 duration-1000' : 'opacity-0'} absolute bottom-1 left-2.5`}>
-                                FA
+                                EN
                             </p>
                         </div>
                     </div>
@@ -427,6 +429,9 @@ const Header = (props: {
                 height : 51px !important;
                 z-index : 200000;
                 }
+                .hamburger-react div {
+                    left : 12px !important;
+                }
                 ${!burgerMenu &&
                     `
                 .hamburger-react {
@@ -437,7 +442,7 @@ const Header = (props: {
                 height : 70px !important;
                     }
                 .hamburger-react div {
-                    left : 20px !important;
+                    left : 22px !important;
                     transform : translateY(12px) !important;  
                 }
                 `

@@ -202,7 +202,7 @@ const Footer = (props: {
                 <div className='flex flex-row gap-8'>
                     <div className='footer__extraPart__languages bg-white w-fit p-2 rounded-lg relative text-white flex items-center gap-2 cursor-pointer'
                         onClick={() => setIsArrowActive(prevState => !prevState)}>
-                        <p className='translate-y-px text-opacity-50 text-black'> EN </p>
+                        <p className='translate-y-px text-opacity-50 text-black'> FA </p>
                         <Image src={arrow} alt='arrow' className={`${isArrowActive ? 'arrow-active' : 'arrow'}`} />
                         <div className={`${isArrowActive ? 'opacity-100 h-20' : 'opacity-0	h-2'} transition-all duration-500 absolute`}
                             style={{
@@ -210,7 +210,7 @@ const Footer = (props: {
                                 top: '0px', left: '0px', borderRadius: '5px'
                             }}>
                             <p className={`${isArrowActive ? 'opacity-100 duration-1000' : 'opacity-0'} opacity-50 absolute bottom-1 left-2.5 text-black`}>
-                                FA
+                                EN
                             </p>
                         </div>
                     </div>
